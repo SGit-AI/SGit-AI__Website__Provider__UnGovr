@@ -448,3 +448,17 @@
   group: Run against the API, 9 September 2026
   claim: "The nearest thing to an ontology is the AI-law corpus's `vocab.json`: **4 verdicts, 6 contexts, 6 crawl-policy fields, 22 field definitions and 17 enums**, with a JSON Schema at `ungovr.ai-laws/2`. It is a real controlled vocabulary — every enum value defined in prose. **It is not a graph**: no classes, no properties with domains and ranges, no relations between terms, no SKOS, OWL, RDF or JSON-LD. The schema document is public; the data behind it is key-gated and its licence states *\"No license is conveyed by receipt of this file.\"* The only occurrence of the word *graph* in their entire OpenAPI is `GeoJSON`."
   source: "/v1/ai-laws/vocab.json and /v1/ai-laws/export/manifest.json under X-API-Key; /v1/meta/openapi.yaml grepped"
+
+- id: decks-four
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault carries **four decks, 39 slides**: what we learned about UnGovr, what we built on the site, how this composes with the estate's other vaults, and **what we plan to build** — ten slides on the security-standards dev pack, ending on what would make it wrong rather than on a roadmap. All four are authored as ordinary markdown in `decks/*.md`, and the site's parser is a **port of the vault app's**, so both render the same slides from the same bytes."
+  source: "decks/*.md in vault dkeclt5r @ obj-cas-imm-a6f0269b0967, republished and hash-checked here"
+
+- id: decks-static-not-live
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The decks here are **rendered at build time, not read live from the vault** — a deliberate departure from sgit.ai's decks-from-a-vault brief, which specifies a host that fetches deck sources with a read key and runs them in sandboxed opaque-origin frames. **That architecture exists because vault bytes are untrusted input to a host page; this site's constraint is different**: every page is static and contacts nothing, with exactly two named exceptions, and a live viewer would have made every deck page a third. **The cost is liveness** — when the vault moves ahead, this site is behind and says so. The live decks are the vault app's own Decks view, one click away on `/vault/` and `/estate/`."
+  source: "https://sgit.ai/briefs/vault-decks-on-a-site.md, read 9 September 2026; build.py deck_pages() and tools/check_site.py check_network_pages"

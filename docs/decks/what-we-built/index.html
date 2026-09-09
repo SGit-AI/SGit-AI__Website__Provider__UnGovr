@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we built on the site &mdash; UnGovr, reported on</title>
+<meta name="description" content="A provider report, a gate that enforces it, and the argument for admitting an open-data provider">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/decks/what-we-built/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/decks/what-we-built/">
+<meta property="og:title" content="What we built on the site">
+<meta property="og:description" content="A provider report, a gate that enforces it, and the argument for admitting an open-data provider">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../../versions/index.html" title="Site release history">v0.1.14</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../coverage/index.html">The coverage measurement</a><a class="sl" href="../../join/index.html">The seven-step join</a><a class="sl" href="../../instruments/index.html">Reaching a law</a><a class="sl" href="../../retrievals/index.html">The retrieval log</a></div></div><div class="ni ni-has"><a class="nl" href="../../vault/index.html">The vault<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../vault/index.html">The government-graph vault</a><a class="sl" href="../../estate/index.html">The estate it joins</a></div></div><div class="ni ni-has"><a class="nl" href="../../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../patterns/index.html">The four patterns</a><a class="sl" href="../../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../ledger/index.html">The claim ledger</a><a class="sl" href="../../briefs/index.html">The briefs, published raw</a><a class="sl" href="../../disclosures/index.html">Disclosures</a><a class="sl here" href="../../decks/index.html">The four decks</a><a class="sl" href="../../packs/index.html">The dev packs, published raw</a><a class="sl" href="../../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../../disclosures/index.html">Disclosures</a> &middot; <a href="../../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../../index.html">ungovr.providers.sgit.ai</a> / <a href="../../decks/index.html">decks</a> / What we built on the site</p>
+<h1>What we built on the site</h1>
+
+
+
+<p class="dsub">A provider report, a gate that enforces it, and the argument for admitting an open-data provider &middot; <b>9 slides</b> &middot; September 2026</p><div class="dbar"><button type="button" class="btn-present" id="present">&#9654; Present</button><button type="button" class="btn-notes" id="ntoggle">Hide notes</button><a class="btn-raw" href="../../decks/02__what-we-built.md">The markdown &darr;</a><span class="dhash">sha256 <code>11239acac7618f3e</code> &mdash; checked against the vault on every build</span></div><div class="deckwrap"><nav class="drail" aria-label="Decks"><a class="drow" href="../../decks/what-we-learned/index.html"><span class="dnum">01</span><span class="dname">What we learned about UnGovr</span></a><a class="drow here" href="../../decks/what-we-built/index.html"><span class="dnum">02</span><span class="dname">What we built on the site</span></a><a class="drow" href="../../decks/how-it-composes/index.html"><span class="dnum">03</span><span class="dname">How this composes</span></a><a class="drow" href="../../decks/what-we-plan/index.html"><span class="dnum">04</span><span class="dname">What we plan to build</span></a><p class="drailfoot">Every deck is a projection of a markdown file. If the slides and the file ever disagree, <b>the file is right</b>.</p></nav><div class="deckbody" id="deck"><section class="slide" id="s1" data-n="1"><div class="sn">1 / 9</div><h2>The site, in one line</h2><p><strong><code>ungovr.providers.sgit.ai</code></strong> — an independent report on the UnGovr Open Data API, written to the nine sections of the <a href="https://providers.sgit.ai/contract/" rel="noopener">providers contract</a>.</p>
+<p>Twelve pages, 39 claims in a ledger, every one carrying a state and a date. Built by <code>build.py</code> with <strong>no external dependencies</strong>, served from <code>docs/</code>, gated by <code>validate.sh</code>.</p>
+<p><strong>The vault is §7 — the named workload.</strong> The site reports; the vault is the thing reported on.</p></section><section class="slide" id="s2" data-n="2"><div class="sn">2 / 9</div><h2>The word <strong>"provider"</strong> did not fit</h2><p>The family defines it narrowly: <em>"a service that serves models over an API."</em></p>
+<p><strong>UnGovr serve data, not models.</strong> By the letter, they do not belong.</p>
+<p>The resolution: that definition was a <strong>proxy</strong> for the real question — <em>where does the credential live, and what bounds it?</em> A provider that answers <strong>"there is no credential, and the bound is your IP address"</strong> is not an exception to that question. It is the most informative possible answer to it.</p>
+<p><strong>So UnGovr is the family's first open-data provider</strong>, and the extension is argued on the page rather than assumed.</p></section><section class="slide" id="s3" data-n="3"><div class="sn">3 / 9</div><h2>Three <strong>genuinely new</strong> rows</h2><div class="tablewrap"><table><thead><tr><th>Section</th><th>A model provider</th><th><strong>UnGovr</strong></th></tr></thead><tbody><tr><td>Which pattern</td><td>Pattern 0 is a mistake</td><td><strong>Pattern 0 is the intended mode.</strong> Nothing to leak</td></tr><tr><td>The bounding primitive</td><td>A key scope or plan quota</td><td><strong>A rate limit per IP, then HTTP 402.</strong> The bound is a <em>payment protocol</em></td></tr><tr><td>What it cost</td><td>Dollars on a workload</td><td><strong>Nothing</strong>, inside 100 requests a day</td></tr></tbody></table></div>
+<p>The comparison matrix gains a row shape it did not have: <strong>a provider where pattern 0 is correct.</strong></p></section><section class="slide" id="s4" data-n="4"><div class="sn">4 / 9</div><h2>The <strong>gate</strong>, not the promise</h2><p>Every claim the site makes is enforced by a check that fails the build:</p>
+<ul><li>the build is <strong>reproducible</strong> — <code>docs/</code> must match <code>content/</code></li><li><strong>version agreement</strong> across every badge, the release history and both machine indexes</li><li>internal links resolve; every canonical is on the host in <code>CNAME</code></li><li><strong>no root-absolute internal URL</strong> — a sibling shipped one and served unstyled for a day</li><li>every claim <strong>cited and dated</strong>; a <code>docs</code> claim without a source URL fails</li><li>all nine contract sections present <strong>and in order</strong></li></ul><div class="notes"><b>Notes.</b> The estate's rule from nfrs.sgit.ai: <em>generate or date every number.</em> A promise without a check is a sentence.</div></section><section class="slide" id="s5" data-n="5"><div class="sn">5 / 9</div><h2>Four checks this site had to <strong>invent</strong></h2><p><strong><code>check_tone</code></strong> — refuses the vocabulary that turns a report on a nonprofit into an audit. Scoped to our own prose; <code>/briefs/</code> is exempt because those are republished verbatim.</p>
+<p><strong><code>check_not_a_defect_count</code></strong> — refuses to publish <code>0 of 49</code> on any page that omits the sentence saying what it is not. That sentence is: <strong>the measurement is not a defect count.</strong> This slide is subject to its own rule, which is why it says it here.</p>
+<p><strong><code>check_no_restricted_corpus</code></strong> — fails if UnGovr's AI-law payload enters the tree. Keyed on the corpus schema id, <strong>not</strong> on the licence sentence — quoting one sentence to report what it says is the finding, not the redistribution.</p>
+<p><strong><code>check_network_pages</code></strong> — exactly one page may open a connection, and only to the vault origin.</p></section><section class="slide" id="s6" data-n="6"><div class="sn">6 / 9</div><h2>The key discipline</h2><p>The vault's <strong>write key</strong> must never enter a public repository. So:</p>
+<ul><li><code>secret-scan.sh</code> runs <strong>16 patterns over the whole tree including <code>docs/</code></strong></li><li><code>check_site.py</code> carries the same tripwire a second time</li><li>both were wired <strong>before any content was written</strong></li></ul>
+<p>They deliberately do <strong>not</strong> match <code>sgit_private_read_…</code>. <strong>A read key is publishable</strong> — it is how this estate shares a vault — and §7 depends on carrying one.</p>
+<p>When an UnGovr API key arrived mid-session, <code>ung_live_</code> was added to both <strong>before the key was used</strong>.</p></section><section class="slide" id="s7" data-n="7"><div class="sn">7 / 9</div><h2>The site does not claim to be finished</h2><p>Of 39 claims: most are <code>verified</code> or <code>measured</code>, and the honest gaps are labelled.</p>
+<ul><li>everything about the <strong>payment path</strong> is <code>docs</code> — no 402 was ever returned</li><li>the <strong>embed</strong> shipped <code>unrun</code> until somebody watched it work, then moved to <code>verified</code></li><li>one acceptance test <strong>regressed on purpose</strong> when the release channel was withdrawn</li></ul>
+<p><strong>A site whose ledger is all <code>verified</code> has stopped measuring.</strong></p></section><section class="slide" id="s8" data-n="8"><div class="sn">8 / 9</div><h2><strong>Twelve corrections</strong>, filed beside the briefs</h2><p>The packs that commissioned this work are <strong>republished raw</strong> at <code>/briefs/</code>, unedited, including the parts that turned out to be wrong.</p>
+<p>Among them: the coverage plan could not have measured anything (C3); there is no Akoma Ntoso for the CPRA, so an acceptance test is recorded <strong>unpassable rather than weakened</strong> (C5); the AI-law corpus is far richer than predicted (C8) and <strong>not CC BY 4.0</strong> (C9); <em>"do not iframe it"</em> was wrong about the estate's own pattern (C11).</p>
+<p><strong>A pack quietly edited to match its outcome proves nothing about the method it argues for.</strong></p></section><section class="slide" id="s9" data-n="9"><div class="sn">9 / 9</div><h2>The division of labour</h2><p><strong>The vault is where the experiments happen.</strong> A push changes what a reader sees, with no rebuild and no deploy. Two of the app's computations — the shape of the 398-law corpus, and what the 16,071 Californian bodies are — <strong>exist only there</strong>.</p>
+<p><strong>The site is the report.</strong> It carries the ledger that says how well each thing is known, and it is the thing with a release history and a CI gate.</p><div class="notes"><b>Notes.</b> This is the answer to "why not just put it all on the site". Experiments want a push; reports want a gate.</div></section></div></div><p class="packfoot">These slides are rendered from <a href="../../decks/02__what-we-built.md"><code>02__what-we-built.md</code></a>, republished byte for byte from the vault. The <b>live</b> decks — the same file, parsed by the vault's own app — are in the Decks view of <a href="../../vault/index.html">the vault</a>, which moves the moment the vault does. This page moves when the site rebuilds.</p>
+<script>
+/* Present mode and the notes toggle. Everything above renders without this: the
+   slides are stacked, numbered and printable with JavaScript off, which is why
+   the enhancement can be this small. No network call — see check_network_pages,
+   which allows exactly two pages to make one and this is not either of them. */
+(function () {
+  var deck = document.getElementById('deck');
+  if (!deck) return;
+  var slides = [].slice.call(deck.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  var at = 0, on = false;
+
+  function paint() {
+    for (var i = 0; i < slides.length; i++) slides[i].classList.toggle('off', on && i !== at);
+    document.body.classList.toggle('presenting', on);
+  }
+  function go(n) {
+    at = Math.max(0, Math.min(slides.length - 1, n));
+    paint();
+    if (on) slides[at].scrollIntoView({ block: 'start' });
+  }
+
+  var pbtn = document.getElementById('present');
+  pbtn.addEventListener('click', function () {
+    on = !on;
+    pbtn.innerHTML = on ? '■ Leave present mode' : '▶ Present';
+    // Enter on whichever slide the reader has scrolled to, not back at the top.
+    if (on) {
+      var best = 0, top = 1e9;
+      for (var i = 0; i < slides.length; i++) {
+        var d = Math.abs(slides[i].getBoundingClientRect().top - 80);
+        if (d < top) { top = d; best = i; }
+      }
+      at = best;
+    }
+    go(at);
+  });
+
+  var nbtn = document.getElementById('ntoggle');
+  nbtn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('nonotes');
+    nbtn.textContent = hidden ? 'Show notes' : 'Hide notes';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { if (on) { go(at + 1); e.preventDefault(); } }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { if (on) { go(at - 1); e.preventDefault(); } }
+    else if (e.key === 'Escape' && on) { pbtn.click(); }
+  });
+
+  // A deep link to #s7 opens that slide. Reading the fragment is fine here; it is
+  // the VAULT app that must never assign one.
+  var m = /^#s(\d+)$/.exec(location.hash || '');
+  if (m) {
+    var n = parseInt(m[1], 10) - 1;
+    if (n >= 0 && n < slides.length) { at = n; slides[n].scrollIntoView({ block: 'start' }); }
+  }
+}());
+</script>
+
+<p class="pagenav"><a href="../../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../../versions/index.html">v0.1.14</a> &middot; <a href="../../ledger/index.html">the ledger</a> &middot; <a href="../../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../../index.html">UnGovr, nine sections</a>
+    <a href="../../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../../coverage/index.html">The coverage measurement</a>
+    <a href="../../join/index.html">The seven-step join</a>
+    <a href="../../retrievals/index.html">The retrieval log</a>
+    <a href="../../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../../vault/index.html">What the vault holds</a>
+    <a href="../../join/index.html">Entity to acceptance</a>
+    <a href="../../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../../patterns/index.html">The four patterns</a>
+    <a href="../../comparison/index.html">Comparison matrix</a>
+    <a href="../../ledger/index.html">Claim ledger</a>
+    <a href="../../briefs/index.html">The briefs, published raw</a>
+    <a href="../../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="../../retrievals/index.html">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="../../vault/index.html">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
+</footer>
+</body>
+</html>

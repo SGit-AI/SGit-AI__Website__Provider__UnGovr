@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How this composes &mdash; UnGovr, reported on</title>
+<meta name="description" content="With Risk Mandate, Licence to Operate, and the sgit vault family">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/decks/how-it-composes/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/decks/how-it-composes/">
+<meta property="og:title" content="How this composes">
+<meta property="og:description" content="With Risk Mandate, Licence to Operate, and the sgit vault family">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../../versions/index.html" title="Site release history">v0.1.14</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../coverage/index.html">The coverage measurement</a><a class="sl" href="../../join/index.html">The seven-step join</a><a class="sl" href="../../instruments/index.html">Reaching a law</a><a class="sl" href="../../retrievals/index.html">The retrieval log</a></div></div><div class="ni ni-has"><a class="nl" href="../../vault/index.html">The vault<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../vault/index.html">The government-graph vault</a><a class="sl" href="../../estate/index.html">The estate it joins</a></div></div><div class="ni ni-has"><a class="nl" href="../../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../patterns/index.html">The four patterns</a><a class="sl" href="../../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../ledger/index.html">The claim ledger</a><a class="sl" href="../../briefs/index.html">The briefs, published raw</a><a class="sl" href="../../disclosures/index.html">Disclosures</a><a class="sl here" href="../../decks/index.html">The four decks</a><a class="sl" href="../../packs/index.html">The dev packs, published raw</a><a class="sl" href="../../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../../disclosures/index.html">Disclosures</a> &middot; <a href="../../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../../index.html">ungovr.providers.sgit.ai</a> / <a href="../../decks/index.html">decks</a> / How this composes</p>
+<h1>How this composes</h1>
+
+
+
+<p class="dsub">With Risk Mandate, Licence to Operate, and the sgit vault family &middot; <b>10 slides</b> &middot; September 2026</p><div class="dbar"><button type="button" class="btn-present" id="present">&#9654; Present</button><button type="button" class="btn-notes" id="ntoggle">Hide notes</button><a class="btn-raw" href="../../decks/03__how-it-composes.md">The markdown &darr;</a><span class="dhash">sha256 <code>9dceb805af0aa1df</code> &mdash; checked against the vault on every build</span></div><div class="deckwrap"><nav class="drail" aria-label="Decks"><a class="drow" href="../../decks/what-we-learned/index.html"><span class="dnum">01</span><span class="dname">What we learned about UnGovr</span></a><a class="drow" href="../../decks/what-we-built/index.html"><span class="dnum">02</span><span class="dname">What we built on the site</span></a><a class="drow here" href="../../decks/how-it-composes/index.html"><span class="dnum">03</span><span class="dname">How this composes</span></a><a class="drow" href="../../decks/what-we-plan/index.html"><span class="dnum">04</span><span class="dname">What we plan to build</span></a><p class="drailfoot">Every deck is a projection of a markdown file. If the slides and the file ever disagree, <b>the file is right</b>.</p></nav><div class="deckbody" id="deck"><section class="slide" id="s1" data-n="1"><div class="sn">1 / 10</div><h2>The shape <strong>everything shares</strong></h2><p>Four vaults, one chain, different segments of it:</p>
+<pre class="">  AIUC-1        standard -&gt; control -&gt; requirement -&gt; attestation -&gt; conformance -&gt; insurability
+  LICENCE       grant -&gt; mandate -&gt; DELTA -&gt; policy -&gt; covered / not covered
+  THIS VAULT    entity -&gt; instrument -&gt; provision -&gt; obligation -&gt; control -&gt; evidence -&gt; acceptance</pre>
+<p><strong>They overlap at <code>control</code>, <code>evidence</code> and <code>acceptance</code>.</strong> That is not a coincidence — it is the same risk-acceptance grammar applied to three different sources of obligation: a standard, a mandate, and a statute.</p>
+<p><strong>This vault supplies the third one, which none of the others had.</strong></p></section><section class="slide" id="s2" data-n="2"><div class="sn">2 / 10</div><h2>What we take: the two-edge rule</h2><p>The AIUC-1 conformance vault keeps two edges <em>"never traversed in one query without the query naming which it used"</em>:</p>
+<div class="tablewrap"><table><thead><tr><th>Edge</th><th>Answers</th><th>Absent means</th></tr></thead><tbody><tr><td><code>evidenced_by</code></td><td>does the <strong>standard</strong> say this?</td><td>a build defect</td></tr><tr><td><code>attested_by</code></td><td>does <strong>this subject</strong> do this?</td><td>the control is <strong>unevidenced — which is the finding</strong></td></tr></tbody></table></div>
+<p><strong>We do the same thing on a different axis.</strong> <code>ung:</code> is what UnGovr publish; <code>sg:</code> is our model; exactly one edge crosses between them and it is drawn <code>inferred</code>.</p>
+<p>Their rule is enforced by a test that goes red if a layer edge reaches a <code>source_observation</code>. Ours is enforced by a build check that fails if any page names <code>sg:resolvesTo</code> without marking it inferred.</p></section><section class="slide" id="s3" data-n="3"><div class="sn">3 / 10</div><h2>What we take: unevidenced is a state</h2><p>From the same vault: <em>"Every control in scope gets a row whether or not anyone has looked at it, so an absent row is never quietly read as compliance."</em></p>
+<p>Their first build of one subject across 53 controls: <strong>2 evidenced, 48 unevidenced, 3 contradicted</strong> — <em>"the designed answer, not a failure to finish."</em></p>
+<p><strong>Our evidence node ships <code>unevidenced</code> and our acceptance node ships with no owner.</strong> Both are the default, both stay, and both mean <em>nobody has looked</em> rather than <em>nothing is wrong</em>.</p></section><section class="slide" id="s4" data-n="4"><div class="sn">4 / 10</div><h2>What we contribute: a <strong>jurisdiction layer</strong></h2><p><strong>327,138 entities. 398 records laws. 254 of them sub-national.</strong></p>
+<p>A <code>policy/v1</code> that covers an agent acting for a public body has to know <strong>which body, and which law binds it</strong>. Neither the Licence to Operate vault nor the conformance layer carries that, and neither should have to build it.</p>
+<p>This vault is that lookup — with the honest caveat attached, which is that the entity-to-law edge is <strong>inferred</strong>, reaches 96.6%, and hands 20.5% of matches to a human.</p><div class="notes"><b>Notes.</b> The caveat is the contribution as much as the data is. A jurisdiction layer that silently guessed would be worse than none.</div></section><section class="slide" id="s5" data-n="5"><div class="sn">5 / 10</div><h2>What we contribute: a clock <strong>nobody negotiates</strong></h2><p>The conformance layer's headline mechanism is that <strong>time breaks the policy</strong>: move the date to 2027-01-15, <em>"with nothing edited by anybody"</em>, and one condition becomes <strong>53 exclusions</strong> — because the attestations behind them expire.</p>
+<p><strong>Our obligations expire on a different clock, and it is not ours.</strong></p>
+<p><code>Gov. Code § 7922.535(a)</code>: the agency shall determine and notify <strong>within 10 calendar days</strong>, extendable by 14 in unusual circumstances. Calendar days — office closures do not toll it.</p>
+<p>An attestation expiry is a policy parameter somebody chose. <strong>A statutory deadline is a fact about the world.</strong> A conformance model that can carry both is strictly better than one that can only carry the first.</p></section><section class="slide" id="s6" data-n="6"><div class="sn">6 / 10</div><h2>The delta, at <strong>zero</strong></h2><p>Licence to Operate's argument, made countable:</p>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>In their demo</th></tr></thead><tbody><tr><td><strong>CAN DO</strong> — the grant</td><td>what the agent can technically reach</td><td><strong>12 capabilities</strong></td></tr><tr><td><strong>MAY DO</strong> — the mandate</td><td>what is actually expected, and all the policy insures</td><td><strong>4</strong></td></tr><tr><td><strong>THE DELTA</strong></td><td>inside reach, outside authority. <strong>Nothing covers these</strong></td><td><strong>8</strong></td></tr></tbody></table></div>
+<p><strong>This vault's app declares <code>"permissions": []</code>.</strong></p>
+<p>CAN DO equals MAY DO. <strong>The delta is zero</strong> — not managed down, absent. It is the smallest possible instance of their argument, and it is why a stranger can open this vault read-only and be asked for nothing.</p></section><section class="slide" id="s7" data-n="7"><div class="sn">7 / 10</div><h2>Where the three meet: an <strong>unowned acceptance</strong></h2><p>Our chain ends on <code>sg:acceptance/unassigned</code> — <strong>no named owner, no review interval, no revocation path.</strong></p>
+<p>Read through the conformance layer's vocabulary, that is not a gap in the diagram. It is a <strong>conformance state</strong>, and it is <code>unevidenced</code>.</p>
+<p>Read through Licence to Operate's, it is not a condition on a policy. <strong>It is an exclusion</strong> — and the exclusion carries its reason in the control's own words: <em>an acceptance without an owner is a note.</em></p>
+<p><strong>Three vaults, three vocabularies, one unfilled field, and all three agree on what it means.</strong> That is the strongest evidence so far that the grammar is real rather than a house style.</p></section><section class="slide" id="s8" data-n="8"><div class="sn">8 / 10</div><h2>What we took from the family, concretely</h2><div class="tablewrap"><table><thead><tr><th>From</th><th>What we used</th></tr></thead><tbody><tr><td><strong>Risk Graph Explorer</strong></td><td><code>PUBLIC.md</code>'s three rules for a vault whose read key is published. We added a fourth: nothing whose licence forbids republication</td></tr><tr><td><strong>Regulation Graph</strong></td><td>law-as-a-citable-graph, hash-verified to source bytes — the closest analogue to this work</td></tr><tr><td><strong>AIUC-1 conformance</strong></td><td>the two-edge rule, and <code>unevidenced</code> as a default rather than an absence</td></tr><tr><td><strong>Licence to Operate</strong></td><td>grant / mandate / delta, and the <code>policy/v1</code> shape</td></tr><tr><td><strong>Risk Mandate</strong></td><td>that a real application ships <em>as</em> a vault, with a release history</td></tr><tr><td><strong>sgit.ai</strong></td><td>the embed protocol — the read key posted to a pinned origin after a handshake, never in a URL</td></tr></tbody></table></div></section><section class="slide" id="s9" data-n="9"><div class="sn">9 / 10</div><h2>The one thing to <strong>build next</strong></h2><p><strong>Make the obligation layer a <code>policy/v1</code> producer.</strong></p>
+<p>This vault already has the pieces: an entity, an instrument, an addressable-enough provision, a statutory deadline as a scalar, a control, and an acceptance with a named hole in it.</p>
+<p>The missing step is emitting the conformance row — <strong>one obligation, one control, one state, one <code>valid_until</code> driven by the statute rather than by an attestation</strong> — in the shape the conformance layer already reads.</p>
+<p>Then a policy could say: <em>this agent may file a records request on behalf of this body, in this jurisdiction, under this law, with this deadline</em> — and say what it does <strong>not</strong> prove.</p><div class="notes"><b>Notes.</b> Scope discipline still applies. One county, one law, one acceptance. The point of this slide is the interface, not a second vault.</div></section><section class="slide" id="s10" data-n="10"><div class="sn">10 / 10</div><h2>What this <strong>does not</strong> prove</h2><p>Borrowed deliberately from the conformance layer's own <code>does_not_prove</code> field:</p>
+<ul><li>It does <strong>not</strong> prove Santa Barbara County complies with anything. The evidence node is<p><code>unevidenced</code> because <strong>nobody has observed the county</strong>.</p></li><li>It does <strong>not</strong> prove UnGovr intend any of this. <strong>No conversation has taken place</strong>; every<p>statement about their intentions is inference from what they publish.</p></li><li>It does <strong>not</strong> prove the inferred edge is right for any particular entity. It reaches 96.6%<p>and hands 20.5% of those to a human.</p></li><li>It does <strong>not</strong> make anything citable by version. That release channel was <strong>withdrawn</strong>, and<p>acceptance test 9 regressed to <code>unevidenced</code> rather than being left looking satisfied.</p></li></ul></section></div></div><p class="packfoot">These slides are rendered from <a href="../../decks/03__how-it-composes.md"><code>03__how-it-composes.md</code></a>, republished byte for byte from the vault. The <b>live</b> decks — the same file, parsed by the vault's own app — are in the Decks view of <a href="../../vault/index.html">the vault</a>, which moves the moment the vault does. This page moves when the site rebuilds.</p>
+<script>
+/* Present mode and the notes toggle. Everything above renders without this: the
+   slides are stacked, numbered and printable with JavaScript off, which is why
+   the enhancement can be this small. No network call — see check_network_pages,
+   which allows exactly two pages to make one and this is not either of them. */
+(function () {
+  var deck = document.getElementById('deck');
+  if (!deck) return;
+  var slides = [].slice.call(deck.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  var at = 0, on = false;
+
+  function paint() {
+    for (var i = 0; i < slides.length; i++) slides[i].classList.toggle('off', on && i !== at);
+    document.body.classList.toggle('presenting', on);
+  }
+  function go(n) {
+    at = Math.max(0, Math.min(slides.length - 1, n));
+    paint();
+    if (on) slides[at].scrollIntoView({ block: 'start' });
+  }
+
+  var pbtn = document.getElementById('present');
+  pbtn.addEventListener('click', function () {
+    on = !on;
+    pbtn.innerHTML = on ? '■ Leave present mode' : '▶ Present';
+    // Enter on whichever slide the reader has scrolled to, not back at the top.
+    if (on) {
+      var best = 0, top = 1e9;
+      for (var i = 0; i < slides.length; i++) {
+        var d = Math.abs(slides[i].getBoundingClientRect().top - 80);
+        if (d < top) { top = d; best = i; }
+      }
+      at = best;
+    }
+    go(at);
+  });
+
+  var nbtn = document.getElementById('ntoggle');
+  nbtn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('nonotes');
+    nbtn.textContent = hidden ? 'Show notes' : 'Hide notes';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { if (on) { go(at + 1); e.preventDefault(); } }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { if (on) { go(at - 1); e.preventDefault(); } }
+    else if (e.key === 'Escape' && on) { pbtn.click(); }
+  });
+
+  // A deep link to #s7 opens that slide. Reading the fragment is fine here; it is
+  // the VAULT app that must never assign one.
+  var m = /^#s(\d+)$/.exec(location.hash || '');
+  if (m) {
+    var n = parseInt(m[1], 10) - 1;
+    if (n >= 0 && n < slides.length) { at = n; slides[n].scrollIntoView({ block: 'start' }); }
+  }
+}());
+</script>
+
+<p class="pagenav"><a href="../../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../../versions/index.html">v0.1.14</a> &middot; <a href="../../ledger/index.html">the ledger</a> &middot; <a href="../../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../../index.html">UnGovr, nine sections</a>
+    <a href="../../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../../coverage/index.html">The coverage measurement</a>
+    <a href="../../join/index.html">The seven-step join</a>
+    <a href="../../retrievals/index.html">The retrieval log</a>
+    <a href="../../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../../vault/index.html">What the vault holds</a>
+    <a href="../../join/index.html">Entity to acceptance</a>
+    <a href="../../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../../patterns/index.html">The four patterns</a>
+    <a href="../../comparison/index.html">Comparison matrix</a>
+    <a href="../../ledger/index.html">Claim ledger</a>
+    <a href="../../briefs/index.html">The briefs, published raw</a>
+    <a href="../../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="../../retrievals/index.html">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="../../vault/index.html">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
+</footer>
+</body>
+</html>

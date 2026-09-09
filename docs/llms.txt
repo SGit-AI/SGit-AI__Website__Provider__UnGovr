@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai
-> site v0.1.13
+> site v0.1.14
 
 > An independent report on the UnGovr Open Data API — 327,138 government entities and 398
 > open-records laws, published free under CC BY 4.0. This report measures one thing: how far
@@ -25,6 +25,7 @@ Licence: This document is released under the Creative Commons Attribution 4.0 In
 - [The briefs, published raw](https://ungovr.providers.sgit.ai/briefs/): Every brief this site and its vault were built from, published unedited, with a decision-by-decision account of what was accepted, modified and rejected.
 - [The comparison matrix](https://ungovr.providers.sgit.ai/comparison/): Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family.
 - [The coverage measurement, and the query that produced it](https://ungovr.providers.sgit.ai/coverage/): Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.
+- [Four decks, from the vault](https://ungovr.providers.sgit.ai/decks/): What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next — 39 slides, each one a projection of a markdown file in the vault.
 - [Disclosures](https://ungovr.providers.sgit.ai/disclosures/): No commercial relationship, no funding, no agreement, and no conversation. Checked 9 September 2026, and published before there was anything to disclose.
 - [The estate this joins — seven vaults, running here](https://ungovr.providers.sgit.ai/estate/): The graph estate UnGovr's data would plug into: seven published vaults you can open in this page with nothing but a read key, the sites that publish alongside them, and the one edge that is missing from all of them.
 - [The minimal working examples — as files](https://ungovr.providers.sgit.ai/examples/): The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.

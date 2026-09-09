@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.14</td><td>2026-09-09</td><td>A fourth deck — what we plan to build — and all four on the site at /decks/: stacked and printable by default, present mode and deep links on top, markdown one click away.</td></tr>
     <tr><td class="vnum">v0.1.13</td><td>2026-09-09</td><td>What you get when you reach a law: JSON only, no instrument text, no graph — and 254 of the 398 records laws, every sub-national one, with no reachable detail document.</td></tr>
     <tr><td class="vnum">v0.1.12</td><td>2026-09-09</td><td>The vault app names its own release in its header, and the pill opens a table of what each one changed — the same pattern as this nav, reaching a view instead of a page.</td></tr>
     <tr><td class="vnum">v0.1.11</td><td>2026-09-09</td><td>A reader for the pack files: the rest of the pack beside every document and the raw bytes one click above it. Two corrections it surfaced, one of them the pack forking a vocabulary it said it reused.</td></tr>

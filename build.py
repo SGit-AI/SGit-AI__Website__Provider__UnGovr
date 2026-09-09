@@ -42,6 +42,8 @@ DATA = ROOT / "data"
 BRIEFS = ROOT / "briefs"
 # The dev packs, republished byte for byte from the vault they live in.
 PACKS = ROOT / "packs"
+# The decks, republished from the same vault under the same rule as the packs.
+DECKS = ROOT / "decks"
 OUT = ROOT / "docs"
 
 # The estate convention: one file owns the version, `bin/bump.py` moves it, the
@@ -87,6 +89,7 @@ NAV = [
         ("The claim ledger", "/ledger/"),
         ("The briefs, published raw", "/briefs/"),
         ("Disclosures", "/disclosures/"),
+        ("The four decks", "/decks/"),
         ("The dev packs, published raw", "/packs/"),
         ("Release history", "/versions/"),
     ]),
@@ -1075,6 +1078,214 @@ def pack_pages(out_dir, ctx_shared):
     return made
 
 
+# ----------------------------------------------------------------- decks ----
+# The vault's four decks, on this site.
+#
+# sgit.ai's "decks from a vault, on a site" brief describes a LIVE viewer: the
+# host fetches deck sources out of the vault with a read key, runs them in a
+# sandboxed opaque-origin frame, and renders the slide markup in a second frame
+# with scripting off. That architecture exists because the vault's bytes are
+# untrusted input to the host page, and because a push to the vault should change
+# the site with no rebuild.
+#
+# THIS SITE DOES IT DIFFERENTLY, AND THE REASON IS ITS OWN CONTRACT. Every page
+# here is static and contacts nothing; exactly two are allowed to open a
+# connection, and both are named in check_network_pages. A live deck viewer would
+# have made every deck page a third, and would have needed a vault reader and two
+# frames to do safely what a build step does for free.
+#
+# So the decks are republished byte for byte, hash-checked against the vault on
+# every build, and rendered here — the same rule already applied to packs/. What
+# that costs is liveness: when the vault moves ahead of this site, THIS SITE IS
+# BEHIND, and says so rather than guessing. The live decks are one click away in
+# the vault's own app, which /vault/ and /estate/ both run.
+#
+# The brief's contract that DOES carry over, unchanged: the raw markdown is always
+# available for every deck, the viewer is an addition rather than a replacement,
+# and every rendered slide is one click from the file it was rendered from.
+
+def parse_deck(text):
+    """The site's parser is a port of the vault's app/build_appdata.py, so both
+    render the same slides from the same file. A slide is an `##` heading and
+    everything under it, split on `---`; a blockquote opening `**Notes.**` is
+    speaker notes."""
+    meta = {}
+    if text.startswith("---\n"):
+        fm, _, text = text[4:].partition("\n---\n")
+        for line in fm.split("\n"):
+            if ":" in line:
+                k, _, v = line.partition(":")
+                meta[k.strip()] = v.strip()
+    slides, intro = [], ""
+    for chunk in text.split("\n---\n"):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        if chunk.startswith("## "):
+            head, _, rest = chunk.partition("\n")
+            notes, keep = "", []
+            for para in rest.strip().split("\n\n"):
+                if para.lstrip().startswith("> **Notes.**"):
+                    notes = " ".join(l.lstrip("> ").strip() for l in para.split("\n"))
+                    notes = notes.replace("**Notes.**", "").strip()
+                else:
+                    keep.append(para)
+            slides.append({"title": head[3:].strip(), "body": "\n\n".join(keep).strip(),
+                           "notes": notes})
+        elif chunk.startswith("# ") and not intro:
+            intro = chunk
+    return {"title": meta.get("deck", ""), "subtitle": meta.get("subtitle", ""),
+            "date": meta.get("date", ""), "intro": intro, "slides": slides}
+
+
+def deck_manifest():
+    """Decks in file order, from the manifest the build wrote — never a walk."""
+    out = []
+    for line in (DATA / "decks-manifest.txt").read_text().split("\n"):
+        if not line.strip():
+            continue
+        digest, name = line.split("  ", 1)
+        name = name.strip()
+        if name != "README.md":
+            out.append((name, digest.strip()))
+    return out
+
+
+def deck_slug(name):
+    return name[:-3].split("__", 1)[-1] if name.endswith(".md") else name
+
+
+def deck_pages(out_dir, ctx_shared):
+    made = {}
+    entries = deck_manifest()
+    for name, digest in entries:
+        raw = (DECKS / name).read_text()
+        d = parse_deck(raw)
+        slug = deck_slug(name)
+        url = f"/decks/{slug}/"
+        ctx = dict(ctx_shared)
+        ctx.update({"page": f"decks/{name}", "page_url": url, "fm": {}, "toc": []})
+
+        rail = "".join(
+            f'<a class="drow{" here" if n == name else ""}" href="/decks/{deck_slug(n)}/">'
+            f'<span class="dnum">{i:02d}</span>'
+            f'<span class="dname">{html.escape(parse_deck((DECKS / n).read_text())["title"])}</span></a>'
+            for i, (n, _h) in enumerate(entries, 1)
+        )
+
+        slides = []
+        for i, s in enumerate(d["slides"], 1):
+            notes = (f'<div class="notes"><b>Notes.</b> {inline(s["notes"], ctx)}</div>'
+                     if s["notes"] else "")
+            slides.append(
+                f'<section class="slide" id="s{i}" data-n="{i}">'
+                f'<div class="sn">{i} / {len(d["slides"])}</div>'
+                f'<h2>{inline(s["title"], ctx)}</h2>'
+                f'{render_markdown(s["body"], ctx)}{notes}</section>'
+            )
+
+        rawurl = f"/decks/{name}"
+        page = {
+            "fm": {"title": d["title"] or slug, "wide": True,
+                   "description": (d["subtitle"] or f"A deck from the government-graph vault, "
+                                   f"{len(d['slides'])} slides.")},
+            "url": url,
+            "crumb": f' / <a href="/decks/">decks</a> / {html.escape(d["title"] or slug)}',
+            "nav_match": "/decks/",
+            "src_md": raw,
+        }
+        body = (
+            f'<p class="dsub">{inline(d["subtitle"], ctx)} &middot; '
+            f'<b>{len(d["slides"])} slides</b> &middot; {html.escape(d["date"])}</p>'
+            '<div class="dbar">'
+            '<button type="button" class="btn-present" id="present">&#9654; Present</button>'
+            '<button type="button" class="btn-notes" id="ntoggle">Hide notes</button>'
+            f'<a class="btn-raw" href="{rawurl}">The markdown &darr;</a>'
+            f'<span class="dhash">sha256 <code>{digest[:16]}</code> &mdash; checked against the '
+            'vault on every build</span>'
+            "</div>"
+            f'<div class="deckwrap"><nav class="drail" aria-label="Decks">{rail}'
+            '<p class="drailfoot">Every deck is a projection of a markdown file. '
+            'If the slides and the file ever disagree, <b>the file is right</b>.</p></nav>'
+            f'<div class="deckbody" id="deck">{"".join(slides)}</div></div>'
+            f'<p class="packfoot">These slides are rendered from <a href="{rawurl}">'
+            f'<code>{html.escape(name)}</code></a>, republished byte for byte from the vault. '
+            'The <b>live</b> decks — the same file, parsed by the vault\'s own app — are in the '
+            'Decks view of <a href="/vault/">the vault</a>, which moves the moment the vault does. '
+            'This page moves when the site rebuilds.</p>'
+        )
+        target = out_dir / url.strip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page_html(page, ctx, body + DECK_JS))
+        (target.parent / "index.md").write_text(raw)
+        made[url] = d["title"] or slug
+    return made
+
+
+DECK_JS = """
+<script>
+/* Present mode and the notes toggle. Everything above renders without this: the
+   slides are stacked, numbered and printable with JavaScript off, which is why
+   the enhancement can be this small. No network call — see check_network_pages,
+   which allows exactly two pages to make one and this is not either of them. */
+(function () {
+  var deck = document.getElementById('deck');
+  if (!deck) return;
+  var slides = [].slice.call(deck.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  var at = 0, on = false;
+
+  function paint() {
+    for (var i = 0; i < slides.length; i++) slides[i].classList.toggle('off', on && i !== at);
+    document.body.classList.toggle('presenting', on);
+  }
+  function go(n) {
+    at = Math.max(0, Math.min(slides.length - 1, n));
+    paint();
+    if (on) slides[at].scrollIntoView({ block: 'start' });
+  }
+
+  var pbtn = document.getElementById('present');
+  pbtn.addEventListener('click', function () {
+    on = !on;
+    pbtn.innerHTML = on ? '\u25a0 Leave present mode' : '\u25b6 Present';
+    // Enter on whichever slide the reader has scrolled to, not back at the top.
+    if (on) {
+      var best = 0, top = 1e9;
+      for (var i = 0; i < slides.length; i++) {
+        var d = Math.abs(slides[i].getBoundingClientRect().top - 80);
+        if (d < top) { top = d; best = i; }
+      }
+      at = best;
+    }
+    go(at);
+  });
+
+  var nbtn = document.getElementById('ntoggle');
+  nbtn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('nonotes');
+    nbtn.textContent = hidden ? 'Show notes' : 'Hide notes';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { if (on) { go(at + 1); e.preventDefault(); } }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { if (on) { go(at - 1); e.preventDefault(); } }
+    else if (e.key === 'Escape' && on) { pbtn.click(); }
+  });
+
+  // A deep link to #s7 opens that slide. Reading the fragment is fine here; it is
+  // the VAULT app that must never assign one.
+  var m = /^#s(\d+)$/.exec(location.hash || '');
+  if (m) {
+    var n = parseInt(m[1], 10) - 1;
+    if (n >= 0 && n < slides.length) { at = n; slides[n].scrollIntoView({ block: 'start' }); }
+  }
+}());
+</script>
+"""
+
+
 def nav_html(current):
     items = []
     for label, href, subs in NAV:
@@ -1311,6 +1522,12 @@ def build(out_dir):
             shutil.copy2(src, dst)
     # the rendered reader over those files, built from the manifest just copied
     pack_urls = pack_pages(out_dir, ctx_shared)
+    for src in sorted(DECKS.rglob("*")):
+        if src.is_file():
+            dst = out_dir / "decks" / src.relative_to(DECKS)
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+    pack_urls.update(deck_pages(out_dir, ctx_shared))
     (out_dir / "CNAME").write_text(SITE["domain"] + "\n")
     (out_dir / ".nojekyll").write_text("")
     (out_dir / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE['base']}/sitemap.xml\n")
