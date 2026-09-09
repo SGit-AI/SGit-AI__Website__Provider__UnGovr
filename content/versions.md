@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.10</td><td>2026-09-09</td><td>The security-standards dev pack, published raw at /packs/ — byte for byte from the vault, hash-checked on every build. Its test count was wrong in both numbers and is corrected.</td></tr>
     <tr><td class="vnum">v0.1.9</td><td>2026-09-09</td><td>The estate page: seven published vaults from across the family, each opening in the page from its own published read key, one at a time and nothing fetched until asked.</td></tr>
     <tr><td class="vnum">v0.1.8</td><td>2026-09-09</td><td>Three markdown-sourced slide decks in the vault: what we learned, what we built, and how it composes with the other vaults.</td></tr>
     <tr><td class="vnum">v0.1.7</td><td>2026-09-09</td><td>The vault link drops the /en-gb/ segment, which broke the fragment routing; a check now refuses it.</td></tr>

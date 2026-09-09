@@ -116,7 +116,7 @@ That is the whole argument on one line. A crosswalk that ends at *the Colorado A
 | an obligation with a deadline set by an attestation's expiry | a deadline set by **statute** | which of the two governs |
 | `unevidenced` as the default answer | a public-records law string per body | whether the record can be *asserted* to exist |
 
-**The dev pack for this work is written and pushed** — `packs/security-graph/` in the government-graph vault, eight files: the anchor-node thesis, the model with fifteen edges and their inverses, the standards map above with its working, a worked example, the integration surface, and thirteen tests of which two currently pass. Open the vault on [the vault page](/vault/) and read it there.
+**The dev pack for this work is [published in full](/packs/security-graph/)** — eight files: the anchor-node thesis, the model with fifteen edges and their inverses, the standards map above with its working, a worked example, the integration surface, and thirteen tests of which five currently pass, all inherited. It lives in `packs/security-graph/` in the government-graph vault and is republished here byte for byte.
 
 ## The second finding, which is a gap rather than a number
 
@@ -168,7 +168,7 @@ The full keys are in the page source, on the cards, as `data-readkey` — and `t
 
 **The counts are ours, not AIUC's.** Every number in *What UnGovr adds* was computed by opening vault `2wzct4k7` with its published read key and counting `graph/edges.json` — 2,293,236 bytes, sha256 `984d297a971bfbed…`. They are not quoted from that vault's prose, and where the two disagree the vault is right and this page is wrong.
 
-**No edge has been built.** The join described here is a proposal in a dev pack with thirteen tests, of which two pass and both were inherited. Nothing on this page asserts that UnGovr and these vaults are connected today. They are not.
+**No edge has been built.** The join described here is a proposal in a dev pack with thirteen tests, of which five pass and every one of the five was inherited from work already done rather than earned by the pack. Nothing on this page asserts that UnGovr and these vaults are connected today. They are not.
 
 **AIUC-1 is not endorsing anything.** The two AIUC-1 vaults are unofficial and derivative, not approved, certified or reviewed by AIUC, and not a substitute for the standard; the canonical sources are `aiuc-1.com` and [the official changelog repository ↗](https://github.com/aiunderwriting/AIUC-1-Changelog). Nothing here is a compliance, certification, underwriting or legal claim about anybody.
 

@@ -365,5 +365,19 @@
   state: verified
   date: 9 Sep 2026
   group: About this site itself
-  claim: "The vault carries `packs/security-graph/` — **eight files**: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which **two pass and both were inherited**. Five of the fifteen edges are marked **proposed** rather than existing, and the blockers are listed as open rather than described as risks."
+  claim: "The vault carries `packs/security-graph/` — **eight files**: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which **five pass and all five were inherited**, one is `asserted` and seven are `unevidenced`. The pack shipped saying *two of twelve*, which was wrong in both numbers — a summary line that had drifted from its own table, caught by parsing the rows rather than reading them, and corrected in the vault with the old line quoted rather than replaced. Five of the fifteen edges are marked **proposed** rather than existing, and the blockers are listed as open rather than described as risks."
   source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-d945c19564bf"
+
+- id: pack-nothing-built
+  state: spec
+  date: 9 Sep 2026
+  group: Specified, not shipped
+  claim: "The security-standards pack is **specified and nothing in it is built**. Thirteen acceptance tests: **five pass and all five are inherited** from work this vault had already done, one is `asserted`, seven are `unevidenced`. **Five of the fifteen edges in the model are marked proposed rather than existing**, and four blockers are open — S1 closed on the day it was written, by doing what the pack said to do first."
+  source: "packs/security-graph/06__verification.md, republished at /packs/security-graph/"
+
+- id: pack-count-corrected
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The pack shipped saying **\"Two of twelve pass\"**. Both numbers were wrong: the table had thirteen rows and five at `programmatic-inline`. A test was added when a blocker closed without the total moving, and three rows were upgraded after the summary line was written. **It was caught by parsing the table with a script rather than reading it** — the same failure the pack warns about in file 03, where a framework's label had to be checked against its members. The old line is quoted in the corrected file rather than replaced, and this site's three copies of the wrong number were corrected with it."
+  source: "a script counting the rows of 06__verification.md; the correction is vault commit obj-cas-imm-739913cb1bb0"

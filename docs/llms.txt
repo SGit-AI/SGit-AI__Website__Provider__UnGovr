@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai
-> site v0.1.9
+> site v0.1.10
 
 > An independent report on the UnGovr Open Data API — 327,138 government entities and 398
 > open-records laws, published free under CC BY 4.0. This report measures one thing: how far
@@ -30,6 +30,8 @@ Licence: This document is released under the Creative Commons Attribution 4.0 In
 - [The minimal working examples — as files](https://ungovr.providers.sgit.ai/examples/): The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.
 - [The seven-step join — one entity, one clause, one acceptance](https://ungovr.providers.sgit.ai/join/): Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge.
 - [The claim ledger — every claim, with the state it earned](https://ungovr.providers.sgit.ai/ledger/): Every factual claim this site makes, once, with its verification state, the date it earned it, and where it is said. A claim on a page and not in this table fails the build.
+- [The dev packs, published raw](https://ungovr.providers.sgit.ai/packs/): The design documents this work runs on, republished byte for byte from the vault they live in — with the sha256 of every file, so a copy that drifted would be visible.
+- [The security-standards graph — a dev pack](https://ungovr.providers.sgit.ai/packs/security-graph/): Eight files specifying how UnGovr's 327,138 entities become the jurisdiction layer for the security and AI standards this family already holds as graphs. Specified, nothing built.
 - [The four credential patterns, and why an open-data provider is a new row](https://ungovr.providers.sgit.ai/patterns/): Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family's own definition, and the argument is here.
 - [The retrieval log — every fetch, including the failures](https://ungovr.providers.sgit.ai/retrievals/): Twenty-one named retrievals plus a 49-request sample, each with the sha256 of the response bytes, the UTC timestamp and the outcome. The refusals are rows, not absences.
 - [The government-graph vault — open it read-only](https://ungovr.providers.sgit.ai/vault/): The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.

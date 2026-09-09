@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai — the whole site as markdown
-site v0.1.9 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
+site v0.1.10 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
 
 Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. "UnGovr" identifies the open-data API this site reports on; all trademarks belong to their owners. UnGovr's Atlas is used under CC BY 4.0.
 
@@ -645,7 +645,7 @@ That is the whole argument on one line. A crosswalk that ends at *the Colorado A
 | an obligation with a deadline set by an attestation's expiry | a deadline set by **statute** | which of the two governs |
 | `unevidenced` as the default answer | a public-records law string per body | whether the record can be *asserted* to exist |
 
-**The dev pack for this work is written and pushed** — `packs/security-graph/` in the government-graph vault, eight files: the anchor-node thesis, the model with fifteen edges and their inverses, the standards map above with its working, a worked example, the integration surface, and thirteen tests of which two currently pass. Open the vault on [the vault page](/vault/) and read it there.
+**The dev pack for this work is [published in full](/packs/security-graph/)** — eight files: the anchor-node thesis, the model with fifteen edges and their inverses, the standards map above with its working, a worked example, the integration surface, and thirteen tests of which five currently pass, all inherited. It lives in `packs/security-graph/` in the government-graph vault and is republished here byte for byte.
 
 ## The second finding, which is a gap rather than a number
 
@@ -697,7 +697,7 @@ The full keys are in the page source, on the cards, as `data-readkey` — and `t
 
 **The counts are ours, not AIUC's.** Every number in *What UnGovr adds* was computed by opening vault `2wzct4k7` with its published read key and counting `graph/edges.json` — 2,293,236 bytes, sha256 `984d297a971bfbed…`. They are not quoted from that vault's prose, and where the two disagree the vault is right and this page is wrong.
 
-**No edge has been built.** The join described here is a proposal in a dev pack with thirteen tests, of which two pass and both were inherited. Nothing on this page asserts that UnGovr and these vaults are connected today. They are not.
+**No edge has been built.** The join described here is a proposal in a dev pack with thirteen tests, of which five pass and every one of the five was inherited from work already done rather than earned by the pack. Nothing on this page asserts that UnGovr and these vaults are connected today. They are not.
 
 **AIUC-1 is not endorsing anything.** The two AIUC-1 vaults are unofficial and derivative, not approved, certified or reviewed by AIUC, and not a substitute for the standard; the canonical sources are `aiuc-1.com` and [the official changelog repository ↗](https://github.com/aiunderwriting/AIUC-1-Changelog). Nothing here is a compliance, certification, underwriting or legal claim about anybody.
 
@@ -833,6 +833,94 @@ wide: true
 - **One gated corpus is still unread.** CGJ *report detail* needs the same key and was not fetched; only the indices were. Blocker B2 is otherwise closed.
 - **One number is a sample, not a census**, and [says so with an interval](/coverage/).
 - **One page opens a network connection.** [The vault page](/vault/) runs the vault live from its published read key, against `dev.vault.sgraph.ai`. It is the only one, the component that does it is vendored into this site, and `check_network_pages` fails the build if any other page or file gains the ability.
+
+==============================================================================
+PAGE /packs/  —  The dev packs, published raw
+==============================================================================
+
+---
+title: The dev packs, published raw
+description: "The design documents this work runs on, republished byte for byte from the vault they live in — with the sha256 of every file, so a copy that drifted would be visible."
+lead: "A dev pack is how a piece of work is specified here before it is built: the argument, the model, a worked example, and a list of tests it has not passed yet. **They are published raw because a specification that only its author can read is not a specification.**"
+order: 13
+toc: false
+provenance:
+  vault: dkeclt5r @ obj-cas-imm-d945c19564bf
+  date: 9 September 2026
+  note: "Copied from packs/ in the vault. tools/check_site.py verifies every published file against a recorded sha256, so a copy that drifted from the vault would fail the build."
+---
+
+## What is here
+
+| Pack | What it specifies | Files | State |
+|---|---|---|---|
+| [**The security-standards graph**](/packs/security-graph/) | How UnGovr's entities become the jurisdiction layer for the security and AI standards this family already holds as graphs | 8 | **Specified, nothing built.** Thirteen tests: 5 pass (all inherited), 1 asserted, 7 unevidenced |
+
+## Why raw
+
+The same reason [the briefs](/briefs/) are raw. A pack is a **source document**: it is what somebody would have to disagree with in order to disagree with the work. Summarising it here and keeping the real thing private would let the summary and the document drift, and the summary would always be the flattering one.
+
+So the files are served exactly as they are in the vault — **byte for byte, with their sha256 recorded** — and where something in one of them is wrong, the correction is filed beside it rather than edited into it.
+
+> **One consequence worth naming.** These documents were written to be read *inside the vault*, and their breadcrumbs still point there — a link like `../../README.md` resolves against the vault's tree, not this site's. That is republication working as intended rather than a broken link: editing the navigation out of a document to suit a second home is the first small step towards editing the argument.
+
+## The pack files are also in the vault
+
+Everything under `/packs/` is a copy. The originals are in `packs/` in the government-graph vault, where they sit beside the measurements they cite and move when the work does. **[Open the vault](/vault/)** — or pick it, and six others, from **[the estate page](/estate/)**.
+
+==============================================================================
+PAGE /packs/security-graph/  —  The security-standards graph — a dev pack
+==============================================================================
+
+---
+title: The security-standards graph — a dev pack
+description: "Eight files specifying how UnGovr's 327,138 entities become the jurisdiction layer for the security and AI standards this family already holds as graphs. Specified, nothing built."
+lead: "**Every security and AI standard tells you what good looks like. None of them tells you who has to do it, or where.** This pack specifies how to connect the two **without merging a single vocabulary** — and it is published before anything is built, so it can be checked against whatever gets built."
+order: 14
+toc: false
+provenance:
+  vault: dkeclt5r @ obj-cas-imm-739913cb1bb0
+  date: 9 September 2026
+  note: "The eight files below are served byte for byte from the vault. Their sha256 is recorded in data/packs-manifest.txt and check_site.py fails the build if a published byte differs."
+---
+
+<div class="openbar">
+<a class="btn-open" href="/packs/security-graph/00__START-HERE.md">Start here &rarr;</a>
+<span>Or take them in order below. <b>Read 04 if you only read one</b> &mdash; it is the deliverable: one control, one body, one jurisdiction, end to end.</span>
+</div>
+
+## The eight files
+
+| # | File | What it holds |
+|---|---|---|
+| — | [`README.md`](/packs/security-graph/README.md) | The pack's own index, as it appears in the vault |
+| 00 | [`00__START-HERE.md`](/packs/security-graph/00__START-HERE.md) | The argument, the strict order of work, what is already decided |
+| 01 | [`01__the-anchor-node-thesis.md`](/packs/security-graph/01__the-anchor-node-thesis.md) | Why bridging beats merging, in graphs.sgit.ai's own words |
+| 02 | [`02__the-model.md`](/packs/security-graph/02__the-model.md) | Five node classes, fifteen edges with named inverses, provenance fields |
+| 03 | [`03__the-standards-map.md`](/packs/security-graph/03__the-standards-map.md) | What exists as a graph and what does not — **with AIUC-1's thirteen frameworks counted, not guessed** |
+| 04 | [`04__the-worked-example.md`](/packs/security-graph/04__the-worked-example.md) | **The deliverable.** One control, one body, one jurisdiction |
+| 05 | [`05__integration.md`](/packs/security-graph/05__integration.md) | Licence to Operate, AIUC-1 conformance, Risk Mandate, the EU AI Act text |
+| 06 | [`06__verification.md`](/packs/security-graph/06__verification.md) | Thirteen tests, five blockers — one closed — and what would make this wrong |
+
+## What state it is actually in
+
+**Specified, nothing built.** {{claim:pack-nothing-built}} Thirteen acceptance tests: **five pass and every one of the five is inherited** from work this vault had already done on the government side, one is `asserted`, and seven are `unevidenced`. Of the fifteen edges in the model, **five are marked proposed rather than existing**. Four blockers are open.
+
+> **That count was wrong when the pack shipped, and the correction is in the document rather than around it.** File 06 said *"Two of twelve pass"*. The table had thirteen rows and five at `programmatic-inline` — a summary line that had drifted from its own table, because test 13 was added when a blocker closed and three rows were upgraded after the summary was written. It was caught by **parsing the rows with a script instead of reading them**, which is the only reason it was caught, and the old line is quoted in 06 rather than quietly swapped. {{claim:pack-count-corrected}} It is the same failure the pack itself warns about in file 03, where a framework's label had to be checked against its members.
+
+## The one number that carries the argument
+
+AIUC-1's conformance vault holds **1,126 crosswalks** from its controls out to 489 distinct control items across thirteen frameworks. **Ninety-five of those crosswalks point at law** — and **three of the four laws are sub-national United States jurisdictions.** {{claim:estate-aiuc-law-share}}
+
+A crosswalk ending at *the Colorado AI Act* is a statement about a text, not about **which bodies in Colorado it binds**. UnGovr's Atlas is keyed on exactly that axis. **[The estate page](/estate/)** has the working, and the vaults it was counted from, running live.
+
+## Why it is published raw
+
+A pack is a source document: it is what somebody would have to disagree with in order to disagree with the work. Summarising it and keeping the real thing private lets the two drift, and the summary is always the flattering one — which is precisely what happened to the test count above.
+
+So these are the vault's bytes, unedited, [with their hashes](/packs/). One consequence: the breadcrumbs inside them (`../../README.md`) point at the **vault's** tree, not this site's. That is republication working as intended. Editing a document's navigation to suit a second home is the first small step towards editing its argument.
+
+**The originals are in the vault**, beside the measurements they cite. [Open it](/vault/), or pick it from [the estate page](/estate/).
 
 ==============================================================================
 PAGE /patterns/  —  The four credential patterns, and why an open-data provider is a new row
@@ -984,7 +1072,7 @@ The third deck is the one worth reading if you only read one. It is not a summar
 
 ## The security-standards dev pack
 
-The vault carries a dev pack under `packs/security-graph/` — **eight files proposing how UnGovr's entities become the jurisdiction layer for the security and AI standards already graphed elsewhere in this family.** {{claim:vault-security-pack}} It is a design document with tests, not an implementation: thirteen acceptance tests, of which two pass and both were inherited.
+The vault carries a dev pack under `packs/security-graph/` — **eight files proposing how UnGovr's entities become the jurisdiction layer for the security and AI standards already graphed elsewhere in this family.** {{claim:vault-security-pack}} It is a design document with tests, not an implementation: thirteen acceptance tests, of which **five pass and all five were inherited** from work this vault had already done, one is `asserted`, and seven are `unevidenced`.
 
 Its central move is borrowed rather than invented: *don't merge vocabularies — keep them intact and bridge them through anchor nodes.* Two anchors are proposed, `ung:entity` and `ung:jurisdiction`, and fifteen edges, each with a distinct inverse and five of them marked **proposed** rather than existing.
 
@@ -1075,6 +1163,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.10</td><td>2026-09-09</td><td>The security-standards dev pack, published raw at /packs/ — byte for byte from the vault, hash-checked on every build. Its test count was wrong in both numbers and is corrected.</td></tr>
     <tr><td class="vnum">v0.1.9</td><td>2026-09-09</td><td>The estate page: seven published vaults from across the family, each opening in the page from its own published read key, one at a time and nothing fetched until asked.</td></tr>
     <tr><td class="vnum">v0.1.8</td><td>2026-09-09</td><td>Three markdown-sourced slide decks in the vault: what we learned, what we built, and how it composes with the other vaults.</td></tr>
     <tr><td class="vnum">v0.1.7</td><td>2026-09-09</td><td>The vault link drops the /en-gb/ segment, which broke the fragment routing; a check now refuses it.</td></tr>

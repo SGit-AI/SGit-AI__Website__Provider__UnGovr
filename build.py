@@ -40,6 +40,8 @@ ASSETS = ROOT / "assets"
 FILES = ROOT / "files"
 DATA = ROOT / "data"
 BRIEFS = ROOT / "briefs"
+# The dev packs, republished byte for byte from the vault they live in.
+PACKS = ROOT / "packs"
 OUT = ROOT / "docs"
 
 # The estate convention: one file owns the version, `bin/bump.py` moves it, the
@@ -84,6 +86,7 @@ NAV = [
         ("The claim ledger", "/ledger/"),
         ("The briefs, published raw", "/briefs/"),
         ("Disclosures", "/disclosures/"),
+        ("The dev packs, published raw", "/packs/"),
         ("Release history", "/versions/"),
     ]),
 ]
@@ -1146,6 +1149,14 @@ def build(out_dir):
     for src in sorted(BRIEFS.rglob("*")):
         if src.is_file():
             dst = out_dir / "briefs" / src.relative_to(BRIEFS)
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+    # the dev packs, raw, at /packs/ — same rule as the briefs: byte for byte from
+    # the vault, corrections filed beside rather than edited in. Copied after the
+    # pages so the generated /packs/**/index.html are not clobbered.
+    for src in sorted(PACKS.rglob("*")):
+        if src.is_file():
+            dst = out_dir / "packs" / src.relative_to(PACKS)
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
     (out_dir / "CNAME").write_text(SITE["domain"] + "\n")

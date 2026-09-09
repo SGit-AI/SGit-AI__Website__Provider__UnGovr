@@ -54,7 +54,7 @@ The third deck is the one worth reading if you only read one. It is not a summar
 
 ## The security-standards dev pack
 
-The vault carries a dev pack under `packs/security-graph/` — **eight files proposing how UnGovr's entities become the jurisdiction layer for the security and AI standards already graphed elsewhere in this family.** {{claim:vault-security-pack}} It is a design document with tests, not an implementation: thirteen acceptance tests, of which two pass and both were inherited.
+The vault carries a dev pack under `packs/security-graph/` — **eight files proposing how UnGovr's entities become the jurisdiction layer for the security and AI standards already graphed elsewhere in this family.** {{claim:vault-security-pack}} It is a design document with tests, not an implementation: thirteen acceptance tests, of which **five pass and all five were inherited** from work this vault had already done, one is `asserted`, and seven are `unevidenced`.
 
 Its central move is borrowed rather than invented: *don't merge vocabularies — keep them intact and bridge them through anchor nodes.* Two anchors are proposed, `ung:entity` and `ung:jurisdiction`, and fifteen edges, each with a distinct inverse and five of them marked **proposed** rather than existing.
 
