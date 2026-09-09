@@ -1,0 +1,1112 @@
+{
+ "computation": "1 \u2014 coverage of the entity -> records-law edge",
+ "question": "Of UnGovr's entities, how many carry a non-empty open_records.law?",
+ "method": "stratified random sample of per-entity detail documents",
+ "why_sample": "open_records appears only in /v1/entities/detail/{slug}.json, one request per entity; it is absent from every bulk surface. A census of 327,138 entities is 327,138 requests against a 100/day open tier.",
+ "seed": 20260909,
+ "retrieved": "2026-09-09T01:52:18Z",
+ "n": 49,
+ "with_law": 0,
+ "coverage": 0.0,
+ "ci95_wilson": [
+  0.0,
+  0.0727
+ ],
+ "by_stratum": {
+  "us-ca-full-depth": {
+   "n": 25,
+   "k": 0,
+   "coverage": 0.0,
+   "description": "Every descendant of California: counties, cities, school and special districts"
+  },
+  "us-top-level": {
+   "n": 12,
+   "k": 0,
+   "coverage": 0.0,
+   "description": "The 99 direct children of the United States: states, territories, federal categories"
+  },
+  "gb-top-level": {
+   "n": 6,
+   "k": 0,
+   "coverage": 0.0,
+   "description": "The direct children of the United Kingdom"
+  },
+  "fr-top-level": {
+   "n": 3,
+   "k": 0,
+   "coverage": 0.0,
+   "description": "The direct children of France"
+  },
+  "de-top-level": {
+   "n": 3,
+   "k": 0,
+   "coverage": 0.0,
+   "description": "The direct children of Germany"
+  }
+ },
+ "by_type": {
+  "charter_school": {
+   "n": 1,
+   "k": 0
+  },
+  "special_district": {
+   "n": 15,
+   "k": 0
+  },
+  "community_college": {
+   "n": 1,
+   "k": 0
+  },
+  "jpa": {
+   "n": 2,
+   "k": 0
+  },
+  "city": {
+   "n": 1,
+   "k": 0
+  },
+  "other": {
+   "n": 1,
+   "k": 0
+  },
+  "police_department": {
+   "n": 1,
+   "k": 0
+  },
+  "regulated_utility": {
+   "n": 1,
+   "k": 0
+  },
+  "department": {
+   "n": 1,
+   "k": 0
+  },
+  "school_district": {
+   "n": 1,
+   "k": 0
+  },
+  "territory": {
+   "n": 1,
+   "k": 0
+  },
+  "state": {
+   "n": 7,
+   "k": 0
+  },
+  "interstate_compact": {
+   "n": 4,
+   "k": 0
+  },
+  "agency": {
+   "n": 1,
+   "k": 0
+  },
+  "integrated_care_board": {
+   "n": 2,
+   "k": 0
+  },
+  "elected_office": {
+   "n": 4,
+   "k": 0
+  },
+  "region": {
+   "n": 2,
+   "k": 0
+  },
+  "academy": {
+   "n": 1,
+   "k": 0
+  },
+  "ministry": {
+   "n": 2,
+   "k": 0
+  }
+ },
+ "not_a_defect_count": "A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The number measures how far the join can currently reach.",
+ "sample": [
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/cs/rocketship-fuerza-community-prep",
+   "type": "charter_school",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/humboldt/spd/mckinleyville",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/reclamation-district-no-2139",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/weed-recreation-and-park-dist",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/plumas/spd/mohawk-valley",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/round-valley-storm-water-dist",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/cc/berkeley-city-college",
+   "type": "community_college",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/nevada/spd/truckee-donner-recreation-and-park-district",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/sacramento/spd/reclamation-district-no-341",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/sutter/spd/live-oak",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/joint/san-juan-basin-authority",
+   "type": "jpa",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/sonoma/city/petaluma",
+   "type": "city",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/regional-fire-protection-auth",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/los-angeles/spd/number-10006-maintenance-district",
+   "type": "other",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/san-bernardino/scd/chaffey-community-college-district/police/police-department",
+   "type": "police_department",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/glenn-county-transportation-commission",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/kings/spd/green-valley",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/tulare/spd/woodlake-schools-financing-authority",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/santa-barbara/spd/goleta-west-sanitary-district",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/southern-ca-intergovernmental-training-development-center",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/spd/water-facilities-auth",
+   "type": "special_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/san-luis-obispo/org/resthaven-mobile-home-park",
+   "type": "regulated_utility",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/san-diego/city/chula-vista/fire/chula-vista-fire-department",
+   "type": "department",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/joint/statewide-association-of-community-colleges",
+   "type": "jpa",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-ca-full-depth",
+   "slug": "us/ca/humboldt/scd/fortuna-elem",
+   "type": "school_district",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/as",
+   "type": "territory",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/wv",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/or",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/ma",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "memberships",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/compact/delta-regional-authority",
+   "type": "interstate_compact",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/agency/federal-government",
+   "type": "agency",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/compact/great-lakes-commission",
+   "type": "interstate_compact",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/compact/emergency-management-assistance-compact",
+   "type": "interstate_compact",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/id",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/ut",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/compact/northwest-power-and-conservation-council",
+   "type": "interstate_compact",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "us-top-level",
+   "slug": "us/az",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "state",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/icb/nhs-sussex-icb",
+   "type": "integrated_care_board",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/elect/minister-of-state-for-universities",
+   "type": "elected_office",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/elect/parliamentary-under-secretary-of-state-for-enterprise-and-markets",
+   "type": "elected_office",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/elect/minister-of-state-for-decarbonisation-and-technology",
+   "type": "elected_office",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/icb/nhs-bath-and-north-east-somerset-swindon-and-wiltshire-icb",
+   "type": "integrated_care_board",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "gb-top-level",
+   "slug": "gb/elect/parliamentary-under-secretary-of-state-for-sport-civil-society-and-loneliness",
+   "type": "elected_office",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "fr-top-level",
+   "slug": "fr/hauts-de-france",
+   "type": "region",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "fr-top-level",
+   "slug": "fr/academy/nancy-metz",
+   "type": "academy",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url"
+   ]
+  },
+  {
+   "stratum": "fr-top-level",
+   "slug": "fr/ile-de-france",
+   "type": "region",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "de-top-level",
+   "slug": "de/ministry/economy",
+   "type": "ministry",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "de-top-level",
+   "slug": "de/ministry/labour",
+   "type": "ministry",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  },
+  {
+   "stratum": "de-top-level",
+   "slug": "de/schleswig-holstein",
+   "type": "state",
+   "has_law": false,
+   "law": null,
+   "keys": [
+    "children_count",
+    "children_url",
+    "country",
+    "domains",
+    "geography",
+    "name",
+    "parent",
+    "products",
+    "slug",
+    "type",
+    "url",
+    "website"
+   ]
+  }
+ ]
+}

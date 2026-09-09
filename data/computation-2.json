@@ -1,0 +1,42 @@
+{
+ "computation": "2 \u2014 reach of the inferred entity -> records-law edge",
+ "rule": "longest law jurisdiction that is a path-prefix of the entity slug",
+ "assertion_class": "inferred \u2014 UnGovr does not make this claim",
+ "strata": [
+  {
+   "frame": "entities-us-ca-all.json",
+   "n": 16071,
+   "matched": 15529,
+   "unmatched": 542,
+   "matched_but_suspect": 3302
+  },
+  {
+   "frame": "entities-us.json",
+   "n": 99,
+   "matched": 99,
+   "unmatched": 0,
+   "matched_but_suspect": 43
+  },
+  {
+   "frame": "entities-gb.json",
+   "n": 869,
+   "matched": 869,
+   "unmatched": 0,
+   "matched_but_suspect": 0
+  },
+  {
+   "frame": "entities-fr.json",
+   "n": 79,
+   "matched": 79,
+   "unmatched": 0,
+   "matched_but_suspect": 0
+  },
+  {
+   "frame": "entities-de.json",
+   "n": 46,
+   "matched": 46,
+   "unmatched": 0,
+   "matched_but_suspect": 0
+  }
+ ]
+}

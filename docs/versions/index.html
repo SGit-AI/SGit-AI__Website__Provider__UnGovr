@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Release history &mdash; UnGovr, reported on</title>
+<meta name="description" content="Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/versions/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/versions/">
+<meta property="og:title" content="Release history">
+<meta property="og:description" content="Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../versions/index.html" title="Site release history">v0.1.0</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../coverage/index.html">The coverage measurement</a><a class="sl" href="../join/index.html">The seven-step join</a><a class="sl" href="../retrievals/index.html">The retrieval log</a></div></div><div class="ni"><a class="nl" href="../vault/index.html">The vault</a></div><div class="ni ni-has"><a class="nl" href="../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../patterns/index.html">The four patterns</a><a class="sl" href="../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../ledger/index.html">The claim ledger</a><a class="sl" href="../briefs/index.html">The briefs, published raw</a><a class="sl" href="../disclosures/index.html">Disclosures</a><a class="sl here" href="../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../disclosures/index.html">Disclosures</a> &middot; <a href="../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc">
+<p class="crumb"><a href="../index.html">ungovr.providers.sgit.ai</a> / Release history</p>
+<h1>Release history</h1>
+<p class="lead"><code>admin/build/version.txt</code> owns the version. <code>bin/bump.py</code> moves it and adds the row below. The release commit's subject repeats it, and <strong>CI refuses to tag if the two disagree</strong> — which is how a site avoids shipping two versions of itself.</p>
+
+
+<div class="tablewrap"><table class="releases">
+<thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
+<tbody>
+<!-- releases -->
+    <tr><td class="vnum">v0.1.0</td><td>2026-09-09</td><td>First release. All nine contract sections; the coverage measurement and the inferred-join computation with their queries; the seven-step join; the retrieval log; the vault linked by read key.</td></tr>
+</tbody>
+</table></div>
+<h2 id="the-pipeline">The pipeline</h2>
+<p><strong>validate → tag → deploy</strong>, in that order, a failure at any stage stopping the release.</p>
+<div class="tablewrap"><table><thead><tr><th>Stage</th><th>What it does</th></tr></thead><tbody><tr><td><strong>validate</strong></td><td>The build is reproducible against <code>content/</code>; the version agrees everywhere; internal links resolve; every canonical is on the host in <code>CNAME</code>; <strong>the key-shape scan is clean over the whole tree including <code>docs/</code></strong>; every claim is cited and dated; all nine sections are present and in order</td></tr><tr><td><strong>tag</strong></td><td>Reads <code>admin/build/version.txt</code>, finds the commit whose subject carries the same version, refuses if they disagree or if the bump was not the next minor, then tags it</td></tr><tr><td><strong>deploy</strong></td><td>Rebuilds from <code>content/</code> and publishes <code>docs/</code>. Never when validation failed, never from a pull request</td></tr></tbody></table></div>
+<p>It also runs on pull requests, so branch work is gated before it reaches the release branch.</p>
+<p class="pagenav"><a href="../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../versions/index.html">v0.1.0</a> &middot; <a href="../ledger/index.html">the ledger</a> &middot; <a href="../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../index.html">UnGovr, nine sections</a>
+    <a href="../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../coverage/index.html">The coverage measurement</a>
+    <a href="../join/index.html">The seven-step join</a>
+    <a href="../retrievals/index.html">The retrieval log</a>
+    <a href="../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../vault/index.html">What the vault holds</a>
+    <a href="../join/index.html">Entity to acceptance</a>
+    <a href="../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../patterns/index.html">The four patterns</a>
+    <a href="../comparison/index.html">Comparison matrix</a>
+    <a href="../ledger/index.html">Claim ledger</a>
+    <a href="../briefs/index.html">The briefs, published raw</a>
+    <a href="../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
+line against bytes whose sha256 is published in <a href="../retrievals/index.html">the retrieval log</a>, and compiled in.</p></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# UTC	method	status	sha256	bytes	ratelimit-remaining	url
+2026-09-09T01:47:30Z	GET	200	fa22c89c637f1e50695a628839a01e6c3c062e621d9d99db80cf737d0771d390	115		https://data.ungovr.org/v1/meta/last-updated.json
+2026-09-09T01:47:31Z	GET	200	ac7ce7e32a70c65d5d6f5fa682f374e860229076858ff5d9cfbe4216c3f3d09e	2182		https://data.ungovr.org/v1/meta/schema.json
+2026-09-09T01:47:31Z	GET	200	85d5b05756fe29f90fca2b7f67149f3d2bec490420fc1857bdbcdaae59a50969	29099		https://data.ungovr.org/v1/entities/index.json
+2026-09-09T01:47:32Z	GET	200	4a4aa242a2d169416502c9c64ce20a92ff7c2c2357c44af075ccab5c7f58b760	1644990		https://data.ungovr.org/v1/entities/us/ca.json
+2026-09-09T01:47:32Z	GET	200	6b71da2f1a20fdff6dfacb3c36cf761a3424e086cf3cb62f9ff472867efd5eda	109257		https://data.ungovr.org/v1/laws/records/index.json
+2026-09-09T01:48:16Z	GET	200	ecb652db036b748f34969cbb8c64e81106809d5588a75410c7da1bb497336209	29453		https://data.ungovr.org/v1/entities/us.json
+2026-09-09T01:48:17Z	GET	200	8d5e6db9e4056b2f68fcd66da7c18e6797340bf516dc5c4446f0e8267e0fcd7d	748		https://data.ungovr.org/v1/entities/detail/us--ca--santa-barbara.json
+2026-09-09T01:48:17Z	GET	200	7fa6641141d72042871152cc92a68f89b1e298c52ebfc7bd0ffaf94bce9bf781	146921		https://data.ungovr.org/v1/entities/boundaries/us--ca--santa-barbara.geojson
+2026-09-09T01:49:05Z	GET	200	ec4d5238a7dd2c2f0f23825c116dc12f9bfbcec90b78cecea1ed6cc1153d0a3e	584		https://data.ungovr.org/v1/entities/detail/us--ca.json
+2026-09-09T01:49:05Z	GET	404	9a599c694ea9b1dd75365f2feb15110db726f5d79ba71f66ec92fc00f12d1bfe	59		https://data.ungovr.org/v1/laws/records/us/ca.json
+2026-09-09T01:49:06Z	GET	200	66679b3cd1f7797c90259f836006312371a4f3cb2c464ba44a0ab4dd061c408f	15078		https://data.ungovr.org/v1/laws/records/us.json
+2026-09-09T01:49:18Z	GET	200	ce8bc4744115befddb2d2981fc9eaa6ca165db2ffa9628169c4017a1c201df41	14265		https://data.ungovr.org/v1/laws/records/us--ca.json
+2026-09-09T01:49:46Z	GET	404	1101ad9a516874a82526160158bc9da38de5ac53a8c307eaecd572b4d8e370ac	75		https://data.ungovr.org/v1/cgj/counties/us--ca--santa-barbara.json
+2026-09-09T01:49:46Z	GET	401	525f078c1386edc6ae7272449358effc40424d0202283bcb07d275d595aa9732	164		https://data.ungovr.org/v1/ai-laws/index.json
+2026-09-09T01:50:05Z	GET	200	5c344d97b440690d3b4dab30600e45fa92512d0a7f6776b0d7d8a5ef4c0b5c18	8853		https://data.ungovr.org/v1/meta/openapi.yaml
+2026-09-09T01:50:05Z	GET	200	484bdc2e83e1976e743acc013def149d99ed5f58ab8df2f68f7fffc80b92bd61	224		https://data.ungovr.org/.well-known/oauth-protected-resource
+2026-09-09T01:50:44Z	GET	200	d7518baf71f07b5e5ac8830621af2e2c5f691dfc6c7261e2627018e77de8280f	2578858		https://data.ungovr.org/v1/entities/us/ca/all.json
+2026-09-09T01:50:45Z	GET	200	e66f30636b3e178d78e6399a22a0b34e656f4bb348edc17e9d1d4b882c1a9b87	21468		https://data.ungovr.org/v1/entities/fr.json
+2026-09-09T01:50:46Z	GET	200	fdb233ff13c4acc65ce299ebde9def23dbb2001f880272609fcc06e35a844713	327513		https://data.ungovr.org/v1/entities/gb.json
+2026-09-09T01:50:46Z	GET	200	02f50b65433a4806b57b797b65d9268809d5fd646f22fef5e3c66beef87b1f0b	13316		https://data.ungovr.org/v1/entities/de.json
+2026-09-09T01:50:47Z	GET	200	9062951f8cf4bc6e97a4be961944dc366468942edc47ab488551c3cfae651d56	4070		https://data.ungovr.org/v1/cgj/counties.json

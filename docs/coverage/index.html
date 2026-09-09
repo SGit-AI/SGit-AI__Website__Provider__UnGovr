@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The coverage measurement, and the query that produced it &mdash; UnGovr, reported on</title>
+<meta name="description" content="Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/coverage/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/coverage/">
+<meta property="og:title" content="The coverage measurement, and the query that produced it">
+<meta property="og:description" content="Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../versions/index.html" title="Site release history">v0.1.0</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../index.html">The report</a></div><div class="ni ni-has"><a class="nl here" href="../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl here" href="../coverage/index.html">The coverage measurement</a><a class="sl" href="../join/index.html">The seven-step join</a><a class="sl" href="../retrievals/index.html">The retrieval log</a></div></div><div class="ni"><a class="nl" href="../vault/index.html">The vault</a></div><div class="ni ni-has"><a class="nl" href="../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../patterns/index.html">The four patterns</a><a class="sl" href="../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl" href="../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../ledger/index.html">The claim ledger</a><a class="sl" href="../briefs/index.html">The briefs, published raw</a><a class="sl" href="../disclosures/index.html">Disclosures</a><a class="sl" href="../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../disclosures/index.html">Disclosures</a> &middot; <a href="../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc">
+<p class="crumb"><a href="../index.html">ungovr.providers.sgit.ai</a> / The coverage measurement, and the query that produced it</p>
+<h1>The coverage measurement, and the query that produced it</h1>
+<p class="lead">A number without its query is an assertion, and this site exists to argue the opposite. So both computations are here with the exact question, the seed, the sampling frame, the byte hashes of the frames, and the date they were run.</p>
+<p class="prov">Prose from the government-graph vault <code>dkeclt5r</code>, 9 September 2026. Both computations were run in this session against bytes retrieved in this session. When the vault moves ahead, this page is behind &mdash; and says so rather than guessing.</p>
+<aside class="toc"><b>On this page</b><a class="lv2" href="#computation-1-the-edge-they-publish">Computation 1 — the edge they publish</a><a class="lv2" href="#computation-2-the-edge-we-would-have-to-infer">Computation 2 — the edge we would have to infer</a><a class="lv2" href="#reproducing-both">Reproducing both</a></aside>
+<h2 id="computation-1-the-edge-they-publish">Computation 1 — the edge they publish</h2>
+<p><strong>The question.</strong> Of UnGovr's entities, how many carry a non-empty <code>open_records.law</code>?</p>
+<p><strong>Before the number, the framing, because the number is easy to misread.</strong> A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The result below measures how far the join can currently reach. It is <strong>not a defect count</strong>, and there is a build check that refuses to publish the figure on any page that omits this paragraph.</p>
+<div class="tiles"><div class="tile tile-big"><b>0 of 49</b><span>entities carrying <code>open_records.law</code></span></div><div class="tile"><b>0.0%</b><span>coverage</span></div><div class="tile"><b>0.0&ndash;7.3%</b><span>95% interval (Wilson)</span></div><div class="tile"><b>19</b><span>entity types sampled</span></div></div><p class="note"><b>What this number is not.</b> A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The number measures how far the join can currently reach.</p><h4>By stratum</h4><div class="tablewrap"><table><thead><tr><th>Stratum</th><th>sampled</th><th>with law</th><th>coverage</th><th>what it is</th></tr></thead><tbody><tr><th scope="row">us-ca-full-depth</th><td class="num">25</td><td class="num">0</td><td class="num">0.0%</td><td class="small">Every descendant of California: counties, cities, school and special districts</td></tr><tr><th scope="row">us-top-level</th><td class="num">12</td><td class="num">0</td><td class="num">0.0%</td><td class="small">The 99 direct children of the United States: states, territories, federal categories</td></tr><tr><th scope="row">gb-top-level</th><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="small">The direct children of the United Kingdom</td></tr><tr><th scope="row">fr-top-level</th><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="small">The direct children of France</td></tr><tr><th scope="row">de-top-level</th><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="small">The direct children of Germany</td></tr></tbody></table></div><h4>By entity type</h4><div class="tablewrap"><table><thead><tr><th>type</th><th>sampled</th><th>with law</th></tr></thead><tbody><tr><th scope="row"><code>special_district</code></th><td class="num">15</td><td class="num">0</td></tr><tr><th scope="row"><code>state</code></th><td class="num">7</td><td class="num">0</td></tr><tr><th scope="row"><code>interstate_compact</code></th><td class="num">4</td><td class="num">0</td></tr><tr><th scope="row"><code>elected_office</code></th><td class="num">4</td><td class="num">0</td></tr><tr><th scope="row"><code>jpa</code></th><td class="num">2</td><td class="num">0</td></tr><tr><th scope="row"><code>integrated_care_board</code></th><td class="num">2</td><td class="num">0</td></tr><tr><th scope="row"><code>region</code></th><td class="num">2</td><td class="num">0</td></tr><tr><th scope="row"><code>ministry</code></th><td class="num">2</td><td class="num">0</td></tr><tr><th scope="row"><code>charter_school</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>community_college</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>city</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>other</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>police_department</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>regulated_utility</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>department</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>school_district</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>territory</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>agency</code></th><td class="num">1</td><td class="num">0</td></tr><tr><th scope="row"><code>academy</code></th><td class="num">1</td><td class="num">0</td></tr></tbody></table></div><h4>The query that produced it</h4><pre class="q"><code>Of UnGovr&#x27;s entities, how many carry a non-empty open_records.law?
+
+method   stratified random sample of per-entity detail documents
+seed     20260909
+frames   the retrieved bytes in data/raw/, sha256 in the retrieval log
+run      2026-09-09T01:52:18Z</code></pre><p class="small dim">open_records appears only in /v1/entities/detail/{slug}.json, one request per entity; it is absent from every bulk surface. A census of 327,138 entities is 327,138 requests against a 100/day open tier.</p>
+<h3 id="why-this-is-a-sample-and-not-a-census">Why this is a sample and not a census</h3>
+<p><code>open_records</code> appears in exactly one place in the API: the per-entity detail document, one HTTP request per entity. It is absent from every bulk surface — UnGovr's own OpenAPI describes the full-depth index as <em>"a compact record ({slug, name, type, parent_slug?, population?})"</em>. <a class="chip st-v" href="../ledger/index.html#claim-law-not-in-bulk" title="Verified by execution on this date, by us.">verified 9 Sep 2026</a></p>
+<p>So a census of 327,138 entities is 327,138 requests, against a free tier of 100 a day: <strong>about 9 years, or $327.14 metered.</strong> <a class="chip st-p" href="../ledger/index.html#claim-census-cost" title="Arithmetic, not an invoice. The workings are shown.">projected 9 Sep 2026</a> Nobody on the open tier can compute this number exactly, including us. What can be done honestly is a stratified random sample with a published seed and an interval — which is what is above.</p>
+<h3 id="what-would-make-this-wrong">What would make this wrong</h3>
+<ul><li><strong>If UnGovr already publish this figure</strong>, then computation 1 is not new and the honest response is to cite theirs and check it. No such figure was found on their published pages on 9 September 2026; if one exists, this section is the one to correct.</li><li><strong>If the sample missed a populated stratum.</strong> 49 draws across five strata cannot rule out pockets of coverage; the 95% interval says so — the true rate could be anything up to 7.3%. It cannot be <em>high</em>, which is the only thing this measurement needs to establish.</li><li><strong>If <code>open_records</code> is populated on entity types not sampled.</strong> Seventeen types were drawn, including states, counties, cities, school and special districts, utilities and ministries. A type not in that list is not covered by this claim.</li></ul>
+<h2 id="computation-2-the-edge-we-would-have-to-infer">Computation 2 — the edge we would have to infer</h2>
+<p>The first computation measures how far the join falls short. This one measures <strong>how far it would reach if we drew it ourselves</strong> — and, more importantly, where drawing it would be wrong.</p>
+<p class="note"><b>Assertion class: inferred — UnGovr does not make this claim.</b> Every edge in this table is one we would have to draw ourselves. It is the only edge in the demonstration that crosses from their data into our model, and it is drawn as <code>inferred</code> everywhere it appears.</p><p><b>The rule.</b> longest law jurisdiction that is a path-prefix of the entity slug.</p><div class="tablewrap"><table><thead><tr><th>Frame</th><th>entities</th><th>a law matches</th><th></th><th>none matches</th><th>matched, needs a human</th><th></th></tr></thead><tbody><tr><th scope="row">entities-us-ca-all.json</th><td class="num">16,071</td><td class="num">15,529</td><td class="num">96.6%</td><td class="num">542</td><td class="num warn">3,302</td><td class="num warn">20.5%</td></tr><tr><th scope="row">entities-us.json</th><td class="num">99</td><td class="num">99</td><td class="num">100.0%</td><td class="num">0</td><td class="num warn">43</td><td class="num warn">43.4%</td></tr><tr><th scope="row">entities-gb.json</th><td class="num">869</td><td class="num">869</td><td class="num">100.0%</td><td class="num">0</td><td class="num warn">0</td><td class="num warn">0.0%</td></tr><tr><th scope="row">entities-fr.json</th><td class="num">79</td><td class="num">79</td><td class="num">100.0%</td><td class="num">0</td><td class="num warn">0</td><td class="num warn">0.0%</td></tr><tr><th scope="row">entities-de.json</th><td class="num">46</td><td class="num">46</td><td class="num">100.0%</td><td class="num">0</td><td class="num warn">0</td><td class="num warn">0.0%</td></tr></tbody></table></div><p class="small dim">&ldquo;Needs a human&rdquo; counts the bodies whose governing records law is not reliably given by geography: interstate compacts, federal categories, tribal nations, regulated utilities and charter schools. They are counted separately rather than folded into the headline, because they are exactly the bodies a requester most often wants.</p>
+<h3 id="the-rule-in-full">The rule, in full</h3>
+<p>An entity slug is a path: <code>us/ca/santa-barbara/spd/goleta-west-sanitary-district</code>. A law in the records corpus is keyed by a jurisdiction that is a path of the same shape: <code>us</code>, <code>us/ca</code>, <code>ar/b</code>, <code>mx/baja-california</code>. So for each entity, take the <strong>longest law jurisdiction that is a path-prefix of its slug</strong>.</p>
+<pre class="">us/ca/santa-barbara/spd/goleta-west-sanitary-district
+us/ca/santa-barbara
+us/ca                 &lt;- longest match: California Public Records Act
+us                    (Freedom of Information Act — the shorter, wrong answer)</pre>
+<p><strong>This is not a claim UnGovr make.</strong> They publish the entities and they publish the laws; they do not join them. Every edge the rule produces is <code>inferred</code>, and <a href="../join/index.html">the graph draws it that way</a> everywhere it appears. Rendered as an assertion it would be a lie about the source.</p>
+<h3 id="where-the-rule-breaks-which-is-the-point">Where the rule breaks, which is the point</h3>
+<p>Slug hierarchy is <strong>geography</strong>. Records law is <strong>jurisdiction</strong>. They coincide for general-purpose local government and they come apart for exactly the bodies a requester most often wants:</p>
+<div class="tablewrap"><table><thead><tr><th>Body</th><th>Why geography gives the wrong law</th></tr></thead><tbody><tr><td>Interstate compacts</td><td>Governed by their compact and by member-state law, not by where they sit</td></tr><tr><td>Federal categories and agencies</td><td>Federal FOIA applies, whatever state the building is in</td></tr><tr><td>Tribal nations</td><td>Sovereign. Neither state nor federal records law simply applies</td></tr><tr><td>Regulated utilities</td><td>Often private bodies with statutory duties, not public agencies</td></tr><tr><td>Charter schools</td><td>Chartered under their own act, with varying records obligations</td></tr></tbody></table></div>
+<p>That is the 20.5%. <a class="chip st-m" href="../ledger/index.html#claim-inferred-suspect" title="Measured by our own pipeline on a named workload and date.">measured 9 Sep 2026</a> It is why the edge carries an assertion class rather than being silently added, and it is the whole reason the vault has assertion classes at all.</p>
+<h2 id="reproducing-both">Reproducing both</h2>
+<pre class="shell"># the frames, hashed as they land — the raw bytes, unmodified
+./fetch.sh https://data.ungovr.org/v1/entities/us/ca/all.json    data/raw/entities-us-ca-all.json
+./fetch.sh https://data.ungovr.org/v1/laws/records/index.json    data/raw/laws-records-index.json
+
+python3 bin/coverage-sample.py --plan   # print the sample, fetch nothing
+python3 bin/coverage-sample.py --run    # 49 requests, writes data/computation-1.json
+python3 bin/inferred-join.py            # local only, writes data/computation-2.json</pre>
+<p>Both scripts are <a href="../examples/index.html">downloadable</a> and both are the originals. The seed is <code>20260909</code> and the frames are pinned by sha256 in <a href="../retrievals/index.html">the retrieval log</a>, so the same run selects the same entities — which is acceptance test 7, and the reason to build any of this.</p>
+<p class="pagenav"><a href="../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../versions/index.html">v0.1.0</a> &middot; <a href="../ledger/index.html">the ledger</a> &middot; <a href="../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../index.html">UnGovr, nine sections</a>
+    <a href="../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../coverage/index.html">The coverage measurement</a>
+    <a href="../join/index.html">The seven-step join</a>
+    <a href="../retrievals/index.html">The retrieval log</a>
+    <a href="../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../vault/index.html">What the vault holds</a>
+    <a href="../join/index.html">Entity to acceptance</a>
+    <a href="../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../patterns/index.html">The four patterns</a>
+    <a href="../comparison/index.html">Comparison matrix</a>
+    <a href="../ledger/index.html">Claim ledger</a>
+    <a href="../briefs/index.html">The briefs, published raw</a>
+    <a href="../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
+line against bytes whose sha256 is published in <a href="../retrievals/index.html">the retrieval log</a>, and compiled in.</p></div>
+</footer>
+</body>
+</html>

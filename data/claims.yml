@@ -1,0 +1,216 @@
+# The ledger. Every factual claim the site makes lives here once, with the state it
+# earned and the date it earned it. Pages cite a claim with {{claim:id}}, which
+# renders the chip and links back to /ledger/. The "where it is said" column is
+# joined at build time, so a claim cannot quietly appear on a page unbadged.
+#
+# States: verified · measured · docs · spec · unrun · projected  (see build.py STATES)
+#
+# One rule specific to this site: a `docs` claim's source must be the URL it was
+# read at, because a vendor claim without the page and the date is not checkable.
+# tools/check_site.py enforces it.
+
+# ---------------------------------------------------------------------------
+- id: egress-open
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`data.ungovr.org` answers this container. `GET /v1/entities/index.json` returned **200** with 29,099 bytes at 01:47Z. This closes blocker **B1**, which the previous session recorded as an egress refusal — the refusal was our environment's, not theirs, and it is gone."
+  source: "curl, from the authoring container; the row is in the retrieval log"
+
+- id: sb-slug
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "Santa Barbara County resolves as `us/ca/santa-barbara`, read from `/v1/entities/us/ca.json` rather than guessed. This closes blocker **B4**."
+  source: "/v1/entities/us/ca.json, sha256 4a4aa242a2d16941"
+
+- id: schema-declares-law
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`open_records` is declared in UnGovr's own published schema as a property of `entity_detail`, an object with one string member, `law`. It is **not** in that definition's `required` list. The join point is designed and optional."
+  source: "/v1/meta/schema.json, sha256 ac7ce7e32a70c65d"
+
+- id: law-not-in-bulk
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`open_records` appears in exactly one place in the API — the per-entity detail document. It is absent from every bulk surface, which UnGovr's own OpenAPI states: the full-depth index is *\"a compact record ({slug, name, type, parent_slug?, population?})\"*. So the coverage of this edge cannot be computed from any bulk artefact by anyone."
+  source: "/v1/meta/openapi.yaml, sha256 5c344d97b440690d, and the retrieved index files"
+
+- id: sb-detail-no-law
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The detail document for Santa Barbara County carries **no `open_records` key at all**. Nor does California itself (`us/ca`), whose records law is in UnGovr's own corpus."
+  source: "/v1/entities/detail/us--ca--santa-barbara.json, sha256 8d5e6db9e4056b2f"
+
+- id: cpra-in-corpus
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The records-law corpus **is sub-national**: 254 of its 398 rows are, and `us/ca` is the California Public Records Act, `Cal. Gov. Code §§ 7920.000-7931.000`. Its full record carries structured obligation data — `initial_response_days: 10`, `extension_days: 14`, `private_right_of_action: true`, fee rates, submission methods and required elements. **This is better than the brief that commissioned this work assumed**, and the correction is filed."
+  source: "/v1/laws/records/us--ca.json, sha256 ce8bc4744115befd"
+
+- id: provision-confirmed
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The vault's pack named `Gov. Code § 7922.535` as a *candidate to verify*, written from prior knowledge and therefore `unevidenced` by its own rule. **The retrieved bytes carry it**: `response_deadline_notes` cites § 7922.535(a) for the determination and (b)-(c) for the extension. The candidate is confirmed by the source rather than by memory."
+  source: "/v1/laws/records/us--ca.json, field response_deadline_notes"
+
+- id: provision-not-addressable
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "That citation is **prose inside a free-text field**, not an addressable node. There is no `provisions` array, no clause identifiers and no byte ranges, so nothing below the law can be pointed at, cited, or attached to evidence."
+  source: "/v1/laws/records/us--ca.json — the record's full key set"
+
+- id: cpra-no-akn
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The CPRA has no Akoma Ntoso or other XML serialisation to retrieve. Both source URLs in the law record resolve to `leginfo.legislature.ca.gov`, which serves `text/html` from a JSF page. **This closes blocker B3, and it means acceptance test 3 — rebuild the instrument byte for byte from the graph — cannot pass for this instrument.** The test is recorded as unpassable here rather than weakened."
+  source: "leginfo.legislature.ca.gov, both URLs fetched; Content-Type: text/html"
+
+- id: source-url-mismatch
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The CPRA record's two source URLs point at different codifications: `law_url` at Division 10, Title 1 (the current §§ 7920–7931) and `primary_source_url` at Division 7, Chapter 3.5 — the location the CPRA occupied **before the 2023 recodification**. One of the two is stale. It is a small, specific, checkable thing they would probably want to know."
+  source: "/v1/laws/records/us--ca.json, fields law_url and primary_source_url"
+
+- id: products-undocumented
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "A `products` array is returned by **49 of 49** entity-detail documents sampled and appears nowhere in the published JSON Schema. So the schema is behind the API in one direction while `open_records` is ahead of it in the other. Ordinary drift in a live dataset, recorded as an observation."
+  source: "the 49 detail documents of the coverage sample"
+
+- id: no-ratelimit-headers
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-Quota-Remaining` are advertised in the API's `Access-Control-Expose-Headers` but **were not emitted on any of the 70 open-endpoint responses** taken here. A client cannot see how much of its daily budget is left until the budget runs out."
+  source: "the saved response headers for every retrieval in the log"
+
+- id: head-405
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`HEAD` returns **405** where `GET` returns 200, so a client cannot cheaply size a file before downloading it. `GET` does return a strong `ETag`, which is the better tool anyway."
+  source: "HEAD https://data.ungovr.org/v1/entities/us.json"
+
+- id: ai-laws-gated
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "`/v1/ai-laws/index.json` answers **401** without a key, and its response advertises **two different credential mechanisms**: the body says `X-API-Key`, while the `WWW-Authenticate` header offers OAuth 2.0 Protected Resource Metadata — `Bearer resource_metadata=\"…/.well-known/oauth-protected-resource\", scope=\"opendata:read\"`. Blocker **B2** stays open, but it is closed by registering, not by paying."
+  source: "/v1/ai-laws/index.json and /.well-known/oauth-protected-resource"
+
+# ---------------------------------------------------------------------------
+- id: coverage-zero
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "**0 of 49.** In a seeded random sample of 49 entity-detail documents drawn across five strata, three countries and seventeen entity types, **not one carried a non-empty `open_records.law`** — including six US states, whose records laws are in UnGovr's own corpus. 95% Wilson interval **0.0–7.3%**. A missing law reference is not an error; the number measures how far the join can currently reach and is **not a defect count**."
+  source: "bin/coverage-sample.py, seed 20260909, against frames whose sha256s are in the retrieval log"
+
+- id: inferred-reach
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "The same join **inferred by slug prefix reaches 96.6%** of California's 16,071 entities — the longest law-corpus jurisdiction that is a path-prefix of the entity slug. The join is one derivable hop away, over data UnGovr already publish, and the rule is two lines long."
+  source: "bin/inferred-join.py over /v1/entities/us/ca/all.json and /v1/laws/records/index.json"
+
+- id: inferred-suspect
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "**20.5% of those matches would need a human.** Slug hierarchy is geography; records law is jurisdiction. They come apart for exactly the bodies a requester most often wants — interstate compacts, federal categories, tribal nations, regulated utilities, charter schools. That is why the edge is drawn `inferred` and not asserted."
+  source: "bin/inferred-join.py, the matched-but-suspect column"
+
+- id: entity-count-drift
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "The entity total is **327,138** in `/v1/meta/last-updated.json` and **327,138+** in the OpenAPI description, against 330,000 / 321,000 / 320,000 quoted on three of their pages earlier. Ordinary for a live dataset that rebuilds. **An observation, not a finding**, and not a conversation worth having."
+  source: "/v1/meta/last-updated.json, built_at 2026-09-08T07:46:48Z"
+
+- id: requests-used
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "The whole of this report cost **70 requests** to `data.ungovr.org`, inside a free tier of 100 entity requests a day. No 402 was ever returned, so the payment path is reported from their documentation rather than from experience."
+  source: "the retrieval log, counted"
+
+# ---------------------------------------------------------------------------
+- id: rate-limits
+  state: docs
+  date: 9 Sep 2026
+  group: Read in their documentation, 9 September 2026
+  claim: "Free tier, per their rate-limit table: **entity data 100/day per IP**; CGJ indices and county listings **unlimited**; CGJ report detail **50/day per key**; conditional revalidation (`304`) free at up to **5,000 per key per day**, past which the API returns `429` with `Retry-After`."
+  source: "https://www.ungovr.org/open-data/api"
+
+- id: machine-payments
+  state: docs
+  date: 9 Sep 2026
+  group: Read in their documentation, 9 September 2026
+  claim: "Above the free tier the API returns **HTTP 402 with a Machine Payments Protocol challenge**, paid per request from a Stripe-funded wallet: **$0.001** per entity request, **$0.01** per CGJ report detail, **$5.00** minimum top-up, carried on `WWW-Authenticate: Payment` / `Authorization: Payment` headers."
+  source: "https://www.ungovr.org/open-data/api"
+
+- id: api-key-free
+  state: docs
+  date: 9 Sep 2026
+  group: Read in their documentation, 9 September 2026
+  claim: "An API key is **free**, and most Open Data endpoints need none at all. The key raises rate limits and unlocks the gated corpora. So the bound on the ungated surface is a property of the *network path*, not of a credential."
+  source: "https://www.ungovr.org/open-data/api-keys"
+
+- id: licence-ccby
+  state: docs
+  date: 9 Sep 2026
+  group: Read in their documentation, 9 September 2026
+  claim: "The Open Data API is published under **CC BY 4.0**, declared in the OpenAPI document's own `license` block. Everything this site and its vault derive from it is used under that licence, with attribution."
+  source: "https://data.ungovr.org/v1/meta/openapi.yaml"
+
+# ---------------------------------------------------------------------------
+- id: census-cost
+  state: projected
+  date: 9 Sep 2026
+  group: Arithmetic, with the workings shown
+  claim: "A **census** of the law edge — as opposed to the sample above — is one detail request per entity: 327,138 requests. At the free tier's 100 a day that is **3,271 days, about 9 years**. At the metered rate of $0.001 it is **$327.14**. Re-do the arithmetic with your own numbers; the only input is the entity count."
+  source: "327,138 ÷ 100 = 3,271 days; 327,138 × $0.001 = $327.14"
+
+# ---------------------------------------------------------------------------
+- id: vault-viewer-mvp
+  state: spec
+  group: Specified, not shipped
+  claim: "The vault's full graph viewer — fractal zoom to sentence level, a document viewer opening a byte range in the instrument's own source, and the remaining six computations — is **specified and not built**. What exists is the MVP: the seven-step join, filterable by type, with provenance on every node."
+  source: "the vault's pack/04__the-vault.md and pack/05__the-workbench.md"
+
+- id: acceptance-unowned
+  state: spec
+  group: Specified, not shipped
+  claim: "The acceptance node ships **with no named owner, no review interval and no revocation path**. An acceptance without an owner is a note. It is left open rather than filled in with a plausible name, and it is handback item 8."
+  source: "data/graph.json, node sg:acceptance/unassigned"
+
+- id: domain-not-pointed
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "`ungovr.providers.sgit.ai` **answers 404**. This release ships anyway, under the GitHub Pages project path: the canonical URL states the intended host, and every internal link is relative so the site serves correctly from either. The sibling shipped in exactly this state and documented it."
+  source: "curl https://ungovr.providers.sgit.ai/ -> 404, 9 September 2026"
+
+- id: no-conversation
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "**No conversation with UnGovr has taken place.** Every statement here about what they intend, need or would want is inference from what they publish, and is marked as such. There is no commercial relationship of any kind to disclose."
+  source: "the project lead, 9 September 2026"
+
+- id: examples-run
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "Every example file offered for download was executed to produce the numbers on this site — they are the actual scripts, not illustrations of them. `fetch.sh` produced every row of the retrieval log; `coverage-sample.py` produced the 0-of-49; `inferred-join.py` produced the 96.6%."
+  source: "the retrieval log and data/computation-1.json are their output"

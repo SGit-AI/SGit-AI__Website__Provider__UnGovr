@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The comparison matrix &mdash; UnGovr, reported on</title>
+<meta name="description" content="Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/comparison/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/comparison/">
+<meta property="og:title" content="The comparison matrix">
+<meta property="og:description" content="Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../versions/index.html" title="Site release history">v0.1.0</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../coverage/index.html">The coverage measurement</a><a class="sl" href="../join/index.html">The seven-step join</a><a class="sl" href="../retrievals/index.html">The retrieval log</a></div></div><div class="ni"><a class="nl" href="../vault/index.html">The vault</a></div><div class="ni ni-has"><a class="nl here" href="../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../patterns/index.html">The four patterns</a><a class="sl here" href="../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl" href="../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../ledger/index.html">The claim ledger</a><a class="sl" href="../briefs/index.html">The briefs, published raw</a><a class="sl" href="../disclosures/index.html">Disclosures</a><a class="sl" href="../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../disclosures/index.html">Disclosures</a> &middot; <a href="../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../index.html">ungovr.providers.sgit.ai</a> / The comparison matrix</p>
+<h1>The comparison matrix</h1>
+<p class="lead">Generated at build time from the <code>patterns:</code> block on each provider page. Adding a provider is one markdown file; this table follows. That is the contract's own test of itself.</p>
+
+
+<div class="tablewrap"><table class="cmp"><thead><tr><th>Provider</th><th>Product</th><th>0 &middot; key in the page</th><th>1 &middot; bounded key in the page</th><th>2 &middot; short-lived token</th><th>3 &middot; host holds the key</th><th>Needs a server for the safe pattern</th></tr></thead><tbody><tr><th scope="row"><a href="../index.html">UnGovr</a></th><td>Open Data API — entities, boundaries, laws, CGJ indices</td><td title="not applicable"><span class="v v-na">&mdash;</span><span class="vnote">no credential exists for this surface, so the question dissolves</span></td><td title="not applicable"><span class="v v-na">&mdash;</span><span class="vnote">the bound is per IP, not per key</span></td><td title="not applicable"><span class="v v-na">&mdash;</span><span class="vnote">nothing to mint a token for</span></td><td title="not applicable"><span class="v v-na">&mdash;</span><span class="vnote">nothing for a host to hold</span></td><td>No — there is no credential to hold</td></tr><tr><th scope="row"><a href="../index.html">UnGovr</a></th><td>Open Data API — AI-laws and CGJ report detail (key-gated)</td><td title="available"><span class="v v-yes">&check;</span><span class="vnote">a free, read-only key with a per-key daily cap. The first yes here that is not a warning</span></td><td title="specified here, not shipped"><span class="v v-spec">&#9686;</span><span class="vnote">no per-key scoping is documented; the daily cap is the only bound</span></td><td title="unavailable"><span class="v v-no">&times;</span><span class="vnote">no token minter is offered</span></td><td title="specified here, not shipped"><span class="v v-spec">&#9686;</span><span class="vnote">possible, and unnecessary at this risk level</span></td><td>Yes for pattern 3 — but the key is free and read-only</td></tr><tr><th scope="row"><a href="../index.html">UnGovr</a></th><td>Machine Payments Protocol (the 402 path)</td><td title="available and never acceptable"><span class="v v-never">&#9888;</span><span class="vnote">a wallet credential in a page is spendable by anyone who reads it</span></td><td title="specified here, not shipped"><span class="v v-spec">&#9686;</span><span class="vnote">a per-request price exists; a per-key spend cap is not documented</span></td><td title="specified here, not shipped"><span class="v v-spec">&#9686;</span><span class="vnote">the natural shape for this, and not offered today</span></td><td title="specified here, not shipped"><span class="v v-spec">&#9686;</span><span class="vnote">what we would build before spending a cent from a browser</span></td><td>Yes — a funded wallet must never reach a browser</td></tr></tbody></table></div><p class="small dim legend"><span class="v v-yes">&check;</span> available &middot; <span class="v v-no">&times;</span> unavailable &middot; <span class="v v-never">&#9888;</span> available and never acceptable &middot; <span class="v v-spec">&#9686;</span> specified here, not shipped &middot; <span class="v v-na">&mdash;</span> not applicable</p><p class="small dim">Generated at build time from the <code>patterns:</code> front-matter of every provider page. Adding a provider is one Markdown file; this table follows.</p>
+<h2 id="reading-it">Reading it</h2>
+<p><strong>Per product, never per vendor.</strong> A vendor with three products can support three different patterns, and stating a credential rule at vendor level is how a reader ends up putting a spendable key somewhere a read-only one belonged. UnGovr's three rows are bounded by three different things: an IP budget, a free key's daily cap, and a wallet balance.</p>
+<p><strong><code>na</code> is not <code>no</code>.</strong> On UnGovr's open surface the pattern question dissolves rather than being answered negatively — there is no credential for a pattern to be about. That is a different fact from "this provider does not support pattern 2", and the matrix distinguishes them.</p>
+<p><strong>This site contributes one row shape the family did not have</strong>: a provider where pattern 0 is correct. <a href="../patterns/index.html">The argument for admitting it is on the patterns page.</a></p>
+<p class="pagenav"><a href="../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../versions/index.html">v0.1.0</a> &middot; <a href="../ledger/index.html">the ledger</a> &middot; <a href="../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../index.html">UnGovr, nine sections</a>
+    <a href="../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../coverage/index.html">The coverage measurement</a>
+    <a href="../join/index.html">The seven-step join</a>
+    <a href="../retrievals/index.html">The retrieval log</a>
+    <a href="../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../vault/index.html">What the vault holds</a>
+    <a href="../join/index.html">Entity to acceptance</a>
+    <a href="../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../patterns/index.html">The four patterns</a>
+    <a href="../comparison/index.html">Comparison matrix</a>
+    <a href="../ledger/index.html">Claim ledger</a>
+    <a href="../briefs/index.html">The briefs, published raw</a>
+    <a href="../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
+line against bytes whose sha256 is published in <a href="../retrievals/index.html">the retrieval log</a>, and compiled in.</p></div>
+</footer>
+</body>
+</html>

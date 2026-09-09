@@ -1,0 +1,149 @@
+{
+ "graph": "the seven-step join, one entity and one clause",
+ "scope": "Santa Barbara County, California; the California Public Records Act",
+ "built": "2026-09-09T01:49Z",
+ "how_to_read": "Origin is carried by border and shape; assertion class by colour. They answer different questions and merging them would lose both. ung: is transcribed from UnGovr and never edited. akn: is the instrument. sg: is our model, and is where every claim we make ourselves lives.",
+ "nodes": [
+  {
+   "id": "ung:us/ca/santa-barbara",
+   "origin": "ung",
+   "assertion": "asserted",
+   "step": "ENTITY",
+   "label": "Santa Barbara County",
+   "note": "Transcribed from their detail document exactly as published, and **not edited, corrected, enriched or re-typed**. `type: county`, 154 children, three domains, a boundary. It carries **no `open_records` key at all** \u2014 which is the whole reason the next edge has to be inferred.",
+   "provenance": {
+    "source_url": "https://data.ungovr.org/v1/entities/detail/us--ca--santa-barbara.json",
+    "response_sha256": "8d5e6db9e4056b2f68fcd66da7c18e6797340bf516dc5c4446f0e8267e0fcd7d",
+    "retrieved": "2026-09-09T01:49Z",
+    "licence": "CC BY 4.0",
+    "boundary_url": "https://data.ungovr.org/v1/entities/boundaries/us--ca--santa-barbara.geojson",
+    "boundary_sha256": "7fa6641141d72042871152cc92a68f89b1e298c52ebfc7bd0ffaf94bce9bf781"
+   }
+  },
+  {
+   "id": "akn:/akn/us-ca/act/statute/1968-01-01/gov-7920",
+   "origin": "akn",
+   "assertion": "inferred",
+   "step": "INSTRUMENT",
+   "label": "California Public Records Act",
+   "note": "`Cal. Gov. Code \u00a7\u00a7 7920.000-7931.000`, effective 1968-01-01, transcribed from their law record. **The Akoma Ntoso identifier above is minted by us following the AKN naming convention \u2014 no Akoma Ntoso document for the CPRA exists to retrieve.** That is the answer to blocker B3, and it is why acceptance test 3 cannot pass for this instrument. The identifier is a stable name, not a retrieved artefact, and it is marked inferred for that reason.",
+   "provenance": {
+    "source_url": "https://data.ungovr.org/v1/laws/records/us--ca.json",
+    "response_sha256": "ce8bc4744115befddb2d2981fc9eaa6ca165db2ffa9628169c4017a1c201df41",
+    "retrieved": "2026-09-09T01:49Z",
+    "licence": "CC BY 4.0",
+    "publisher_source": "https://leginfo.legislature.ca.gov/faces/codes_displayexpandedbranch.xhtml?tocCode=GOV&division=10.&title=1.&part=&chapter=&article=",
+    "publisher_format": "text/html \u2014 JSF-rendered, no XML or Akoma Ntoso serialisation offered"
+   }
+  },
+  {
+   "id": "akn:\u2026/gov-7920/!main~sec_7922_535__a",
+   "origin": "akn",
+   "assertion": "asserted",
+   "step": "PROVISION",
+   "label": "Gov. Code \u00a7 7922.535(a) \u2014 determine and notify within 10 days",
+   "note": "The clause that creates the duty. **The vault's pack named \u00a7 7922.535 as a candidate to verify, written from prior knowledge and therefore `unevidenced` by its own rule. The retrieved bytes carry it** \u2014 UnGovr's `response_deadline_notes` cites `Gov. Code \u00a7 7922.535(a)` for the determination and `(b)-(c)` for the extension. The candidate is confirmed by the source rather than by memory. **What the bytes do not carry is the clause as an addressable thing**: it is a citation inside an English sentence, so there is nothing below the law to point at.",
+   "provenance": {
+    "source_url": "https://data.ungovr.org/v1/laws/records/us--ca.json",
+    "response_sha256": "ce8bc4744115befddb2d2981fc9eaa6ca165db2ffa9628169c4017a1c201df41",
+    "retrieved": "2026-09-09T01:49Z",
+    "source_field": "response_deadline_notes",
+    "quoted": "Agency must determine within 10 days of receipt whether the request seeks disclosable records and notify the requester (Gov. Code \u00a7 7922.535(a))."
+   }
+  },
+  {
+   "id": "sg:obligation/cpra-determine-and-notify",
+   "origin": "sg",
+   "assertion": "asserted",
+   "step": "OBLIGATION",
+   "label": "Determine and notify, within 10 calendar days",
+   "note": "**The first node that is ours rather than theirs.** What, of whom, within what interval: the agency shall determine whether the request seeks disclosable records and notify the requester, within 10 calendar days of receipt, extendable by up to 14 days by written notice in unusual circumstances. The interval is not our reading of the prose \u2014 UnGovr publish it as structured scalars, `initial_response_days: 10` and `extension_days: 14`, which is more than this brief expected to find.",
+   "provenance": {
+    "note": "Derived from the provision above. Modelled by us; the numbers are transcribed from initial_response_days and extension_days in the law record."
+   }
+  },
+  {
+   "id": "sg:control/cpra-10-day-clock",
+   "origin": "sg",
+   "assertion": "asserted",
+   "step": "CONTROL",
+   "label": "A dated determination on file within the interval",
+   "note": "What would satisfy the obligation: for each received request, a written determination, dated within 10 calendar days of receipt, recording whether disclosable records exist, and served on the requester. Calendar days \u2014 office closures do not toll it; only a last day falling on a holiday rolls forward.",
+   "provenance": {
+    "note": "Our model. UnGovr publish no control layer and make no such claim."
+   }
+  },
+  {
+   "id": "sg:evidence/santa-barbara-cpra-clock",
+   "origin": "sg",
+   "assertion": "asserted",
+   "step": "EVIDENCE",
+   "label": "unevidenced",
+   "note": "**The default, and it stays the default.** Nobody has observed Santa Barbara County's determinations against this control. On the vault's conformance ladder this is the weakest rung: `unevidenced`. It means the county has not been observed \u2014 **it does not mean the county is non-compliant, and it is not a site claim state.** The two vocabularies answer different questions.",
+   "provenance": {
+    "note": "No observation has been made. Recorded as an absence, on purpose."
+   }
+  },
+  {
+   "id": "sg:acceptance/unassigned",
+   "origin": "sg",
+   "assertion": "asserted",
+   "step": "ACCEPTANCE",
+   "label": "No named owner \u2014 open",
+   "note": "An acceptance needs a named owner, a review interval and a revocation path. **This one has none of the three, so it ships open rather than filled in.** An acceptance without an owner is a note, and writing a plausible name here because the field exists is the exact failure this vault argues against. It is handback item 8.",
+   "provenance": {
+    "note": "Deliberately unfilled. Requires a human decision."
+   }
+  }
+ ],
+ "edges": [
+  {
+   "from": "ung:us/ca/santa-barbara",
+   "type": "sg:resolvesTo",
+   "to": "akn:/akn/us-ca/act/statute/1968-01-01/gov-7920",
+   "assertion": "inferred",
+   "note": "**The one edge that crosses from their data into our model, and the most important claim in the demonstration. UnGovr did not make it.** It is derived by the rule in [computation 2](/coverage/): the longest law jurisdiction that is a path-prefix of the entity slug. `us/ca/santa-barbara` \u2192 `us/ca` \u2192 the CPRA. Rendered like an assertion it would be a lie about the source, so it is drawn as inferred everywhere.",
+   "provenance": {
+    "rule": "longest law-corpus jurisdiction that is a path-prefix of the entity slug",
+    "corpus_url": "https://data.ungovr.org/v1/laws/records/index.json",
+    "corpus_sha256": "6b71da2f1a20fdff6dfacb3c36cf761a3424e086cf3cb62f9ff472867efd5eda",
+    "reaches": "96.6% of California's 16,071 entities; 20.5% of those need a human"
+   }
+  },
+  {
+   "from": "akn:/akn/us-ca/act/statute/1968-01-01/gov-7920",
+   "type": "akn:hasProvision",
+   "to": "akn:\u2026/gov-7920/!main~sec_7922_535__a",
+   "assertion": "asserted",
+   "note": "Structural. The provision is part of the instrument by citation."
+  },
+  {
+   "from": "akn:\u2026/gov-7920/!main~sec_7922_535__a",
+   "type": "sg:createsObligation",
+   "to": "sg:obligation/cpra-determine-and-notify",
+   "assertion": "asserted",
+   "note": "Our reading of the clause. The first claim we own."
+  },
+  {
+   "from": "sg:obligation/cpra-determine-and-notify",
+   "type": "sg:satisfiedBy",
+   "to": "sg:control/cpra-10-day-clock",
+   "assertion": "asserted",
+   "note": "Our model."
+  },
+  {
+   "from": "sg:control/cpra-10-day-clock",
+   "type": "sg:evidencedBy",
+   "to": "sg:evidence/santa-barbara-cpra-clock",
+   "assertion": "asserted",
+   "note": "Our model. The evidence node is unevidenced."
+  },
+  {
+   "from": "sg:evidence/santa-barbara-cpra-clock",
+   "type": "sg:acceptedBy",
+   "to": "sg:acceptance/unassigned",
+   "assertion": "asserted",
+   "note": "Our model. The acceptance has no owner and stays open."
+  }
+ ]
+}

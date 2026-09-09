@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The government-graph vault — open it read-only &mdash; UnGovr, reported on</title>
+<meta name="description" content="The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/vault/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/vault/">
+<meta property="og:title" content="The government-graph vault — open it read-only">
+<meta property="og:description" content="The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../versions/index.html" title="Site release history">v0.1.0</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../coverage/index.html">The coverage measurement</a><a class="sl" href="../join/index.html">The seven-step join</a><a class="sl" href="../retrievals/index.html">The retrieval log</a></div></div><div class="ni"><a class="nl here" href="../vault/index.html">The vault</a></div><div class="ni ni-has"><a class="nl" href="../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../patterns/index.html">The four patterns</a><a class="sl" href="../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl" href="../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../ledger/index.html">The claim ledger</a><a class="sl" href="../briefs/index.html">The briefs, published raw</a><a class="sl" href="../disclosures/index.html">Disclosures</a><a class="sl" href="../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../disclosures/index.html">Disclosures</a> &middot; <a href="../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc">
+<p class="crumb"><a href="../index.html">ungovr.providers.sgit.ai</a> / The government-graph vault — open it read-only</p>
+<h1>The government-graph vault — open it read-only</h1>
+<p class="lead">The vault is the workload in <a href="../index.html#7-what-we-use-it-for">§7</a>. It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published <strong>before</strong> any of it was built. You can open it read-only, right now, and it will ask you for nothing.</p>
+<p class="prov">Prose from the government-graph vault <code>dkeclt5r</code>, 9 September 2026. The vault&#x27;s own pack is published raw under /briefs/. When the vault moves ahead, this page is behind &mdash; and says so rather than guessing.</p>
+<aside class="toc"><b>On this page</b><a class="lv2" href="#open-it">Open it</a><a class="lv2" href="#why-publishing-this-key-is-safe-and-which-key-it-is">Why publishing this key is safe, and which key it is</a><a class="lv2" href="#what-the-vault-holds">What the vault holds</a><a class="lv2" href="#what-this-site-copies-and-what-it-links">What this site copies, and what it links</a><a class="lv2" href="#the-thirteen-acceptance-tests">The thirteen acceptance tests</a></aside>
+<h2 id="open-it">Open it</h2>
+<div class="card-open">
+<p class="small dim">SG/Send vault &middot; read-only &middot; asks for no permissions</p>
+<h3>government-graph <code>dkeclt5r</code></h3>
+<p>Opens in the SG/Send browser with the read key already in the URL fragment. Nothing to install, nothing to sign in to, nothing to accept.</p>
+<p class="mono breakall"><a href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener">dev.vault.sgraph.ai/en-gb/#sgit_private_read_&hellip;:dkeclt5r</a></p>
+</div>
+<p>Or with the CLI:</p>
+<pre class="shell">pip3 install sgit-ai --break-system-packages
+sgit clone sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r government-graph</pre>
+<blockquote><p><strong>This link is on a development host.</strong> <code>dev.vault.sgraph.ai</code> is not the production browser, and publishing a <code>dev.*</code> URL from a public site is a decision rather than a detail. It ships here because the read key is the whole point of §7 and a link nobody can open is worse than a link on the wrong host — but <strong>moving the vault to production is <a href="../briefs/index.html">handback item 4</a></strong>, and this page changes when it moves.</p></blockquote>
+<h2 id="why-publishing-this-key-is-safe-and-which-key-it-is">Why publishing this key is safe, and which key it is</h2>
+<p><strong>Two keys exist and only one of them is here.</strong></p>
+<div class="tablewrap"><table><thead><tr><th></th><th>What it does</th><th>Publishable</th></tr></thead><tbody><tr><td><strong>Read key</strong> <code>sgit_private_read_…</code></td><td>Decrypts and reads. Cannot commit, cannot push, cannot delete</td><td><strong>Yes.</strong> It is how this estate shares a vault — the same way <code>sgit.ai/llms.txt</code> does</td></tr><tr><td><strong>Write key</strong> <code>sgit_private_vault_…</code></td><td>Everything. Rewrites history</td><td><strong>Never</strong></td></tr></tbody></table></div>
+<p>The write key for this vault was handed over out of band and <strong>is not in this repository, in any form</strong>. That is not a promise, it is a check: <code>tools/secret-scan.sh</code> runs over the whole tree <em>including the built output in <code>docs/</code></em>, on every push and every pull request, and refuses the release on a match. It deliberately does not match <code>sgit_private_read_…</code>, and <code>tools/check_site.py</code> carries the same tripwire a second time against the <code>passphrase:uuid</code> shape an sgit key can also take.</p>
+<p><strong>This is the check the brief singled out as the one most likely to bite whoever built this site.</strong> It is wired first, before any content, for that reason.</p>
+<h2 id="what-the-vault-holds">What the vault holds</h2>
+<pre class="">  pack/          the specification — 7 files, published as the FIRST commit,
+                 before any implementation existed. That ordering is the
+                 vault&#x27;s own acceptance test 13, and the only one that
+                 passed before this session
+  team/          four agentic roles and the single-writer rule
+  data/raw/      the retrieved bytes, unmodified, so the compiled artefacts
+                 are checkable against what they came from
+  data/          the compiled artefacts: the graph, both computations
+  provenance/    the retrieval log, including the failures
+  catalogue/     the catalogue submission
+  corrections/   ships empty, on purpose
+  review/        ships empty</pre>
+<p><strong>The pack was published before the work, and the history proves it.</strong> That is the strongest demonstration the method has: a design that could be checked against the thing it specified, before the thing existed. This session's commits sit on top of it and do not disturb it.</p>
+<p>The pack is also <a href="../briefs/index.html">published raw on this site</a>, because a site arguing for published provenance that hides its own inputs has refuted itself.</p>
+<h2 id="what-this-site-copies-and-what-it-links">What this site copies, and what it links</h2>
+<p><strong>Copied.</strong> The compiled artefacts — <code>graph.json</code>, <code>computation-1.json</code>, <code>computation-2.json</code>, the retrieval log — are copied into this repository at build time and rendered as part of the site. Every table on <a href="../coverage/index.html">the coverage page</a> and <a href="../join/index.html">the join page</a> is static HTML built from them. <strong>No page here fetches anything</strong>, which is a build rule, not a preference.</p>
+<p><strong>Linked, never embedded.</strong> The vault itself is a link. An iframe pulling another host into the page is exactly what the no-third-party rule exists to prevent, and it would break the site with JavaScript off. <code>tools/check_site.py</code> refuses an <code>&lt;iframe&gt;</code> anywhere in the built output.</p>
+<p><strong>The copy is stale the moment the vault moves ahead.</strong> The page says which vault commit it reports on rather than guessing, and that is the honest resolution rather than a fixed one.</p>
+<h2 id="the-thirteen-acceptance-tests">The thirteen acceptance tests</h2>
+<p>They live in the vault, at <code>pack/06__verification.md</code>, and they are its property rather than this site's — this session moved their states and did not rewrite the tests.</p>
+<div class="tablewrap"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Passing before this session</td><td><strong>1 of 13</strong> — the pack was in the vault as its first commit</td></tr><tr><td>Should pass after this MVP</td><td><strong>7 of 13</strong></td></tr><tr><td>Honestly out of MVP scope</td><td><strong>4</strong> — fractal zoom, byte-range document viewer, and two others</td></tr><tr><td>Cannot pass as written</td><td><strong>1</strong> — test 3, rebuild the instrument byte for byte. <a href="../index.html#9-what-went-wrong">There is no machine-readable CPRA to rebuild from.</a> Recorded as unpassable rather than weakened <a class="chip st-v" href="../ledger/index.html#claim-cpra-no-akn" title="Verified by execution on this date, by us.">verified 9 Sep 2026</a></td></tr></tbody></table></div>
+<p><strong>A vault claiming thirteen of thirteen after one session has stopped measuring and started asserting.</strong></p>
+<p class="pagenav"><a href="../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../versions/index.html">v0.1.0</a> &middot; <a href="../ledger/index.html">the ledger</a> &middot; <a href="../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../index.html">UnGovr, nine sections</a>
+    <a href="../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../coverage/index.html">The coverage measurement</a>
+    <a href="../join/index.html">The seven-step join</a>
+    <a href="../retrievals/index.html">The retrieval log</a>
+    <a href="../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../vault/index.html">What the vault holds</a>
+    <a href="../join/index.html">Entity to acceptance</a>
+    <a href="../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../patterns/index.html">The four patterns</a>
+    <a href="../comparison/index.html">Comparison matrix</a>
+    <a href="../ledger/index.html">Claim ledger</a>
+    <a href="../briefs/index.html">The briefs, published raw</a>
+    <a href="../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
+line against bytes whose sha256 is published in <a href="../retrievals/index.html">the retrieval log</a>, and compiled in.</p></div>
+</footer>
+</body>
+</html>

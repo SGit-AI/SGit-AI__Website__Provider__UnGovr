@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The four credential patterns, and why an open-data provider is a new row &mdash; UnGovr, reported on</title>
+<meta name="description" content="Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family&#x27;s own definition, and the argument is here.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/patterns/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/patterns/">
+<meta property="og:title" content="The four credential patterns, and why an open-data provider is a new row">
+<meta property="og:description" content="Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family&#x27;s own definition, and the argument is here.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../versions/index.html" title="Site release history">v0.1.0</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../coverage/index.html">The coverage measurement</a><a class="sl" href="../join/index.html">The seven-step join</a><a class="sl" href="../retrievals/index.html">The retrieval log</a></div></div><div class="ni"><a class="nl" href="../vault/index.html">The vault</a></div><div class="ni ni-has"><a class="nl here" href="../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl here" href="../patterns/index.html">The four patterns</a><a class="sl" href="../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl" href="../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../ledger/index.html">The claim ledger</a><a class="sl" href="../briefs/index.html">The briefs, published raw</a><a class="sl" href="../disclosures/index.html">Disclosures</a><a class="sl" href="../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../disclosures/index.html">Disclosures</a> &middot; <a href="../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc">
+<p class="crumb"><a href="../index.html">ungovr.providers.sgit.ai</a> / The four credential patterns, and why an open-data provider is a new row</p>
+<h1>The four credential patterns, and why an open-data provider is a new row</h1>
+<p class="lead">The four patterns are about one question: <strong>where does the credential live, and what bounds it?</strong> UnGovr answer it in a way no model provider in this family can — for most of their surface, by not having one.</p>
+
+<aside class="toc"><b>On this page</b><a class="lv2" href="#the-four-patterns">The four patterns</a><a class="lv2" href="#why-this-needed-an-argument">Why this needed an argument</a><a class="lv2" href="#what-pattern-three-would-be-for-here">What pattern three would be for, here</a></aside>
+<h2 id="the-four-patterns">The four patterns</h2>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th>For UnGovr</th></tr></thead><tbody><tr><td><strong>Pattern 0</strong></td><td>Key in the page</td><td><strong>Not applicable to the open surface — there is no key.</strong> For the gated corpora, a free read-only key with a daily cap: the first <code>yes</code> in this matrix that is not a warning</td></tr><tr><td><strong>Pattern 1</strong></td><td>Bounded key in the page</td><td>The bound on the open surface is <strong>per IP, not per key</strong>. No per-key scoping is documented for the gated one</td></tr><tr><td><strong>Pattern 2</strong></td><td>Short-lived token, from a minter</td><td>No minter offered</td></tr><tr><td><strong>Pattern 3</strong></td><td><strong>The host holds the key</strong> and enforces the terms. The app never sees it</td><td>Unnecessary for reads at this risk level. <strong>Necessary before anything spends from the wallet</strong></td></tr></tbody></table></div>
+<h2 id="why-this-needed-an-argument">Why this needed an argument</h2>
+<p>This family defines <em>provider</em> as a service that serves models over an API. UnGovr serve data. <strong>By the letter of that definition they do not belong here</strong>, and writing the nine sections as though they were a model vendor would have produced nine sections answering the wrong questions well.</p>
+<p>The resolution is that the definition was a proxy for the real question. The family's actual question is <em>where does the credential live and what bounds it</em>, and a provider that answers <strong>"there is no credential, and the bound is your IP address"</strong> is not an exception to that question — it is the most informative possible answer to it.</p>
+<p><strong>Three rows in the comparison matrix are genuinely new because of it:</strong></p>
+<div class="tablewrap"><table><thead><tr><th>Section</th><th>A model provider's answer</th><th>UnGovr's</th></tr></thead><tbody><tr><td>Which pattern</td><td>Pattern 0 is a mistake; pattern 3 is the goal</td><td><strong>Pattern 0 is the intended mode.</strong> There is nothing to leak</td></tr><tr><td>The bounding primitive</td><td>A key scope, or a plan quota</td><td><strong>A rate limit per IP, then HTTP 402 with a payment challenge.</strong> The bound is a <em>payment protocol</em>, not a property of a key</td></tr><tr><td>What it cost</td><td>Dollars on a named workload</td><td><strong>Nothing</strong>, inside 100 requests a day</td></tr></tbody></table></div>
+<p><strong>So the extension is deliberate, stated, and argued rather than quietly assumed.</strong> It is <a href="../briefs/index.html">filed as a correction against the hub's contract</a> — beside it, not as an edit to it. The contract's own closing rule is that if adding a member requires template surgery then the contract is wrong and the fix belongs in the contract; the same logic covers a definition that a legitimate new member does not fit.</p>
+<p><strong>Whether the contract takes that correction is not this site's decision.</strong> It is a change to a shared contract, so it is <a href="../briefs/index.html">handback item 6</a>.</p>
+<h2 id="what-pattern-three-would-be-for-here">What pattern three would be for, here</h2>
+<p>Not for reads. Reading the Atlas needs no credential, and building a key-holding host in front of an open endpoint would add a dependency and remove nothing.</p>
+<p><strong>It is for the wallet.</strong> The Machine Payments path is the one place on this surface with an irreversible verb, and the only documented bound on it is the balance. A funded wallet reaching a browser is pattern 0 applied to money. <a class="chip st-d" href="../ledger/index.html#claim-machine-payments" title="Read from the vendor&#x27;s documentation on this date. Never executed by us.">vendor docs 9 Sep 2026</a> If this estate ever pays UnGovr per request, the credential goes behind a host that enforces a per-workload ceiling — because the platform does not document one.</p>
+<p class="pagenav"><a href="../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../versions/index.html">v0.1.0</a> &middot; <a href="../ledger/index.html">the ledger</a> &middot; <a href="../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../index.html">UnGovr, nine sections</a>
+    <a href="../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../coverage/index.html">The coverage measurement</a>
+    <a href="../join/index.html">The seven-step join</a>
+    <a href="../retrievals/index.html">The retrieval log</a>
+    <a href="../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../vault/index.html">What the vault holds</a>
+    <a href="../join/index.html">Entity to acceptance</a>
+    <a href="../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../patterns/index.html">The four patterns</a>
+    <a href="../comparison/index.html">Comparison matrix</a>
+    <a href="../ledger/index.html">Claim ledger</a>
+    <a href="../briefs/index.html">The briefs, published raw</a>
+    <a href="../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
+line against bytes whose sha256 is published in <a href="../retrievals/index.html">the retrieval log</a>, and compiled in.</p></div>
+</footer>
+</body>
+</html>

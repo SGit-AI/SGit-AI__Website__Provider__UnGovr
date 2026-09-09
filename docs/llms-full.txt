@@ -1,0 +1,839 @@
+# ungovr.providers.sgit.ai — the whole site as markdown
+site v0.1.0 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
+
+Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. "UnGovr" identifies the open-data API this site reports on; all trademarks belong to their owners. UnGovr's Atlas is used under CC BY 4.0.
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+
+==============================================================================
+PAGE /  —  UnGovr — the open-data provider, and the one edge that stops short
+==============================================================================
+
+---
+title: UnGovr — the open-data provider, and the one edge that stops short
+description: "An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 — and a join between them that is one derivable hop away."
+lead: "UnGovr publish an Atlas of **327,138 government entities** and a corpus of **398 open-records laws**, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the [providers contract](https://providers.sgit.ai/contract/). It is the family's **first open-data provider**, and admitting one required arguing with the family's own definition of the word — [§3](#3-which-pattern-per-product) does that. The finding it exists to report is in [§9](#9-what-went-wrong), and it is one edge long."
+order: 1
+toc: true
+provenance:
+  vault: dkeclt5r
+  date: 9 September 2026
+  note: "The retrievals, the two computations and the seven-step join were produced in this session against the live API."
+platform_grants:
+  - verb: read
+    object: entity
+    reach: world
+    reversible: true
+    product: Open Data API — entities
+    note: 327,138 entities across 205 countries. **No credential at all**
+  - verb: read
+    object: boundary
+    reach: world
+    reversible: true
+    product: Open Data API — boundaries
+    note: 161,603 GeoJSON boundaries, one per entity that has one
+  - verb: read
+    object: records-law
+    reach: world
+    reversible: true
+    product: Open Data API — laws
+    note: 398 open-records laws, 254 of them sub-national
+  - verb: read
+    object: grand-jury-report
+    reach: tenant
+    reversible: true
+    product: Open Data API — CGJ report detail
+    note: key-gated, 50/day per key. The indices are ungated and unlimited
+  - verb: read
+    object: ai-law-verdict
+    reach: tenant
+    reversible: true
+    product: Open Data API — AI and crawling law
+    note: key-gated. **Unread here** — blocker B2
+  - verb: spend
+    object: wallet
+    reach: tenant
+    reversible: false
+    product: Machine Payments Protocol
+    note: the 402 path. **The only irreversible verb on the whole surface**
+grants:
+  - verb: read
+    object: entity
+    reach: world
+    reversible: true
+    bounded_by: 100 requests a day per **IP address** — there is no key to scope, because we hold none
+  - verb: read
+    object: records-law
+    reach: world
+    reversible: true
+    bounded_by: the same IP budget. Nothing here writes, and nothing here spends
+not_granted: [write, delete, spend, ai-laws, grand jury report detail]
+patterns:
+  - provider: UnGovr
+    product: Open Data API — entities, boundaries, laws, CGJ indices
+    server: "No — there is no credential to hold"
+    p0:
+      verdict: na
+      note: "no credential exists for this surface, so the question dissolves"
+    p1:
+      verdict: na
+      note: "the bound is per IP, not per key"
+    p2:
+      verdict: na
+      note: "nothing to mint a token for"
+    p3:
+      verdict: na
+      note: "nothing for a host to hold"
+  - provider: UnGovr
+    product: Open Data API — AI-laws and CGJ report detail (key-gated)
+    server: "Yes for pattern 3 — but the key is free and read-only"
+    p0:
+      verdict: yes
+      note: "a free, read-only key with a per-key daily cap. The first yes here that is not a warning"
+    p1:
+      verdict: spec
+      note: "no per-key scoping is documented; the daily cap is the only bound"
+    p2:
+      verdict: no
+      note: "no token minter is offered"
+    p3:
+      verdict: spec
+      note: "possible, and unnecessary at this risk level"
+  - provider: UnGovr
+    product: Machine Payments Protocol (the 402 path)
+    server: "Yes — a funded wallet must never reach a browser"
+    p0:
+      verdict: never
+      note: "a wallet credential in a page is spendable by anyone who reads it"
+    p1:
+      verdict: spec
+      note: "a per-request price exists; a per-key spend cap is not documented"
+    p2:
+      verdict: spec
+      note: "the natural shape for this, and not offered today"
+    p3:
+      verdict: spec
+      note: "what we would build before spending a cent from a browser"
+---
+
+<div class="tiles">
+<div class="tile tile-big"><b>0 of 49</b><span>sampled entities carrying <code>open_records.law</code></span></div>
+<div class="tile"><b>96.6%</b><span>reachable if the edge is <em>inferred</em></span></div>
+<div class="tile"><b>$0.00</b><span>what this whole report cost</span></div>
+<div class="tile"><b>70</b><span>requests, inside a free tier of 100</span></div>
+</div>
+
+**Read the first number with the second.** A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The number measures how far the join can currently reach. It is **not a defect count**. {{claim:coverage-zero}}
+
+## What the Atlas is, before anything else
+
+UnGovr are a nonpartisan nonprofit. They publish the Atlas — every government entity they can identify, from national governments down to a reclamation district in Sutter County — with boundaries, hierarchy, websites and domains, and they publish it **free, under CC BY 4.0, mostly without asking for a credential**. {{claim:licence-ccby}} Alongside it they publish a corpus of 398 open-records laws, and **254 of those are sub-national**: not just "the United States has FOIA" but California, Idaho, Chaco, Baja California Sur. {{claim:cpra-in-corpus}}
+
+That corpus is better than this report expected to find. The California record is not a citation and a link — it carries `initial_response_days: 10`, `extension_days: 14`, `private_right_of_action: true`, per-page copy rates, submission methods, and a structured list of what a valid request must contain. Somebody read the statute and modelled it.
+
+**Their stated purpose is helping a person reach their government**, and for that purpose the data is shaped exactly right. This report is about what happens when you want to do the next thing with it.
+
+## 1 · Disclosure
+
+**None.** No commercial relationship with UnGovr — no funding, no agreement, no credits, no programme. **No conversation of any kind has taken place**, which matters more than the absence of money: every statement on this site about what UnGovr intend, need, or would want is *inference from what they publish*, and is marked as such. {{claim:no-conversation}}
+
+This page ships before there is anything to disclose, so that its existence is never evidence that something appeared later.
+
+UnGovr's data is used here under **CC BY 4.0**, which is the licence they chose. This report is published under the same one.
+
+## 2 · What it grants
+
+Capability tuples — verb × object class × reach, reversibility marked — in two layers: what the platform can grant per product, and what *our* access actually reaches.
+
+**The interesting row is the one that is missing.** Across the entire open surface there is no `write`, no `delete`, and no `spend`. Every verb is `read` and every one is reversible. The single irreversible verb on the platform is `spend × wallet`, and it lives behind the 402 path that we never touched.
+
+{{grants}}
+
+## 3 · Which pattern, per product
+
+**First, the definitional problem, because it changes the answers.** This family defines *provider* narrowly — the sibling site states it plainly:
+
+<blockquote class="vendor">
+<p>&ldquo;Provider&rdquo; here means one thing only: a service that serves models over an API — the sense this estate's own code uses, where a constant of that name holds an entry per model service.</p>
+<cite><a href="https://elevenlabs.providers.sgit.ai/#what-this-site-is-and-is-not" rel="noopener">elevenlabs.providers.sgit.ai &sect; What this site is, and is not</a>, read 9 September 2026</cite>
+</blockquote>
+
+**UnGovr serve data, not models.** By that definition they do not belong here. Written as though they were a model vendor, the nine sections would answer the wrong questions well.
+
+**The resolution, and it makes the contract better rather than weaker.** The family's real question was never *which model service is this*. It is: **where does the credential live, and what bounds it?** UnGovr answer that question — and answer it in a way no model provider in this family can, because for most of their surface **the answer is that there is no credential**. Pattern 0 is not a hazard here; it is the intended mode, and it is the first row in this matrix where `pattern 0` is not a warning. {{claim:api-key-free}}
+
+**So UnGovr is this family's first open-data provider, and the extension is deliberate.** It is [filed as a correction against the hub's contract](/briefs/) rather than as an edit to it, per the house rule — and per the contract's own closing rule, that if admitting a legitimate new member requires template surgery, the fix belongs in the contract.
+
+{{comparison}}
+
+**Note the three products are bounded by three different things**, which is exactly why this section is per product and never per vendor: the open surface by an IP budget, the gated surface by a free key's daily cap, and the payment path by a wallet balance.
+
+## 4 · Where the key goes
+
+**For most of this API: nowhere. There is no key.** That is the honest answer for entities, boundaries, records laws and the CGJ indices, and it is the reason this provider is worth adding to the comparison.
+
+For the two gated corpora — AI-laws, and CGJ report *detail* — the API advertises **two different mechanisms in the same 401 response**: {{claim:ai-laws-gated}}
+
+```
+HTTP/2 401
+www-authenticate: Bearer resource_metadata="https://data.ungovr.org/.well-known/oauth-protected-resource", scope="opendata:read"
+
+{"error":"API key required. Include X-API-Key header.",
+ "register":"https://www.ungovr.org/open-data/api-keys"}
+```
+
+The body says `X-API-Key`. The header offers OAuth 2.0 Protected Resource Metadata — the shape an MCP client expects. Both are documented; a reader meeting only one of them would not know the other existed. **Product: Open Data API, AI-laws endpoints. Read at `https://data.ungovr.org/v1/ai-laws/index.json` on 9 September 2026.**
+
+**Where it goes in our estate**, if we ever hold one: owner-sealed under the vault's write key, never in this repository. The key-shape scan in `tools/secret-scan.sh` runs over the whole tree including the built output, and it deliberately does **not** match `sgit_private_read_…`, because a read key is publishable and is how this estate shares a vault — the same way `sgit.ai/llms.txt` does. [The vault page](/vault/) carries one.
+
+## 5 · The bounding primitive
+
+**What caps the blast radius here is not a property of a key. It is a property of the network path, and then a payment protocol.** {{claim:rate-limits}}
+
+| Resource | Free tier | Bounded by |
+|---|---|---|
+| Entity data | **100/day per IP** | your IP address |
+| CGJ indices and county listings | **unlimited** | nothing |
+| CGJ report detail | 50/day per key | the key |
+| Conditional revalidation (`304`) | free, 5,000/day per key | the key, then `429` + `Retry-After` |
+
+Past the free tier the API answers **HTTP 402 with a Machine Payments Protocol challenge**, payable per request from a Stripe-funded wallet: $0.001 per entity request, $0.01 per report, $5.00 minimum top-up. {{claim:machine-payments}}
+
+**And what it does not cap.** Nothing scopes a *wallet*. The rate limit protects UnGovr from a client; the wallet balance is the only thing protecting a client from itself, and a runaway agent with a funded wallet has no per-key spend ceiling documented anywhere. That is the same finding this family recorded against a model vendor's per-key quota, arrived at from the opposite direction.
+
+**One practical gap.** `X-RateLimit-Remaining` and `X-Quota-Remaining` are advertised in the API's CORS `Access-Control-Expose-Headers`, but were not emitted on any of the 70 responses taken here — so a client cannot see how much budget is left until it is gone. {{claim:no-ratelimit-headers}}
+
+## 6 · The minimal working example
+
+**As files, not snippets** — and these are not illustrations. **They are the scripts that produced every number on this site.** {{claim:examples-run}}
+
+{{examples}}
+
+The discipline they encode: write the raw response bytes to disk unmodified, hash *those* bytes, and log before parsing anything. A node that cannot name the bytes it came from is an assertion, not a retrieval. [Every row of the log is published](/retrievals/), including the failures.
+
+## 7 · What we use it for
+
+**The government-graph vault** — one county, one law, one acceptance, and a refusal to widen it. {{claim:vault-viewer-mvp}}
+
+The named workload is a seven-step join: **entity → instrument → provision → obligation → control → evidence → acceptance**, for Santa Barbara County and the California Public Records Act. [The whole join is on one page](/join/), with the provenance of every node and the state of every claim.
+
+The one thing worth knowing before you read it: **only one edge crosses from their data into our model**, and UnGovr did not make that claim. It is drawn `inferred` everywhere it appears, because rendered as an assertion it would be a lie about the source.
+
+[Open the vault itself, read-only →](/vault/)
+
+## 8 · What it cost
+
+**Nothing. $0.00.** {{claim:requests-used}}
+
+| | |
+|---|---|
+| Date | 9 September 2026 |
+| Workload | 70 requests: 21 named retrievals + 49 entity-detail documents for the coverage sample |
+| Free tier | 100 entity requests per day, per IP |
+| Spent | **$0.00.** No 402 was ever returned |
+| Above the tier | $0.001 per entity request, $0.01 per report, $5.00 minimum wallet |
+
+**This section stales fastest**, and the honest version of it is the arithmetic rather than the invoice. A *census* of the law edge — one detail request per entity, because there is no bulk surface carrying it — is 327,138 requests: **about 9 years free, or $327.14 metered.** {{claim:census-cost}} That number is why [the measurement on this site is a sample](/coverage/) and says so.
+
+## 9 · What went wrong
+
+**The section nobody else writes.** None of these is a failing, and several are things we would want to know if the data were ours. They are dated, checkable observations, in descending order of how much they matter.
+
+### The law edge stops one hop short
+
+An entity carries no addressable path to the law that governs it. `open_records` **is** in the published schema, as an optional object with one string member — the join point is designed. {{claim:schema-declares-law}} It was present on **0 of 49** entities sampled, including six US states whose records laws are in UnGovr's own corpus, and including Santa Barbara County and California itself. {{claim:sb-detail-no-law}} **It is not a defect count** — it is the measurement of how far the join reaches today.
+
+**And it is one derivable hop.** [Inferring it by slug prefix reaches 96.6%](/coverage/) of California's 16,071 entities, with a two-line rule, over data UnGovr already publish. {{claim:inferred-reach}} The reason it must be *inferred* and not merged is the other 20.5%: geography and jurisdiction come apart for interstate compacts, tribal nations, federal categories and specially-chartered districts — exactly the bodies a requester most often wants. {{claim:inferred-suspect}}
+
+### The edge is not in any bulk surface, so nobody can measure it
+
+`open_records` exists only in the per-entity detail document — one HTTP request each. Their own OpenAPI says the full-depth index is *"a compact record ({slug, name, type, parent_slug?, population?})"*. {{claim:law-not-in-bulk}} **The consequence is that the coverage of this field is not knowable to anyone on the open tier**, ourselves included, which is why the number above is a sample with an interval rather than a census with a total. Putting `open_records` into the bulk files would be the single cheapest improvement to this API's surface.
+
+### Below the law, there is nothing addressable
+
+The CPRA record cites `Gov. Code § 7922.535(a)` — which is exactly right, and confirms a section number the vault's own pack had only guessed at. {{claim:provision-confirmed}} But it is **prose inside a free-text field**. {{claim:provision-not-addressable}} There is no provision array, no clause identifier, no byte range. You can cite the Act; you cannot cite the clause, and so you cannot attach evidence to the clause. Everything downstream of a duty — a control, an observation, an acceptance — needs to hang on something smaller than a statute.
+
+### The cross-references are described and not exposed
+
+GeoNames, Wikidata, OCD and FIPS identifiers appear on the platform pages and in **none** of the published schema definitions. If they were exposed, joining the Atlas to anything else in the world would become free. It is the cheapest possible improvement after the one above.
+
+### Small, specific, and probably worth a fix
+
+- **Two source URLs that disagree.** The CPRA record's `law_url` points at the current codification (Division 10, Title 1) and its `primary_source_url` at the one the Act occupied before the 2023 recodification. One is stale. {{claim:source-url-mismatch}}
+- **No machine-readable statute anywhere.** Both URLs serve JSF-rendered HTML. There is no Akoma Ntoso and no XML, which closes a blocker and **makes one of the vault's own acceptance tests unpassable for this instrument** — recorded as unpassable rather than weakened. {{claim:cpra-no-akn}}
+- **`products` is returned by every entity and documented by none.** 49 of 49. The schema is behind the API here and ahead of it on `open_records`. {{claim:products-undocumented}}
+- **`HEAD` returns 405** where `GET` returns 200, so a client cannot size a file before fetching it. The strong `ETag` on `GET` is the better tool anyway. {{claim:head-405}}
+- **The entity total moves**: 327,138 today against three other figures published elsewhere. Ordinary for a live dataset that rebuilds nightly. **An observation, not a conversation.** {{claim:entity-count-drift}}
+
+### No public repository, so no corrections path
+
+There is no clone, no fork, no pull request. Everything above had to be written *here*, on a stranger's website, rather than filed where it belongs. Their own argument makes this awkward: they object to reaching your government becoming a rental metered by whoever owns the index, and an API on one domain is a single point of dependency however good the licence and however good the intentions.
+
+### And one that was ours, not theirs
+
+The previous session on this project could not reach `data.ungovr.org` at all — its container's proxy refused CONNECT on the open endpoints, not only the authenticated ones — and it correctly declined a summarising fetch path rather than commit a retrieval it could not hash. **That was our environment, not their API.** This session's container reaches the host fine. {{claim:egress-open}} It is recorded here because the sibling site's ledger opens with the same scar, and because the refusal is worth more as a logged entry than as an absence.
+
+---
+
+## What this report does not claim
+
+- It does not claim the semantic layer this estate builds on top is shipped. [It is designed](/join/), and one MVP of it is built.
+- It does not claim any of the above is a mistake on UnGovr's part. **They built for a person reaching their government, and for that the data is shaped right.** The gap only appears when you want to reach the clause underneath.
+- It does not claim to know what they want. [No conversation has happened.](#1-disclosure)
+- It does not claim the coverage number is a census. [It is a sample of 49, with an interval, and the query is published beside it.](/coverage/)
+
+==============================================================================
+PAGE /briefs/  —  The briefs, published raw
+==============================================================================
+
+---
+title: The briefs, published raw
+description: "Every brief this site and its vault were built from, published unedited, with a decision-by-decision account of what was accepted, modified and rejected."
+lead: "A site arguing for published provenance that hides its own inputs has refuted itself. So both packs are here, raw and unedited — including the parts this session found to be wrong."
+order: 11
+toc: true
+---
+
+## The two packs
+
+| Pack | What it is |
+|---|---|
+| [`2026-09-09__pack__ungovr-site-and-vault/`](/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md) | The brief for this session: the two deliverables, the house pattern, the vault MVP, the site, and the acceptance tests for both |
+| [`2026-09-09__vault__government-graph-pack/`](/briefs/2026-09-09__vault__government-graph-pack/00__README.md) | The vault's own specification, **published as the vault's first commit before any implementation existed** |
+
+Both are CC BY 4.0. Neither has been edited to match what was built.
+
+## What was accepted
+
+- **The scope discipline.** One county, one law, one acceptance, and a refusal to widen it.
+- **The two-edge rule** — nodes derived from their data visibly distinct from nodes that are our model, with origin and assertion class carried by different visual channels.
+- **Retrieve, hash, log, then parse.** Every row of [the retrieval log](/retrievals/) follows it.
+- **Ship the site at v0.1.0 with all nine sections**, several honestly thin, rather than waiting.
+- **Do not substitute a lossy path.** Not needed — [egress worked](/retrievals/) — but the precedent was inherited and would have been followed.
+
+## What was modified
+
+**The framing of the finding.** The pack anticipated a low-but-nonzero coverage number and a gap to be described. The measurement is `0 of 49`, and a bare zero reads as an accusation. So the site leads with what the Atlas is, states the zero **with its interval and its framing sentence**, and pairs it immediately with the 96.6% that says the gap is one derivable hop. There is a build check that refuses to let the number appear on any page without the sentence that says it is **not a defect count**.
+
+**The `spec`/`unrun` expectation.** The pack predicted a ledger that would be mostly `spec` and `unrun`, on the assumption that egress would stay blocked. Egress worked, so most of the ledger is `verified` and `measured` instead. The example files are `verified` rather than `unrun` because they are the scripts that produced the numbers, not illustrations of them.
+
+## What was rejected, or found wrong
+
+**These are corrections filed against the packs, beside them rather than as edits to them** — the house rule, and the third and fourth such corrections on this project.
+
+| # | Against | Correction |
+|---|---|---|
+| **C3** | `03__vault-mvp.md`, step 3: *"fetch one country subset and compute the coverage of their `open_records.law` edge"* | **Not possible as described.** `open_records` is absent from every bulk surface — country subsets, state slices and full-depth indexes all carry a compact record without it. Coverage can only be **sampled**, one request per entity, and the pack's plan would have measured nothing. [The measurement was redesigned as a seeded stratified sample with an interval.](/coverage/) {{claim:law-not-in-bulk}} |
+| **C4** | `04__the-site.md` §2, and the vault pack's model | **The records-law corpus is far richer than assumed.** It is sub-national — 254 of 398 rows — and the California record carries structured obligation data, not just a citation. The gap is not "no structure below the law"; it is **no addressable provision, and no edge from the entity**. That is a narrower and more defensible finding. {{claim:cpra-in-corpus}} |
+| **C5** | `03__vault-mvp.md`, step 5: Akoma Ntoso for legislative text | **No Akoma Ntoso exists for the CPRA.** Both source URLs serve JSF-rendered HTML. The `akn:` identifier in the graph is therefore *minted by us following the naming convention*, not retrieved, and is marked `inferred` for exactly that reason. Acceptance test 3 is recorded as unpassable for this instrument rather than weakened. {{claim:cpra-no-akn}} |
+| **C6** | `03__vault-mvp.md`, step 2, retrieval 8: `/v1/cgj/counties/{code}.json` with an entity slug | **Two identifier schemes in one API.** The CGJ corpus is keyed by bare county code (`santa-barbara`), the entity API by slug (`us--ca--santa-barbara`). The pack's URL 404s. Logged as a failure rather than silently corrected |
+| **C7** | `01__what-is-already-built.md`, blocker B2 | **B2 closes by registering, not by paying.** An API key is free. The pack treats the gated corpora as a commercial unknown; they are a registration decision, and therefore [a relationship decision](/disclosures/) |
+
+## What is still open
+
+The handback list — what a human with access must decide, kept short enough for one sitting.
+
+| # | Item |
+|---|---|
+| 1 | **The vault write key.** Handed over out of band. It must never enter this repository, and [the scan that enforces that is wired](/vault/) |
+| 2 | **Register for a free UnGovr API key?** Blocker B2. The AI-laws corpus is the highest-value unread thing here. Free, but it is a relationship with a nonprofit nobody has spoken to |
+| 3 | **Default branch.** `dev`, confirmed from the sibling repository's `origin/HEAD`. CI deploys from it |
+| 4 | **May a `dev.send.sgraph.ai` vault be linked from a public site?** Or does the vault move to production first — [the link ships on the dev host today](/vault/) |
+| 5 | **When does `ungovr.providers.sgit.ai` get pointed?** It answers 404. The site ships under the project path {{claim:domain-not-pointed}} |
+| 6 | **Does the hub's contract take the open-data-provider correction?** A change to a shared contract, so it is the project lead's call |
+| 7 | **Do we tell UnGovr before publishing?** The licence permits it with attribution. Asking is not required and is probably right |
+| 8 | **Who is the named owner on the acceptance node?** An acceptance without an owner is a note {{claim:acceptance-unowned}} |
+
+==============================================================================
+PAGE /comparison/  —  The comparison matrix
+==============================================================================
+
+---
+title: The comparison matrix
+description: "Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family."
+lead: "Generated at build time from the `patterns:` block on each provider page. Adding a provider is one markdown file; this table follows. That is the contract's own test of itself."
+order: 7
+toc: false
+wide: true
+---
+
+{{comparison}}
+
+## Reading it
+
+**Per product, never per vendor.** A vendor with three products can support three different patterns, and stating a credential rule at vendor level is how a reader ends up putting a spendable key somewhere a read-only one belonged. UnGovr's three rows are bounded by three different things: an IP budget, a free key's daily cap, and a wallet balance.
+
+**`na` is not `no`.** On UnGovr's open surface the pattern question dissolves rather than being answered negatively — there is no credential for a pattern to be about. That is a different fact from "this provider does not support pattern 2", and the matrix distinguishes them.
+
+**This site contributes one row shape the family did not have**: a provider where pattern 0 is correct. [The argument for admitting it is on the patterns page.](/patterns/)
+
+==============================================================================
+PAGE /coverage/  —  The coverage measurement, and the query that produced it
+==============================================================================
+
+---
+title: The coverage measurement, and the query that produced it
+description: "Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates."
+lead: "A number without its query is an assertion, and this site exists to argue the opposite. So both computations are here with the exact question, the seed, the sampling frame, the byte hashes of the frames, and the date they were run."
+order: 2
+toc: true
+provenance:
+  vault: dkeclt5r
+  date: 9 September 2026
+  note: "Both computations were run in this session against bytes retrieved in this session."
+---
+
+## Computation 1 — the edge they publish
+
+**The question.** Of UnGovr's entities, how many carry a non-empty `open_records.law`?
+
+**Before the number, the framing, because the number is easy to misread.** A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The result below measures how far the join can currently reach. It is **not a defect count**, and there is a build check that refuses to publish the figure on any page that omits this paragraph.
+
+{{coverage}}
+
+### Why this is a sample and not a census
+
+`open_records` appears in exactly one place in the API: the per-entity detail document, one HTTP request per entity. It is absent from every bulk surface — UnGovr's own OpenAPI describes the full-depth index as *"a compact record ({slug, name, type, parent_slug?, population?})"*. {{claim:law-not-in-bulk}}
+
+So a census of 327,138 entities is 327,138 requests, against a free tier of 100 a day: **about 9 years, or $327.14 metered.** {{claim:census-cost}} Nobody on the open tier can compute this number exactly, including us. What can be done honestly is a stratified random sample with a published seed and an interval — which is what is above.
+
+### What would make this wrong
+
+- **If UnGovr already publish this figure**, then computation 1 is not new and the honest response is to cite theirs and check it. No such figure was found on their published pages on 9 September 2026; if one exists, this section is the one to correct.
+- **If the sample missed a populated stratum.** 49 draws across five strata cannot rule out pockets of coverage; the 95% interval says so — the true rate could be anything up to 7.3%. It cannot be *high*, which is the only thing this measurement needs to establish.
+- **If `open_records` is populated on entity types not sampled.** Seventeen types were drawn, including states, counties, cities, school and special districts, utilities and ministries. A type not in that list is not covered by this claim.
+
+## Computation 2 — the edge we would have to infer
+
+The first computation measures how far the join falls short. This one measures **how far it would reach if we drew it ourselves** — and, more importantly, where drawing it would be wrong.
+
+{{inferred}}
+
+### The rule, in full
+
+An entity slug is a path: `us/ca/santa-barbara/spd/goleta-west-sanitary-district`. A law in the records corpus is keyed by a jurisdiction that is a path of the same shape: `us`, `us/ca`, `ar/b`, `mx/baja-california`. So for each entity, take the **longest law jurisdiction that is a path-prefix of its slug**.
+
+```
+us/ca/santa-barbara/spd/goleta-west-sanitary-district
+us/ca/santa-barbara
+us/ca                 <- longest match: California Public Records Act
+us                    (Freedom of Information Act — the shorter, wrong answer)
+```
+
+**This is not a claim UnGovr make.** They publish the entities and they publish the laws; they do not join them. Every edge the rule produces is `inferred`, and [the graph draws it that way](/join/) everywhere it appears. Rendered as an assertion it would be a lie about the source.
+
+### Where the rule breaks, which is the point
+
+Slug hierarchy is **geography**. Records law is **jurisdiction**. They coincide for general-purpose local government and they come apart for exactly the bodies a requester most often wants:
+
+| Body | Why geography gives the wrong law |
+|---|---|
+| Interstate compacts | Governed by their compact and by member-state law, not by where they sit |
+| Federal categories and agencies | Federal FOIA applies, whatever state the building is in |
+| Tribal nations | Sovereign. Neither state nor federal records law simply applies |
+| Regulated utilities | Often private bodies with statutory duties, not public agencies |
+| Charter schools | Chartered under their own act, with varying records obligations |
+
+That is the 20.5%. {{claim:inferred-suspect}} It is why the edge carries an assertion class rather than being silently added, and it is the whole reason the vault has assertion classes at all.
+
+## Reproducing both
+
+```bash
+# the frames, hashed as they land — the raw bytes, unmodified
+./fetch.sh https://data.ungovr.org/v1/entities/us/ca/all.json    data/raw/entities-us-ca-all.json
+./fetch.sh https://data.ungovr.org/v1/laws/records/index.json    data/raw/laws-records-index.json
+
+python3 bin/coverage-sample.py --plan   # print the sample, fetch nothing
+python3 bin/coverage-sample.py --run    # 49 requests, writes data/computation-1.json
+python3 bin/inferred-join.py            # local only, writes data/computation-2.json
+```
+
+Both scripts are [downloadable](/examples/) and both are the originals. The seed is `20260909` and the frames are pinned by sha256 in [the retrieval log](/retrievals/), so the same run selects the same entities — which is acceptance test 7, and the reason to build any of this.
+
+==============================================================================
+PAGE /disclosures/  —  Disclosures
+==============================================================================
+
+---
+title: Disclosures
+description: "No commercial relationship, no funding, no agreement, and no conversation. Checked 9 September 2026, and published before there was anything to disclose."
+lead: "The short version: **there is nothing to disclose**, and this page exists so that its later existence would not be evidence that something appeared."
+order: 10
+toc: false
+---
+
+## The relationship
+
+**None, of any kind.** {{claim:no-conversation}}
+
+| | |
+|---|---|
+| Commercial relationship | None |
+| Funding, credits, grants or programme | None |
+| Agreement, contract or NDA | None |
+| Data licence | **CC BY 4.0**, the public one. The same terms as anybody |
+| Conversation with UnGovr | **None has taken place** |
+| Checked | 9 September 2026 |
+
+## Why the last row matters most
+
+No money is the easy part. **The load-bearing disclosure is that nobody has spoken to them.**
+
+Everything on this site about what UnGovr intend, need, or would want is **inference from what they publish**. Where a page says the cross-references would be cheap to expose, or that putting `open_records` in the bulk files is the single cheapest improvement to their surface, that is our reading of their published data and nothing more. They may have reasons we cannot see. They have not been asked.
+
+**Whether to tell them before publishing is [handback item 7](/briefs/).** The licence permits this with attribution and asking is not required — and asking is probably right.
+
+## What this site is not
+
+It is not an audit. UnGovr publish a public good under CC BY 4.0 and work from outside government, which is this estate's own position in their words. **A page that reads as a nonprofit being audited by a stranger has failed**, and there is a build check that refuses the vocabulary that would do it.
+
+It is not a critique of the model. [The missing edge is exactly right for their stated purpose](/#what-the-atlas-is-before-anything-else), which is helping a person reach their government. It is one hop short of what everybody downstream needs, which is a different thing.
+
+## One word this site does not use
+
+There is a word for a commercial alliance, beginning with "p", that vendor pages reach for
+constantly. It appears nowhere on this site about UnGovr, and a build check enforces its
+absence. **A report is not a relationship**, and borrowing the vocabulary of one is how a
+reader ends up believing in a connection that does not exist.
+
+## Trademarks and attribution
+
+"UnGovr" identifies the API this site reports on. All trademarks belong to their owners. UnGovr's Atlas and law corpus are used under **CC BY 4.0**, with attribution to UnGovr. {{claim:licence-ccby}} This site's prose is published under the same licence; the code that builds it is Apache-2.0.
+
+==============================================================================
+PAGE /examples/  —  The minimal working examples — as files
+==============================================================================
+
+---
+title: The minimal working examples — as files
+description: "The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals."
+lead: "§6 of the contract asks for the smallest thing that runs, **as a file rather than a snippet**. These are those files, and they are the ones that were actually run — the retrieval log and both computations are their output."
+order: 8
+toc: false
+---
+
+{{examples}}
+
+## Running them
+
+```bash
+# 1. prove the API answers, with no credential at all
+./00-smoke.sh
+
+# 2. the worked example's four retrievals, hashed as they land
+./santa-barbara.sh
+
+# 3. computation 1 — 49 requests, a fixed seed, an interval
+python3 coverage-sample.py --plan     # print the sample, fetch nothing
+python3 coverage-sample.py --run
+
+# 4. computation 2 — local only, no requests
+python3 inferred-join.py
+```
+
+`fetch.sh` is the one the others lean on, and it is four lines of actual work. Its whole discipline is the ordering: **write the raw bytes, hash those bytes, log the row, and only then let anything parse it.**
+
+## What they will cost you
+
+Nothing, if you stay inside the free tier. `00-smoke.sh` is 2 requests, `santa-barbara.sh` is 4, and `coverage-sample.py --run` is 49. The entity tier is **100 a day per IP**. {{claim:rate-limits}} The sampler stops itself on a `402` rather than spending anything, because a script that quietly starts billing is a bad script.
+
+Everything they fetch is UnGovr's, and it is used under **CC BY 4.0** with attribution. {{claim:licence-ccby}}
+
+==============================================================================
+PAGE /join/  —  The seven-step join — one entity, one clause, one acceptance
+==============================================================================
+
+---
+title: The seven-step join — one entity, one clause, one acceptance
+description: "Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge."
+lead: "One county. One law. One acceptance. And a refusal to widen it — because one instrument modelled properly beats forty sketched, and a vault that tries to be a complete ontology of government ships nothing."
+order: 4
+toc: true
+wide: true
+provenance:
+  vault: dkeclt5r
+  date: 9 September 2026
+  note: "The join was built in this session from bytes retrieved in this session."
+---
+
+## How to read it
+
+Two things are being said about every node, and they are different questions:
+
+- **Origin** — whose claim is this? `ung:` is transcribed from UnGovr and **never edited, corrected, enriched or re-typed**. `akn:` is the instrument. `sg:` is our model.
+- **Assertion class** — how strongly is it held? `asserted` or `inferred`.
+
+**Origin is carried by border and shape; assertion class by colour.** Hue is already spent on the second, so the first cannot also use it. Merging them would lose both, and a reader checking this work should check that separation first.
+
+{{join}}
+
+## The three rules that are the argument
+
+**The county was resolved, not guessed.** `us/ca/santa-barbara` came out of `/v1/entities/us/ca.json` rather than out of anybody's memory, which is what closed blocker B4. {{claim:sb-slug}}
+
+**Attach, never mutate.** No `ung:` node is edited. The entity above is exactly the bytes UnGovr served, and the things we have to say about it hang off it rather than being written into it. That is what makes the compiled artefact checkable against the retrieved JSON it came from.
+
+**`sg:resolvesTo` is inferred, not asserted.** It is the only edge crossing from their data into our model and it is the most important claim in the demonstration. **UnGovr did not make it.** [The rule that produces it, and the 20.5% of cases where it would be wrong, are measured on the coverage page.](/coverage/)
+
+**The default evidence tier is the weakest one.** The evidence node above is `unevidenced`, and it stays that way, because nobody has observed Santa Barbara County's determinations against the control. That is a statement about **our** observation, not about the county's compliance.
+
+## Two vocabularies, and why they must not merge
+
+This is the thing a reader is most likely to get wrong, so it is stated rather than left implicit.
+
+| | The vault's states | This site's states |
+|---|---|---|
+| Answer the question | *How well is this subject's compliance observed?* | *How well does this site know what it says?* |
+| Values | `unevidenced`, `asserted`, `documented`, `manually-checked`, `programmatic-out-of-band`, `programmatic-inline` | `verified`, `measured`, `docs`, `spec`, `unrun`, `projected` |
+| Default | `unevidenced` | nothing ships without one |
+
+**A vault node's evidence tier is never rendered as a site claim state.** If it were, a reader would see `unevidenced` on the evidence node and conclude that *this site does not know something*. It means **the county has not been observed**. The two vocabularies are [crosswalked in the brief](/briefs/), not merged.
+
+## What is out of this MVP, said here rather than left to be noticed
+
+- **The full fractal zoom** to sentence level — zoom into an entity, a law and a provision and have each expand under identical rules. Specified, not built. {{claim:vault-viewer-mvp}}
+- **The document viewer opening a byte range** in the instrument's own source. Blocked by something real: [there is no machine-readable CPRA to open](/#9-what-went-wrong). {{claim:cpra-no-akn}}
+- **The remaining six computations.** Two are done.
+- **A named owner on the acceptance node.** It ships open. {{claim:acceptance-unowned}}
+
+==============================================================================
+PAGE /ledger/  —  The claim ledger — every claim, with the state it earned
+==============================================================================
+
+---
+title: The claim ledger — every claim, with the state it earned
+description: "Every factual claim this site makes, once, with its verification state, the date it earned it, and where it is said. A claim on a page and not in this table fails the build."
+lead: "Six states, and the default is the weakest one. **The join is the enforcement**: a claim that appears on a page and not in this table fails the build, and a `docs` claim whose source is not a URL fails it too."
+order: 9
+toc: true
+wide: true
+---
+
+{{ledger}}
+
+## How to read the states
+
+| Chip | Means | What you may do with it |
+|---|---|---|
+| `verified` | Somebody ran it and watched it work, on that date, in a named place | Treat as fact **for that date and that setup**. Read it narrowly |
+| `measured` | Our own pipeline produced this number on a named workload | Treat as fact about *our* workload; yours will differ |
+| `docs` | Read in the vendor's documentation on that date; never executed by us | The honest debt. Check it against the vendor before relying on it |
+| `spec` | A written specification for something that does not exist | **Never plan around it. Future tense only** |
+| `unrun` | Code we wrote and have never executed | The invitation. Run it and find out |
+| `projected` | Arithmetic, with its workings shown | Re-do it with your own numbers |
+
+**Read `verified` narrowly.** On this site it mostly means *one container, one afternoon, one IP address, on 9 September 2026*. The API is live and rebuilds nightly; several of these claims have a shelf life measured in weeks.
+
+**The one state this site never uses about UnGovr's compliance with anything** is any of the vault's six. [Those are a different vocabulary answering a different question](/join/), and merging them would lose both.
+
+## What is honestly thin
+
+- **`docs` claims about the payment path.** No `402` was ever returned here, so everything about the wallet, the price and the challenge headers is read rather than run. It is the largest block of unexercised claims on the site.
+- **The gated corpora are unread.** Blocker B2. The AI-laws corpus is the highest-value unknown in this project and a key for it is free.
+- **One number is a sample, not a census**, and [says so with an interval](/coverage/).
+
+==============================================================================
+PAGE /patterns/  —  The four credential patterns, and why an open-data provider is a new row
+==============================================================================
+
+---
+title: The four credential patterns, and why an open-data provider is a new row
+description: "Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family's own definition, and the argument is here."
+lead: "The four patterns are about one question: **where does the credential live, and what bounds it?** UnGovr answer it in a way no model provider in this family can — for most of their surface, by not having one."
+order: 6
+toc: true
+---
+
+## The four patterns
+
+| | | For UnGovr |
+|---|---|---|
+| **Pattern 0** | Key in the page | **Not applicable to the open surface — there is no key.** For the gated corpora, a free read-only key with a daily cap: the first `yes` in this matrix that is not a warning |
+| **Pattern 1** | Bounded key in the page | The bound on the open surface is **per IP, not per key**. No per-key scoping is documented for the gated one |
+| **Pattern 2** | Short-lived token, from a minter | No minter offered |
+| **Pattern 3** | **The host holds the key** and enforces the terms. The app never sees it | Unnecessary for reads at this risk level. **Necessary before anything spends from the wallet** |
+
+## Why this needed an argument
+
+This family defines *provider* as a service that serves models over an API. UnGovr serve data. **By the letter of that definition they do not belong here**, and writing the nine sections as though they were a model vendor would have produced nine sections answering the wrong questions well.
+
+The resolution is that the definition was a proxy for the real question. The family's actual question is *where does the credential live and what bounds it*, and a provider that answers **"there is no credential, and the bound is your IP address"** is not an exception to that question — it is the most informative possible answer to it.
+
+**Three rows in the comparison matrix are genuinely new because of it:**
+
+| Section | A model provider's answer | UnGovr's |
+|---|---|---|
+| Which pattern | Pattern 0 is a mistake; pattern 3 is the goal | **Pattern 0 is the intended mode.** There is nothing to leak |
+| The bounding primitive | A key scope, or a plan quota | **A rate limit per IP, then HTTP 402 with a payment challenge.** The bound is a *payment protocol*, not a property of a key |
+| What it cost | Dollars on a named workload | **Nothing**, inside 100 requests a day |
+
+**So the extension is deliberate, stated, and argued rather than quietly assumed.** It is [filed as a correction against the hub's contract](/briefs/) — beside it, not as an edit to it. The contract's own closing rule is that if adding a member requires template surgery then the contract is wrong and the fix belongs in the contract; the same logic covers a definition that a legitimate new member does not fit.
+
+**Whether the contract takes that correction is not this site's decision.** It is a change to a shared contract, so it is [handback item 6](/briefs/).
+
+## What pattern three would be for, here
+
+Not for reads. Reading the Atlas needs no credential, and building a key-holding host in front of an open endpoint would add a dependency and remove nothing.
+
+**It is for the wallet.** The Machine Payments path is the one place on this surface with an irreversible verb, and the only documented bound on it is the balance. A funded wallet reaching a browser is pattern 0 applied to money. {{claim:machine-payments}} If this estate ever pays UnGovr per request, the credential goes behind a host that enforces a per-workload ceiling — because the platform does not document one.
+
+==============================================================================
+PAGE /retrievals/  —  The retrieval log — every fetch, including the failures
+==============================================================================
+
+---
+title: The retrieval log — every fetch, including the failures
+description: "Twenty-one named retrievals plus a 49-request sample, each with the sha256 of the response bytes, the UTC timestamp and the outcome. The refusals are rows, not absences."
+lead: "The rule: write the raw response bytes to disk unmodified, hash **those** bytes, and log before parsing anything. A node that cannot name the bytes it came from is an assertion, not a retrieval."
+order: 3
+toc: false
+wide: true
+---
+
+Every number on this site derives from these bytes. Nothing on any page here is fetched at read time — the site makes no network call at all — so this log is the only thing standing between a published figure and an unsupported one.
+
+{{retrievals}}
+
+## The failures, and why they are rows
+
+Three responses here are not `200`, and they are the useful ones.
+
+| Row | What it means |
+|---|---|
+| `404` on `/v1/laws/records/us/ca.json` | The path separator in the law corpus is `--`, not `/` — the same convention the entity detail endpoint uses. A guess, logged as a guess, then corrected to `us--ca.json` |
+| `404` on `/v1/cgj/counties/us--ca--santa-barbara.json` | The CGJ corpus is keyed by bare county code (`santa-barbara`), not by entity slug. Two identifier schemes for the same county, in one API |
+| `401` on `/v1/ai-laws/index.json` | Blocker **B2**, still open. The corpus needs a key, and [the key is free](/#4-where-the-key-goes) — so this closes by registering, not by paying {{claim:ai-laws-gated}} |
+
+Recording a refusal as an entry rather than leaving it as an absence is the point: a reader can see what was tried, what was declined, and that a shortcut existed and was not taken.
+
+## The 49-request sample
+
+The coverage sample's per-request log is not inlined above — 49 near-identical detail fetches would drown the page — but it is complete and downloadable:
+
+- [`computation-1-sample-retrievals.tsv`](/files/computation-1-sample-retrievals.tsv) — timestamp, status, sha256 and URL for all 49
+
+## What is not here
+
+**The one retrieval this session declined to make.** UnGovr's `/v1/ai-laws/*` corpus is the highest-value unread thing in this project, and it is gated by a key that is free to register for. No key was registered, because registering one is a relationship with a nonprofit that [nobody has spoken to yet](/disclosures/), and that is a decision for a human rather than a build step. It is [handback item 2](/briefs/).
+
+==============================================================================
+PAGE /vault/  —  The government-graph vault — open it read-only
+==============================================================================
+
+---
+title: The government-graph vault — open it read-only
+description: "The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is."
+lead: "The vault is the workload in [§7](/#7-what-we-use-it-for). It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published **before** any of it was built. You can open it read-only, right now, and it will ask you for nothing."
+order: 5
+toc: true
+provenance:
+  vault: dkeclt5r
+  date: 9 September 2026
+  note: "The vault's own pack is published raw under /briefs/."
+---
+
+## Open it
+
+<div class="card-open">
+<p class="small dim">SG/Send vault &middot; read-only &middot; asks for no permissions</p>
+<h3>government-graph <code>dkeclt5r</code></h3>
+<p>Opens in the SG/Send browser with the read key already in the URL fragment. Nothing to install, nothing to sign in to, nothing to accept.</p>
+<p class="mono breakall"><a href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener">dev.vault.sgraph.ai/en-gb/#sgit_private_read_&hellip;:dkeclt5r</a></p>
+</div>
+
+Or with the CLI:
+
+```bash
+pip3 install sgit-ai --break-system-packages
+sgit clone sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r government-graph
+```
+
+> **This link is on a development host.** `dev.vault.sgraph.ai` is not the production browser, and publishing a `dev.*` URL from a public site is a decision rather than a detail. It ships here because the read key is the whole point of §7 and a link nobody can open is worse than a link on the wrong host — but **moving the vault to production is [handback item 4](/briefs/)**, and this page changes when it moves.
+
+## Why publishing this key is safe, and which key it is
+
+**Two keys exist and only one of them is here.**
+
+| | What it does | Publishable |
+|---|---|---|
+| **Read key** `sgit_private_read_…` | Decrypts and reads. Cannot commit, cannot push, cannot delete | **Yes.** It is how this estate shares a vault — the same way `sgit.ai/llms.txt` does |
+| **Write key** `sgit_private_vault_…` | Everything. Rewrites history | **Never** |
+
+The write key for this vault was handed over out of band and **is not in this repository, in any form**. That is not a promise, it is a check: `tools/secret-scan.sh` runs over the whole tree *including the built output in `docs/`*, on every push and every pull request, and refuses the release on a match. It deliberately does not match `sgit_private_read_…`, and `tools/check_site.py` carries the same tripwire a second time against the `passphrase:uuid` shape an sgit key can also take.
+
+**This is the check the brief singled out as the one most likely to bite whoever built this site.** It is wired first, before any content, for that reason.
+
+## What the vault holds
+
+```
+  pack/          the specification — 7 files, published as the FIRST commit,
+                 before any implementation existed. That ordering is the
+                 vault's own acceptance test 13, and the only one that
+                 passed before this session
+  team/          four agentic roles and the single-writer rule
+  data/raw/      the retrieved bytes, unmodified, so the compiled artefacts
+                 are checkable against what they came from
+  data/          the compiled artefacts: the graph, both computations
+  provenance/    the retrieval log, including the failures
+  catalogue/     the catalogue submission
+  corrections/   ships empty, on purpose
+  review/        ships empty
+```
+
+**The pack was published before the work, and the history proves it.** That is the strongest demonstration the method has: a design that could be checked against the thing it specified, before the thing existed. This session's commits sit on top of it and do not disturb it.
+
+The pack is also [published raw on this site](/briefs/), because a site arguing for published provenance that hides its own inputs has refuted itself.
+
+## What this site copies, and what it links
+
+**Copied.** The compiled artefacts — `graph.json`, `computation-1.json`, `computation-2.json`, the retrieval log — are copied into this repository at build time and rendered as part of the site. Every table on [the coverage page](/coverage/) and [the join page](/join/) is static HTML built from them. **No page here fetches anything**, which is a build rule, not a preference.
+
+**Linked, never embedded.** The vault itself is a link. An iframe pulling another host into the page is exactly what the no-third-party rule exists to prevent, and it would break the site with JavaScript off. `tools/check_site.py` refuses an `<iframe>` anywhere in the built output.
+
+**The copy is stale the moment the vault moves ahead.** The page says which vault commit it reports on rather than guessing, and that is the honest resolution rather than a fixed one.
+
+## The thirteen acceptance tests
+
+They live in the vault, at `pack/06__verification.md`, and they are its property rather than this site's — this session moved their states and did not rewrite the tests.
+
+| | |
+|---|---|
+| Passing before this session | **1 of 13** — the pack was in the vault as its first commit |
+| Should pass after this MVP | **7 of 13** |
+| Honestly out of MVP scope | **4** — fractal zoom, byte-range document viewer, and two others |
+| Cannot pass as written | **1** — test 3, rebuild the instrument byte for byte. [There is no machine-readable CPRA to rebuild from.](/#9-what-went-wrong) Recorded as unpassable rather than weakened {{claim:cpra-no-akn}} |
+
+**A vault claiming thirteen of thirteen after one session has stopped measuring and started asserting.**
+
+==============================================================================
+PAGE /versions/  —  Release history
+==============================================================================
+
+---
+title: Release history
+description: "Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it."
+lead: "`admin/build/version.txt` owns the version. `bin/bump.py` moves it and adds the row below. The release commit's subject repeats it, and **CI refuses to tag if the two disagree** — which is how a site avoids shipping two versions of itself."
+order: 12
+toc: false
+---
+
+<div class="tablewrap"><table class="releases">
+<thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
+<tbody>
+<!-- releases -->
+    <tr><td class="vnum">v0.1.0</td><td>2026-09-09</td><td>First release. All nine contract sections; the coverage measurement and the inferred-join computation with their queries; the seven-step join; the retrieval log; the vault linked by read key.</td></tr>
+</tbody>
+</table></div>
+
+## The pipeline
+
+**validate → tag → deploy**, in that order, a failure at any stage stopping the release.
+
+| Stage | What it does |
+|---|---|
+| **validate** | The build is reproducible against `content/`; the version agrees everywhere; internal links resolve; every canonical is on the host in `CNAME`; **the key-shape scan is clean over the whole tree including `docs/`**; every claim is cited and dated; all nine sections are present and in order |
+| **tag** | Reads `admin/build/version.txt`, finds the commit whose subject carries the same version, refuses if they disagree or if the bump was not the next minor, then tags it |
+| **deploy** | Rebuilds from `content/` and publishes `docs/`. Never when validation failed, never from a pull request |
+
+It also runs on pull requests, so branch work is gated before it reaches the release branch.

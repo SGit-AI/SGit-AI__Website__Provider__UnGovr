@@ -1,0 +1,61 @@
+---
+title: The briefs, published raw
+description: "Every brief this site and its vault were built from, published unedited, with a decision-by-decision account of what was accepted, modified and rejected."
+lead: "A site arguing for published provenance that hides its own inputs has refuted itself. So both packs are here, raw and unedited — including the parts this session found to be wrong."
+order: 11
+toc: true
+---
+
+## The two packs
+
+| Pack | What it is |
+|---|---|
+| [`2026-09-09__pack__ungovr-site-and-vault/`](/briefs/2026-09-09__pack__ungovr-site-and-vault/00__START-HERE.md) | The brief for this session: the two deliverables, the house pattern, the vault MVP, the site, and the acceptance tests for both |
+| [`2026-09-09__vault__government-graph-pack/`](/briefs/2026-09-09__vault__government-graph-pack/00__README.md) | The vault's own specification, **published as the vault's first commit before any implementation existed** |
+
+Both are CC BY 4.0. Neither has been edited to match what was built.
+
+## What was accepted
+
+- **The scope discipline.** One county, one law, one acceptance, and a refusal to widen it.
+- **The two-edge rule** — nodes derived from their data visibly distinct from nodes that are our model, with origin and assertion class carried by different visual channels.
+- **Retrieve, hash, log, then parse.** Every row of [the retrieval log](/retrievals/) follows it.
+- **Ship the site at v0.1.0 with all nine sections**, several honestly thin, rather than waiting.
+- **Do not substitute a lossy path.** Not needed — [egress worked](/retrievals/) — but the precedent was inherited and would have been followed.
+
+## What was modified
+
+**The framing of the finding.** The pack anticipated a low-but-nonzero coverage number and a gap to be described. The measurement is `0 of 49`, and a bare zero reads as an accusation. So the site leads with what the Atlas is, states the zero **with its interval and its framing sentence**, and pairs it immediately with the 96.6% that says the gap is one derivable hop. There is a build check that refuses to let the number appear on any page without the sentence that says it is **not a defect count**.
+
+**The `spec`/`unrun` expectation.** The pack predicted a ledger that would be mostly `spec` and `unrun`, on the assumption that egress would stay blocked. Egress worked, so most of the ledger is `verified` and `measured` instead. The example files are `verified` rather than `unrun` because they are the scripts that produced the numbers, not illustrations of them.
+
+## What was rejected, or found wrong
+
+**These are corrections filed against the packs, beside them rather than as edits to them** — the house rule, and the third and fourth such corrections on this project.
+
+| # | Against | Correction |
+|---|---|---|
+| **C3** | `03__vault-mvp.md`, step 3: *"fetch one country subset and compute the coverage of their `open_records.law` edge"* | **Not possible as described.** `open_records` is absent from every bulk surface — country subsets, state slices and full-depth indexes all carry a compact record without it. Coverage can only be **sampled**, one request per entity, and the pack's plan would have measured nothing. [The measurement was redesigned as a seeded stratified sample with an interval.](/coverage/) {{claim:law-not-in-bulk}} |
+| **C4** | `04__the-site.md` §2, and the vault pack's model | **The records-law corpus is far richer than assumed.** It is sub-national — 254 of 398 rows — and the California record carries structured obligation data, not just a citation. The gap is not "no structure below the law"; it is **no addressable provision, and no edge from the entity**. That is a narrower and more defensible finding. {{claim:cpra-in-corpus}} |
+| **C5** | `03__vault-mvp.md`, step 5: Akoma Ntoso for legislative text | **No Akoma Ntoso exists for the CPRA.** Both source URLs serve JSF-rendered HTML. The `akn:` identifier in the graph is therefore *minted by us following the naming convention*, not retrieved, and is marked `inferred` for exactly that reason. Acceptance test 3 is recorded as unpassable for this instrument rather than weakened. {{claim:cpra-no-akn}} |
+| **C6** | `03__vault-mvp.md`, step 2, retrieval 8: `/v1/cgj/counties/{code}.json` with an entity slug | **Two identifier schemes in one API.** The CGJ corpus is keyed by bare county code (`santa-barbara`), the entity API by slug (`us--ca--santa-barbara`). The pack's URL 404s. Logged as a failure rather than silently corrected |
+| **C7** | `01__what-is-already-built.md`, blocker B2 | **B2 closes by registering, not by paying.** An API key is free. The pack treats the gated corpora as a commercial unknown; they are a registration decision, and therefore [a relationship decision](/disclosures/) |
+
+## What is still open
+
+The handback list — what a human with access must decide, kept short enough for one sitting.
+
+| # | Item |
+|---|---|
+| 1 | **The vault write key.** Handed over out of band. It must never enter this repository, and [the scan that enforces that is wired](/vault/) |
+| 2 | **Register for a free UnGovr API key?** Blocker B2. The AI-laws corpus is the highest-value unread thing here. Free, but it is a relationship with a nonprofit nobody has spoken to |
+| 3 | **Default branch.** `dev`, confirmed from the sibling repository's `origin/HEAD`. CI deploys from it |
+| 4 | **May a `dev.send.sgraph.ai` vault be linked from a public site?** Or does the vault move to production first — [the link ships on the dev host today](/vault/) |
+| 5 | **When does `ungovr.providers.sgit.ai` get pointed?** It answers 404. The site ships under the project path {{claim:domain-not-pointed}} |
+| 6 | **Does the hub's contract take the open-data-provider correction?** A change to a shared contract, so it is the project lead's call |
+| 7 | **Do we tell UnGovr before publishing?** The licence permits it with attribution. Asking is not required and is probably right |
+| 8 | **Who is the named owner on the acceptance node?** An acceptance without an owner is a note {{claim:acceptance-unowned}} |
+
+---
+
+This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).

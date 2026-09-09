@@ -1,0 +1,34 @@
+# ungovr.providers.sgit.ai
+> site v0.1.0
+
+> An independent report on the UnGovr Open Data API — 327,138 government entities and 398
+> open-records laws, published free under CC BY 4.0. This report measures one thing: how far
+> the join from an entity to the records law that governs it can currently reach.
+> Not affiliated with, endorsed by, or sponsored by UnGovr.
+
+The headline measurement: `open_records.law` is declared in UnGovr's published schema as an
+optional property of the entity-detail document, and it was present on 0 of 49 entities in a
+seeded random sample across 5 strata and 3 countries on 9 September 2026. A missing law
+reference is not an error — it is an entity whose records law has not been mapped yet. The
+number measures how far the join can reach. It is not a defect count.
+
+Every factual claim on this site carries one of six states: verified, measured, vendor docs,
+specified-not-shipped, written-not-run, projected. The full list is at /ledger/.
+Every page is also served as markdown at <page>/index.md.
+Every number was computed at the command line against bytes whose sha256 is published at
+/retrievals/. No page on this site makes a network call.
+Licence: This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## Pages
+- [UnGovr — the open-data provider, and the one edge that stops short](https://ungovr.providers.sgit.ai/): An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 — and a join between them that is one derivable hop away.
+- [The briefs, published raw](https://ungovr.providers.sgit.ai/briefs/): Every brief this site and its vault were built from, published unedited, with a decision-by-decision account of what was accepted, modified and rejected.
+- [The comparison matrix](https://ungovr.providers.sgit.ai/comparison/): Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family.
+- [The coverage measurement, and the query that produced it](https://ungovr.providers.sgit.ai/coverage/): Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.
+- [Disclosures](https://ungovr.providers.sgit.ai/disclosures/): No commercial relationship, no funding, no agreement, and no conversation. Checked 9 September 2026, and published before there was anything to disclose.
+- [The minimal working examples — as files](https://ungovr.providers.sgit.ai/examples/): The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.
+- [The seven-step join — one entity, one clause, one acceptance](https://ungovr.providers.sgit.ai/join/): Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge.
+- [The claim ledger — every claim, with the state it earned](https://ungovr.providers.sgit.ai/ledger/): Every factual claim this site makes, once, with its verification state, the date it earned it, and where it is said. A claim on a page and not in this table fails the build.
+- [The four credential patterns, and why an open-data provider is a new row](https://ungovr.providers.sgit.ai/patterns/): Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family's own definition, and the argument is here.
+- [The retrieval log — every fetch, including the failures](https://ungovr.providers.sgit.ai/retrievals/): Twenty-one named retrievals plus a 49-request sample, each with the sha256 of the response bytes, the UTC timestamp and the outcome. The refusals are rows, not absences.
+- [The government-graph vault — open it read-only](https://ungovr.providers.sgit.ai/vault/): The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.
+- [Release history](https://ungovr.providers.sgit.ai/versions/): Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it.

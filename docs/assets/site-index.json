@@ -1,0 +1,348 @@
+{
+ "version": "v0.1.0",
+ "domain": "ungovr.providers.sgit.ai",
+ "vault": "dkeclt5r",
+ "licence": "CC BY 4.0",
+ "pages": [
+  {
+   "url": "/",
+   "title": "UnGovr \u2014 the open-data provider, and the one edge that stops short",
+   "description": "An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 \u2014 and a join between them that is one derivable hop away.",
+   "lead": "UnGovr publish an Atlas of 327,138 government entities and a corpus of 398 open-records laws, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the providers contract. It is the family's first open-data provider, and admitting one required arguing with the family's own definition of the word \u2014 \u00a73 does that. The finding it exists to report is in \u00a79, and it is one edge long.",
+   "headings": [
+    "What the Atlas is, before anything else",
+    "1 \u00b7 Disclosure",
+    "2 \u00b7 What it grants",
+    "3 \u00b7 Which pattern, per product",
+    "4 \u00b7 Where the key goes",
+    "5 \u00b7 The bounding primitive",
+    "6 \u00b7 The minimal working example",
+    "7 \u00b7 What we use it for",
+    "8 \u00b7 What it cost",
+    "9 \u00b7 What went wrong",
+    "The law edge stops one hop short",
+    "The edge is not in any bulk surface, so nobody can measure it",
+    "Below the law, there is nothing addressable",
+    "The cross-references are described and not exposed",
+    "Small, specific, and probably worth a fix",
+    "No public repository, so no corrections path",
+    "And one that was ours, not theirs",
+    "What this report does not claim"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/briefs/",
+   "title": "The briefs, published raw",
+   "description": "Every brief this site and its vault were built from, published unedited, with a decision-by-decision account of what was accepted, modified and rejected.",
+   "lead": "A site arguing for published provenance that hides its own inputs has refuted itself. So both packs are here, raw and unedited \u2014 including the parts this session found to be wrong.",
+   "headings": [
+    "The two packs",
+    "What was accepted",
+    "What was modified",
+    "What was rejected, or found wrong",
+    "What is still open"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/comparison/",
+   "title": "The comparison matrix",
+   "description": "Which of the four credential patterns each provider supports and which it forbids, per product. Generated from the patterns: front-matter of every provider page in this family.",
+   "lead": "Generated at build time from the patterns: block on each provider page. Adding a provider is one markdown file; this table follows. That is the contract's own test of itself.",
+   "headings": [
+    "Reading it"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/coverage/",
+   "title": "The coverage measurement, and the query that produced it",
+   "description": "Computation 1: 0 of 49 sampled entities carry open_records.law. Computation 2: inferring the same edge by slug prefix reaches 96.6%. Both with their queries, seeds and retrieval dates.",
+   "lead": "A number without its query is an assertion, and this site exists to argue the opposite. So both computations are here with the exact question, the seed, the sampling frame, the byte hashes of the frames, and the date they were run.",
+   "headings": [
+    "Computation 1 \u2014 the edge they publish",
+    "Why this is a sample and not a census",
+    "What would make this wrong",
+    "Computation 2 \u2014 the edge we would have to infer",
+    "The rule, in full",
+    "Where the rule breaks, which is the point",
+    "Reproducing both"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/disclosures/",
+   "title": "Disclosures",
+   "description": "No commercial relationship, no funding, no agreement, and no conversation. Checked 9 September 2026, and published before there was anything to disclose.",
+   "lead": "The short version: there is nothing to disclose, and this page exists so that its later existence would not be evidence that something appeared.",
+   "headings": [
+    "The relationship",
+    "Why the last row matters most",
+    "What this site is not",
+    "One word this site does not use",
+    "Trademarks and attribution"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/examples/",
+   "title": "The minimal working examples \u2014 as files",
+   "description": "The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.",
+   "lead": "\u00a76 of the contract asks for the smallest thing that runs, as a file rather than a snippet. These are those files, and they are the ones that were actually run \u2014 the retrieval log and both computations are their output.",
+   "headings": [
+    "Running them",
+    "What they will cost you"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/join/",
+   "title": "The seven-step join \u2014 one entity, one clause, one acceptance",
+   "description": "Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge.",
+   "lead": "One county. One law. One acceptance. And a refusal to widen it \u2014 because one instrument modelled properly beats forty sketched, and a vault that tries to be a complete ontology of government ships nothing.",
+   "headings": [
+    "How to read it",
+    "The three rules that are the argument",
+    "Two vocabularies, and why they must not merge",
+    "What is out of this MVP, said here rather than left to be noticed"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/ledger/",
+   "title": "The claim ledger \u2014 every claim, with the state it earned",
+   "description": "Every factual claim this site makes, once, with its verification state, the date it earned it, and where it is said. A claim on a page and not in this table fails the build.",
+   "lead": "Six states, and the default is the weakest one. The join is the enforcement: a claim that appears on a page and not in this table fails the build, and a docs claim whose source is not a URL fails it too.",
+   "headings": [
+    "How to read the states",
+    "What is honestly thin"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/patterns/",
+   "title": "The four credential patterns, and why an open-data provider is a new row",
+   "description": "Pattern 0 is a mistake for a model vendor and the intended mode for an open-data API. Adding UnGovr to this family required arguing with the family's own definition, and the argument is here.",
+   "lead": "The four patterns are about one question: where does the credential live, and what bounds it? UnGovr answer it in a way no model provider in this family can \u2014 for most of their surface, by not having one.",
+   "headings": [
+    "The four patterns",
+    "Why this needed an argument",
+    "What pattern three would be for, here"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/retrievals/",
+   "title": "The retrieval log \u2014 every fetch, including the failures",
+   "description": "Twenty-one named retrievals plus a 49-request sample, each with the sha256 of the response bytes, the UTC timestamp and the outcome. The refusals are rows, not absences.",
+   "lead": "The rule: write the raw response bytes to disk unmodified, hash those bytes, and log before parsing anything. A node that cannot name the bytes it came from is an assertion, not a retrieval.",
+   "headings": [
+    "The failures, and why they are rows",
+    "The 49-request sample",
+    "What is not here"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/vault/",
+   "title": "The government-graph vault \u2014 open it read-only",
+   "description": "The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.",
+   "lead": "The vault is the workload in \u00a77. It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published before any of it was built. You can open it read-only, right now, and it will ask you for nothing.",
+   "headings": [
+    "Open it",
+    "Why publishing this key is safe, and which key it is",
+    "What the vault holds",
+    "What this site copies, and what it links",
+    "The thirteen acceptance tests"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/versions/",
+   "title": "Release history",
+   "description": "Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it.",
+   "lead": "admin/build/version.txt owns the version. bin/bump.py moves it and adds the row below. The release commit's subject repeats it, and CI refuses to tag if the two disagree \u2014 which is how a site avoids shipping two versions of itself.",
+   "headings": [
+    "The pipeline"
+   ],
+   "kind": "page"
+  }
+ ],
+ "claims": [
+  {
+   "id": "egress-open",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "data.ungovr.org answers this container. GET /v1/entities/index.json returned 200 with 29,099 bytes at 01:47Z. This closes blocker B1, which the previous session recorded as an egress refusal \u2014 the refusal was our environment's, not theirs, and it is gone."
+  },
+  {
+   "id": "sb-slug",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Santa Barbara County resolves as us/ca/santa-barbara, read from /v1/entities/us/ca.json rather than guessed. This closes blocker B4."
+  },
+  {
+   "id": "schema-declares-law",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "open_records is declared in UnGovr's own published schema as a property of entity_detail, an object with one string member, law. It is not in that definition's required list. The join point is designed and optional."
+  },
+  {
+   "id": "law-not-in-bulk",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "open_records appears in exactly one place in the API \u2014 the per-entity detail document. It is absent from every bulk surface, which UnGovr's own OpenAPI states: the full-depth index is \"a compact record ({slug, name, type, parent_slug?, population?})\". So the coverage of this edge cannot be computed from any bulk artefact by anyone."
+  },
+  {
+   "id": "sb-detail-no-law",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The detail document for Santa Barbara County carries no open_records key at all. Nor does California itself (us/ca), whose records law is in UnGovr's own corpus."
+  },
+  {
+   "id": "cpra-in-corpus",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The records-law corpus is sub-national: 254 of its 398 rows are, and us/ca is the California Public Records Act, Cal. Gov. Code \u00a7\u00a7 7920.000-7931.000. Its full record carries structured obligation data \u2014 initial_response_days: 10, extension_days: 14, private_right_of_action: true, fee rates, submission methods and required elements. This is better than the brief that commissioned this work assumed, and the correction is filed."
+  },
+  {
+   "id": "provision-confirmed",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The vault's pack named Gov. Code \u00a7 7922.535 as a candidate to verify, written from prior knowledge and therefore unevidenced by its own rule. The retrieved bytes carry it: response_deadline_notes cites \u00a7 7922.535(a) for the determination and (b)-(c) for the extension. The candidate is confirmed by the source rather than by memory."
+  },
+  {
+   "id": "provision-not-addressable",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "That citation is prose inside a free-text field, not an addressable node. There is no provisions array, no clause identifiers and no byte ranges, so nothing below the law can be pointed at, cited, or attached to evidence."
+  },
+  {
+   "id": "cpra-no-akn",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The CPRA has no Akoma Ntoso or other XML serialisation to retrieve. Both source URLs in the law record resolve to leginfo.legislature.ca.gov, which serves text/html from a JSF page. This closes blocker B3, and it means acceptance test 3 \u2014 rebuild the instrument byte for byte from the graph \u2014 cannot pass for this instrument. The test is recorded as unpassable here rather than weakened."
+  },
+  {
+   "id": "source-url-mismatch",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The CPRA record's two source URLs point at different codifications: law_url at Division 10, Title 1 (the current \u00a7\u00a7 7920\u20137931) and primary_source_url at Division 7, Chapter 3.5 \u2014 the location the CPRA occupied before the 2023 recodification. One of the two is stale. It is a small, specific, checkable thing they would probably want to know."
+  },
+  {
+   "id": "products-undocumented",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "A products array is returned by 49 of 49 entity-detail documents sampled and appears nowhere in the published JSON Schema. So the schema is behind the API in one direction while open_records is ahead of it in the other. Ordinary drift in a live dataset, recorded as an observation."
+  },
+  {
+   "id": "no-ratelimit-headers",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "X-RateLimit-Limit, X-RateLimit-Remaining and X-Quota-Remaining are advertised in the API's Access-Control-Expose-Headers but were not emitted on any of the 70 open-endpoint responses taken here. A client cannot see how much of its daily budget is left until the budget runs out."
+  },
+  {
+   "id": "head-405",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "HEAD returns 405 where GET returns 200, so a client cannot cheaply size a file before downloading it. GET does return a strong ETag, which is the better tool anyway."
+  },
+  {
+   "id": "ai-laws-gated",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "/v1/ai-laws/index.json answers 401 without a key, and its response advertises two different credential mechanisms: the body says X-API-Key, while the WWW-Authenticate header offers OAuth 2.0 Protected Resource Metadata \u2014 Bearer resource_metadata=\"\u2026/.well-known/oauth-protected-resource\", scope=\"opendata:read\". Blocker B2 stays open, but it is closed by registering, not by paying."
+  },
+  {
+   "id": "coverage-zero",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "0 of 49. In a seeded random sample of 49 entity-detail documents drawn across five strata, three countries and seventeen entity types, not one carried a non-empty open_records.law \u2014 including six US states, whose records laws are in UnGovr's own corpus. 95% Wilson interval 0.0\u20137.3%. A missing law reference is not an error; the number measures how far the join can currently reach and is not a defect count."
+  },
+  {
+   "id": "inferred-reach",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "The same join inferred by slug prefix reaches 96.6% of California's 16,071 entities \u2014 the longest law-corpus jurisdiction that is a path-prefix of the entity slug. The join is one derivable hop away, over data UnGovr already publish, and the rule is two lines long."
+  },
+  {
+   "id": "inferred-suspect",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "20.5% of those matches would need a human. Slug hierarchy is geography; records law is jurisdiction. They come apart for exactly the bodies a requester most often wants \u2014 interstate compacts, federal categories, tribal nations, regulated utilities, charter schools. That is why the edge is drawn inferred and not asserted."
+  },
+  {
+   "id": "entity-count-drift",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "The entity total is 327,138 in /v1/meta/last-updated.json and 327,138+ in the OpenAPI description, against 330,000 / 321,000 / 320,000 quoted on three of their pages earlier. Ordinary for a live dataset that rebuilds. An observation, not a finding, and not a conversation worth having."
+  },
+  {
+   "id": "requests-used",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "The whole of this report cost 70 requests to data.ungovr.org, inside a free tier of 100 entity requests a day. No 402 was ever returned, so the payment path is reported from their documentation rather than from experience."
+  },
+  {
+   "id": "rate-limits",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "Free tier, per their rate-limit table: entity data 100/day per IP; CGJ indices and county listings unlimited; CGJ report detail 50/day per key; conditional revalidation (304) free at up to 5,000 per key per day, past which the API returns 429 with Retry-After."
+  },
+  {
+   "id": "machine-payments",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "Above the free tier the API returns HTTP 402 with a Machine Payments Protocol challenge, paid per request from a Stripe-funded wallet: $0.001 per entity request, $0.01 per CGJ report detail, $5.00 minimum top-up, carried on WWW-Authenticate: Payment / Authorization: Payment headers."
+  },
+  {
+   "id": "api-key-free",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "An API key is free, and most Open Data endpoints need none at all. The key raises rate limits and unlocks the gated corpora. So the bound on the ungated surface is a property of the network path, not of a credential."
+  },
+  {
+   "id": "licence-ccby",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "The Open Data API is published under CC BY 4.0, declared in the OpenAPI document's own license block. Everything this site and its vault derive from it is used under that licence, with attribution."
+  },
+  {
+   "id": "census-cost",
+   "state": "projected",
+   "date": "9 Sep 2026",
+   "claim": "A census of the law edge \u2014 as opposed to the sample above \u2014 is one detail request per entity: 327,138 requests. At the free tier's 100 a day that is 3,271 days, about 9 years. At the metered rate of $0.001 it is $327.14. Re-do the arithmetic with your own numbers; the only input is the entity count."
+  },
+  {
+   "id": "vault-viewer-mvp",
+   "state": "spec",
+   "date": "",
+   "claim": "The vault's full graph viewer \u2014 fractal zoom to sentence level, a document viewer opening a byte range in the instrument's own source, and the remaining six computations \u2014 is specified and not built. What exists is the MVP: the seven-step join, filterable by type, with provenance on every node."
+  },
+  {
+   "id": "acceptance-unowned",
+   "state": "spec",
+   "date": "",
+   "claim": "The acceptance node ships with no named owner, no review interval and no revocation path. An acceptance without an owner is a note. It is left open rather than filled in with a plausible name, and it is handback item 8."
+  },
+  {
+   "id": "domain-not-pointed",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "ungovr.providers.sgit.ai answers 404. This release ships anyway, under the GitHub Pages project path: the canonical URL states the intended host, and every internal link is relative so the site serves correctly from either. The sibling shipped in exactly this state and documented it."
+  },
+  {
+   "id": "no-conversation",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "No conversation with UnGovr has taken place. Every statement here about what they intend, need or would want is inference from what they publish, and is marked as such. There is no commercial relationship of any kind to disclose."
+  },
+  {
+   "id": "examples-run",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Every example file offered for download was executed to produce the numbers on this site \u2014 they are the actual scripts, not illustrations of them. fetch.sh produced every row of the retrieval log; coverage-sample.py produced the 0-of-49; inferred-join.py produced the 96.6%."
+  }
+ ]
+}
