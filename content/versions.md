@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.7</td><td>2026-09-09</td><td>The vault link drops the /en-gb/ segment, which broke the fragment routing; a check now refuses it.</td></tr>
     <tr><td class="vnum">v0.1.6</td><td>2026-09-09</td><td>The vault leads the vault page, with an open-in-a-new-tab button; the release channel is withdrawn and test 9 regressed with it; the embed is verified.</td></tr>
     <tr><td class="vnum">v0.1.5</td><td>2026-09-09</td><td>The vault's entry is now a real HTML app with five views; the site says so, and two of its computations exist only there.</td></tr>
     <tr><td class="vnum">v0.1.4</td><td>2026-09-09</td><td>The vault is pushed: 9 of 13 acceptance tests pass, release @2026-09-09-retrieval pinned, and the site names the commit it reports on.</td></tr>

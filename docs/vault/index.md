@@ -12,7 +12,7 @@ provenance:
 ---
 
 <div class="openbar">
-<a class="btn-open" href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a>
+<a class="btn-open" href="https://dev.vault.sgraph.ai/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a>
 <span>Five views and a graph canvas &mdash; <b>it has far more room in its own tab</b> than in the frame below.</span>
 </div>
 

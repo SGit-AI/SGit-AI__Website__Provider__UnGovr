@@ -271,3 +271,10 @@
   group: About this site itself
   claim: "The vault's two published releases were **cut and then withdrawn**. The vault settings UI rendered each one's commit as `obj-cas-im` — a 10-character prefix of the 24-character `obj-cas-imm-b9c2cddb51e8` — and the published-version link was unreliable with it. **A release exists to make a demonstration citable, and a channel that cannot show which commit it pins does not do that**, so acceptance test 9 regressed from `asserted` to `unevidenced` rather than being left looking satisfied. Both commit ids are kept in `.vault/releases.json`; re-cutting is one line."
   source: "the vault settings UI, 9 September 2026, and .vault/releases.json"
+
+- id: vault-url-form
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault opens at `https://dev.vault.sgraph.ai/#<read-key>:<vault-id>`. The `/en-gb/` form inherited from the handover brief **does not work** — the segment breaks the client-side fragment routing. **Both return HTTP 200**, because it is a single-page app whose shell is served either way, so a status-code check cannot tell them apart and did not. Only opening it in a browser does."
+  source: "the project lead's browser, 9 September 2026; curl returns 200 for both forms"

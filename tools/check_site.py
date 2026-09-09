@@ -452,6 +452,24 @@ def check_no_restricted_corpus():
                  f"({hit}) — that corpus is not CC BY 4.0 and must not be redistributed")
 
 
+def check_vault_url_form():
+    """The vault opens at https://dev.vault.sgraph.ai/#<read-key>:<vault-id>.
+
+    The `/en-gb/` form the handover brief carries does NOT work: the segment
+    breaks the client-side fragment routing. Both forms return HTTP 200, because
+    the shell of a single-page app is served either way — so this cannot be caught
+    by checking a status code, and was not. It is caught here instead.
+
+    `/briefs/` is exempt: those documents are republished verbatim and the bad URL
+    in one of them is corrected beside it (C12), not edited out of it."""
+    for p in list(pages()) + list(OUT.rglob("*.md")):
+        rel = str(p.relative_to(OUT)).replace(os.sep, "/")
+        if rel.startswith("briefs/"):
+            continue
+        for m in re.finditer(r"dev\.vault\.sgraph\.ai/(?!#)([a-z-]+)/#", p.read_text()):
+            fail(f"{rel}: vault URL carries a /{m.group(1)}/ segment — it must be "
+                 f"dev.vault.sgraph.ai/#<read-key>:<vault-id> or the fragment does not route")
+
 def check_cname():
     cname = (OUT / "CNAME").read_text().strip()
     if cname != DOMAIN:
@@ -488,7 +506,8 @@ def main():
                check_no_swallowed_urls, check_composition_links, check_licence_stamp,
                check_attribution, check_no_restricted_corpus, check_nine_sections,
                check_every_claim_cited,
-               check_cname, check_markdown_twins, check_disclosure_strip]:
+               check_cname, check_markdown_twins, check_disclosure_strip,
+               check_vault_url_form]:
         fn()
     if failures:
         print(f"check_site: {len(failures)} problem(s)\n", file=sys.stderr)
