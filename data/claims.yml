@@ -285,3 +285,85 @@
   group: About this site itself
   claim: "The vault carries **three slide decks, 29 slides**, in the style of the estate's AIUC-1 conformance vault — deck picker, slide list, speaker notes, focus and present modes, print-to-PDF, keyboard navigation. **They are authored as markdown** in `decks/*.md` and the app's Decks view is a projection parsed at build time, so they stay readable as ordinary documents and cannot drift from their source. Every claim they make about another vault is read from that vault's own published page and linked, rather than recalled."
   source: "decks/*.md in vault dkeclt5r, and the Decks view driven in a browser"
+
+# ---------------------------------------------------------------------------
+# The estate page. These are claims about OTHER PEOPLE'S vaults, so every one of
+# them was computed by opening the vault with its published read key and counting,
+# never by quoting the vault's own prose. Where the two disagree, the vault wins.
+
+- id: estate-aiuc-crosswalks
+  state: measured
+  date: 9 Sep 2026
+  group: Measured in the estate's vaults, 9 September 2026
+  claim: "The AIUC-1 conformance vault's graph holds **11,610 edges**, of which **1,126 are `maps_to` crosswalks** from AIUC-1 controls out to **489 distinct external control items** across **exactly thirteen frameworks**. The 1,126 and the 489 differ because a control item is reached by more than one AIUC-1 control; both were counted, not inferred from the other."
+  source: "graph/edges.json in vault 2wzct4k7, 2,293,236 bytes, sha256 984d297a971bfbed"
+
+- id: estate-aiuc-law-share
+  state: measured
+  date: 9 Sep 2026
+  group: Measured in the estate's vaults, 9 September 2026
+  claim: "**95 of those 1,126 crosswalks point at law**: EU AI Act 62, Colorado AI Act 18, California SB 53 9, NYC Local Law 144 6. **Three of the four are sub-national United States jurisdictions** — precisely the axis UnGovr's Atlas is keyed on, and the reason the join is one edge rather than a project."
+  source: "graph/edges.json in vault 2wzct4k7 — maps_to targets joined to their in_framework parent"
+
+- id: estate-aiuc-ai-only
+  state: measured
+  date: 9 Sep 2026
+  group: Measured in the estate's vaults, 9 September 2026
+  claim: "**All thirteen frameworks are AI-specific.** No NIST CSF, no SP 800-53, no ISO/IEC 27001 or 27002, no SOC 2, no CIS Controls, no PCI DSS, no HIPAA, no FedRAMP appears among them. That is the right scope for an agent standard and **not a defect in it** — but it means the general-security half of a security-standards map is absent from this estate, which is worth knowing before anyone assumes otherwise."
+  source: "the thirteen framework nodes in vault 2wzct4k7, listed in full"
+
+- id: estate-owasp-label
+  state: measured
+  date: 9 Sep 2026
+  group: Measured in the estate's vaults, 9 September 2026
+  claim: "One framework node is labelled *\"OWASP Top 10\"*, which reads as the web application list — a general security artefact. **Its members are not**: `LLM01:25 — Prompt Injection` through `LLM10:25 — Unbounded Consumption`, the OWASP Top 10 for LLM Applications. The finding above survives only because the ten members were listed rather than the label believed."
+  source: "the ten in_framework members of framework:owasp-top-10 in vault 2wzct4k7"
+
+- id: estate-anchor-pattern
+  state: measured
+  date: 9 Sep 2026
+  group: Measured in the estate's vaults, 9 September 2026
+  claim: "Crosswalks do not point at frameworks; they point at **`anchor:` nodes** reached by an `anchors_to` edge, of which there are **489** — one per distinct external control item. **The anchor pattern is already established in this estate**, so the dev pack proposes a different axis of anchor rather than the mechanism, and the pack's first file was corrected to say so."
+  source: "the 489 anchors_to edges in vault 2wzct4k7"
+
+- id: estate-keys-published
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "Every read key on the estate page was **copied from the vault's own published page on sgit.ai**, not obtained privately. A read key is 64 hexadecimal characters, is derived one-way from a vault key that is not published, and **cannot become write access**. `tools/check_site.py` refuses to build if any `data-readkey` on this site is anything other than a bare 64-hex string."
+  source: "sgit.ai/demos/vaults/<vault>/index.html for each of the seven, read 9 September 2026"
+
+- id: estate-legacy-prefix
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The same key appears under three generations of naming — `sgit_private_read_…`, `sgit_rk1_…`, and no prefix at all. sgit's own `Vault__Crypto` names `sgit_private_read_` the read-key prefix and `sgit_rk1_` the **legacy** one, so they are aliases for one 64-hex secret. **The vendored embed component builds the legacy form**, which is why it opens vaults whose pages publish the current one — including this site's own, watched booting by the project lead."
+  source: "sgit_ai/crypto/Vault__Crypto.py lines 59 and 64 (READ_KEY_PREFIX, LEGACY_READ_KEY_PREFIX)"
+
+- id: estate-lazy
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The estate page opens **no connection at all** until a reader picks a vault, and then exactly one, to `dev.vault.sgraph.ai`. **Driven in a browser rather than reasoned about**: on load, zero frames and zero embeds; after one pick, exactly one embed and two frames, the first at `?embed=1&parent=…` with **no credential anywhere in the URL**; after a second pick, still exactly one of each, because the stage is emptied before each mount. `check_network_pages` pins the exception to this page and `/vault/`, and to the vendored component as the only file that may open anything."
+  source: "Chromium 1194 against a local server, 9 September 2026 — 7 cards, 0/0 before, 1 embed after, 1 after the second pick, no console errors"
+
+- id: estate-embeds-unrun
+  state: unrun
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "**No vault has been watched decrypting on the estate page.** The boundary is exact: the picker itself is verified — the frames are created and pointed at the right origin — but **what happens inside them is not**, because the authoring container reaches the vault host with `curl` and not with a browser. Chromium gets `ERR_CONNECTION_RESET` through the tunnel and the relay logs the TLS handshake dying after 1,729 bytes sent, 39 received. This is the same limit that held `/vault/` on `unrun` until a person opened it, and the same thing will move this."
+  source: "Chromium 1194 through the authoring container's proxy, 9 September 2026; the relay's own failure log"
+
+- id: estate-euaiact-site
+  state: docs
+  date: 9 Sep 2026
+  group: Read in their documentation, 9 September 2026
+  claim: "`eu-ai-act.standards.riskmandate.ai` publishes the Act with the Digital Omnibus on AI applied by a deterministic, gated parser: **119 articles and 14 annexes**, 72 amendment instructions each with a derivation page, **182 touched provisions each hash-anchored**, and a provisions root hash of `77c4ca7c208d73ad…`. It states plainly that the text is **derived and not authentic**, that only the Official Journal publications are, and that no official consolidated version existed when it was generated."
+  source: "https://eu-ai-act.standards.riskmandate.ai/llms.txt, site v0.1.4, read 9 September 2026"
+
+- id: vault-security-pack
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault carries `packs/security-graph/` — **eight files**: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which **two pass and both were inherited**. Five of the fifteen edges are marked **proposed** rather than existing, and the blockers are listed as open rather than described as risks."
+  source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-d945c19564bf"

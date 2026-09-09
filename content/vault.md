@@ -6,7 +6,7 @@ order: 5
 toc: false
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-b9c2cddb51e8
+  vault: dkeclt5r @ obj-cas-imm-d945c19564bf
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
@@ -51,6 +51,14 @@ The vault carries three presentations — **what we learned about UnGovr**, **wh
 That is the same reason the estate's own book is generated from its site's markdown rather than authored twice: **a presentation that is a projection of a document cannot drift from it.**
 
 The third deck is the one worth reading if you only read one. It is not a summary — it names what this vault contributes to the others (a jurisdiction layer, and a deadline set by statute rather than by an attestation's expiry), what it took from them (the two-edge rule, `unevidenced` as a default, the grant/mandate/delta shape), and it closes on a *what this does not prove* slide borrowed from the conformance layer's own field of that name.
+
+## The security-standards dev pack
+
+The vault carries a dev pack under `packs/security-graph/` — **eight files proposing how UnGovr's entities become the jurisdiction layer for the security and AI standards already graphed elsewhere in this family.** {{claim:vault-security-pack}} It is a design document with tests, not an implementation: thirteen acceptance tests, of which two pass and both were inherited.
+
+Its central move is borrowed rather than invented: *don't merge vocabularies — keep them intact and bridge them through anchor nodes.* Two anchors are proposed, `ung:entity` and `ung:jurisdiction`, and fifteen edges, each with a distinct inverse and five of them marked **proposed** rather than existing.
+
+**One of its files was written twice.** The first draft implied the estate had not applied the anchor pattern. Opening the AIUC-1 conformance vault and counting showed it had — 489 `anchors_to` edges — so the file was corrected to propose a different *axis* of anchor instead of the mechanism. **[The estate page](/estate/) carries that measurement and the vaults it came from**, running live.
 
 ## The vault is the experiment; this site is the report
 

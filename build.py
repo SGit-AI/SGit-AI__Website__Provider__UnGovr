@@ -58,7 +58,7 @@ SITE = {
     # The government-graph vault this site reports on. When the vault moves ahead,
     # this page is behind — and says so rather than guessing.
     "vault_id": "dkeclt5r",
-    "vault_commit": "obj-cas-imm-b9c2cddb51e8",
+    "vault_commit": "obj-cas-imm-d945c19564bf",
     "version": VERSION,
 }
 
@@ -71,7 +71,10 @@ NAV = [
         ("The seven-step join", "/join/"),
         ("The retrieval log", "/retrievals/"),
     ]),
-    ("The vault", "/vault/", []),
+    ("The vault", "/vault/", [
+        ("The government-graph vault", "/vault/"),
+        ("The estate it joins", "/estate/"),
+    ]),
     ("Patterns", "/patterns/", [
         ("The four patterns", "/patterns/"),
         ("Comparison matrix", "/comparison/"),
@@ -316,6 +319,32 @@ def render_markdown(md, ctx):
         if re.fullmatch(r"\{\{[a-z-]+\}\}", stripped):
             out.append(shortcodes_block(stripped, ctx))
             i += 1
+            continue
+
+        # <script> and <style> are consumed to their closing tag and emitted
+        # VERBATIM, blank lines and all.
+        #
+        # They used to fall through to the raw-html branch below, which stops at the
+        # first blank line — so a script with a blank line in it was cut in half and
+        # the remainder rendered as markdown: `<p>` tags injected mid-function and
+        # `i < all.length` escaped to `i &lt; all.length`. That ships a syntax error
+        # into the page. It happened, on /estate/, and nothing caught it: tools/
+        # check-js.sh only read assets/*.js and never the inline blocks. Both were
+        # fixed together — this, and the check that would have found it.
+        if re.match(r"<(script|style)\b", stripped, re.I):
+            tag = re.match(r"<(script|style)\b", stripped, re.I).group(1).lower()
+            block, close = [], f"</{tag}>"
+            while i < len(lines):
+                block.append(lines[i])
+                done = close in lines[i].lower()
+                i += 1
+                if done:
+                    break
+            else:
+                raise SystemExit(f"build: unclosed <{tag}> block")
+            if close not in "\n".join(block).lower():
+                raise SystemExit(f"build: unclosed <{tag}> block")
+            out.append("\n".join(block))
             continue
 
         # raw html block (an <aside>, a stat-tile row, the app slot)

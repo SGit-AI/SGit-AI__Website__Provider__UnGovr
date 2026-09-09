@@ -430,6 +430,31 @@ td.edge.a-inferred{color:var(--warm)}
   border-radius:10px;background:var(--panel);box-shadow:var(--shadow)}
 .sgv-uiembed > div{min-width:0}
 
+/* ---------- the vault picker: seven cards, one stage ---------- */
+/* Seven vaults booting at once is a worse demonstration than one booting well, so
+   the cards are a selector rather than seven embeds. Nothing is fetched until one
+   is picked, which is why /estate/ can carry more vaults than /vault/ and still
+   make a smaller claim about what it contacts. */
+.picker{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));margin:1.3rem 0 1.6rem}
+.vcard{display:flex;flex-direction:column;gap:.45rem;background:var(--panel);border:1px solid var(--line);
+  border-radius:11px;padding:.85rem .95rem;box-shadow:var(--shadow)}
+.vcard.on{border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.14),var(--shadow)}
+.vcard > b{font-size:.94rem;letter-spacing:-.01em}
+.vcard > span{font-size:.83rem;color:var(--dim);line-height:1.5}
+.vcard .vact{display:flex;align-items:center;gap:.7rem;margin-top:auto;padding-top:.5rem}
+.vcard button.vopen{background:var(--accent-dk);color:#fff;font-family:inherit;font-weight:650;font-size:.82rem;
+  border:0;border-radius:7px;padding:.42rem .8rem;cursor:pointer}
+.vcard button.vopen:hover{background:var(--accent)}
+.vcard button.vopen:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.vcard.on button.vopen{background:var(--ink)}
+.vcard a.vtab{font-size:.78rem;color:var(--dim);font-weight:600}
+.stage{margin:0 0 1.6rem;min-height:5rem}
+.stage-idle{background:var(--panel2);border:1px dashed var(--line2);border-radius:11px;
+  padding:.9rem 1.1rem;font-size:.87rem;color:var(--dim);margin:0}
+.stage-idle b{color:var(--ink)}
+.stage-now{font-size:.82rem;color:var(--dim);margin:0 0 .2rem;text-transform:uppercase;letter-spacing:.06em}
+.stage-now b{color:var(--fg);text-transform:none;letter-spacing:0;font-size:.95rem}
+
 /* ---------- open-in-a-new-tab bar, above the embed ---------- */
 /* The frame is the demo; the new tab is where the graph canvas actually has room.
    So the button is the first thing under the title, not a footnote under the frame. */

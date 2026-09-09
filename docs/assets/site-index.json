@@ -1,5 +1,5 @@
 {
- "version": "v0.1.8",
+ "version": "v0.1.9",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -8,7 +8,7 @@
    "url": "/",
    "title": "UnGovr \u2014 the open-data provider, and the one edge that stops short",
    "description": "An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 \u2014 and a join between them that is one derivable hop away.",
-   "lead": "UnGovr publish an Atlas of 327,138 government entities and a corpus of 398 open-records laws, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the providers contract. It is the family's first open-data provider, and admitting one required arguing with the family's own definition of the word \u2014 \u00a73 does that. The finding it exists to report is in \u00a79, and it is one edge long.",
+   "lead": "UnGovr publish an Atlas of 327,138 government entities and a corpus of 398 open-records laws, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the providers contract. It is the family's first open-data provider, and admitting one required arguing with the family's own definition of the word \u2014 \u00a73 does that. The finding it exists to report is in \u00a79, and it is one edge long. If you have five minutes rather than fifty, the estate page is the one to open: seven vaults from across this family, running in the page, each with a hole shaped like this data.",
    "headings": [
     "What the Atlas is, before anything else",
     "1 \u00b7 Disclosure",
@@ -87,6 +87,22 @@
    "kind": "page"
   },
   {
+   "url": "/estate/",
+   "title": "The estate this joins \u2014 seven vaults, running here",
+   "description": "The graph estate UnGovr's data would plug into: seven published vaults you can open in this page with nothing but a read key, the sites that publish alongside them, and the one edge that is missing from all of them.",
+   "lead": "Every vault below is running, not screenshotted \u2014 pick one and it decrypts in your browser from a read key printed on this page. They are here because each of them has a hole shaped like UnGovr: an obligation with no named body, or a body with no named jurisdiction.",
+   "headings": [
+    "Why these seven, and not a link list",
+    "What UnGovr adds, in one number",
+    "The second finding, which is a gap rather than a number",
+    "They already use anchor nodes \u2014 which is the good news",
+    "Sites, not vaults",
+    "The read keys, and why they are printed here",
+    "What this page does not prove"
+   ],
+   "kind": "page"
+  },
+  {
    "url": "/examples/",
    "title": "The minimal working examples \u2014 as files",
    "description": "The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.",
@@ -152,6 +168,7 @@
    "lead": "It is running below, live, decrypted in your browser from the read key on this page. Nothing on this site holds a copy of it \u2014 a push to the vault changes what you see here with no rebuild and no deploy.",
    "headings": [
     "Three decks, and the markdown they come from",
+    "The security-standards dev pack",
     "The vault is the experiment; this site is the report",
     "Open it from the command line",
     "Why publishing this key is safe, and which key it is",
@@ -406,6 +423,72 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The vault carries three slide decks, 29 slides, in the style of the estate's AIUC-1 conformance vault \u2014 deck picker, slide list, speaker notes, focus and present modes, print-to-PDF, keyboard navigation. They are authored as markdown in decks/.md and the app's Decks view is a projection parsed at build time, so they stay readable as ordinary documents and cannot drift from their source. Every claim they make about another vault is read from that vault's own published page and linked, rather than recalled."
+  },
+  {
+   "id": "estate-aiuc-crosswalks",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "The AIUC-1 conformance vault's graph holds 11,610 edges, of which 1,126 are maps_to crosswalks from AIUC-1 controls out to 489 distinct external control items across exactly thirteen frameworks. The 1,126 and the 489 differ because a control item is reached by more than one AIUC-1 control; both were counted, not inferred from the other."
+  },
+  {
+   "id": "estate-aiuc-law-share",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "95 of those 1,126 crosswalks point at law: EU AI Act 62, Colorado AI Act 18, California SB 53 9, NYC Local Law 144 6. Three of the four are sub-national United States jurisdictions \u2014 precisely the axis UnGovr's Atlas is keyed on, and the reason the join is one edge rather than a project."
+  },
+  {
+   "id": "estate-aiuc-ai-only",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "All thirteen frameworks are AI-specific. No NIST CSF, no SP 800-53, no ISO/IEC 27001 or 27002, no SOC 2, no CIS Controls, no PCI DSS, no HIPAA, no FedRAMP appears among them. That is the right scope for an agent standard and not a defect in it \u2014 but it means the general-security half of a security-standards map is absent from this estate, which is worth knowing before anyone assumes otherwise."
+  },
+  {
+   "id": "estate-owasp-label",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "One framework node is labelled \"OWASP Top 10\", which reads as the web application list \u2014 a general security artefact. Its members are not: LLM01:25 \u2014 Prompt Injection through LLM10:25 \u2014 Unbounded Consumption, the OWASP Top 10 for LLM Applications. The finding above survives only because the ten members were listed rather than the label believed."
+  },
+  {
+   "id": "estate-anchor-pattern",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "Crosswalks do not point at frameworks; they point at anchor: nodes reached by an anchors_to edge, of which there are 489 \u2014 one per distinct external control item. The anchor pattern is already established in this estate, so the dev pack proposes a different axis of anchor rather than the mechanism, and the pack's first file was corrected to say so."
+  },
+  {
+   "id": "estate-keys-published",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Every read key on the estate page was copied from the vault's own published page on sgit.ai, not obtained privately. A read key is 64 hexadecimal characters, is derived one-way from a vault key that is not published, and cannot become write access. tools/check_site.py refuses to build if any data-readkey on this site is anything other than a bare 64-hex string."
+  },
+  {
+   "id": "estate-legacy-prefix",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The same key appears under three generations of naming \u2014 sgit_private_read_\u2026, sgit_rk1_\u2026, and no prefix at all. sgit's own Vault__Crypto names sgit_private_read_ the read-key prefix and sgit_rk1_ the legacy one, so they are aliases for one 64-hex secret. The vendored embed component builds the legacy form, which is why it opens vaults whose pages publish the current one \u2014 including this site's own, watched booting by the project lead."
+  },
+  {
+   "id": "estate-lazy",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The estate page opens no connection at all until a reader picks a vault, and then exactly one, to dev.vault.sgraph.ai. Driven in a browser rather than reasoned about: on load, zero frames and zero embeds; after one pick, exactly one embed and two frames, the first at ?embed=1&parent=\u2026 with no credential anywhere in the URL; after a second pick, still exactly one of each, because the stage is emptied before each mount. check_network_pages pins the exception to this page and /vault/, and to the vendored component as the only file that may open anything."
+  },
+  {
+   "id": "estate-embeds-unrun",
+   "state": "unrun",
+   "date": "9 Sep 2026",
+   "claim": "No vault has been watched decrypting on the estate page. The boundary is exact: the picker itself is verified \u2014 the frames are created and pointed at the right origin \u2014 but what happens inside them is not, because the authoring container reaches the vault host with curl and not with a browser. Chromium gets ERR_CONNECTION_RESET through the tunnel and the relay logs the TLS handshake dying after 1,729 bytes sent, 39 received. This is the same limit that held /vault/ on unrun until a person opened it, and the same thing will move this."
+  },
+  {
+   "id": "estate-euaiact-site",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "eu-ai-act.standards.riskmandate.ai publishes the Act with the Digital Omnibus on AI applied by a deterministic, gated parser: 119 articles and 14 annexes, 72 amendment instructions each with a derivation page, 182 touched provisions each hash-anchored, and a provisions root hash of 77c4ca7c208d73ad\u2026. It states plainly that the text is derived and not authentic, that only the Official Journal publications are, and that no official consolidated version existed when it was generated."
+  },
+  {
+   "id": "vault-security-pack",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The vault carries packs/security-graph/ \u2014 eight files: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which two pass and both were inherited. Five of the fifteen edges are marked proposed rather than existing, and the blockers are listed as open rather than described as risks."
   }
  ]
 }

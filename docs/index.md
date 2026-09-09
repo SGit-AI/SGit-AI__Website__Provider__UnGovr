@@ -1,7 +1,7 @@
 ---
 title: UnGovr — the open-data provider, and the one edge that stops short
 description: "An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 — and a join between them that is one derivable hop away."
-lead: "UnGovr publish an Atlas of **327,138 government entities** and a corpus of **398 open-records laws**, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the [providers contract](https://providers.sgit.ai/contract/). It is the family's **first open-data provider**, and admitting one required arguing with the family's own definition of the word — [§3](#3-which-pattern-per-product) does that. The finding it exists to report is in [§9](#9-what-went-wrong), and it is one edge long."
+lead: "UnGovr publish an Atlas of **327,138 government entities** and a corpus of **398 open-records laws**, free, under CC BY 4.0, with no credential needed for most of it. This is a report on that API, written to the nine sections of the [providers contract](https://providers.sgit.ai/contract/). It is the family's **first open-data provider**, and admitting one required arguing with the family's own definition of the word — [§3](#3-which-pattern-per-product) does that. The finding it exists to report is in [§9](#9-what-went-wrong), and it is one edge long. **If you have five minutes rather than fifty**, [the estate page](/estate/) is the one to open: seven vaults from across this family, running in the page, each with a hole shaped like this data."
 order: 1
 toc: true
 provenance:

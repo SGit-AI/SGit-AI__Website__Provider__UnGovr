@@ -44,7 +44,9 @@ ALLOWED_JS_ORIGINS = {
 # The only files permitted to open a connection at all.
 NETWORK_CAPABLE = {"assets/vault-ui-embed.js"}
 # The only page permitted to load one.
-NETWORK_PAGES = {"vault/index.html"}
+# /estate/ is the second, and it is stricter than the first: it opens nothing at
+# all until the reader picks a vault, and mounts exactly one at a time.
+NETWORK_PAGES = {"vault/index.html", "estate/index.html"}
 
 NON_AFFILIATION = "Not affiliated with, endorsed by, or sponsored by UnGovr"
 
