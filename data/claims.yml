@@ -256,3 +256,10 @@
   group: About this site itself
   claim: "**Nobody has watched the embed render.** The authoring container's proxy resets browser-initiated TLS tunnels — `curl` reaches `dev.vault.sgraph.ai` fine and returns 200 with no frame-blocking headers, but Chromium gets `ERR_CONNECTION_RESET` — so the frame could not be booted here. The component, the markup and the credential are verified; **the thing they produce has not been seen**. Open [the vault page](/vault/) in a real browser and it either works or it does not, which is exactly what this state means."
   source: "Playwright via the agent proxy: ERR_CONNECTION_RESET on the vault origin"
+
+- id: vault-app
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault's entry is a single self-contained `index.html` — **not** the declarative `_page.json` it shipped with, which failed in the SG/App host with `PageLayoutRenderer is not defined`. The app requests no permissions, opens no network connection, and makes one `sg.*` call, degrading to `fetch` and then to an inlined core slice. All three load paths were driven in a real browser, and the published copy was re-cloned with the public read key and rendered to confirm."
+  source: "a fresh read-only clone of dkeclt5r, served locally and driven with Playwright"

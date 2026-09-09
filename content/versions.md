@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.5</td><td>2026-09-09</td><td>The vault's entry is now a real HTML app with five views; the site says so, and two of its computations exist only there.</td></tr>
     <tr><td class="vnum">v0.1.4</td><td>2026-09-09</td><td>The vault is pushed: 9 of 13 acceptance tests pass, release @2026-09-09-retrieval pinned, and the site names the commit it reports on.</td></tr>
     <tr><td class="vnum">v0.1.3</td><td>2026-09-09</td><td>The vault runs live on the site, embedded through SG/Vault's own embed protocol from the published read key.</td></tr>
     <tr><td class="vnum">v0.1.2</td><td>2026-09-09</td><td>The domain was pointed mid-session: 404 at v0.1.0, serving at v0.1.1. Both states recorded.</td></tr>

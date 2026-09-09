@@ -31,7 +31,11 @@ The vault is running below, live, decrypted in your browser from the published r
 }());
 </script>
 
-**Two surfaces open above**: App Mode, which renders the vault's own `_page.json`, and the vault browser under it, with the FILES / SGIT / SETTINGS rail and an explicit **R1 W0 · Read-only** badge in the chrome. The second one is where you can read the retrieval log, open `data/graph.json`, and check the commit history that proves the pack was published before the work.
+**Two surfaces open above**: App Mode, which boots the vault's own `index.html`, and the vault browser under it, with the FILES / SGIT / SETTINGS rail and an explicit **R1 W0 · Read-only** badge in the chrome. The second one is where you can read the retrieval log, open `data/graph.json`, and check the commit history that proves the pack was published before the work.
+
+**The app has five views** — the seven-step join, filterable by origin and with the provenance of every node; the coverage measurement; the inferred edge; the shape of the corpus; and every retrieval with its hash. **Two of its computations exist only there**: the shape of the 398-law corpus, and what the 16,071 Californian bodies actually are. {{claim:vault-app}}
+
+**It requests no permissions, makes no network call, and reads exactly one vault file.** That file is deliberately *not* inlined into the page: sgit objects are content-addressed and immutable, so the 33 KB of measurements stay their own object and the vault client caches them — releasing a new version of the app does not re-download the numbers.
 
 **How the key gets there.** The frame is loaded with `?embed=1&parent=<origin>`; the page waits for the frame to announce itself, then posts `{sg:'vault-open', key, mode}` with the target origin pinned. **The key never appears in a URL** and the frame keeps it in memory only. `vault-ready` / `vault-error` come back as structured events.
 
