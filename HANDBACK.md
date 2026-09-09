@@ -45,11 +45,15 @@ plainly that it is a development host.
 **If the answer is no, the vault moves to production first** — that is a vault step, not a
 site change, and then one URL on `content/vault.md` changes.
 
-## 5 · When does `ungovr.providers.sgit.ai` get pointed?
+## 5 · `ungovr.providers.sgit.ai` — pointed, mid-session
 
-It answers **404**, measured 9 September 2026. The site ships regardless, under the project
-path. Nothing breaks when the domain lands: canonicals already name it, links are relative,
-and the hub's `bin/sync-providers.py` picks the site up automatically once it answers.
+**Done, and nothing had to change for it.** It answered 404 when v0.1.0 shipped and served at
+v0.1.1; the GitHub Pages project path now `301`s to it. Canonicals already named it and links were
+already relative, which is exactly why the transition cost nothing.
+
+**One thing left for a human**: the hub's `bin/sync-providers.py` fetches each site's published
+index from its canonical host — it should now pick this site up, and a row in the hub's
+`data/providers.yml` should be **added by running that script rather than typed**.
 
 ## 6 · Does the hub's contract take the open-data-provider correction?
 

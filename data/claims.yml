@@ -222,12 +222,12 @@
   claim: "The acceptance node ships **with no named owner, no review interval and no revocation path**. An acceptance without an owner is a note. It is left open rather than filled in with a plausible name, and it is handback item 8."
   source: "data/graph.json, node sg:acceptance/unassigned"
 
-- id: domain-not-pointed
+- id: domain-pointed
   state: verified
   date: 9 Sep 2026
   group: About this site itself
-  claim: "`ungovr.providers.sgit.ai` **answers 404**. This release ships anyway, under the GitHub Pages project path: the canonical URL states the intended host, and every internal link is relative so the site serves correctly from either. The sibling shipped in exactly this state and documented it."
-  source: "curl https://ungovr.providers.sgit.ai/ -> 404, 9 September 2026"
+  claim: "`ungovr.providers.sgit.ai` **answers 200**, and the GitHub Pages project path now `301`s to it. The domain was pointed during the session that built this site: it answered **404 at v0.1.0** and served at **v0.1.1**. Both states are recorded rather than the second quietly replacing the first — **the canonical URL is the intent and the link is the reality**, and this is the one page that can say when they stopped disagreeing."
+  source: "curl https://ungovr.providers.sgit.ai/ -> 404 then 200, both 9 September 2026"
 
 - id: no-conversation
   state: verified

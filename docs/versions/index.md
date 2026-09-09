@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.2</td><td>2026-09-09</td><td>The domain was pointed mid-session: 404 at v0.1.0, serving at v0.1.1. Both states recorded.</td></tr>
     <tr><td class="vnum">v0.1.1</td><td>2026-09-09</td><td>The AI-law corpus, read under a key: 2,915 instruments, and a per-corpus licence that is not CC BY 4.0. Blocker B2 closed.</td></tr>
     <tr><td class="vnum">v0.1.0</td><td>2026-09-09</td><td>First release. All nine contract sections; the coverage measurement and the inferred-join computation with their queries; the seven-step join; the retrieval log; the vault linked by read key.</td></tr>
 </tbody>

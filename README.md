@@ -4,9 +4,10 @@ The source for **[ungovr.providers.sgit.ai](https://ungovr.providers.sgit.ai/)**
 independent report on the UnGovr Open Data API, written to the nine sections of the
 [providers contract](https://providers.sgit.ai/contract/).
 
-> **The domain does not resolve yet.** Measured 404 on 9 September 2026. The site ships
-> anyway, under the GitHub Pages project path: every canonical URL states the intended
-> host and every internal link is relative, so it serves correctly from either.
+> **The domain is live.** It answered 404 when v0.1.0 shipped and serves at v0.1.1 — it was
+> pointed during the session that built the site — and the GitHub Pages project path now
+> redirects to it. Internal links stay relative regardless, so the site serves correctly
+> from either.
 
 ## What it reports
 

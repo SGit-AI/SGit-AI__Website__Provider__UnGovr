@@ -1,5 +1,5 @@
 {
- "version": "v0.1.1",
+ "version": "v0.1.2",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -352,10 +352,10 @@
    "claim": "The acceptance node ships with no named owner, no review interval and no revocation path. An acceptance without an owner is a note. It is left open rather than filled in with a plausible name, and it is handback item 8."
   },
   {
-   "id": "domain-not-pointed",
+   "id": "domain-pointed",
    "state": "verified",
    "date": "9 Sep 2026",
-   "claim": "ungovr.providers.sgit.ai answers 404. This release ships anyway, under the GitHub Pages project path: the canonical URL states the intended host, and every internal link is relative so the site serves correctly from either. The sibling shipped in exactly this state and documented it."
+   "claim": "ungovr.providers.sgit.ai answers 200, and the GitHub Pages project path now 301s to it. The domain was pointed during the session that built this site: it answered 404 at v0.1.0 and served at v0.1.1. Both states are recorded rather than the second quietly replacing the first \u2014 the canonical URL is the intent and the link is the reality, and this is the one page that can say when they stopped disagreeing."
   },
   {
    "id": "no-conversation",

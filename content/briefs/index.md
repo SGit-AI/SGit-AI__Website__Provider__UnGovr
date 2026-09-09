@@ -54,7 +54,7 @@ The handback list — what a human with access must decide, kept short enough fo
 | 2 | ~~Register for a free UnGovr API key?~~ **Done.** A key was issued to the project mid-session and the corpus was read. What remains: **the key is not in this repository or the vault**, and a build check now refuses both it and the corpus it unlocks |
 | 3 | **Default branch.** `dev`, confirmed from the sibling repository's `origin/HEAD`. CI deploys from it |
 | 4 | **May a `dev.send.sgraph.ai` vault be linked from a public site?** Or does the vault move to production first — [the link ships on the dev host today](/vault/) |
-| 5 | **When does `ungovr.providers.sgit.ai` get pointed?** It answers 404. The site ships under the project path {{claim:domain-not-pointed}} |
+| 5 | ~~When does `ungovr.providers.sgit.ai` get pointed?~~ **Done, mid-session.** It answered 404 at v0.1.0 and serves at v0.1.1; the project path now redirects to it {{claim:domain-pointed}} |
 | 6 | **Does the hub's contract take the open-data-provider correction?** A change to a shared contract, so it is the project lead's call |
 | 7 | **Do we tell UnGovr before publishing?** The licence permits it with attribution. Asking is not required and is probably right |
 | 8 | **Who is the named owner on the acceptance node?** An acceptance without an owner is a note {{claim:acceptance-unowned}} |
