@@ -62,7 +62,7 @@ SITE = {
     # The government-graph vault this site reports on. When the vault moves ahead,
     # this page is behind — and says so rather than guessing.
     "vault_id": "dkeclt5r",
-    "vault_commit": "obj-cas-imm-e23f0cecfccf",
+    "vault_commit": "obj-cas-imm-760fee6127a2",
     "version": VERSION,
 }
 
@@ -847,6 +847,30 @@ def block_retrievals(ctx):
     )
 
 
+def block_releases(ctx):
+    """The release history, generated from data/releases.json rather than hand-kept.
+
+    It used to be a table of raw <tr> rows in content/versions.md, which is a list
+    maintained beside the thing it lists — the arrangement that lets the two drift.
+    Now the rows, the per-version pages and /versions/index.json all come off one
+    record, and every row links to that version's own page rather than being the
+    only place it is described."""
+    rows = []
+    for r in RELEASES["releases"]:
+        ver = r["version"]
+        now = ' class="now"' if ver == RELEASES["current"] else ""
+        rows.append(
+            f'<tr><td class="vnum"{now}><a href="/versions/{ver}/">{ver}</a></td>'
+            f'<td>{html.escape(r["date"])}</td>'
+            f'<td>{inline(r["summary"] or r["title"], ctx)}</td>'
+            f'<td class="num"><code title="{html.escape(r["commit"])}">'
+            f'{html.escape(r["commit"][:10])}</code></td></tr>'
+        )
+    return ('<div class="tablewrap"><table class="releases">'
+            "<thead><tr><th>Version</th><th>Date</th><th>What changed</th>"
+            "<th>Commit</th></tr></thead><tbody>" + "".join(rows) + "</tbody></table></div>")
+
+
 def block_join(ctx):
     """The seven-step join, rendered from the same graph.json the vault holds.
     Origin is carried by shape and border, assertion class by colour — hue is
@@ -925,6 +949,7 @@ BLOCKS = {
     "coverage": block_coverage,
     "inferred": block_inferred,
     "retrievals": block_retrievals,
+    "releases": block_releases,
     "join": block_join,
 }
 
@@ -1171,6 +1196,7 @@ def parse_deck(text):
 
 DECK_EXTRAS = json.loads((DATA / "deck-extras.json").read_text())
 DECK_PDFS = json.loads((DATA / "deck-pdfs.json").read_text())
+RELEASES = json.loads((DATA / "releases.json").read_text())
 
 
 def slide_html(deck, s, i, n, extra, ctx, chrome=True):
@@ -1409,6 +1435,73 @@ DECK_JS = """
 """
 
 
+# -------------------------------------------------------------- versions ----
+# sgit.ai/docs/guidance: "Make it a link, and make the link go to that version's
+# own details — not to a generic changelog. A reader who clicks v0.1.7 wants to
+# know what v0.1.7 was." Plus: give versions a home as DATA, and record the commit
+# each was built from, or a version cannot be verified later.
+#
+# The pill in this site's nav used to point at /versions/, which is the generic
+# changelog the guidance names. It now points at the current release's own page.
+
+def release_pages(out_dir, ctx_shared):
+    """One page per release, and a machine-readable index beside them."""
+    made = {}
+    rels = RELEASES["releases"]
+    for i, r in enumerate(rels):
+        ver = r["version"]
+        url = f"/versions/{ver}/"
+        ctx = dict(ctx_shared)
+        ctx.update({"page": f"versions/{ver}", "page_url": url, "fm": {}, "toc": []})
+        newer = f'<a href="/versions/{rels[i-1]["version"]}/">&larr; {rels[i-1]["version"]}</a>' if i else ""
+        older = f'<a href="/versions/{rels[i+1]["version"]}/">{rels[i+1]["version"]} &rarr;</a>' if i + 1 < len(rels) else ""
+        recon = ("" if not r.get("reconstructed") else
+                 '<div class="note"><b>Reconstructed, not recorded.</b> This entry was assembled '
+                 'after the fact from the sources below rather than written at release time. '
+                 'The words are contemporaneous &mdash; the structure around them is not, and a '
+                 'history assembled later is only useful if it says so.'
+                 '<ul>' + "".join(f"<li>{html.escape(x)}</li>" for x in r.get("basis", [])) + "</ul></div>")
+        changes = ("" if not r.get("changes") else
+                   '<p class="small dim">Touched: ' +
+                   " &middot; ".join(f"<code>{html.escape(c)}</code>" for c in r["changes"]) + "</p>")
+        body = (
+            f'<p class="lead">{inline(r["summary"] or r["title"], ctx)}</p>'
+            '<div class="tablewrap"><table><tbody>'
+            f'<tr><th>Version</th><td><code>{html.escape(ver)}</code>'
+            f'{" &mdash; <b>current</b>" if ver == RELEASES["current"] else ""}</td></tr>'
+            f'<tr><th>Released</th><td>{html.escape(r["date"])}</td></tr>'
+            f'<tr><th>Built from commit</th><td><code>{html.escape(r["commit"])}</code></td></tr>'
+            f'<tr><th>Site</th><td>{html.escape(r["site"])}</td></tr>'
+            "</tbody></table></div>"
+            f"{changes}{recon}"
+            f'<p class="packnav">{newer}{older}</p>'
+            '<p class="packfoot">Every release of this site is listed on '
+            '<a href="/versions/">the release history</a>, and the same records are served as '
+            '<a href="/versions/index.json">JSON</a> so a script can read them without '
+            'parsing a page. The pipeline that gates each one is described there too.</p>'
+        )
+        page = {
+            "fm": {"title": f"{ver} — {r['title']}",
+                   "description": r["summary"] or r["title"]},
+            "url": url,
+            "crumb": f' / <a href="/versions/">versions</a> / {html.escape(ver)}',
+            "nav_match": "/ledger/",
+            "src_md": (f"# {ver} — {r['title']}\n\n{r['summary']}\n\n"
+                       f"- Released: {r['date']}\n- Built from commit: `{r['commit']}`\n"
+                       f"- Reconstructed: {'yes' if r.get('reconstructed') else 'no'}\n"),
+        }
+        target = out_dir / url.strip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page_html(page, ctx, body))
+        twin = page["src_md"]
+        if LICENCE_STAMP not in twin:
+            twin += f"\n---\n\n{LICENCE_STAMP}\n"
+        (target.parent / "index.md").write_text(twin)
+        made[url] = page["fm"]["title"]
+    (out_dir / "versions" / "index.json").write_text(json.dumps(RELEASES, indent=2) + "\n")
+    return made
+
+
 def nav_html(current):
     items = []
     for label, href, subs in NAV:
@@ -1436,7 +1529,9 @@ def nav_html(current):
         'title="The providers contract on providers.sgit.ai — the nine sections this report is written to">'
         '&#8599; part of <b>sgit.ai</b></a>'
         '<span class="stage-pill">provider report</span>'
-        f'<a class="ver" href="/versions/" title="Site release history">{SITE["version"]}</a>'
+        f'<a class="ver" href="/versions/{SITE["version"]}/" '
+        f'title="What changed in {SITE["version"]}, and the commit it was built from">'
+        f'{SITE["version"]}</a>'
         '<button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>'
         '<div class="nav-items">' + "".join(items) + "</div>"
         '<a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a>'
@@ -1651,6 +1746,7 @@ def build(out_dir):
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
     pack_urls.update(deck_pages(out_dir, ctx_shared))
+    pack_urls.update(release_pages(out_dir, ctx_shared))
     (out_dir / "CNAME").write_text(SITE["domain"] + "\n")
     (out_dir / ".nojekyll").write_text("")
     (out_dir / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE['base']}/sitemap.xml\n")

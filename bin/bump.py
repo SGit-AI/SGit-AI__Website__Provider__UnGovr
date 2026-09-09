@@ -6,8 +6,14 @@
 
 Does three things and stops:
   1. admin/build/version.txt  -> the next version
-  2. content/versions.md      -> a new row at the top of the release history
+  2. data/releases.json       -> a record for it, RECORDED rather than reconstructed
   3. prints the commit subject CI requires
+
+The release history table, the per-version pages and /versions/index.json are all
+rendered from that one record, so they cannot disagree. The commit is filled in
+afterwards by `bin/bump.py --commit <sha>`, because the sha does not exist until
+the release is committed — and check_version_agreement fails the build while any
+release still has no commit, so it cannot be forgotten.
 
 The pipeline enforces all of this from the other side: tag-release reads
 version.txt, finds the commit whose subject carries the same version, and refuses
@@ -18,18 +24,21 @@ the wrong commit, both of which have happened on sibling sites. So it is a scrip
 Run `python3 build.py` afterwards — it propagates the new version to every page's
 badge, the footer and llms.txt, and the gate fails if any of them disagree.
 """
+import json
 import re
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION_FILE = ROOT / "admin/build/version.txt"
-HISTORY = ROOT / "content/versions.md"
-MARKER = "<!-- releases -->\n"
+RELEASES = ROOT / "data/releases.json"
 
 
 def main() -> int:
+    if len(sys.argv) == 3 and sys.argv[1] == "--commit":
+        return set_commit(sys.argv[2])
     args = [a for a in sys.argv[1:] if a != "--major"]
     major = "--major" in sys.argv[1:]
     if len(args) != 1:
@@ -45,28 +54,62 @@ def main() -> int:
     rel, maj, mnr = (int(x) for x in m.groups())
     new = f"v{rel}.{maj + 1}.0" if major else f"v{rel}.{maj}.{mnr + 1}"
 
-    md = HISTORY.read_text()
-    if f'class="vnum">{new}<' in md:
-        print(f"content/versions.md already lists {new} — the version was not bumped", file=sys.stderr)
-        return 1
-    if MARKER not in md:
-        print(f"content/versions.md has no '{MARKER.strip()}' marker to insert below", file=sys.stderr)
+    data = json.loads(RELEASES.read_text())
+    if any(r["version"] == new for r in data["releases"]):
+        print(f"data/releases.json already records {new} — the version was not bumped",
+              file=sys.stderr)
         return 1
 
-    row = (f'    <tr><td class="vnum">{new}</td><td>{date.today().isoformat()}</td>'
-           f'<td>{summary}</td></tr>\n')
-    HISTORY.write_text(md.replace(MARKER, MARKER + row, 1))
+    data["releases"].insert(0, {
+        "version": new,
+        "date": date.today().isoformat(),
+        # Filled in by --commit once the release is committed; the gate refuses to
+        # ship a release that still has none.
+        "commit": "",
+        "site": "ungovr.providers.sgit.ai",
+        "title": summary,
+        "summary": summary,
+        "changes": sorted({f.split("/")[0] for f in subprocess.run(
+            ["git", "diff", "--name-only", "HEAD"], capture_output=True, text=True,
+            cwd=ROOT).stdout.split() if not f.startswith("docs/")})[:12],
+        # Written at release time from the release itself, so it is a record.
+        "reconstructed": False,
+        "basis": [],
+    })
+    data["current"] = new
+    RELEASES.write_text(json.dumps(data, indent=2) + "\n")
     VERSION_FILE.write_text(new + "\n")
 
     print(f"{cur} -> {new}")
     print("  · admin/build/version.txt")
-    print("  · content/versions.md (row added)")
+    print("  · data/releases.json (record added, commit still blank)")
     print()
     print("next:")
     print("  python3 build.py")
     print("  admin/build/validate.sh")
-    print(f'  git commit -am "site {new}: {summary}" && git push origin dev')
+    print(f'  git commit -am "site {new}: {summary}"')
+    print(f"  bin/bump.py --commit $(git rev-parse HEAD)   # then rebuild and amend")
+    print("  git push origin dev")
     return 0
+
+
+def set_commit(sha):
+    """Record the sha the current release was built from. Separate from the bump
+    because the commit does not exist until the release is committed."""
+    if not re.fullmatch(r"[0-9a-f]{40}", sha):
+        print(f"not a full git sha: {sha!r}", file=sys.stderr)
+        return 1
+    data = json.loads(RELEASES.read_text())
+    cur = data["current"]
+    for r in data["releases"]:
+        if r["version"] == cur:
+            r["commit"] = sha
+            RELEASES.write_text(json.dumps(data, indent=2) + "\n")
+            print(f"{cur} -> commit {sha[:10]}")
+            print("next: python3 build.py && git commit -a --amend --no-edit")
+            return 0
+    print(f"no record for {cur} in data/releases.json", file=sys.stderr)
+    return 1
 
 
 if __name__ == "__main__":

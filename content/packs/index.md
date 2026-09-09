@@ -5,7 +5,7 @@ lead: "A dev pack is how a piece of work is specified here before it is built: t
 order: 13
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Copied from packs/ in the vault. tools/check_site.py verifies every published file against a recorded sha256, so a copy that drifted from the vault would fail the build."
 ---

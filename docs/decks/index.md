@@ -5,7 +5,7 @@ lead: "Four presentations, **39 slides**, written as ordinary markdown in the va
 order: 15
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-a6f0269b0967
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Republished byte for byte from decks/ in the vault; check_site.py verifies every file against a recorded sha256, so a copy that drifted would fail the build."
 ---

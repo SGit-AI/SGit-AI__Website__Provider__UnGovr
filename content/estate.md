@@ -6,7 +6,7 @@ order: 6
 toc: true
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Read keys copied from each vault's own published page on sgit.ai. Counts on this page were computed from the vaults themselves, not from their prose."
 ---
@@ -148,17 +148,51 @@ Three of these publish alongside the vaults and are worth an executive's attenti
 
 Every credential on this page is a **read key**: 64 hexadecimal characters that decrypt the vault and can do nothing else. There is no account behind it, no token to refresh, and **no path from it to write access** — read keys are derived one-way from a vault key that is not published and never will be. Handing one over is the intended way to share a vault, which is why sgit.ai prints them on each vault's own page. Every key below was copied from there rather than obtained privately. {{claim:estate-keys-published}}
 
-| Vault | Vault id | Read key, as its own page publishes it |
-|---|---|---|
-| AIUC-1 conformance layer | `2wzct4k7` | `sgit_private_read_0f01d367…0db072` |
-| AIUC-1, as a graph | `hq21tlqu` | `sgit_private_read_4435037d…a4ae00` |
-| Regulation Graph | `73heuprz` | `sgit_rk1_c004daae…1695c9` |
-| Licence to Operate | `posrhzp3` | `d990a52e…b4da29` *(no prefix — the oldest form)* |
-| Risk Mandate | `4zf6pf2z` | `sgit_rk1_a702fba8…95c0ae` |
-| Standards Atlas — GDPR | `4zv4bvmu` | `sgit_rk1_439ca57a…6aa15c` |
-| Risk Graph Explorer | `3simlnqe` | `sgit_rk1_1c1b95f5…7e5638` |
+**Copy any of these. Each one is the whole credential** — `sgit clone <key>` and you have the vault.
 
-The full keys are in the page source, on the cards, as `data-readkey` — and `tools/check_site.py` refuses to build if any of them is anything other than a bare 64-hex string, which is the shape a read key has and a vault key does not.
+**AIUC-1 conformance layer** · vault `2wzct4k7`
+
+```
+sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7
+```
+
+**AIUC-1, as a graph** · vault `hq21tlqu`
+
+```
+sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu
+```
+
+**Regulation Graph** · vault `73heuprz`
+
+```
+sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz
+```
+
+**Licence to Operate** · vault `posrhzp3`
+
+```
+d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3
+```
+
+**Risk Mandate** · vault `4zf6pf2z`
+
+```
+sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z
+```
+
+**Standards Atlas — GDPR** · vault `4zv4bvmu`
+
+```
+sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu
+```
+
+**Risk Graph Explorer** · vault `3simlnqe`
+
+```
+sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe
+```
+
+**These are the full keys, printed where a person can copy them** — not only in the markup. sgit.ai's own brief for this surface is explicit about it: *"a read key belongs in the page… put it in the markup where a human can copy it, not only in a script,"* and *"the read key on the page should be enough for anyone to bypass your site entirely."* {{claim:estate-keys-copyable}} The same keys reach the embed as `data-readkey` attributes, and `tools/check_site.py` refuses to build if any of those is anything other than a bare 64-hex string — the shape a read key has and a vault key does not.
 
 > **Three prefixes, one key.** The cards carry bare hex and the embed component reassembles it as `sgit_rk1_…`, while three of these vaults publish theirs as `sgit_private_read_…` and one as no prefix at all. These are the same credential under three generations of naming: sgit's own `Vault__Crypto` names `sgit_private_read_` as the read-key prefix and `sgit_rk1_` as the **legacy** one. {{claim:estate-legacy-prefix}} The table above shows each key in the form its own page publishes, so it can be compared character for character; the embed uses the legacy form because that is what the vendored component builds.
 

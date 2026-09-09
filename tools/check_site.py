@@ -359,12 +359,35 @@ def check_version_agreement():
         if version not in (OUT / name).read_text():
             fail(f"{name} does not mention {version}")
     history = (OUT / "versions" / "index.html").read_text()
-    rows = re.findall(r'class="vnum">(v\d+\.\d+\.\d+)<', history)
+    # The row's version is inside a link now — every row goes to that version's own
+    # page rather than the table being the only place it is described.
+    rows = re.findall(r'class="vnum"[^>]*>(?:<a [^>]*>)?(v\d+\.\d+\.\d+)<', history)
     if version not in rows:
         fail(f"the release history has no row for {version}")
     for v in rows:
         if rows.count(v) > 1:
             fail(f"the release history lists {v} more than once")
+
+    # The data behind the history, the file that owns the version, and the page for
+    # this release must all agree — and the nav pill must reach that page.
+    rel = json.loads((ROOT / "data" / "releases.json").read_text())
+    if rel["current"] != version:
+        fail(f"data/releases.json says current is {rel['current']}, version.txt says {version}")
+    listed = [r["version"] for r in rel["releases"]]
+    if listed != rows:
+        fail("the rendered release history and data/releases.json disagree on the list "
+             f"of releases ({rows[:3]}… vs {listed[:3]}…)")
+    for r in rel["releases"]:
+        if not re.fullmatch(r"[0-9a-f]{40}", r.get("commit", "")):
+            fail(f"{r['version']} names no git commit — a version that cannot be traced "
+                 f"to a commit cannot be verified later")
+        if not (OUT / "versions" / r["version"] / "index.html").exists():
+            fail(f"{r['version']} has no page of its own at /versions/{r['version']}/")
+    for p in pages():
+        for href in re.findall(r'class="ver" href="([^"]+)"', p.read_text()):
+            if version not in href:
+                fail(f"{p.relative_to(OUT)}: the version pill links to {href!r}, which is not "
+                     f"{version}'s own page — see sgit.ai/docs/guidance on versions")
             break
 
 

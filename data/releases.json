@@ -1,0 +1,369 @@
+{
+  "current": "v0.1.17",
+  "note": "One record per release, newest first. `reconstructed` marks an entry assembled after the fact from the sources in `basis` rather than written at release time; bin/bump.py writes new entries here directly, so they are recorded rather than reconstructed. Every entry names the git commit it was built from.",
+  "releases": [
+    {
+      "version": "v0.1.17",
+      "date": "2026-09-09",
+      "commit": "b52f66a90ddad9ca1995cdbd4ba73416352c4d98",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "versions get a page of their own, and the pill goes there",
+      "summary": "Every release now has a page naming the git commit it was built from, the history is generated from data/releases.json rather than hand-kept beside it, and the nav pill links to the current version rather than to a generic changelog. The same convention in the vault: versions/index.json plus one file per version, and a Versions view in its app.",
+      "changes": [
+        "bin",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
+    {
+      "version": "v0.1.16",
+      "date": "2026-09-09",
+      "commit": "49906b42f437f642fb10acf749a7ed75f9f48ea2",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "real 16:9 slides, with screenshots, and a PDF per deck",
+      "summary": "The decks become real 16:9 slides with screenshots of this site, and each one downloads as a PDF whose links point back here.",
+      "changes": [
+        "admin",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "files",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.15",
+      "date": "2026-09-09",
+      "commit": "01e68f28f6fe06f9d52ce34cd8cadad24b4b77d8",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "a vault document could run script on this origin \u2014 closed",
+      "summary": "A vault document could run script on this origin, through the pack and deck readers. Confirmed in a browser, closed, and gated \u2014 plus link schemes restricted and a literal entity caught.",
+      "changes": [
+        "admin",
+        "build.py",
+        "content",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.14",
+      "date": "2026-09-09",
+      "commit": "6d9014f056074f19c815423220891b1c4d71488d",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "a fourth deck, and all four on the site",
+      "summary": "A fourth deck \u2014 what we plan to build \u2014 and all four on the site at /decks/: stacked and printable by default, present mode and deep links on top, markdown one click away.",
+      "changes": [
+        "admin",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "decks",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.13",
+      "date": "2026-09-09",
+      "commit": "ac016c210174cbb2eccb5c0fec959166c4d0a788",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "what you get when you reach a law \u2014 and the 254 you cannot",
+      "summary": "What you get when you reach a law: JSON only, no instrument text, no graph \u2014 and 254 of the 398 records laws, every sub-national one, with no reachable detail document.",
+      "changes": [
+        "admin",
+        "build.py",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.12",
+      "date": "2026-09-09",
+      "commit": "b0b21f920a3db31c46b7c43ccb8cb8f64ce2cc4e",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the vault app names its own release",
+      "summary": "The vault app names its own release in its header, and the pill opens a table of what each one changed \u2014 the same pattern as this nav, reaching a view instead of a page.",
+      "changes": [
+        "admin",
+        "build.py",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.11",
+      "date": "2026-09-09",
+      "commit": "d39dab4a54360808b7425b80184818315f975940",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "a reader for the pack files, and two corrections it surfaced",
+      "summary": "A reader for the pack files: the rest of the pack beside every document and the raw bytes one click above it. Two corrections it surfaced, one of them the pack forking a vocabulary it said it reused.",
+      "changes": [
+        "admin",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "packs",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.10",
+      "date": "2026-09-09",
+      "commit": "25c196580e897a798576174d72f5f38141adf3d1",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the dev pack, published raw at /packs/ \u2014 and its test count was wrong",
+      "summary": "The security-standards dev pack, published raw at /packs/ \u2014 byte for byte from the vault, hash-checked on every build. Its test count was wrong in both numbers and is corrected.",
+      "changes": [
+        "admin",
+        "build.py",
+        "content",
+        "data",
+        "packs",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.9",
+      "date": "2026-09-09",
+      "commit": "41f1cf4a2c23a9d8ff5440fabb0ababa5c8d465a",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the estate page \u2014 seven vaults, running here, one at a time",
+      "summary": "The estate page: seven published vaults from across the family, each opening in the page from its own published read key, one at a time and nothing fetched until asked.",
+      "changes": [
+        "admin",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.8",
+      "date": "2026-09-09",
+      "commit": "e97d2f279b3452e90e291a6b4333bcc148383e07",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "three markdown-sourced slide decks in the vault",
+      "summary": "Three markdown-sourced slide decks in the vault: what we learned, what we built, and how it composes with the other vaults.",
+      "changes": [
+        "admin",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.7",
+      "date": "2026-09-09",
+      "commit": "c9ad13bc012584adc5911967e61c7c2ce6df07db",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "drop /en-gb/ from the vault link \u2014 it broke the fragment routing",
+      "summary": "The vault link drops the /en-gb/ segment, which broke the fragment routing; a check now refuses it.",
+      "changes": [
+        "admin",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.6",
+      "date": "2026-09-09",
+      "commit": "e827b7d7e5bb051f0d771cfe6fbd6fca9bee9e18",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the vault leads its own page, and the release channel is withdrawn",
+      "summary": "The vault leads the vault page, with an open-in-a-new-tab button; the release channel is withdrawn and test 9 regressed with it; the embed is verified.",
+      "changes": [
+        "admin",
+        "assets",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.5",
+      "date": "2026-09-09",
+      "commit": "4017ebe8337be266257a4c864236daa71c4b61e9",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the vault's entry is a real HTML app, and the site says so",
+      "summary": "The vault's entry is now a real HTML app with five views; the site says so, and two of its computations exist only there.",
+      "changes": [
+        "admin",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.4",
+      "date": "2026-09-09",
+      "commit": "70d3fb03886ae63c0f6f92599323835bffe89faa",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the vault is pushed, and this site names the commit it reports on",
+      "summary": "The vault is pushed: 9 of 13 acceptance tests pass, release @2026-09-09-retrieval pinned, and the site names the commit it reports on.",
+      "changes": [
+        "admin",
+        "build.py",
+        "content"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.3",
+      "date": "2026-09-09",
+      "commit": "49948af74e54a718c862f4604bdd22ad5ce7fb23",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the vault runs live on the site, via SG/Vault's embed protocol",
+      "summary": "The vault runs live on the site, embedded through SG/Vault's own embed protocol from the published read key.",
+      "changes": [
+        "HANDBACK.md",
+        "admin",
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.2",
+      "date": "2026-09-09",
+      "commit": "6c2ed4bcceff2d9682354587c130a2cf34046203",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the domain was pointed mid-session \u2014 both states recorded",
+      "summary": "The domain was pointed mid-session: 404 at v0.1.0, serving at v0.1.1. Both states recorded.",
+      "changes": [
+        "HANDBACK.md",
+        "README.md",
+        "admin",
+        "content",
+        "data"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.1",
+      "date": "2026-09-09",
+      "commit": "c2fe990ca57fe3999503692672f4ce8631422ec8",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the AI-law corpus, read under a key \u2014 and a licence that is not CC BY 4.0",
+      "summary": "The AI-law corpus, read under a key: 2,915 instruments, and a per-corpus licence that is not CC BY 4.0. Blocker B2 closed.",
+      "changes": [
+        "HANDBACK.md",
+        "admin",
+        "content",
+        "data",
+        "tools"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2026-09-09",
+      "commit": "4fef4200814cbfb7416e73c57b89f8dcdcb966ac",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "the report, the CI gate, and the measurement it reports on",
+      "summary": "First release. All nine contract sections; the coverage measurement and the inferred-join computation with their queries; the seven-step join; the retrieval log; the vault linked by read key.",
+      "changes": [
+        ".github",
+        ".gitignore",
+        "HANDBACK.md",
+        "README.md",
+        "admin",
+        "assets",
+        "bin",
+        "briefs",
+        "build.py",
+        "content",
+        "data",
+        "files"
+      ],
+      "reconstructed": true,
+      "basis": [
+        "the release commit's own message, written at the time",
+        "the row for this version in content/versions.md"
+      ]
+    }
+  ]
+}

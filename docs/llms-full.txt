@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai — the whole site as markdown
-site v0.1.16 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
+site v0.1.17 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
 
 Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. "UnGovr" identifies the open-data API this site reports on; all trademarks belong to their owners. UnGovr's Atlas is used under CC BY 4.0.
 
@@ -484,7 +484,7 @@ lead: "Four presentations, **39 slides**, written as ordinary markdown in the va
 order: 15
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-a6f0269b0967
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Republished byte for byte from decks/ in the vault; check_site.py verifies every file against a recorded sha256, so a copy that drifted would fail the build."
 ---
@@ -590,7 +590,7 @@ order: 6
 toc: true
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Read keys copied from each vault's own published page on sgit.ai. Counts on this page were computed from the vaults themselves, not from their prose."
 ---
@@ -732,17 +732,51 @@ Three of these publish alongside the vaults and are worth an executive's attenti
 
 Every credential on this page is a **read key**: 64 hexadecimal characters that decrypt the vault and can do nothing else. There is no account behind it, no token to refresh, and **no path from it to write access** — read keys are derived one-way from a vault key that is not published and never will be. Handing one over is the intended way to share a vault, which is why sgit.ai prints them on each vault's own page. Every key below was copied from there rather than obtained privately. {{claim:estate-keys-published}}
 
-| Vault | Vault id | Read key, as its own page publishes it |
-|---|---|---|
-| AIUC-1 conformance layer | `2wzct4k7` | `sgit_private_read_0f01d367…0db072` |
-| AIUC-1, as a graph | `hq21tlqu` | `sgit_private_read_4435037d…a4ae00` |
-| Regulation Graph | `73heuprz` | `sgit_rk1_c004daae…1695c9` |
-| Licence to Operate | `posrhzp3` | `d990a52e…b4da29` *(no prefix — the oldest form)* |
-| Risk Mandate | `4zf6pf2z` | `sgit_rk1_a702fba8…95c0ae` |
-| Standards Atlas — GDPR | `4zv4bvmu` | `sgit_rk1_439ca57a…6aa15c` |
-| Risk Graph Explorer | `3simlnqe` | `sgit_rk1_1c1b95f5…7e5638` |
+**Copy any of these. Each one is the whole credential** — `sgit clone <key>` and you have the vault.
 
-The full keys are in the page source, on the cards, as `data-readkey` — and `tools/check_site.py` refuses to build if any of them is anything other than a bare 64-hex string, which is the shape a read key has and a vault key does not.
+**AIUC-1 conformance layer** · vault `2wzct4k7`
+
+```
+sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7
+```
+
+**AIUC-1, as a graph** · vault `hq21tlqu`
+
+```
+sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu
+```
+
+**Regulation Graph** · vault `73heuprz`
+
+```
+sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz
+```
+
+**Licence to Operate** · vault `posrhzp3`
+
+```
+d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3
+```
+
+**Risk Mandate** · vault `4zf6pf2z`
+
+```
+sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z
+```
+
+**Standards Atlas — GDPR** · vault `4zv4bvmu`
+
+```
+sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu
+```
+
+**Risk Graph Explorer** · vault `3simlnqe`
+
+```
+sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe
+```
+
+**These are the full keys, printed where a person can copy them** — not only in the markup. sgit.ai's own brief for this surface is explicit about it: *"a read key belongs in the page… put it in the markup where a human can copy it, not only in a script,"* and *"the read key on the page should be enough for anyone to bypass your site entirely."* {{claim:estate-keys-copyable}} The same keys reach the embed as `data-readkey` attributes, and `tools/check_site.py` refuses to build if any of those is anything other than a bare 64-hex string — the shape a read key has and a vault key does not.
 
 > **Three prefixes, one key.** The cards carry bare hex and the embed component reassembles it as `sgit_rk1_…`, while three of these vaults publish theirs as `sgit_private_read_…` and one as no prefix at all. These are the same credential under three generations of naming: sgit's own `Vault__Crypto` names `sgit_private_read_` as the read-key prefix and `sgit_rk1_` as the **legacy** one. {{claim:estate-legacy-prefix}} The table above shows each key in the form its own page publishes, so it can be compared character for character; the embed uses the legacy form because that is what the vendored component builds.
 
@@ -806,7 +840,7 @@ lead: "The rabbit hole works right up to the law. **Entity → jurisdiction → 
 order: 7
 toc: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Every row below was fetched in this session and hashed; the requests are in the retrieval log. Nothing here is read from their documentation."
 ---
@@ -1003,7 +1037,7 @@ lead: "A dev pack is how a piece of work is specified here before it is built: t
 order: 13
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "Copied from packs/ in the vault. tools/check_site.py verifies every published file against a recorded sha256, so a copy that drifted from the vault would fail the build."
 ---
@@ -1037,7 +1071,7 @@ lead: "**Every security and AI standard tells you what good looks like. None of 
 order: 14
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "The eight files below are served byte for byte from the vault. Their sha256 is recorded in data/packs-manifest.txt and check_site.py fails the build if a published byte differs."
 ---
@@ -1188,7 +1222,7 @@ order: 5
 toc: false
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
+  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
@@ -1320,34 +1354,12 @@ PAGE /versions/  —  Release history
 ---
 title: Release history
 description: "Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it."
-lead: "`admin/build/version.txt` owns the version. `bin/bump.py` moves it and adds the row below. The release commit's subject repeats it, and **CI refuses to tag if the two disagree** — which is how a site avoids shipping two versions of itself."
+lead: "`admin/build/version.txt` owns the version and `data/releases.json` owns the history. `bin/bump.py` moves both, and **every row links to that version's own page** — a reader who clicks `v0.1.7` wants to know what v0.1.7 was, not to land on a generic changelog. The release commit's subject repeats it, and **CI refuses to tag if the two disagree** — which is how a site avoids shipping two versions of itself."
 order: 12
 toc: false
 ---
 
-<div class="tablewrap"><table class="releases">
-<thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
-<tbody>
-<!-- releases -->
-    <tr><td class="vnum">v0.1.16</td><td>2026-09-09</td><td>The decks become real 16:9 slides with screenshots of this site, and each one downloads as a PDF whose links point back here.</td></tr>
-    <tr><td class="vnum">v0.1.15</td><td>2026-09-09</td><td>A vault document could run script on this origin, through the pack and deck readers. Confirmed in a browser, closed, and gated — plus link schemes restricted and a literal entity caught.</td></tr>
-    <tr><td class="vnum">v0.1.14</td><td>2026-09-09</td><td>A fourth deck — what we plan to build — and all four on the site at /decks/: stacked and printable by default, present mode and deep links on top, markdown one click away.</td></tr>
-    <tr><td class="vnum">v0.1.13</td><td>2026-09-09</td><td>What you get when you reach a law: JSON only, no instrument text, no graph — and 254 of the 398 records laws, every sub-national one, with no reachable detail document.</td></tr>
-    <tr><td class="vnum">v0.1.12</td><td>2026-09-09</td><td>The vault app names its own release in its header, and the pill opens a table of what each one changed — the same pattern as this nav, reaching a view instead of a page.</td></tr>
-    <tr><td class="vnum">v0.1.11</td><td>2026-09-09</td><td>A reader for the pack files: the rest of the pack beside every document and the raw bytes one click above it. Two corrections it surfaced, one of them the pack forking a vocabulary it said it reused.</td></tr>
-    <tr><td class="vnum">v0.1.10</td><td>2026-09-09</td><td>The security-standards dev pack, published raw at /packs/ — byte for byte from the vault, hash-checked on every build. Its test count was wrong in both numbers and is corrected.</td></tr>
-    <tr><td class="vnum">v0.1.9</td><td>2026-09-09</td><td>The estate page: seven published vaults from across the family, each opening in the page from its own published read key, one at a time and nothing fetched until asked.</td></tr>
-    <tr><td class="vnum">v0.1.8</td><td>2026-09-09</td><td>Three markdown-sourced slide decks in the vault: what we learned, what we built, and how it composes with the other vaults.</td></tr>
-    <tr><td class="vnum">v0.1.7</td><td>2026-09-09</td><td>The vault link drops the /en-gb/ segment, which broke the fragment routing; a check now refuses it.</td></tr>
-    <tr><td class="vnum">v0.1.6</td><td>2026-09-09</td><td>The vault leads the vault page, with an open-in-a-new-tab button; the release channel is withdrawn and test 9 regressed with it; the embed is verified.</td></tr>
-    <tr><td class="vnum">v0.1.5</td><td>2026-09-09</td><td>The vault's entry is now a real HTML app with five views; the site says so, and two of its computations exist only there.</td></tr>
-    <tr><td class="vnum">v0.1.4</td><td>2026-09-09</td><td>The vault is pushed: 9 of 13 acceptance tests pass, release @2026-09-09-retrieval pinned, and the site names the commit it reports on.</td></tr>
-    <tr><td class="vnum">v0.1.3</td><td>2026-09-09</td><td>The vault runs live on the site, embedded through SG/Vault's own embed protocol from the published read key.</td></tr>
-    <tr><td class="vnum">v0.1.2</td><td>2026-09-09</td><td>The domain was pointed mid-session: 404 at v0.1.0, serving at v0.1.1. Both states recorded.</td></tr>
-    <tr><td class="vnum">v0.1.1</td><td>2026-09-09</td><td>The AI-law corpus, read under a key: 2,915 instruments, and a per-corpus licence that is not CC BY 4.0. Blocker B2 closed.</td></tr>
-    <tr><td class="vnum">v0.1.0</td><td>2026-09-09</td><td>First release. All nine contract sections; the coverage measurement and the inferred-join computation with their queries; the seven-step join; the retrieval log; the vault linked by read key.</td></tr>
-</tbody>
-</table></div>
+{{releases}}
 
 ## The pipeline
 

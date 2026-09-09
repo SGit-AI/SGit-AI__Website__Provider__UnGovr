@@ -39,6 +39,19 @@ PATTERNS=(
   # An UnGovr API key pasted into an example. The header name beside an empty
   # placeholder is documentation, not a leak, so the length qualifier matters.
   'X-API-Key:[[:space:]]*[A-Za-z0-9_-]{16,}'
+  # A credential named by its FIELD rather than by a prefix this list knows.
+  # sgit.ai's site-pages brief: "a credential scan built for sgit shapes will not
+  # catch other secrets. We nearly published an OpenRouter key sitting in a vault
+  # file, in a field called openrouter_key, that matched none of the sgit patterns.
+  # Scan for what the vault holds, not only for what sgit issues."
+  #
+  # JSON and YAML shapes only, so the published read key — which lives in a
+  # data-readkey HTML attribute and is meant to be here — is not swept up. The
+  # length floor keeps empty placeholders and short enum values out.
+  # `_key` and not just `api_key`: the field in the brief's own story was called
+  # `openrouter_key`, and the first version of this pattern did not catch it —
+  # which is the anecdote repeating itself inside the fix for the anecdote.
+  '"[A-Za-z0-9_]*(_key|apikey|secret|password|passphrase|token)"[[:space:]]*:[[:space:]]*"[A-Za-z0-9_.+/=-]{20,}"'
 )
 
 status=0

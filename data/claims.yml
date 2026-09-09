@@ -454,7 +454,7 @@
   date: 9 Sep 2026
   group: About this site itself
   claim: "The vault carries **four decks, 39 slides**: what we learned about UnGovr, what we built on the site, how this composes with the estate's other vaults, and **what we plan to build** — ten slides on the security-standards dev pack, ending on what would make it wrong rather than on a roadmap. All four are authored as ordinary markdown in `decks/*.md`, and the site's parser is a **port of the vault app's**, so both render the same slides from the same bytes."
-  source: "decks/*.md in vault dkeclt5r @ obj-cas-imm-a6f0269b0967, republished and hash-checked here"
+  source: "decks/*.md in vault dkeclt5r @ obj-cas-imm-760fee6127a2, republished and hash-checked here"
 
 - id: decks-static-not-live
   state: verified
@@ -476,3 +476,10 @@
   group: About this site itself
   claim: "**Eleven screenshots of this site's own features** are captured from a real build by `tools/shots.js` and placed on eighteen slides, each with a caption and **an absolute link back to the page it shows**, so the links resolve wherever the PDF is opened rather than against the localhost it was printed from — which is what the first run produced. The screenshots and links are **the site's addition and never the vault's**: the words on every slide are the vault's, republished byte for byte, and `data/deck-extras.json` states that in its own header."
   source: "files/shots/*.png captured by tools/shots.js; data/deck-extras.json; link targets checked by check_links"
+
+- id: estate-keys-copyable
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "**Every read key on the estate page is printed in full where a person can select and copy it**, not only carried in a `data-readkey` attribute for the embed. sgit.ai's brief for this surface requires it — *\"put it in the markup where a human can copy it, not only in a script\"* and *\"the read key on the page should be enough for anyone to bypass your site entirely. If it is not, something is being withheld that should not be.\"* The page previously showed truncated keys in a table and the full ones only in the markup, which failed that test."
+  source: "https://sgit.ai/docs/briefs/sgit-ai-site-pages.md, read 9 September 2026; content/estate.md"
