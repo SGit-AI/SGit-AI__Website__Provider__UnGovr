@@ -1,9 +1,9 @@
 ---
 title: The government-graph vault — open it read-only
 description: "The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is."
-lead: "The vault is the workload in [§7](/#7-what-we-use-it-for). It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published **before** any of it was built. You can open it read-only, right now, and it will ask you for nothing."
+lead: "It is running below, live, decrypted in your browser from the read key on this page. **Nothing on this site holds a copy of it** — a push to the vault changes what you see here with no rebuild and no deploy."
 order: 5
-toc: true
+toc: false
 wide: true
 provenance:
   vault: dkeclt5r @ obj-cas-imm-b9c2cddb51e8
@@ -11,9 +11,10 @@ provenance:
   note: "The vault's own pack is published raw under /briefs/."
 ---
 
-## Open it, here
-
-The vault is running below, live, decrypted in your browser from the published read key on this page. **Nothing on this site holds a copy of it** — a push to the vault changes what you see here with no rebuild and no deploy.
+<div class="openbar">
+<a class="btn-open" href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a>
+<span>Five views and a graph canvas &mdash; <b>it has far more room in its own tab</b> than in the frame below.</span>
+</div>
 
 <div class="sgv-uiembed" data-vault="dkeclt5r" data-readkey="d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d" data-app="1"></div>
 
@@ -31,35 +32,28 @@ The vault is running below, live, decrypted in your browser from the published r
 }());
 </script>
 
-**Two surfaces open above**: App Mode, which boots the vault's own `index.html`, and the vault browser under it, with the FILES / SGIT / SETTINGS rail and an explicit **R1 W0 · Read-only** badge in the chrome. The second one is where you can read the retrieval log, open `data/graph.json`, and check the commit history that proves the pack was published before the work.
-
-**The app has five views** — the seven-step join, filterable by origin and with the provenance of every node; the coverage measurement; the inferred edge; the shape of the corpus; and every retrieval with its hash. **Two of its computations exist only there**: the shape of the 398-law corpus, and what the 16,071 Californian bodies actually are. {{claim:vault-app}}
+**Two surfaces open above.** App Mode boots the vault's own `index.html` — five views: the seven-step join, filterable by origin and with the provenance of every node; the coverage measurement; the inferred edge; the shape of the corpus; and every retrieval with its hash. **Two of its computations exist only there** — the shape of the 398-law corpus, and what the 16,071 Californian bodies are. {{claim:vault-app}} Under it, the vault browser, with the FILES / SGIT / SETTINGS rail and an explicit **Read-only** badge in the chrome.
 
 **It requests no permissions, makes no network call, and reads exactly one vault file.** That file is deliberately *not* inlined into the page: sgit objects are content-addressed and immutable, so the 33 KB of measurements stay their own object and the vault client caches them — releasing a new version of the app does not re-download the numbers.
 
-**How the key gets there.** The frame is loaded with `?embed=1&parent=<origin>`; the page waits for the frame to announce itself, then posts `{sg:'vault-open', key, mode}` with the target origin pinned. **The key never appears in a URL** and the frame keeps it in memory only. `vault-ready` / `vault-error` come back as structured events.
+> **It ships `verified` rather than `unrun`, and only because somebody watched it.** This page went out badged *written, not yet watched working*: the container that built it cannot open a browser TLS tunnel to the vault host, so the frame could never boot here. The project lead then opened it and the vault came up in App Mode — read-only chrome, five views, the join drawing. {{claim:vault-embed-runs}} **That is the only thing that moves a claim off `unrun`**, and it is why the state existed in the first place.
 
-> **Written, and not yet watched working.** The component is the estate's own, vendored unmodified — byte-identical below its provenance header — and the markup and the published read key are checked against it. {{claim:vault-embed-pattern}} **But nobody has seen this frame render.** The container that built this site cannot open a browser TLS tunnel to the vault host: `curl` gets 200 and no frame-blocking headers, Chromium gets `ERR_CONNECTION_RESET`. {{claim:vault-embed-unrun}} So the embed above ships in the state the family has a chip for — **read it, then open it and find out.** If it is blank, the fallback link below opens the same vault in a new tab.
-
-> **This is the one page on this site that opens a network connection**, and it opens exactly one, to `dev.vault.sgraph.ai`. Every other page here fetches nothing at all — [the ledger](/ledger/) says which. The trade is deliberate: an embed that reads the real vault is worth more than a screenshot of one, and it is the estate's own published pattern.
-
-<div class="card-open">
-<p class="small dim">SG/Send vault &middot; read-only &middot; asks for no permissions</p>
-<h3>government-graph <code>dkeclt5r</code></h3>
-<p>Prefer a new tab, or a vault that is having a bad day? The same key, the same vault.</p>
-<p class="mono breakall"><a href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener" target="_blank">open it read-only in a new tab &rarr;</a></p>
-</div>
+> **How the key gets there.** The frame is loaded with `?embed=1&parent=<origin>`; the page waits for the frame to announce itself, then posts `{sg:'vault-open', key, mode}` with the target origin pinned. **The key never appears in a URL** and the frame keeps it in memory only. {{claim:vault-embed-pattern}}
 
 > **This vault is on a development host.** `dev.vault.sgraph.ai` is not the production browser, and publishing a `dev.*` URL from a public site is a decision rather than a detail. It ships because the read key is the whole point of §7 and a vault nobody can open is worse than one on the wrong host — but **moving to production is [handback item 4](/briefs/)**, and this page changes when it moves.
 
-Or with the CLI:
+## The vault is the experiment; this site is the report
+
+The division is deliberate. **New data processing and visualisation happen in the vault**, where a push changes what a reader sees with no rebuild and no deploy. This site reports on what the vault establishes, and carries the claim ledger that says how well each thing is known.
+
+That is why two of the app's computations are not on this site at all. They are experiments on UnGovr's corpus rather than findings about their API, and the vault is where experiments belong.
+
+## Open it from the command line
 
 ```bash
 pip3 install sgit-ai --break-system-packages
 sgit clone sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r government-graph
 ```
-
-> **This link is on a development host.** `dev.vault.sgraph.ai` is not the production browser, and publishing a `dev.*` URL from a public site is a decision rather than a detail. It ships here because the read key is the whole point of §7 and a link nobody can open is worse than a link on the wrong host — but **moving the vault to production is [handback item 4](/briefs/)**, and this page changes when it moves.
 
 ## Why publishing this key is safe, and which key it is
 
@@ -110,8 +104,9 @@ They live in the vault, at `pack/06__verification.md`, and they are its property
 | | |
 |---|---|
 | Passing before this session | **1 of 13** — the pack was in the vault as its first commit |
-| **Passing now** | **9 of 13** — 1, 2, 5, 7, 8, 10, 11, 12, 13. Pinned by release `@2026-09-09-retrieval` |
+| **Passing now** | **9 of 13** — 1, 2, 5, 7, 8, 10, 11, 12, 13 |
 | Honestly out of MVP scope | **4** — fractal zoom, byte-range document viewer, and two others |
 | Cannot pass as written | **1** — test 3, rebuild the instrument byte for byte. [There is no machine-readable CPRA to rebuild from.](/#9-what-went-wrong) Recorded as unpassable rather than weakened {{claim:cpra-no-akn}} |
+| **Regressed on purpose** | **1** — test 9, *the demonstration is citable by version*. Two releases were cut and **withdrawn**: the vault settings UI rendered each one's commit as `obj-cas-im`, a 10-character prefix of a 24-character id. A release channel that cannot show which commit it pins does not make anything citable, so the honest state is the weak one until it is fixed {{claim:release-withdrawn}} |
 
 **A vault claiming thirteen of thirteen after one session has stopped measuring and started asserting.**

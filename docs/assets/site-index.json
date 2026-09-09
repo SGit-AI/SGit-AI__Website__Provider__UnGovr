@@ -1,5 +1,5 @@
 {
- "version": "v0.1.5",
+ "version": "v0.1.6",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -149,9 +149,10 @@
    "url": "/vault/",
    "title": "The government-graph vault \u2014 open it read-only",
    "description": "The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.",
-   "lead": "The vault is the workload in \u00a77. It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published before any of it was built. You can open it read-only, right now, and it will ask you for nothing.",
+   "lead": "It is running below, live, decrypted in your browser from the read key on this page. Nothing on this site holds a copy of it \u2014 a push to the vault changes what you see here with no rebuild and no deploy.",
    "headings": [
-    "Open it, here",
+    "The vault is the experiment; this site is the report",
+    "Open it from the command line",
     "Why publishing this key is safe, and which key it is",
     "What the vault holds",
     "What this site copies, and what it links",
@@ -376,16 +377,22 @@
    "claim": "The vault embed is the estate's own published component, vendored unmodified: the body of assets/vault-ui-embed.js is byte-identical to sgit.ai/assets/vault-ui-embed.js (sha256 6da5cf0a390dce25\u2026), the markup matches the estate's sgv-uiembed block attribute for attribute, and the only origin in its executable code is dev.vault.sgraph.ai. The key it publishes is the bare 64-hex read key, which a build check enforces."
   },
   {
-   "id": "vault-embed-unrun",
-   "state": "unrun",
-   "date": "",
-   "claim": "Nobody has watched the embed render. The authoring container's proxy resets browser-initiated TLS tunnels \u2014 curl reaches dev.vault.sgraph.ai fine and returns 200 with no frame-blocking headers, but Chromium gets ERR_CONNECTION_RESET \u2014 so the frame could not be booted here. The component, the markup and the credential are verified; the thing they produce has not been seen. Open [the vault page](/vault/) in a real browser and it either works or it does not, which is exactly what this state means."
+   "id": "vault-embed-runs",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The embed renders. It shipped badged unrun because the authoring container could not open a browser TLS tunnel to the vault host \u2014 curl got 200, Chromium got ERR_CONNECTION_RESET. The project lead then opened this page and the vault booted in App Mode over the embed protocol: the read-only chrome, the five views, and the join drawing. The state moved because somebody watched it work, which is the only thing that moves it."
   },
   {
    "id": "vault-app",
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The vault's entry is a single self-contained index.html \u2014 not the declarative _page.json it shipped with, which failed in the SG/App host with PageLayoutRenderer is not defined. The app requests no permissions, opens no network connection, and makes one sg. call, degrading to fetch and then to an inlined core slice. All three load paths were driven in a real browser, and the published copy was re-cloned with the public read key and rendered to confirm."
+  },
+  {
+   "id": "release-withdrawn",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The vault's two published releases were cut and then withdrawn. The vault settings UI rendered each one's commit as obj-cas-im \u2014 a 10-character prefix of the 24-character obj-cas-imm-b9c2cddb51e8 \u2014 and the published-version link was unreliable with it. A release exists to make a demonstration citable, and a channel that cannot show which commit it pins does not do that, so acceptance test 9 regressed from asserted to unevidenced rather than being left looking satisfied. Both commit ids are kept in .vault/releases.json; re-cutting is one line."
   }
  ]
 }

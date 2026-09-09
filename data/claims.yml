@@ -251,11 +251,12 @@
   claim: "The vault embed is the estate's own published component, **vendored unmodified**: the body of `assets/vault-ui-embed.js` is byte-identical to `sgit.ai/assets/vault-ui-embed.js` (sha256 `6da5cf0a390dce25…`), the markup matches the estate's `sgv-uiembed` block attribute for attribute, and the only origin in its executable code is `dev.vault.sgraph.ai`. The key it publishes is the bare 64-hex read key, which a build check enforces."
   source: "byte diff against sgit.ai/assets/vault-ui-embed.js, fetched 9 September 2026"
 
-- id: vault-embed-unrun
-  state: unrun
+- id: vault-embed-runs
+  state: verified
+  date: 9 Sep 2026
   group: About this site itself
-  claim: "**Nobody has watched the embed render.** The authoring container's proxy resets browser-initiated TLS tunnels — `curl` reaches `dev.vault.sgraph.ai` fine and returns 200 with no frame-blocking headers, but Chromium gets `ERR_CONNECTION_RESET` — so the frame could not be booted here. The component, the markup and the credential are verified; **the thing they produce has not been seen**. Open [the vault page](/vault/) in a real browser and it either works or it does not, which is exactly what this state means."
-  source: "Playwright via the agent proxy: ERR_CONNECTION_RESET on the vault origin"
+  claim: "**The embed renders.** It shipped badged `unrun` because the authoring container could not open a browser TLS tunnel to the vault host — `curl` got 200, Chromium got `ERR_CONNECTION_RESET`. The project lead then opened this page and the vault booted in App Mode over the embed protocol: the read-only chrome, the five views, and the join drawing. **The state moved because somebody watched it work, which is the only thing that moves it.**"
+  source: "the project lead's browser, SG/App host, 9 September 2026 — screenshot"
 
 - id: vault-app
   state: verified
@@ -263,3 +264,10 @@
   group: About this site itself
   claim: "The vault's entry is a single self-contained `index.html` — **not** the declarative `_page.json` it shipped with, which failed in the SG/App host with `PageLayoutRenderer is not defined`. The app requests no permissions, opens no network connection, and makes one `sg.*` call, degrading to `fetch` and then to an inlined core slice. All three load paths were driven in a real browser, and the published copy was re-cloned with the public read key and rendered to confirm."
   source: "a fresh read-only clone of dkeclt5r, served locally and driven with Playwright"
+
+- id: release-withdrawn
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault's two published releases were **cut and then withdrawn**. The vault settings UI rendered each one's commit as `obj-cas-im` — a 10-character prefix of the 24-character `obj-cas-imm-b9c2cddb51e8` — and the published-version link was unreliable with it. **A release exists to make a demonstration citable, and a channel that cannot show which commit it pins does not do that**, so acceptance test 9 regressed from `asserted` to `unevidenced` rather than being left looking satisfied. Both commit ids are kept in `.vault/releases.json`; re-cutting is one line."
+  source: "the vault settings UI, 9 September 2026, and .vault/releases.json"
