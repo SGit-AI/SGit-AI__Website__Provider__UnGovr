@@ -20,3 +20,13 @@
 2026-09-09T01:50:46Z	GET	200	fdb233ff13c4acc65ce299ebde9def23dbb2001f880272609fcc06e35a844713	327513		https://data.ungovr.org/v1/entities/gb.json
 2026-09-09T01:50:46Z	GET	200	02f50b65433a4806b57b797b65d9268809d5fd646f22fef5e3c66beef87b1f0b	13316		https://data.ungovr.org/v1/entities/de.json
 2026-09-09T01:50:47Z	GET	200	9062951f8cf4bc6e97a4be961944dc366468942edc47ab488551c3cfae651d56	4070		https://data.ungovr.org/v1/cgj/counties.json
+2026-09-09T14:38:20Z	GET	200	b06492bfb34b9572a197ee6627eeb49e676296bd56d957b6f8eca79af0c248c1	6749		https://data.ungovr.org/v1/laws/records/ad.json
+2026-09-09T14:38:21Z	GET	404	27b64fe8462133b5ca0ce22ce615b7f025a2ddd0c47358157160fa5a8a7ac3d9	54		https://data.ungovr.org/v1/laws/records/ad.md
+2026-09-09T14:38:21Z	GET	404	2b0db001c569bf6831ba80f9c66e00a18480a625a7e19f7e79728dc588dff99c	55		https://data.ungovr.org/v1/laws/records/ad.pdf
+2026-09-09T14:38:22Z	GET	404	62913c47e41315f18742061c8c4738ad63f2c3abf146578fb48982ce45a2be4e	58		https://data.ungovr.org/v1/laws/records/ad.jsonld
+2026-09-09T14:38:22Z	GET	404	9290b6263d7571e7a195370e4f4285ed4f77ac67cf28043480b7b56e1f8311af	55		https://data.ungovr.org/v1/laws/records/ad.ttl
+2026-09-09T14:38:23Z	GET	200	b06492bfb34b9572a197ee6627eeb49e676296bd56d957b6f8eca79af0c248c1	6749		https://data.ungovr.org/v1/laws/records/ad.json
+2026-09-09T14:38:23Z	GET	200	b06492bfb34b9572a197ee6627eeb49e676296bd56d957b6f8eca79af0c248c1	6749		https://data.ungovr.org/v1/laws/records/ad.json
+2026-09-09T14:38:24Z	GET	200	842afdba97c37d2a06aeca6ce7744e0a83c4fb37f9a6494c5d4cd67055df403a	51755		https://data.ungovr.org/v1/schema/ungovr.ai-laws-2.schema.json
+2026-09-09T14:40:49Z	GET	404	9a599c694ea9b1dd75365f2feb15110db726f5d79ba71f66ec92fc00f12d1bfe	59		https://data.ungovr.org/v1/laws/records/us/ca.json
+2026-09-09T14:40:50Z	GET	200	82f067f1f1a6505b6f42f203be2778d38d453d4240944cc67ccf7702830c967e	13556		https://data.ungovr.org/v1/laws/records/ca.json

@@ -402,3 +402,49 @@
   group: About this site itself
   claim: "The vault app carries a **version pill in its header** that opens its Provenance view at a table of **seven releases**, naming what each one changed and which of them moved this site around the vault rather than the vault itself. The number is the site release that shipped the app change, so one number reaches a page with the pipeline behind it. It is a `<button>`, not a link: **a vault app must never assign `location.hash`** and an internal fragment href lands on the host's broken-link overlay, so it switches the view and scrolls instead."
   source: "app/index.src.html in vault dkeclt5r @ obj-cas-imm-e23f0cecfccf; driven in Chromium — the pill reads v0.1.12, opens Provenance, and marks the current row"
+
+# ---------------------------------------------------------------------------
+# What you get when you reach a law. Every row was fetched in this session and
+# hashed; the requests are in the retrieval log, 404s included.
+
+- id: law-json-only
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "Every representation is JSON. `.md`, `.html`, `.txt`, `.pdf`, `.jsonld` and `.ttl` on a records-law path all return **404**. Content negotiation is not merely ignored — it is ignored *identically*: `Accept: text/markdown`, `Accept: application/ld+json` and no `Accept` header at all return the same document with **the same sha256 `b06492bfb34b9572…`, 6,749 bytes**. That is not a content-type header claiming JSON; it is the same bytes three times."
+  source: "eight probes of /v1/laws/records/ad.json and its extension variants, all in the retrieval log"
+
+- id: law-no-text
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "A records law comes back as a **structured research summary, not the instrument**: 31–34 top-level fields across a ten-jurisdiction sample, 29 of them present in every one. `exemptions[]` carries code, name, description and whether it is discretionary; `appeal_process[]` carries the tier, the body, the deadline in days and a contact URL. **The statute's own text appears in no field and in no format.**"
+  source: "/v1/laws/records/{ad,ba,ci,md,mz,tg}.json — a deterministic every-40th sample of the index"
+
+- id: law-source-links
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "**392 of the 398 records laws carry a URL to the instrument at its official publisher**, across **339 distinct hosts** — `boe.es` (17), `rti-rating.org` (13), `lexfind.ch` (9) and a long tail. Detail documents add `primary_source_url` and a typed `secondary_sources[]`. **The hop out to the real source exists and is well made**; what does not exist is the hop back in."
+  source: "counted over /v1/laws/records/index.json, sha256 in the retrieval log"
+
+- id: law-provision-ids
+  state: measured
+  date: 9 Sep 2026
+  group: Measured by our own pipeline, 9 September 2026
+  claim: "**One field carries provision-level identifiers**: `exemptions[].code`, with values like `art11-a` … `art11-m`, `art12`. Across a deterministic ten-jurisdiction sample, **58 exemptions carried 34 article-shaped codes — 59%**. Every other article reference is prose: *\"Article 15 provides that consultation of public information is free.\"* Readable by a person; not addressable by a graph."
+  source: "the same every-40th sample; codes matched against /^art/i"
+
+- id: law-subnational-404
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "**254 of the 398 records laws are sub-national and none has a reachable detail document.** Their `jurisdiction` carries a slash (`us/ms`, `br/minas-gerais`, `au/nt`) and the detail route is a single path segment, so **24 of 24 sampled returned 404 while 26 of 26 national ones returned 200**. Raw, percent-encoded and dash-substituted forms all fail. They are not absent from the corpus — they are in the index with citation, source URL and response days; it is the 30-odd-field document that cannot be addressed. **Sub-national is exactly where jurisdictional variation lives.**"
+  source: "50 probes of /v1/laws/records/{slug}.json, seeded sample plus every-40th; the decisive pair is in the retrieval log"
+
+- id: ai-vocab-not-graph
+  state: verified
+  date: 9 Sep 2026
+  group: Run against the API, 9 September 2026
+  claim: "The nearest thing to an ontology is the AI-law corpus's `vocab.json`: **4 verdicts, 6 contexts, 6 crawl-policy fields, 22 field definitions and 17 enums**, with a JSON Schema at `ungovr.ai-laws/2`. It is a real controlled vocabulary — every enum value defined in prose. **It is not a graph**: no classes, no properties with domains and ranges, no relations between terms, no SKOS, OWL, RDF or JSON-LD. The schema document is public; the data behind it is key-gated and its licence states *\"No license is conveyed by receipt of this file.\"* The only occurrence of the word *graph* in their entire OpenAPI is `GeoJSON`."
+  source: "/v1/ai-laws/vocab.json and /v1/ai-laws/export/manifest.json under X-API-Key; /v1/meta/openapi.yaml grepped"

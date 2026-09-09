@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai
-> site v0.1.12
+> site v0.1.13
 
 > An independent report on the UnGovr Open Data API — 327,138 government entities and 398
 > open-records laws, published free under CC BY 4.0. This report measures one thing: how far
@@ -28,6 +28,7 @@ Licence: This document is released under the Creative Commons Attribution 4.0 In
 - [Disclosures](https://ungovr.providers.sgit.ai/disclosures/): No commercial relationship, no funding, no agreement, and no conversation. Checked 9 September 2026, and published before there was anything to disclose.
 - [The estate this joins — seven vaults, running here](https://ungovr.providers.sgit.ai/estate/): The graph estate UnGovr's data would plug into: seven published vaults you can open in this page with nothing but a read key, the sites that publish alongside them, and the one edge that is missing from all of them.
 - [The minimal working examples — as files](https://ungovr.providers.sgit.ai/examples/): The scripts that produced every number on this site, downloadable and runnable. Not illustrations of the method: the originals.
+- [What you get when you reach a law](https://ungovr.providers.sgit.ai/instruments/): Follow the evidence to an instrument and this is what UnGovr hands you: a structured summary in JSON, a link to the publisher — and, for 254 of the 398 records laws, no detail document at all.
 - [The seven-step join — one entity, one clause, one acceptance](https://ungovr.providers.sgit.ai/join/): Santa Barbara County to the California Public Records Act and down to an unowned acceptance node, with the provenance of every node and the assertion class of every edge.
 - [The claim ledger — every claim, with the state it earned](https://ungovr.providers.sgit.ai/ledger/): Every factual claim this site makes, once, with its verification state, the date it earned it, and where it is said. A claim on a page and not in this table fails the build.
 - [The dev packs, published raw](https://ungovr.providers.sgit.ai/packs/): The design documents this work runs on, republished byte for byte from the vault they live in — with the sha256 of every file, so a copy that drifted would be visible.

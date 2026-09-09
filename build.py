@@ -71,6 +71,7 @@ NAV = [
     ("The finding", "/coverage/", [
         ("The coverage measurement", "/coverage/"),
         ("The seven-step join", "/join/"),
+        ("Reaching a law", "/instruments/"),
         ("The retrieval log", "/retrievals/"),
     ]),
     ("The vault", "/vault/", [

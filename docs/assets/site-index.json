@@ -1,5 +1,5 @@
 {
- "version": "v0.1.12",
+ "version": "v0.1.13",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -110,6 +110,24 @@
    "headings": [
     "Running them",
     "What they will cost you"
+   ],
+   "kind": "page"
+  },
+  {
+   "url": "/instruments/",
+   "title": "What you get when you reach a law",
+   "description": "Follow the evidence to an instrument and this is what UnGovr hands you: a structured summary in JSON, a link to the publisher \u2014 and, for 254 of the 398 records laws, no detail document at all.",
+   "lead": "The rabbit hole works right up to the law. Entity \u2192 jurisdiction \u2192 instrument all resolve. Then it stops: there is no text, no PDF, no markdown, no graph \u2014 and for every sub-national jurisdiction, no detail document that can be addressed at all.",
+   "headings": [
+    "The short answer",
+    "JSON, and only JSON",
+    "What the summary actually holds \u2014 and it is a lot",
+    "The provenance link is there, and it works",
+    "Provision-level identifiers: one field, some of the time",
+    "The sub-national half is unreachable",
+    "Ontology: a controlled vocabulary, not a graph",
+    "So: could we help? Yes, and this is the shape of it",
+    "What this page does not claim"
    ],
    "kind": "page"
   },
@@ -544,6 +562,42 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The vault app carries a version pill in its header that opens its Provenance view at a table of seven releases, naming what each one changed and which of them moved this site around the vault rather than the vault itself. The number is the site release that shipped the app change, so one number reaches a page with the pipeline behind it. It is a <button>, not a link: a vault app must never assign location.hash and an internal fragment href lands on the host's broken-link overlay, so it switches the view and scrolls instead."
+  },
+  {
+   "id": "law-json-only",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Every representation is JSON. .md, .html, .txt, .pdf, .jsonld and .ttl on a records-law path all return 404. Content negotiation is not merely ignored \u2014 it is ignored identically: Accept: text/markdown, Accept: application/ld+json and no Accept header at all return the same document with the same sha256 b06492bfb34b9572\u2026, 6,749 bytes. That is not a content-type header claiming JSON; it is the same bytes three times."
+  },
+  {
+   "id": "law-no-text",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "A records law comes back as a structured research summary, not the instrument: 31\u201334 top-level fields across a ten-jurisdiction sample, 29 of them present in every one. exemptions[] carries code, name, description and whether it is discretionary; appeal_process[] carries the tier, the body, the deadline in days and a contact URL. The statute's own text appears in no field and in no format."
+  },
+  {
+   "id": "law-source-links",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "392 of the 398 records laws carry a URL to the instrument at its official publisher, across 339 distinct hosts \u2014 boe.es (17), rti-rating.org (13), lexfind.ch (9) and a long tail. Detail documents add primary_source_url and a typed secondary_sources[]. The hop out to the real source exists and is well made; what does not exist is the hop back in."
+  },
+  {
+   "id": "law-provision-ids",
+   "state": "measured",
+   "date": "9 Sep 2026",
+   "claim": "One field carries provision-level identifiers: exemptions[].code, with values like art11-a \u2026 art11-m, art12. Across a deterministic ten-jurisdiction sample, 58 exemptions carried 34 article-shaped codes \u2014 59%. Every other article reference is prose: \"Article 15 provides that consultation of public information is free.\" Readable by a person; not addressable by a graph."
+  },
+  {
+   "id": "law-subnational-404",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "254 of the 398 records laws are sub-national and none has a reachable detail document. Their jurisdiction carries a slash (us/ms, br/minas-gerais, au/nt) and the detail route is a single path segment, so 24 of 24 sampled returned 404 while 26 of 26 national ones returned 200. Raw, percent-encoded and dash-substituted forms all fail. They are not absent from the corpus \u2014 they are in the index with citation, source URL and response days; it is the 30-odd-field document that cannot be addressed. Sub-national is exactly where jurisdictional variation lives."
+  },
+  {
+   "id": "ai-vocab-not-graph",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The nearest thing to an ontology is the AI-law corpus's vocab.json: 4 verdicts, 6 contexts, 6 crawl-policy fields, 22 field definitions and 17 enums, with a JSON Schema at ungovr.ai-laws/2. It is a real controlled vocabulary \u2014 every enum value defined in prose. It is not a graph: no classes, no properties with domains and ranges, no relations between terms, no SKOS, OWL, RDF or JSON-LD. The schema document is public; the data behind it is key-gated and its licence states \"No license is conveyed by receipt of this file.\" The only occurrence of the word graph in their entire OpenAPI is GeoJSON."
   }
  ]
 }
