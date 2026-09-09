@@ -21,6 +21,11 @@ PATTERNS=(
   'sgit_private_vault_[A-Za-z0-9]+'     # sgit vault WRITE key
   'sgit_private_write_[A-Za-z0-9]+'     # ditto, alternate spelling
   '[A-Za-z0-9_-]{20,}:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'  # passphrase:uuid
+  # UnGovr Open Data API key. Free to register for, read-only, and still a
+  # credential: it carries a per-key daily quota and it identifies whoever
+  # registered it. It is issued to the project, never published.
+  'ung_live_[A-Za-z0-9]{16,}'
+  'ung_test_[A-Za-z0-9]{16,}'
   'sk_[A-Za-z0-9]{32,}'                 # ElevenLabs
   'sk-or-v1-[A-Za-z0-9]{16,}'           # OpenRouter
   'sk-[A-Za-z0-9]{32,}'                 # OpenAI-shaped

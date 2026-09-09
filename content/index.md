@@ -38,7 +38,7 @@ platform_grants:
     reach: tenant
     reversible: true
     product: Open Data API — AI and crawling law
-    note: key-gated. **Unread here** — blocker B2
+    note: key-gated, and **read** — 2,915 instruments. Its own licence, not CC BY 4.0
   - verb: spend
     object: wallet
     reach: tenant
@@ -109,7 +109,7 @@ patterns:
 <div class="tile tile-big"><b>0 of 49</b><span>sampled entities carrying <code>open_records.law</code></span></div>
 <div class="tile"><b>96.6%</b><span>reachable if the edge is <em>inferred</em></span></div>
 <div class="tile"><b>$0.00</b><span>what this whole report cost</span></div>
-<div class="tile"><b>70</b><span>requests, inside a free tier of 100</span></div>
+<div class="tile"><b>2 of 2</b><span>gated corpora now read &mdash; blocker B2 closed</span></div>
 </div>
 
 **Read the first number with the second.** A missing law reference is not an error. It is an entity whose records law has not been mapped yet, and for much of the world it may not exist in a mappable form. The number measures how far the join can currently reach. It is **not a defect count**. {{claim:coverage-zero}}
@@ -171,7 +171,14 @@ www-authenticate: Bearer resource_metadata="https://data.ungovr.org/.well-known/
  "register":"https://www.ungovr.org/open-data/api-keys"}
 ```
 
-The body says `X-API-Key`. The header offers OAuth 2.0 Protected Resource Metadata — the shape an MCP client expects. Both are documented; a reader meeting only one of them would not know the other existed. **Product: Open Data API, AI-laws endpoints. Read at `https://data.ungovr.org/v1/ai-laws/index.json` on 9 September 2026.**
+The body says `X-API-Key`. The header offers OAuth 2.0 Protected Resource Metadata — the discovery document an MCP client follows. **Product: Open Data API, AI-laws endpoints. Read at `https://data.ungovr.org/v1/ai-laws/index.json` on 9 September 2026.**
+
+**Only one of the two works, and we have now run both.** The same valid key returns `200` as `X-API-Key` and `401` as `Authorization: Bearer` — byte-identical to the anonymous refusal. {{claim:authorization-ignored}} Their key page says so plainly: *"The Open Data API does not read `Authorization`, so a bearer token is ignored and the request is answered as an anonymous one."* The 401's own header does not say so, and a client that trusts the header over the docs fails open into anonymity.
+
+<blockquote class="vendor">
+<p>The Open Data API does not read <code>Authorization</code>, so a bearer token is ignored and the request is answered as an anonymous one.</p>
+<cite><a href="https://www.ungovr.org/open-data/api-keys" rel="noopener">ungovr.org/open-data/api-keys</a> &mdash; product: Open Data API, API keys &mdash; read 9 September 2026</cite>
+</blockquote>
 
 **Where it goes in our estate**, if we ever hold one: owner-sealed under the vault's write key, never in this repository. The key-shape scan in `tools/secret-scan.sh` runs over the whole tree including the built output, and it deliberately does **not** match `sgit_private_read_…`, because a read key is publishable and is how this estate shares a vault — the same way `sgit.ai/llms.txt` does. [The vault page](/vault/) carries one.
 
@@ -191,6 +198,8 @@ Past the free tier the API answers **HTTP 402 with a Machine Payments Protocol c
 **And what it does not cap.** Nothing scopes a *wallet*. The rate limit protects UnGovr from a client; the wallet balance is the only thing protecting a client from itself, and a runaway agent with a funded wallet has no per-key spend ceiling documented anywhere. That is the same finding this family recorded against a model vendor's per-key quota, arrived at from the opposite direction.
 
 **One practical gap.** `X-RateLimit-Remaining` and `X-Quota-Remaining` are advertised in the API's CORS `Access-Control-Expose-Headers`, but were not emitted on any of the 70 responses taken here — so a client cannot see how much budget is left until it is gone. {{claim:no-ratelimit-headers}}
+
+**And one design choice worth knowing before you plan around it.** Several keys on one account **share a single daily allowance**: *"connecting a second client does not buy a second free tier."* {{claim:shared-quota}} So a key here is a **revocation handle, not a budget** — issuing one per machine limits what you have to rotate when one leaks, without raising throughput. That is the right trade, and it is the opposite of the assumption most per-key quota systems train you into.
 
 ## 6 · The minimal working example
 
@@ -241,6 +250,14 @@ An entity carries no addressable path to the law that governs it. `open_records`
 ### Below the law, there is nothing addressable
 
 The CPRA record cites `Gov. Code § 7922.535(a)` — which is exactly right, and confirms a section number the vault's own pack had only guessed at. {{claim:provision-confirmed}} But it is **prose inside a free-text field**. {{claim:provision-not-addressable}} There is no provision array, no clause identifier, no byte range. You can cite the Act; you cannot cite the clause, and so you cannot attach evidence to the clause. Everything downstream of a duty — a control, an observation, an acceptance — needs to hang on something smaller than a statute.
+
+### The gated corpus is stronger than expected — and is not open data
+
+The AI-law corpus was the highest-value unread thing in this project, and a key for it arrived while this report was being written. **It is much better than the brief predicted.** The brief expected a bare verdict — a summary judgement a reader could neither check nor usefully disagree with. What `ungovr.ai-laws/2` actually carries is **2,915 instruments across 271 jurisdictions**, each with a citation, a URL, a status and an effective date; a per-scenario `basis` naming the controlling authority — Van Buren, hiQ v LinkedIn, Ziff Davis v OpenAI; and a `provenance` block with `as_of_date`, `confidence` and `stale`. {{claim:ai-laws-is-instruments}} **It is checkable, and it is disagreeable-with at the level where that is useful.** The prediction was wrong and the correction is filed.
+
+**But it is not CC BY 4.0, and nothing on the API's front door says so.** The OpenAPI document declares the whole Open Data API CC BY 4.0. The AI-law payloads carry their own `license` block — *"UnGovr Data License (non-exclusive, by agreement)"* — whose grant field reads **"No license is conveyed by receipt of this file."** {{claim:ai-laws-licence}}
+
+The specific term governs, so **this site and its vault describe and measure that corpus and redistribute none of it**, and there is a build check that refuses to let the payload into either tree. This is the single most consequential thing in this report for anyone building on the API: **a consumer who reads the OpenAPI licence, sees CC BY 4.0, and redistributes what they fetched would be wrong**, and would have had to open a payload to find out.
 
 ### The cross-references are described and not exposed
 

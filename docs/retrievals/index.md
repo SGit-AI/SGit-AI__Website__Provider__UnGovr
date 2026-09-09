@@ -19,7 +19,7 @@ Three responses here are not `200`, and they are the useful ones.
 |---|---|
 | `404` on `/v1/laws/records/us/ca.json` | The path separator in the law corpus is `--`, not `/` — the same convention the entity detail endpoint uses. A guess, logged as a guess, then corrected to `us--ca.json` |
 | `404` on `/v1/cgj/counties/us--ca--santa-barbara.json` | The CGJ corpus is keyed by bare county code (`santa-barbara`), not by entity slug. Two identifier schemes for the same county, in one API |
-| `401` on `/v1/ai-laws/index.json` | Blocker **B2**, still open. The corpus needs a key, and [the key is free](/#4-where-the-key-goes) — so this closes by registering, not by paying {{claim:ai-laws-gated}} |
+| `401` on `/v1/ai-laws/index.json` | Blocker **B2**. A key arrived while this report was being written and **the row above is the last anonymous one** — the corpus was then read {{claim:ai-laws-gated}} |
 
 Recording a refusal as an entry rather than leaving it as an absence is the point: a reader can see what was tried, what was declined, and that a shortcut existed and was not taken.
 
@@ -29,9 +29,15 @@ The coverage sample's per-request log is not inlined above — 49 near-identical
 
 - [`computation-1-sample-retrievals.tsv`](/files/computation-1-sample-retrievals.tsv) — timestamp, status, sha256 and URL for all 49
 
-## What is not here
+## What is not here, and why
 
-**The one retrieval this session declined to make.** UnGovr's `/v1/ai-laws/*` corpus is the highest-value unread thing in this project, and it is gated by a key that is free to register for. No key was registered, because registering one is a relationship with a nonprofit that [nobody has spoken to yet](/disclosures/), and that is a decision for a human rather than a build step. It is [handback item 2](/briefs/).
+**The AI-law corpus was read, and none of it is republished.**
+
+Six further requests were made under the key: the index, the vocabulary, the United States record, the JSON Schema, the export manifest, and one 404 that establishes the corpus is addressed by bare slug rather than by the entity API's `--` convention. Their log rows — URL, status, byte count, `sha256` — are metadata about *our own requests* and are in the table above.
+
+**Their content is not, and cannot be.** That corpus carries its own licence block, whose grant field reads *"No license is conveyed by receipt of this file."* {{claim:ai-laws-licence}} It is not CC BY 4.0, whatever the OpenAPI document declares at the top level. So this site describes it, [measures it](/#9-what-went-wrong), and redistributes none of it — and `tools/check_site.py` fails the build if the payload ever appears in this repository or in the vault's tree.
+
+**This is the difference between a report and a mirror**, and it is the one place on this project where the distinction had teeth.
 
 ---
 

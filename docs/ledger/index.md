@@ -27,7 +27,7 @@ wide: true
 ## What is honestly thin
 
 - **`docs` claims about the payment path.** No `402` was ever returned here, so everything about the wallet, the price and the challenge headers is read rather than run. It is the largest block of unexercised claims on the site.
-- **The gated corpora are unread.** Blocker B2. The AI-laws corpus is the highest-value unknown in this project and a key for it is free.
+- **One gated corpus is still unread.** CGJ *report detail* needs the same key and was not fetched; only the indices were. Blocker B2 is otherwise closed.
 - **One number is a sample, not a census**, and [says so with an interval](/coverage/).
 
 ---

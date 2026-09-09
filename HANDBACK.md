@@ -14,14 +14,21 @@ the vault needs is built and staged; it needs one `sgit push` from somebody hold
 **The key must never enter this repository.** `tools/secret-scan.sh` enforces that over the
 whole tree including `docs/`, and it is wired into CI before any content was written.
 
-## 2 · Register for a free UnGovr API key?
+## 2 · The UnGovr API key — issued, used, and not stored here
 
-**Blocker B2, and the highest-value unknown in this project.** The `/v1/ai-laws/*` corpus is
-unread. A key is **free** — this session confirmed that on their own page — so this closes by
-registering, not by paying.
+**Blocker B2 is closed.** A key was issued to the project mid-session, the `/v1/ai-laws/*` corpus
+was read, and it produced the two strongest findings in the report: the corpus is far richer than
+predicted, and **it is not CC BY 4.0**.
 
-It is a handback item rather than a build step because registering is a **relationship with a
-nonprofit nobody has spoken to** (see item 7), and that is a human decision.
+**Three things for a human to check:**
+
+1. **The key is not in this repository, the vault, or any file.** It was passed through the
+   environment only. `tools/secret-scan.sh` now matches `ung_live_` / `ung_test_` and
+   `tools/check_site.py` carries the same tripwire — both were added *before* the key was used.
+2. **The corpus is not redistributed anywhere.** `check_no_restricted_corpus` fails the build if
+   the payload or its licence marker appears in this tree. The vault's tree is clean too.
+3. **A second key exists** (`ung_live_dba34ae…`, created 8 September) and is unused. Keys share one
+   daily allowance, so it costs nothing to keep — but an unused credential is worth revoking.
 
 ## 3 · Default branch — settled
 
@@ -81,6 +88,8 @@ Needs a real name, an interval, and a revocation path.
 | The full gate passes | `admin/build/validate.sh` — build reproducible, 12 pages, 29 claims, secret scan clean over 14 patterns |
 | `docs/` matches `content/` | `python3 build.py --check` |
 | No write key anywhere | secret scan + a second tripwire in `check_site.py` |
+| No UnGovr API key anywhere | `ung_live_`/`ung_test_` patterns, added before the key was used |
+| No restricted corpus anywhere | `check_no_restricted_corpus`, over the whole tree |
 | The read key **is** present, on purpose | `/vault/`, and it is excluded from the scan deliberately |
 | No page makes a network call | enforced by `check_site.py`, not just claimed |
 | All nine contract sections, in order | enforced by `check_site.py` |

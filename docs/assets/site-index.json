@@ -1,5 +1,5 @@
 {
- "version": "v0.1.0",
+ "version": "v0.1.1",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -23,6 +23,7 @@
     "The law edge stops one hop short",
     "The edge is not in any bulk surface, so nobody can measure it",
     "Below the law, there is nothing addressable",
+    "The gated corpus is stronger than expected \u2014 and is not open data",
     "The cross-references are described and not exposed",
     "Small, specific, and probably worth a fix",
     "No public repository, so no corrections path",
@@ -140,7 +141,7 @@
    "headings": [
     "The failures, and why they are rows",
     "The 49-request sample",
-    "What is not here"
+    "What is not here, and why"
    ],
    "kind": "page"
   },
@@ -252,7 +253,31 @@
    "id": "ai-laws-gated",
    "state": "verified",
    "date": "9 Sep 2026",
-   "claim": "/v1/ai-laws/index.json answers 401 without a key, and its response advertises two different credential mechanisms: the body says X-API-Key, while the WWW-Authenticate header offers OAuth 2.0 Protected Resource Metadata \u2014 Bearer resource_metadata=\"\u2026/.well-known/oauth-protected-resource\", scope=\"opendata:read\". Blocker B2 stays open, but it is closed by registering, not by paying."
+   "claim": "/v1/ai-laws/index.json answers 401 without a key, and its response advertises two different credential mechanisms: the body says X-API-Key, while the WWW-Authenticate header offers OAuth 2.0 Protected Resource Metadata \u2014 Bearer resource_metadata=\"\u2026/.well-known/oauth-protected-resource\", scope=\"opendata:read\". Blocker B2 is now closed: a key was issued to this project and the corpus was read."
+  },
+  {
+   "id": "authorization-ignored",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Only one of those two mechanisms works. The same valid key returns 200 as X-API-Key and 401 as Authorization: Bearer \u2014 byte-identical to the anonymous response. So the OAuth Protected Resource Metadata advertised in the WWW-Authenticate header is discovery for an authorization flow the Open Data API does not accept, and an MCP or OAuth client that follows it is silently treated as anonymous. Their own key page states this; the 401 header does not."
+  },
+  {
+   "id": "ai-laws-is-instruments",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The AI-law corpus is not a bare verdict, and the brief that commissioned this work was wrong to expect one. ungovr.ai-laws/2 carries 2,915 instruments across 271 jurisdictions \u2014 200 national, 56 sub-national, 14 local \u2014 each with a citation, a URL, a status and an effective date; plus, per access scenario, a basis naming the controlling authority (Van Buren 2021, hiQ v LinkedIn, Ziff Davis v OpenAI 2025) and a provenance block with as_of_date, confidence and stale. A reader can check it and can disagree at the level where disagreement is useful. Correction C8."
+  },
+  {
+   "id": "ai-laws-licence",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Two licences are in force on one API, and they disagree. The OpenAPI document declares the whole Open Data API CC BY 4.0. The AI-law payloads carry their own license block \u2014 \"UnGovr Data License (non-exclusive, by agreement)\" \u2014 whose grant field reads \"No license is conveyed by receipt of this file.\" The specific term governs, so that corpus is not open data and is not redistributed by this site or its vault; it is described and measured only. A consumer reading only the OpenAPI licence would get this wrong."
+  },
+  {
+   "id": "shared-quota",
+   "state": "docs",
+   "date": "9 Sep 2026",
+   "claim": "Multiple API keys on one account share a single daily allowance \u2014 \"connecting a second client does not buy a second free tier\". So a key is a revocation handle, not a budget: issuing one per machine limits blast radius without raising throughput, which is the right trade and worth knowing before planning around it."
   },
   {
    "id": "coverage-zero",

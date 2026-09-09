@@ -340,6 +340,10 @@ def check_write_key_tripwire():
     shapes = [
         re.compile(r"[A-Za-z0-9_-]{20,}:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"),
         re.compile(r"sgit_private_(?:vault|write)_[A-Za-z0-9]+"),
+        # The UnGovr API key issued to this project. Free to obtain and read-only,
+        # which is not the same as publishable: it carries a per-key quota and it
+        # identifies whoever registered it.
+        re.compile(r"ung_(?:live|test)_[A-Za-z0-9]{16,}"),
     ]
     for f in ROOT.rglob("*"):
         if not f.is_file() or ".git/" in str(f) or f.suffix in {
@@ -351,7 +355,54 @@ def check_write_key_tripwire():
             continue
         for shape in shapes:
             if shape.search(text):
-                fail(f"{f.relative_to(ROOT)}: contains a vault WRITE-key-shaped string")
+                fail(f"{f.relative_to(ROOT)}: contains a credential-shaped string")
+
+
+def check_no_restricted_corpus():
+    """UnGovr's Open Data API declares CC BY 4.0 at the OpenAPI level, but the
+    AI-law payloads carry their OWN licence block — "UnGovr Data License
+    (non-exclusive, by agreement)", whose grant field reads "No license is
+    conveyed by receipt of this file."
+
+    The specific, more restrictive term governs. So that corpus may be described,
+    measured and reported on, and may NOT be redistributed here. This repository is
+    public and the vault it feeds is shared by a read key, so the only safe rule is
+    that the payload never enters either tree.
+
+    Two things are deliberately NOT matched, because matching them would block the
+    report rather than the payload:
+
+      * the licence sentence itself. Quoting one sentence of a licence in order to
+        report what it says is the finding, not the redistribution.
+      * the 401 error body, which is the evidence that the endpoint is gated at all.
+
+    So the markers are the payload's own schema identifier and a set of field names
+    that occur in the corpus and in nothing else.
+    """
+    markers = [
+        '"ungovr.ai-laws/2"',
+        "'ungovr.ai-laws/2'",
+    ]
+    # A file carrying several corpus-only field names is the payload even if the
+    # schema line was stripped.
+    corpus_fields = ("access_matrix", "tdm_optout_mechanism", "robots_txt_legal_weight",
+                     "after_technical_circumvention", "authorization_test")
+    for f in ROOT.rglob("*"):
+        if not f.is_file() or ".git/" in str(f) or f.suffix in {
+                ".png", ".jpg", ".webp", ".ico", ".woff2", ".zip", ".pdf", ".parquet"}:
+            continue
+        try:
+            text = f.read_text()
+        except (UnicodeDecodeError, OSError):
+            continue
+        if "check_site" in f.name:
+            continue
+        hit = next((m for m in markers if m in text), None)
+        if hit is None and sum(c in text for c in corpus_fields) >= 3:
+            hit = "three or more corpus-only field names"
+        if hit:
+            fail(f"{f.relative_to(ROOT)}: contains UnGovr's restricted AI-law corpus "
+                 f"({hit}) — that corpus is not CC BY 4.0 and must not be redistributed")
 
 
 def check_cname():
@@ -387,7 +438,8 @@ def main():
                check_not_a_defect_count, check_inferred_edge_is_marked, check_vendor_quotes_dated,
                check_no_third_party, check_no_iframes, check_js_origins, check_shortcodes,
                check_no_swallowed_urls, check_composition_links, check_licence_stamp,
-               check_attribution, check_nine_sections, check_every_claim_cited,
+               check_attribution, check_no_restricted_corpus, check_nine_sections,
+               check_every_claim_cited,
                check_cname, check_markdown_twins, check_disclosure_strip]:
         fn()
     if failures:
