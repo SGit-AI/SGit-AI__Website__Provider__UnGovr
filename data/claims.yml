@@ -278,3 +278,10 @@
   group: About this site itself
   claim: "The vault opens at `https://dev.vault.sgraph.ai/#<read-key>:<vault-id>`. The `/en-gb/` form inherited from the handover brief **does not work** — the segment breaks the client-side fragment routing. **Both return HTTP 200**, because it is a single-page app whose shell is served either way, so a status-code check cannot tell them apart and did not. Only opening it in a browser does."
   source: "the project lead's browser, 9 September 2026; curl returns 200 for both forms"
+
+- id: vault-decks
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault carries **three slide decks, 29 slides**, in the style of the estate's AIUC-1 conformance vault — deck picker, slide list, speaker notes, focus and present modes, print-to-PDF, keyboard navigation. **They are authored as markdown** in `decks/*.md` and the app's Decks view is a projection parsed at build time, so they stay readable as ordinary documents and cannot drift from their source. Every claim they make about another vault is read from that vault's own published page and linked, rather than recalled."
+  source: "decks/*.md in vault dkeclt5r, and the Decks view driven in a browser"

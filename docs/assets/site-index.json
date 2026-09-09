@@ -1,5 +1,5 @@
 {
- "version": "v0.1.7",
+ "version": "v0.1.8",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -151,6 +151,7 @@
    "description": "The vault this report is a report on: what it holds, how to open it with nothing but a read key, and why the read key is publishable when the write key never is.",
    "lead": "It is running below, live, decrypted in your browser from the read key on this page. Nothing on this site holds a copy of it \u2014 a push to the vault changes what you see here with no rebuild and no deploy.",
    "headings": [
+    "Three decks, and the markdown they come from",
     "The vault is the experiment; this site is the report",
     "Open it from the command line",
     "Why publishing this key is safe, and which key it is",
@@ -399,6 +400,12 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The vault opens at https://dev.vault.sgraph.ai/#<read-key>:<vault-id>. The /en-gb/ form inherited from the handover brief does not work \u2014 the segment breaks the client-side fragment routing. Both return HTTP 200, because it is a single-page app whose shell is served either way, so a status-code check cannot tell them apart and did not. Only opening it in a browser does."
+  },
+  {
+   "id": "vault-decks",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The vault carries three slide decks, 29 slides, in the style of the estate's AIUC-1 conformance vault \u2014 deck picker, slide list, speaker notes, focus and present modes, print-to-PDF, keyboard navigation. They are authored as markdown in decks/.md and the app's Decks view is a projection parsed at build time, so they stay readable as ordinary documents and cannot drift from their source. Every claim they make about another vault is read from that vault's own published page and linked, rather than recalled."
   }
  ]
 }

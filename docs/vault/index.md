@@ -32,7 +32,7 @@ provenance:
 }());
 </script>
 
-**Two surfaces open above.** App Mode boots the vault's own `index.html` — five views: the seven-step join, filterable by origin and with the provenance of every node; the coverage measurement; the inferred edge; the shape of the corpus; and every retrieval with its hash. **Two of its computations exist only there** — the shape of the 398-law corpus, and what the 16,071 Californian bodies are. {{claim:vault-app}} Under it, the vault browser, with the FILES / SGIT / SETTINGS rail and an explicit **Read-only** badge in the chrome.
+**Two surfaces open above.** App Mode boots the vault's own `index.html` — six views: the seven-step join, filterable by origin and with the provenance of every node; the coverage measurement; the inferred edge; the shape of the corpus; every retrieval with its hash; and **three slide decks**. **Two of its computations exist only there** — the shape of the 398-law corpus, and what the 16,071 Californian bodies are. {{claim:vault-app}} Under it, the vault browser, with the FILES / SGIT / SETTINGS rail and an explicit **Read-only** badge in the chrome.
 
 **It requests no permissions, makes no network call, and reads exactly one vault file.** That file is deliberately *not* inlined into the page: sgit objects are content-addressed and immutable, so the 33 KB of measurements stay their own object and the vault client caches them — releasing a new version of the app does not re-download the numbers.
 
@@ -41,6 +41,16 @@ provenance:
 > **How the key gets there.** The frame is loaded with `?embed=1&parent=<origin>`; the page waits for the frame to announce itself, then posts `{sg:'vault-open', key, mode}` with the target origin pinned. **The key never appears in a URL** and the frame keeps it in memory only. {{claim:vault-embed-pattern}}
 
 > **This vault is on a development host.** `dev.vault.sgraph.ai` is not the production browser, and publishing a `dev.*` URL from a public site is a decision rather than a detail. It ships because the read key is the whole point of §7 and a vault nobody can open is worse than one on the wrong host — but **moving to production is [handback item 4](/briefs/)**, and this page changes when it moves.
+
+## Three decks, and the markdown they come from
+
+The vault carries three presentations — **what we learned about UnGovr**, **what we built on the site**, and **how this vault composes** with Risk Mandate, Licence to Operate and the AIUC-1 conformance layer. Twenty-nine slides, with speaker notes, a present mode and print-to-PDF. {{claim:vault-decks}}
+
+**They are written as ordinary markdown**, in `decks/*.md`, and the app's Decks view is a *projection* of those files, parsed at build time. So they read as documents in the vault browser and as slides in App Mode, and **if the two ever disagree the markdown is right**.
+
+That is the same reason the estate's own book is generated from its site's markdown rather than authored twice: **a presentation that is a projection of a document cannot drift from it.**
+
+The third deck is the one worth reading if you only read one. It is not a summary — it names what this vault contributes to the others (a jurisdiction layer, and a deadline set by statute rather than by an attestation's expiry), what it took from them (the two-edge rule, `unevidenced` as a default, the grant/mandate/delta shape), and it closes on a *what this does not prove* slide borrowed from the conformance layer's own field of that name.
 
 ## The vault is the experiment; this site is the report
 
