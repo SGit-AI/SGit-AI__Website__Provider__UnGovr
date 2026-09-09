@@ -1,7 +1,7 @@
 ---
 title: Four decks, from the vault
 description: "What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next — 39 slides, each one a projection of a markdown file in the vault."
-lead: "Four presentations, **39 slides**, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page &mdash; **and if the three ever disagree, the markdown is right.**"
+lead: "Four presentations, **39 slides**, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page — **and if the three ever disagree, the markdown is right.**"
 order: 15
 toc: false
 provenance:

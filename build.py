@@ -249,17 +249,25 @@ def inline(text, ctx):
         spans.append(m.group(1))
         return f"\x00{len(spans) - 1}\x00"
 
+    # Vault content is a third party's bytes. On this surface there is no host: we
+    # are the host, and a document must be able to change what is SHOWN and never
+    # what the page DOES. So for republished vault files the escaper takes
+    # everything — no raw tags survive, and no shortcode runs, because a vault
+    # file must not be able to mint a claim chip on this site either.
+    untrusted = ctx.get("untrusted")
     text = INLINE_CODE.sub(stash, text)
-    text = shortcodes_inline(text, ctx)
+    if not untrusted:
+        text = shortcodes_inline(text, ctx)
     # GFM autolinks. Without this, <https://example.com/x> reaches the browser as an
     # unknown tag and the URL disappears from the page entirely — which is how §4's
     # vendor citation shipped with its URL invisible. Every quote there is supposed to
     # carry the product, the URL and the date read; two of the three were arriving.
-    text = re.sub(
-        r"<(https?://[^>\s]+)>",
-        lambda m: f'<a href="{m.group(1)}" rel="noopener">{m.group(1)}</a>',
-        text,
-    )
+    if not untrusted:
+        text = re.sub(
+            r"<(https?://[^>\s]+)>",
+            lambda m: f'<a href="{m.group(1)}" rel="noopener">{m.group(1)}</a>',
+            text,
+        )
     placeholders = {}
 
     def stash_html(fragment):
@@ -267,8 +275,11 @@ def inline(text, ctx):
         return list(placeholders)[-1]
 
     # keep raw <chip …> etc. produced by shortcodes out of the escaper
-    parts = re.split(r"(<[^>]+>)", text)
-    text = "".join(stash_html(p) if p.startswith("<") and p.endswith(">") else html.escape(p, quote=False) for p in parts)
+    if untrusted:
+        text = html.escape(text, quote=False)
+    else:
+        parts = re.split(r"(<[^>]+>)", text)
+        text = "".join(stash_html(p) if p.startswith("<") and p.endswith(">") else html.escape(p, quote=False) for p in parts)
 
     text = LINK.sub(lambda m: _link(m, ctx), text)
     text = BOLD.sub(r"<strong>\1</strong>", text)
@@ -282,8 +293,23 @@ def inline(text, ctx):
     return text
 
 
+# Schemes a link in REPUBLISHED VAULT CONTENT may use. "A link is a place a vault
+# author can send your visitor" — sgit.ai's site-pages brief. A markdown link is
+# enough to mint one: `[click](javascript:…)` produced a live javascript: href here,
+# and `[x](data:text/html,…)` a live data: document, both confirmed in the built page
+# before this list existed. Relative links and fragments are fine; everything else
+# must name a scheme on this list or it is not rendered as a link at all.
+SAFE_SCHEMES = ("http://", "https://", "mailto:", "/", "#", ".")
+
+
 def _link(m, ctx):
     label, href, title = m.group(1), m.group(2), m.group(3)
+    if ctx.get("untrusted") and not href.startswith(SAFE_SCHEMES):
+        # Keep the words, drop the destination, and say so rather than silently
+        # swallowing it — a reader can still see what the document meant to link.
+        return (f'{label} <span class="deadlink" title="A link in republished vault '
+                f'content may only use http, https or mailto">[link removed: '
+                f'{html.escape(href.split(":", 1)[0])}:]</span>')
     ext = href.startswith("http") and SITE["domain"] not in href
     attrs = f' title="{html.escape(title)}"' if title else ""
     if ext:
@@ -338,7 +364,7 @@ def render_markdown(md, ctx):
         # into the page. It happened, on /estate/, and nothing caught it: tools/
         # check-js.sh only read assets/*.js and never the inline blocks. Both were
         # fixed together — this, and the check that would have found it.
-        if re.match(r"<(script|style)\b", stripped, re.I):
+        if re.match(r"<(script|style)\b", stripped, re.I) and not ctx.get("untrusted"):
             tag = re.match(r"<(script|style)\b", stripped, re.I).group(1).lower()
             block, close = [], f"</{tag}>"
             while i < len(lines):
@@ -354,8 +380,12 @@ def render_markdown(md, ctx):
             out.append("\n".join(block))
             continue
 
-        # raw html block (an <aside>, a stat-tile row, the app slot)
-        if stripped.startswith("<") and not stripped.startswith("<http"):
+        # raw html block (an <aside>, a stat-tile row, the app slot).
+        # Never for republished vault content: there a block opening with `<` is a
+        # paragraph that happens to start with an angle bracket, and it is escaped
+        # like any other text. A vault file that shipped a <script> would otherwise
+        # become a live script on this origin — which it did, until this line.
+        if stripped.startswith("<") and not stripped.startswith("<http") and not ctx.get("untrusted"):
             block = []
             while i < len(lines) and lines[i].strip():
                 block.append(lines[i])
@@ -1006,7 +1036,8 @@ def pack_body(text, pack, files, ctx_shared):
     this page keeps every one of them exactly as the vault wrote it."""
     names = {n for n, _ in files}
     ctx = dict(ctx_shared)
-    ctx.update({"page": f"packs/{pack}", "page_url": f"/packs/{pack}/", "fm": {}, "toc": []})
+    ctx.update({"page": f"packs/{pack}", "page_url": f"/packs/{pack}/", "fm": {}, "toc": [],
+                "untrusted": True})
     # The document's own leading `# Title` becomes this page's <h1>, so rendering it
     # again inside the article would print the title twice. Dropped from the VIEW
     # only — the raw file, and the twin beside it, still open on their own heading.
@@ -1164,7 +1195,8 @@ def deck_pages(out_dir, ctx_shared):
         slug = deck_slug(name)
         url = f"/decks/{slug}/"
         ctx = dict(ctx_shared)
-        ctx.update({"page": f"decks/{name}", "page_url": url, "fm": {}, "toc": []})
+        ctx.update({"page": f"decks/{name}", "page_url": url, "fm": {}, "toc": [],
+                    "untrusted": True})
 
         rail = "".join(
             f'<a class="drow{" here" if n == name else ""}" href="/decks/{deck_slug(n)}/">'

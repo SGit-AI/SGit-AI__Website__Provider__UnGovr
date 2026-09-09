@@ -1,5 +1,5 @@
 {
- "version": "v0.1.14",
+ "version": "v0.1.15",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -76,7 +76,7 @@
    "url": "/decks/",
    "title": "Four decks, from the vault",
    "description": "What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next \u2014 39 slides, each one a projection of a markdown file in the vault.",
-   "lead": "Four presentations, 39 slides, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page &amp;mdash; and if the three ever disagree, the markdown is right.",
+   "lead": "Four presentations, 39 slides, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page \u2014 and if the three ever disagree, the markdown is right.",
    "headings": [
     "How to read them",
     "Why these are rendered rather than read live",

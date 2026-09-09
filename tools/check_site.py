@@ -553,6 +553,61 @@ def _verbatim(top, manifest, flat):
             fail(f"{top}/{rel} was published but is not in {manifest.name}")
 
 
+def check_no_double_escaped_entities():
+    """An HTML entity written into markdown ships as literal text.
+
+    `inline()` escapes `&` before anything else, so `&mdash;` in a page's prose or
+    front matter reaches the browser as `&amp;mdash;` and the reader sees the six
+    characters rather than a dash. It shipped on /decks/ in v0.1.14 and was spotted
+    in a screenshot, not by a check — the build was perfectly happy.
+
+    The fix in the content is to type the character. This is what stops the next one:
+    a literal entity anywhere in a built page fails the build and names it."""
+    for p in pages():
+        for m in re.finditer(r"&amp;[a-zA-Z][a-zA-Z0-9]{1,8};", p.read_text()):
+            fail(f"{p.relative_to(OUT)}: {m.group(0)!r} ships as literal text — "
+                 f"markdown escapes the ampersand, so type the character itself")
+
+
+def check_no_vault_markup():
+    """Republished vault content must never become live markup on this origin.
+
+    sgit.ai's site-pages brief states the rule this enforces: on a *.sgit.ai page
+    there is no host — YOU are the host — and the bytes you render were written by
+    whoever holds the vault's write key. **A vault must be able to change what is
+    shown, and never what the page does.**
+
+    It was not true here. A `<script>` in a pack file reached the rendered page as a
+    real script tag and executed; so did `<img src=x onerror=…>`. Both were confirmed
+    running in Chromium before build.py's renderer was given an `untrusted` mode that
+    escapes rather than passes through. This check is what keeps it fixed, and it
+    reads the built pages rather than trusting the flag was set."""
+    for p in pages():
+        rel = str(p.relative_to(OUT)).replace(os.sep, "/")
+        if not (rel.startswith("packs/") or rel.startswith("decks/")):
+            continue
+        body = p.read_text()
+        # The page's own chrome is ours; the reader's article is the vault's.
+        for region in re.findall(r'<article class="packdoc">(.*?)</article>', body, re.S) + \
+                      re.findall(r'<div class="deckbody" id="deck">(.*?)</div>\s*</div>', body, re.S):
+            # Every pattern requires a REAL `<` or a real attribute. Escaped text is
+            # inert and must not fire: `&lt;img src=x onerror=…&gt;` is the renderer
+            # working, and an early version of this check flagged it, which would have
+            # taught the next person to loosen the escaping to quiet the gate.
+            for pattern, why in (
+                (r"<script\b", "a script tag"),
+                (r"<iframe\b", "an iframe"),
+                (r"<form\b", "a form"),
+                (r"<object\b|<embed\b", "an object or embed"),
+                (r"<[a-z][^>]*\son[a-z]+\s*=", "an inline event handler"),
+                (r'(?:href|src)\s*=\s*["\']\s*(?:javascript|data|vbscript):', "a script-bearing URL"),
+            ):
+                m = re.search(pattern, region, re.I)
+                if m:
+                    fail(f"{rel}: republished vault content rendered {why} ({m.group(0)!r}) — "
+                         f"a vault may change what is shown, never what the page does")
+
+
 def check_vault_url_form():
     """The vault opens at https://dev.vault.sgraph.ai/#<read-key>:<vault-id>.
 
@@ -609,7 +664,8 @@ def main():
                check_every_claim_cited,
                check_cname, check_markdown_twins, check_disclosure_strip,
                check_vault_url_form, check_packs_verbatim,
-               check_decks_verbatim]:
+               check_decks_verbatim, check_no_vault_markup,
+               check_no_double_escaped_entities]:
         fn()
     if failures:
         print(f"check_site: {len(failures)} problem(s)\n", file=sys.stderr)
