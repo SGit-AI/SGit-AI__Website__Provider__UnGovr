@@ -8,6 +8,14 @@ toc: false
 
 {{releases}}
 
+## Why the newest release has no commit beside it yet
+
+Every row above names the git commit it was built from, except the newest — and that is not an oversight, it is arithmetic. **A commit cannot contain its own hash.** Recording the sha and amending the release commit produces a *different* sha; recording that one and amending again produces another. It does not converge.
+
+So the sha is written by the **following** commit, and two things stop "later" becoming "never": `check_version_agreement` requires a commit on every release but the newest, and `bin/bump.py` refuses to move to the next version while the current one is still blank.
+
+This was found the honest way — by running the workflow, watching the recorded sha and `git rev-parse HEAD` disagree, and noticing that fixing it once would not fix it twice.
+
 ## The pipeline
 
 **validate → tag → deploy**, in that order, a failure at any stage stopping the release.

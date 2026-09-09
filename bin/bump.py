@@ -55,6 +55,15 @@ def main() -> int:
     new = f"v{rel}.{maj + 1}.0" if major else f"v{rel}.{maj}.{mnr + 1}"
 
     data = json.loads(RELEASES.read_text())
+    # The previous release must have had its commit recorded before this one starts.
+    # A commit cannot contain its own hash, so the sha lands one commit later; this
+    # is what stops "later" becoming "never".
+    prev = data["releases"][0] if data["releases"] else None
+    if prev and not re.fullmatch(r"[0-9a-f]{40}", prev.get("commit", "")):
+        print(f"{prev['version']} still has no commit recorded. Run:\n"
+              f"  bin/bump.py --commit $(git rev-parse HEAD)\n"
+              f"and commit that, before bumping again.", file=sys.stderr)
+        return 1
     if any(r["version"] == new for r in data["releases"]):
         print(f"data/releases.json already records {new} — the version was not bumped",
               file=sys.stderr)

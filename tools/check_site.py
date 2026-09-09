@@ -377,7 +377,15 @@ def check_version_agreement():
     if listed != rows:
         fail("the rendered release history and data/releases.json disagree on the list "
              f"of releases ({rows[:3]}… vs {listed[:3]}…)")
+    # Every release names the commit it was built from — except, necessarily, the
+    # newest. A commit cannot contain its own hash: recording the sha and amending
+    # produces a different sha, and doing it again produces another. So the current
+    # release's commit is filled in by the FOLLOWING commit, and bin/bump.py refuses
+    # to move to the next version while it is still blank. That closes the loop
+    # without pretending a file can know the hash of the commit that carries it.
     for r in rel["releases"]:
+        if r["version"] == rel["current"]:
+            continue
         if not re.fullmatch(r"[0-9a-f]{40}", r.get("commit", "")):
             fail(f"{r['version']} names no git commit — a version that cannot be traced "
                  f"to a commit cannot be verified later")

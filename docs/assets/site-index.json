@@ -240,6 +240,7 @@
    "description": "Every release of this site, what changed in it, and the date it shipped. One file owns the version and CI refuses to tag if anything disagrees with it.",
    "lead": "admin/build/version.txt owns the version and data/releases.json owns the history. bin/bump.py moves both, and every row links to that version's own page \u2014 a reader who clicks v0.1.7 wants to know what v0.1.7 was, not to land on a generic changelog. The release commit's subject repeats it, and CI refuses to tag if the two disagree \u2014 which is how a site avoids shipping two versions of itself.",
    "headings": [
+    "Why the newest release has no commit beside it yet",
     "The pipeline"
    ],
    "kind": "page"
