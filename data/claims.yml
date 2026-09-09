@@ -462,3 +462,17 @@
   group: About this site itself
   claim: "The decks here are **rendered at build time, not read live from the vault** — a deliberate departure from sgit.ai's decks-from-a-vault brief, which specifies a host that fetches deck sources with a read key and runs them in sandboxed opaque-origin frames. **That architecture exists because vault bytes are untrusted input to a host page; this site's constraint is different**: every page is static and contacts nothing, with exactly two named exceptions, and a live viewer would have made every deck page a third. **The cost is liveness** — when the vault moves ahead, this site is behind and says so. The live decks are the vault app's own Decks view, one click away on `/vault/` and `/estate/`."
   source: "https://sgit.ai/briefs/vault-decks-on-a-site.md, read 9 September 2026; build.py deck_pages() and tools/check_site.py check_network_pages"
+
+- id: deck-pdfs
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "Each deck ships a **16:9 PDF at the estate's deck geometry**, one slide per page, printed by a browser from **the same markup the page renders** — so a slide cannot look one way on the site and another in the file somebody forwards. Three defects were found and fixed getting there: every slide spilled its footer onto a blank second page (20 pages for 10 slides); Chromium evaluates media queries against the *page box*, so a 1300px breakpoint stacked every split slide and clipped its screenshot to a nav bar; and `main.doc h2` out-specified `.slide h2`, giving the page a serif title with a rule above it while the PDF had neither. `check_deck_pdfs` fails the build if a deck's bytes have moved since its PDF was printed."
+  source: "tools/make-pdfs.js; files/decks/*.pdf; data/deck-pdfs.json records the deck sha256 each was printed from"
+
+- id: deck-shots
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "**Eleven screenshots of this site's own features** are captured from a real build by `tools/shots.js` and placed on eighteen slides, each with a caption and **an absolute link back to the page it shows**, so the links resolve wherever the PDF is opened rather than against the localhost it was printed from — which is what the first run produced. The screenshots and links are **the site's addition and never the vault's**: the words on every slide are the vault's, republished byte for byte, and `data/deck-extras.json` states that in its own header."
+  source: "files/shots/*.png captured by tools/shots.js; data/deck-extras.json; link targets checked by check_links"

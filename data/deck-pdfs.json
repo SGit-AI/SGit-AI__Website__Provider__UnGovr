@@ -1,0 +1,26 @@
+{
+  "what-we-learned": {
+    "deck": "01__what-we-learned.md",
+    "deck_sha256": "b72727cd738b94db99d8e4fe7045b367621efc71607629421bf8ed3990ff461c",
+    "pdf_sha256": "71c524d5d00c6f30f8caffbd4b4de8c4db6ab8e25a0d3972c06b0e861deac3bc",
+    "bytes": 1558562
+  },
+  "what-we-built": {
+    "deck": "02__what-we-built.md",
+    "deck_sha256": "11239acac7618f3e16fd20669612c53a36148613cd6cd06a28b29a47739529e4",
+    "pdf_sha256": "58acec46a5bbbab10b26ca71d01add7810b37538f2860e68840fc5729a2ecd65",
+    "bytes": 1575062
+  },
+  "how-it-composes": {
+    "deck": "03__how-it-composes.md",
+    "deck_sha256": "9dceb805af0aa1df99f228b5a8fc472393fd13b8ebf45f75caa4d089312af0f2",
+    "pdf_sha256": "878dc30c7045074b718d3f07d67026f4a67e2ebeda4c94300aabe95b3b3745b4",
+    "bytes": 1165694
+  },
+  "what-we-plan": {
+    "deck": "04__what-we-plan.md",
+    "deck_sha256": "dafc06c4419764251519a9c15a83970843c192c1ab2bd4ec5b35522764c50ccf",
+    "pdf_sha256": "e3cf6949a32b1bf39ba1a2f010acdc00d27c2d5dc436a22a545792e2ba47182d",
+    "bytes": 1105208
+  }
+}

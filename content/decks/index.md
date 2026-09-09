@@ -1,7 +1,7 @@
 ---
 title: Four decks, from the vault
 description: "What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next — 39 slides, each one a projection of a markdown file in the vault."
-lead: "Four presentations, **39 slides**, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page — **and if the three ever disagree, the markdown is right.**"
+lead: "Four presentations, **39 slides**, written as ordinary markdown in the vault and rendered here as real 16:9 slides — **and as PDFs you can send to somebody.** They read as documents in the vault browser, as slides in the vault's app, and as slides here; if they ever disagree, the markdown is right."
 order: 15
 toc: false
 provenance:
@@ -10,14 +10,22 @@ provenance:
   note: "Republished byte for byte from decks/ in the vault; check_site.py verifies every file against a recorded sha256, so a copy that drifted would fail the build."
 ---
 
-| # | Deck | What it covers | Slides |
-|---|---|---|---|
-| 01 | [**What we learned about UnGovr**](/decks/what-we-learned/) | Eight findings from 76 hashed requests: the 0-of-49, why nobody can census it, the 96.6% that is one hop away, and the licence split | 10 |
-| 02 | [**What we built on the site**](/decks/what-we-built/) | The provider report, the argument for admitting an open-data provider at all, and the checks that make its promises enforceable | 9 |
-| 03 | [**How this composes**](/decks/how-it-composes/) | What this vault contributes to Risk Mandate, Licence to Operate and the AIUC-1 conformance layer — and what it took from them | 10 |
-| 04 | [**What we plan to build**](/decks/what-we-plan/) | The security-standards dev pack: the 95 crosswalks that point at law, the vocabulary we forked by accident, and the blocker that would kill the thesis | 10 |
+| # | Deck | What it covers | Slides | PDF |
+|---|---|---|---|---|
+| 01 | [**What we learned about UnGovr**](/decks/what-we-learned/) | Eight findings from 76 hashed requests: the 0-of-49, why nobody can census it, the 96.6% that is one hop away, and the licence split | 10 | [**⇓ 1522 KB**](/files/decks/what-we-learned.pdf) |
+| 02 | [**What we built on the site**](/decks/what-we-built/) | The provider report, the argument for admitting an open-data provider at all, and the checks that make its promises enforceable | 9 | [**⇓ 1538 KB**](/files/decks/what-we-built.pdf) |
+| 03 | [**How this composes**](/decks/how-it-composes/) | What this vault contributes to Risk Mandate, Licence to Operate and the AIUC-1 conformance layer — and what it took from them | 10 | [**⇓ 1138 KB**](/files/decks/how-it-composes.pdf) |
+| 04 | [**What we plan to build**](/decks/what-we-plan/) | The security-standards dev pack: the 95 crosswalks that point at law, the vocabulary we forked by accident, and the blocker that would kill the thesis | 10 | [**⇓ 1079 KB**](/files/decks/what-we-plan.pdf) |
 
 **Start with 01 if you have never met the data, and 04 if you have.** {{claim:decks-four}}
+
+## The PDFs are the point
+
+Each deck prints to a **16:9 PDF at the estate's deck geometry** — 1200×675, one slide per page, no cropping and no second page for a stray footer. {{claim:deck-pdfs}} They are generated from **the same markup the page renders**, so a slide cannot look one way here and another in the file somebody forwards.
+
+**Every screenshot in them is of this site**, captured from a real build rather than mocked, and **every slide that has one carries a link back to the page it shows** — absolute, so they resolve wherever the PDF is opened. {{claim:deck-shots}} That is what makes them worth sending: a reader who never visits the site still sees what it does, and a reader who wants more has the URL in front of them.
+
+The screenshots and the links are **the site's addition, not the vault's**. The words on every slide are the vault's, republished byte for byte. `data/deck-extras.json` holds the mapping and says so at the top of the file.
 
 ## How to read them
 

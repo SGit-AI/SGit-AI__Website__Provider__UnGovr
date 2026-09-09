@@ -10,6 +10,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.16</td><td>2026-09-09</td><td>The decks become real 16:9 slides with screenshots of this site, and each one downloads as a PDF whose links point back here.</td></tr>
     <tr><td class="vnum">v0.1.15</td><td>2026-09-09</td><td>A vault document could run script on this origin, through the pack and deck readers. Confirmed in a browser, closed, and gated — plus link schemes restricted and a literal entity caught.</td></tr>
     <tr><td class="vnum">v0.1.14</td><td>2026-09-09</td><td>A fourth deck — what we plan to build — and all four on the site at /decks/: stacked and printable by default, present mode and deep links on top, markdown one click away.</td></tr>
     <tr><td class="vnum">v0.1.13</td><td>2026-09-09</td><td>What you get when you reach a law: JSON only, no instrument text, no graph — and 254 of the 398 records laws, every sub-national one, with no reachable detail document.</td></tr>

@@ -430,18 +430,20 @@ td.edge.a-inferred{color:var(--warm)}
   border-radius:10px;background:var(--panel);box-shadow:var(--shadow)}
 .sgv-uiembed > div{min-width:0}
 
-/* ---------- the deck viewer: a document first, slides on request ---------- */
-/* Every slide is stacked, numbered and printable with JavaScript off. Present
-   mode and the notes toggle are the only things the script adds, which is why it
-   is 40 lines rather than the 380 a live vault reader would have cost. */
+/* ---------- the deck viewer: real 16:9 slides ---------- */
+/* One slide is 1200x675 — the estate's deck shape, the same geometry the PDFs are
+   printed at, so the page and the PDF cannot drift. The page adds chrome around
+   them; slides.html is the same markup with the chrome removed. */
 .dsub{color:var(--dim);font-size:.92rem;margin:.1rem 0 1rem}
 .dbar{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin:0 0 1.4rem;
   background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:.7rem .9rem}
-.dbar button,.dbar a.btn-raw{font-family:inherit;font-size:.82rem;font-weight:650;border-radius:7px;
-  padding:.4rem .8rem;cursor:pointer;border:1px solid var(--line2);background:var(--panel);color:var(--ink)}
+.dbar button,.dbar a.btn-raw,.dbar a.btn-pdf{font-family:inherit;font-size:.82rem;font-weight:650;
+  border-radius:7px;padding:.4rem .8rem;cursor:pointer;border:1px solid var(--line2);
+  background:var(--panel);color:var(--ink);text-decoration:none}
 .dbar .btn-present{background:var(--accent-dk);color:#fff;border-color:var(--accent-dk)}
 .dbar .btn-present:hover{background:var(--accent)}
-.dbar a.btn-raw{text-decoration:none}
+.dbar a.btn-pdf{background:var(--fg);color:#fff;border-color:var(--fg)}
+.dbar a.btn-pdf:hover{background:#000;text-decoration:none}
 .dbar button:focus-visible,.dbar a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .dbar .dhash{font-size:.74rem;color:var(--dim2);margin-left:auto}
 .deckwrap{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;align-items:start}
@@ -455,26 +457,66 @@ a.drow.here .dnum{color:rgba(255,255,255,.7)}
 .drailfoot{font-size:.71rem;color:var(--dim2);line-height:1.5;margin:.5rem .5rem 0;padding-top:.5rem;
   border-top:1px solid var(--line)}
 .deckbody{min-width:0}
-.slide{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;
-  padding:1.5rem 1.7rem 1.3rem;margin:0 0 1.1rem;box-shadow:var(--shadow);scroll-margin-top:4.6rem}
-.slide h2{margin:.1rem 0 .8rem;font-size:1.35rem;border:0;padding:0}
-.slide .sn{position:absolute;top:.7rem;right:1rem;font-family:var(--mono);font-size:.7rem;color:var(--dim2)}
-.slide .notes{margin:1rem 0 0;padding:.7rem .9rem;background:var(--panel2);border-radius:8px;
-  border-left:3px solid var(--line2);font-size:.85rem;color:var(--dim);line-height:1.6}
-.slide .notes b{color:var(--ink)}
-.slide.off{display:none}
-body.nonotes .slide .notes{display:none}
-body.presenting .slide{min-height:26rem}
 
+/* the slide itself */
+.slide{position:relative;width:1200px;height:675px;max-width:100%;
+  background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:3.2rem 3.4rem 2.6rem;margin:0 auto 1.2rem;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;overflow:hidden;scroll-margin-top:4.6rem}
+.seyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2);
+  font-weight:700;margin-bottom:.7rem}
+.seyebrow span{font-weight:400;letter-spacing:.08em}
+/* Both selectors, deliberately. `main.doc h2` carries a serif face and a top rule
+   and out-specifies a bare `.slide h2`, so on the page the slide title picked up a
+   line above it and a different typeface from the very same markup in the PDF —
+   which is the one thing sharing a renderer between the two was supposed to stop. */
+.slide h2, main.doc .slide h2{font-family:var(--sans);font-weight:800;font-size:2.15rem;
+  line-height:1.12;letter-spacing:-.025em;color:var(--fg);
+  margin:0 0 1.1rem;border:0;padding:0;max-width:22ch;scroll-margin-top:0}
+.slide.split h2, main.doc .slide.split h2{max-width:15ch}
+.scols{display:flex;gap:2.2rem;flex:1;min-height:0}
+.sbody{flex:1;min-width:0;font-size:1.02rem;line-height:1.62;overflow:hidden}
+.sbody > *:first-child{margin-top:0}
+.sbody p{margin:0 0 .7rem}
+.sbody table{font-size:.84rem}
+.sbody .tablewrap{overflow:visible}
+.slide.split .sbody{flex:0 0 52%}
+figure.shot{margin:0;flex:1;min-width:0;display:flex;flex-direction:column;gap:.5rem}
+figure.shot img{width:100%;border:1px solid var(--line2);border-radius:8px;
+  box-shadow:0 2px 10px rgba(28,29,33,.09);object-fit:contain;object-position:top center;
+  min-height:0;flex:1}
+figure.shot figcaption{font-size:.78rem;color:var(--dim);line-height:1.45}
+.sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);
+  font-size:.76rem;color:var(--dim2)}
+.sfoot a{color:inherit}
+.sfoot a.sread{font-weight:650;color:var(--accent-dk)}
+.slide.off{display:none}
+.notes{margin:-.4rem auto 1.6rem;max-width:1200px;padding:.7rem .9rem;background:var(--panel2);
+  border-radius:8px;border-left:3px solid var(--line2);font-size:.85rem;color:var(--dim);line-height:1.6}
+.notes b{color:var(--ink)}
+body.nonotes .notes{display:none}
+
+/* 1199, not 1300: when Chromium prints, the media query is evaluated against the
+   PAGE width — 1200px — so a 1300px breakpoint turned every PDF slide into the
+   narrow layout, stacking the columns and clipping the screenshot to its nav bar.
+   The slide is 1200px wide, so the responsive rules must start below that. */
+@media (max-width:1199px){
+  .slide{width:100%;height:auto;min-height:0;padding:2rem 2rem 1.6rem}
+  .slide h2, main.doc .slide h2{font-size:1.6rem;max-width:none}
+  .scols{flex-direction:column;gap:1.2rem}
+  .slide.split .sbody{flex:1 1 auto}
+  figure.shot img{max-height:none}
+}
 @media (max-width:820px){
   .deckwrap{grid-template-columns:1fr}
   .drail{position:static}
   .dbar .dhash{margin-left:0;width:100%}
 }
 @media print{
-  .drail,.dbar,.dsub{display:none}
+  .drail,.dbar,.dsub,.notes{display:none}
   .deckwrap{display:block}
-  .slide{break-after:page;box-shadow:none;border:0;padding:0 0 1rem}
+  .slide{break-after:page;box-shadow:none;border:0}
 }
 
 /* ---------- the pack reader: a rail, a document, and the bytes ---------- */

@@ -1169,6 +1169,55 @@ def parse_deck(text):
             "date": meta.get("date", ""), "intro": intro, "slides": slides}
 
 
+DECK_EXTRAS = json.loads((DATA / "deck-extras.json").read_text())
+DECK_PDFS = json.loads((DATA / "deck-pdfs.json").read_text())
+
+
+def slide_html(deck, s, i, n, extra, ctx, chrome=True):
+    """One 16:9 slide, in the estate's deck shape: an eyebrow, a title, the body, and
+    a footer that names the deck and links back into this site.
+
+    The SAME markup is used for the page and for the PDF — a slide that is
+    screenshotted from one and printed from the other will disagree eventually. The
+    only difference between the two is the stylesheet.
+
+    `extra` is the site's addition and never the vault's: a screenshot of THIS SITE
+    and a link into it. The words are the vault's, republished byte for byte, which
+    is why they are rendered with ctx['untrusted'] set and the extras are not."""
+    body = render_markdown(s["body"], ctx)
+    shot = ""
+    if extra and extra.get("shot"):
+        cap = html.escape(extra.get("caption", ""))
+        # No loading="lazy": these images are part of a printed artefact, and an
+        # image below the fold of slides.html never entered a viewport, never
+        # loaded, and printed as an empty box. Ten screenshots is not a page weight
+        # problem; a blank slide in a PDF somebody shares is a real one.
+        shot = (f'<figure class="shot"><img src="/files/shots/{html.escape(extra["shot"])}.png" '
+                f'alt="{cap}">'
+                f'<figcaption>{cap}</figcaption></figure>')
+    # A PDF travels off this site, so its links must be absolute or they resolve
+    # against wherever the reader opened it — the first run pointed every link at
+    # the localhost the build was printed from. On the page they stay relative,
+    # which is the site's own convention.
+    base = "" if chrome else SITE["base"]
+    link = ""
+    if extra and extra.get("link"):
+        link = (f'<a class="sread" href="{base}{html.escape(extra["link"])}">'
+                f'{html.escape(extra.get("linktext", "Read more"))} &rarr;</a>')
+    notes = (f'<div class="notes"><b>Notes.</b> {inline(s["notes"], ctx)}</div>'
+             if s["notes"] and chrome else "")
+    return (
+        f'<section class="slide{" split" if shot else ""}" id="s{i}" data-n="{i}">'
+        f'<div class="seyebrow">{html.escape(deck["title"])} '
+        f'<span>&middot; slide {i} of {n}</span></div>'
+        f'<h2>{inline(s["title"], ctx)}</h2>'
+        f'<div class="scols"><div class="sbody">{body}</div>{shot}</div>'
+        f'<div class="sfoot">'
+        f'<a href="{SITE["base"]}/decks/">ungovr.providers.sgit.ai</a>{link}</div>'
+        f'</section>{notes}'
+    )
+
+
 def deck_manifest():
     """Decks in file order, from the manifest the build wrote — never a walk."""
     out = []
@@ -1205,16 +1254,9 @@ def deck_pages(out_dir, ctx_shared):
             for i, (n, _h) in enumerate(entries, 1)
         )
 
-        slides = []
-        for i, s in enumerate(d["slides"], 1):
-            notes = (f'<div class="notes"><b>Notes.</b> {inline(s["notes"], ctx)}</div>'
-                     if s["notes"] else "")
-            slides.append(
-                f'<section class="slide" id="s{i}" data-n="{i}">'
-                f'<div class="sn">{i} / {len(d["slides"])}</div>'
-                f'<h2>{inline(s["title"], ctx)}</h2>'
-                f'{render_markdown(s["body"], ctx)}{notes}</section>'
-            )
+        extras = DECK_EXTRAS.get(slug, {})
+        slides = [slide_html(d, s, i, len(d["slides"]), extras.get(str(i)), ctx)
+                  for i, s in enumerate(d["slides"], 1)]
 
         rawurl = f"/decks/{name}"
         page = {
@@ -1230,6 +1272,8 @@ def deck_pages(out_dir, ctx_shared):
             f'<p class="dsub">{inline(d["subtitle"], ctx)} &middot; '
             f'<b>{len(d["slides"])} slides</b> &middot; {html.escape(d["date"])}</p>'
             '<div class="dbar">'
+            f'<a class="btn-pdf" href="/files/decks/{slug}.pdf">&#8681; Download the PDF '
+            f'<span>{DECK_PDFS[slug]["bytes"] // 1024} KB &middot; {len(d["slides"])} slides</span></a>'
             '<button type="button" class="btn-present" id="present">&#9654; Present</button>'
             '<button type="button" class="btn-notes" id="ntoggle">Hide notes</button>'
             f'<a class="btn-raw" href="{rawurl}">The markdown &darr;</a>'
@@ -1250,8 +1294,55 @@ def deck_pages(out_dir, ctx_shared):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(page_html(page, ctx, body + DECK_JS))
         (target.parent / "index.md").write_text(raw)
+
+        # The slides alone, no site chrome: what the PDF is printed from, and a
+        # usable full-screen view in its own right. Same markup as the page above —
+        # a deck that is printed from one file and read from another drifts.
+        bare = [slide_html(d, s, i, len(d["slides"]), extras.get(str(i)), ctx, chrome=False)
+                for i, s in enumerate(d["slides"], 1)]
+        (target.parent / "slides.html").write_text(SLIDES_DOC.format(
+            title=html.escape(d["title"] or slug),
+            css=(ASSETS / "site.css").read_text(),
+            slides="".join(bare),
+        ))
         made[url] = d["title"] or slug
     return made
+
+
+SLIDES_DOC = """<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<title>{title}</title>
+<meta name="robots" content="noindex">
+<style>
+{css}
+/* The print document: nothing but slides, each one a page. The stylesheet above is
+   the site's own, so a slide cannot look like the site in one place and not the
+   other; everything below only removes the page around it. */
+body{{background:#fff;margin:0}}
+.slide{{width:1200px;height:675px;margin:0 auto;border-radius:0;box-shadow:none;border:0;
+  border-bottom:1px solid #e5e1d5;overflow:hidden}}
+/* One slide, one page, exactly. The screenshot slides used to spill their footer
+   onto a page of its own — 12 pages for a 10-slide deck — because the figure could
+   grow past the box. So the columns own the remaining height and clip, rather than
+   the slide growing to fit them. */
+/* Re-assert the slide layout unconditionally. Chromium evaluates media queries
+   against the PAGE box when printing, and it lands close enough to the 1200px
+   breakpoint that the narrow rules fired and stacked every split slide. A print
+   document should not depend on which side of a breakpoint the page box rounds to. */
+.scols{{min-height:0;overflow:hidden;flex-direction:row;gap:2.2rem}}
+.slide h2{{max-width:22ch;font-size:2.15rem}}
+.slide.split h2{{max-width:15ch}}
+.slide.split .sbody{{flex:0 0 50%}}
+figure.shot{{min-height:0;flex:1}}
+figure.shot img{{min-height:0;max-height:100%;object-fit:contain;object-position:top center}}
+@page{{size:1200px 675px;margin:0}}
+@media print{{
+  html,body{{margin:0;padding:0}}
+  .slide{{border-bottom:0;break-after:page;page-break-after:always;break-inside:avoid}}
+  .slide:last-child{{break-after:auto;page-break-after:auto}}
+}}
+</style></head><body>{slides}</body></html>
+"""
 
 
 DECK_JS = """

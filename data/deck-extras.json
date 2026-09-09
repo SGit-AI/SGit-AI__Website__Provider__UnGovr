@@ -1,0 +1,36 @@
+{
+  "_note": [
+    "The screenshots and the read-more links are the SITE'S, not the vault's.",
+    "The words on every slide come from decks/*.md in the vault, republished byte for",
+    "byte. This file adds two things the vault document does not carry and should not:",
+    "a picture of THIS SITE, and a link into it. Keyed by deck slug and slide number.",
+    "Every `shot` names a file in files/shots/ captured by tools/shots.js from the",
+    "built site; every `link` must resolve on this site, which check_links enforces."
+  ],
+  "what-we-learned": {
+    "1":  {"shot": "home",        "caption": "The report itself: nine contract sections, every claim carrying the state it earned.", "link": "/", "linktext": "The report"},
+    "2":  {"shot": "coverage",    "caption": "Computation 1, with its sample design and its Wilson interval — not a defect count.", "link": "/coverage/", "linktext": "The coverage measurement"},
+    "5":  {"shot": "join",        "caption": "The seven-step join, filterable by origin, with the provenance of every node.", "link": "/join/", "linktext": "The seven-step join"},
+    "7":  {"shot": "instruments", "caption": "What UnGovr hands you when you reach a law — and the 254 you cannot reach.", "link": "/instruments/", "linktext": "Reaching a law"},
+    "10": {"shot": "retrievals",  "caption": "Every request, with the sha256 of the bytes it returned. The 404s are rows too.", "link": "/retrievals/", "linktext": "The retrieval log"}
+  },
+  "what-we-built": {
+    "1":  {"shot": "home",        "caption": "ungovr.providers.sgit.ai — the provider report, written to the nine sections.", "link": "/", "linktext": "The report"},
+    "4":  {"shot": "ledger",      "caption": "The claim ledger: every factual claim, its state, its date and where it is said.", "link": "/ledger/", "linktext": "The claim ledger"},
+    "5":  {"shot": "packs",       "caption": "The pack reader — and the raw bytes named, hashed and linked above the text.", "link": "/packs/security-graph/", "linktext": "The dev pack"},
+    "7":  {"shot": "decks",       "caption": "Four decks, republished from the vault and rendered here as slides.", "link": "/decks/", "linktext": "The four decks"},
+    "9":  {"shot": "vaultpage",   "caption": "The vault, running live on the page from a read key printed beside it.", "link": "/vault/", "linktext": "The vault"}
+  },
+  "how-it-composes": {
+    "1":  {"shot": "estate",      "caption": "Seven vaults from across the family, each opening in the page from its own read key.", "link": "/estate/", "linktext": "The estate"},
+    "4":  {"shot": "join",        "caption": "The jurisdiction layer this vault contributes, drawn as the graph it is.", "link": "/join/", "linktext": "The seven-step join"},
+    "7":  {"shot": "estate",      "caption": "Where the three meet: the conformance layer, Licence to Operate and this vault, side by side.", "link": "/estate/", "linktext": "The estate"},
+    "9":  {"shot": "vaultapp",    "caption": "The vault's own app — six views, and the version pill that says which release you are looking at.", "link": "/vault/", "linktext": "The vault"}
+  },
+  "what-we-plan": {
+    "2":  {"shot": "estate",      "caption": "The count came from opening AIUC-1's vault here and reading its graph, not from its prose.", "link": "/estate/", "linktext": "The estate, with the working"},
+    "5":  {"shot": "instruments", "caption": "Where the rabbit hole stops: JSON only, no instrument text, and 254 laws unreachable.", "link": "/instruments/", "linktext": "Reaching a law"},
+    "7":  {"shot": "packs",       "caption": "File 02, republished from the vault — including the paragraph that was wrong about its own edges.", "link": "/packs/security-graph/02__the-model/", "linktext": "The model"},
+    "9":  {"shot": "packs",       "caption": "Thirteen tests, five passing, all inherited. The pack states what it has not earned.", "link": "/packs/security-graph/06__verification/", "linktext": "Verification"}
+  }
+}

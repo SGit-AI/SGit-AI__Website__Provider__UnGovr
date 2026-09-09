@@ -1,5 +1,5 @@
 {
- "version": "v0.1.15",
+ "version": "v0.1.16",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -76,8 +76,9 @@
    "url": "/decks/",
    "title": "Four decks, from the vault",
    "description": "What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next \u2014 39 slides, each one a projection of a markdown file in the vault.",
-   "lead": "Four presentations, 39 slides, written as ordinary markdown in the vault and rendered here. They read as documents in the vault browser, as slides in the vault's app, and as slides on this page \u2014 and if the three ever disagree, the markdown is right.",
+   "lead": "Four presentations, 39 slides, written as ordinary markdown in the vault and rendered here as real 16:9 slides \u2014 and as PDFs you can send to somebody. They read as documents in the vault browser, as slides in the vault's app, and as slides here; if they ever disagree, the markdown is right.",
    "headings": [
+    "The PDFs are the point",
     "How to read them",
     "Why these are rendered rather than read live",
     "Markdown is the source, and that is the whole point"
@@ -622,6 +623,18 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The decks here are rendered at build time, not read live from the vault \u2014 a deliberate departure from sgit.ai's decks-from-a-vault brief, which specifies a host that fetches deck sources with a read key and runs them in sandboxed opaque-origin frames. That architecture exists because vault bytes are untrusted input to a host page; this site's constraint is different: every page is static and contacts nothing, with exactly two named exceptions, and a live viewer would have made every deck page a third. The cost is liveness \u2014 when the vault moves ahead, this site is behind and says so. The live decks are the vault app's own Decks view, one click away on /vault/ and /estate/."
+  },
+  {
+   "id": "deck-pdfs",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Each deck ships a 16:9 PDF at the estate's deck geometry, one slide per page, printed by a browser from the same markup the page renders \u2014 so a slide cannot look one way on the site and another in the file somebody forwards. Three defects were found and fixed getting there: every slide spilled its footer onto a blank second page (20 pages for 10 slides); Chromium evaluates media queries against the page box, so a 1300px breakpoint stacked every split slide and clipped its screenshot to a nav bar; and main.doc h2 out-specified .slide h2, giving the page a serif title with a rule above it while the PDF had neither. check_deck_pdfs fails the build if a deck's bytes have moved since its PDF was printed."
+  },
+  {
+   "id": "deck-shots",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Eleven screenshots of this site's own features are captured from a real build by tools/shots.js and placed on eighteen slides, each with a caption and an absolute link back to the page it shows, so the links resolve wherever the PDF is opened rather than against the localhost it was printed from \u2014 which is what the first run produced. The screenshots and links are the site's addition and never the vault's: the words on every slide are the vault's, republished byte for byte, and data/deck-extras.json states that in its own header."
   }
  ]
 }
