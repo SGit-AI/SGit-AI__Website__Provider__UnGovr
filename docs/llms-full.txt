@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai — the whole site as markdown
-site v0.1.3 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
+site v0.1.4 · source: the government-graph vault dkeclt5r · every claim's verification state is at /ledger/
 
 Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. "UnGovr" identifies the open-data API this site reports on; all trademarks belong to their owners. UnGovr's Atlas is used under CC BY 4.0.
 
@@ -348,6 +348,7 @@ Both are CC BY 4.0. Neither has been edited to match what was built.
 | **C7** | `01__what-is-already-built.md`, blocker B2 | **B2 closes by registering, not by paying.** An API key is free. The pack treats the gated corpora as a commercial unknown; they are a registration decision, and therefore [a relationship decision](/disclosures/). **Closed the same day**: a key was issued to the project mid-session |
 | **C8** | `04__the-site.md` §2: *"the AI-law endpoints return a verdict, not provisions… a reader can neither check it nor disagree"* | **Wrong, and the corpus is much stronger than predicted.** It carries 2,915 instruments across 271 jurisdictions with citations, effective dates and statuses, a per-scenario `basis` naming controlling authority, and a `provenance` block with `as_of_date`, `confidence` and `stale`. **The prediction was made without a key and did not survive contact with one.** {{claim:ai-laws-is-instruments}} |
 | **C9** | The whole pack, and `02__the-house-pattern.md` on licensing | **The API is not uniformly CC BY 4.0.** The OpenAPI document declares it so; the AI-law payloads carry their own, more restrictive licence. Nothing in either pack anticipated a per-corpus licence split, and it changes what may be republished {{claim:ai-laws-licence}} |
+| **C11** | `04__the-site.md` §3: *"Do not iframe it… Link, do not embed."* | **Wrong, and the estate's real pattern is the opposite.** Every published vault on `sgit.ai/demos/vaults/` is embedded live through SG/Vault's embed protocol: a sandboxed frame, a `postMessage` handshake, and the read key posted to a pinned origin **after** the frame proves it is the right recipient. That is strictly safer than the link the brief prescribed, because **the key never enters a URL**. [The vault now runs on this site that way.](/vault/) {{claim:vault-embed-pattern}} |
 | **C10** | `02__the-house-pattern.md` §3, the `patterns:` front-matter example | It shows inline flow mappings (`p0: { verdict: never, note: "…" }`). **The family's `build.py` YAML subset does not parse those** — the block form is required, which is what the sibling's real front-matter uses. The file was written from the live sites rather than the repository, and §5 of that file predicted exactly this class of error |
 
 ## What is still open
@@ -756,7 +757,7 @@ order: 5
 toc: true
 wide: true
 provenance:
-  vault: dkeclt5r
+  vault: dkeclt5r @ obj-cas-imm-b9c2cddb51e8
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
@@ -856,7 +857,7 @@ They live in the vault, at `pack/06__verification.md`, and they are its property
 | | |
 |---|---|
 | Passing before this session | **1 of 13** — the pack was in the vault as its first commit |
-| Should pass after this MVP | **7 of 13** |
+| **Passing now** | **9 of 13** — 1, 2, 5, 7, 8, 10, 11, 12, 13. Pinned by release `@2026-09-09-retrieval` |
 | Honestly out of MVP scope | **4** — fractal zoom, byte-range document viewer, and two others |
 | Cannot pass as written | **1** — test 3, rebuild the instrument byte for byte. [There is no machine-readable CPRA to rebuild from.](/#9-what-went-wrong) Recorded as unpassable rather than weakened {{claim:cpra-no-akn}} |
 
@@ -878,6 +879,7 @@ toc: false
 <thead><tr><th>Version</th><th>Date</th><th>What changed</th></tr></thead>
 <tbody>
 <!-- releases -->
+    <tr><td class="vnum">v0.1.4</td><td>2026-09-09</td><td>The vault is pushed: 9 of 13 acceptance tests pass, release @2026-09-09-retrieval pinned, and the site names the commit it reports on.</td></tr>
     <tr><td class="vnum">v0.1.3</td><td>2026-09-09</td><td>The vault runs live on the site, embedded through SG/Vault's own embed protocol from the published read key.</td></tr>
     <tr><td class="vnum">v0.1.2</td><td>2026-09-09</td><td>The domain was pointed mid-session: 404 at v0.1.0, serving at v0.1.1. Both states recorded.</td></tr>
     <tr><td class="vnum">v0.1.1</td><td>2026-09-09</td><td>The AI-law corpus, read under a key: 2,915 instruments, and a per-corpus licence that is not CC BY 4.0. Blocker B2 closed.</td></tr>

@@ -6,7 +6,7 @@ order: 5
 toc: true
 wide: true
 provenance:
-  vault: dkeclt5r
+  vault: dkeclt5r @ obj-cas-imm-b9c2cddb51e8
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
@@ -106,7 +106,7 @@ They live in the vault, at `pack/06__verification.md`, and they are its property
 | | |
 |---|---|
 | Passing before this session | **1 of 13** — the pack was in the vault as its first commit |
-| Should pass after this MVP | **7 of 13** |
+| **Passing now** | **9 of 13** — 1, 2, 5, 7, 8, 10, 11, 12, 13. Pinned by release `@2026-09-09-retrieval` |
 | Honestly out of MVP scope | **4** — fractal zoom, byte-range document viewer, and two others |
 | Cannot pass as written | **1** — test 3, rebuild the instrument byte for byte. [There is no machine-readable CPRA to rebuild from.](/#9-what-went-wrong) Recorded as unpassable rather than weakened {{claim:cpra-no-akn}} |
 
