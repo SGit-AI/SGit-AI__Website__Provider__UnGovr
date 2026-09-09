@@ -421,6 +421,15 @@ td.edge.a-inferred{color:var(--warm)}
   .step .stepno{flex:0 0 auto;width:1.9rem}
 }
 
+/* ---------- the live vault embed ---------- */
+/* The estate's component builds its own frames; these rules only give them room.
+   The area is deliberately wider than the text column, because the vault browser
+   is a full working surface rather than a figure. */
+.sgv-uiembed{margin:1.4rem 0;display:grid;gap:1rem}
+.sgv-uiembed iframe{width:100%;min-height:560px;border:1px solid var(--line2);
+  border-radius:10px;background:var(--panel);box-shadow:var(--shadow)}
+.sgv-uiembed > div{min-width:0}
+
 @media print{
   nav.site,.pagenav,.keybar,button{display:none}
   body{background:#fff} .card,.tile,.fail,section{box-shadow:none}

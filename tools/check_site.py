@@ -29,13 +29,22 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs"
 DOMAIN = "ungovr.providers.sgit.ai"
 
-# This site makes no network call from any page, ever. It ships no lab, no key bar
-# and no fetch: every number on it was computed at the command line and compiled in.
-# So the allowed set is empty, and the only permitted absolute URLs in script or
-# style context are XML namespaces, which are identifiers and never fetched.
+# Every number on this site was computed at the command line and compiled in, and
+# no page fetches anything to render itself. ONE page is a deliberate exception:
+# /vault/ embeds the live vault through SG/Vault's own embed protocol, which is the
+# estate's published pattern for this and is worth more than a screenshot of a
+# vault. So exactly one origin is allowed, it is reached only from the vendored
+# embed component, and check_network_pages below pins the exception to that page.
+VAULT_ORIGIN = "https://dev.vault.sgraph.ai"
 ALLOWED_JS_ORIGINS = {
+    VAULT_ORIGIN,
+    # An XML namespace is an identifier, never fetched.
     "http://www.w3.org",
 }
+# The only files permitted to open a connection at all.
+NETWORK_CAPABLE = {"assets/vault-ui-embed.js"}
+# The only page permitted to load one.
+NETWORK_PAGES = {"vault/index.html"}
 
 NON_AFFILIATION = "Not affiliated with, endorsed by, or sponsored by UnGovr"
 
@@ -136,6 +145,10 @@ def resource_loads(html):
 
 
 def check_no_third_party():
+    """No declarative resource from another origin: no `<script src>`, no
+    `<link href>`, no `<img src>`, no `@import`, no `url()`. The vault embed does
+    not breach this — it declares nothing; the vendored component creates its frame
+    at runtime, which check_network_pages governs instead."""
     for p in pages():
         for url in resource_loads(p.read_text()):
             if url.startswith(("http://", "https://", "//")) and DOMAIN not in url:
@@ -148,12 +161,49 @@ def check_no_third_party():
 
 
 def check_no_iframes():
-    """The vault is linked, never embedded. An embedded frame pulling another host
-    into the page is exactly what the no-third-party rule exists to prevent, and it
-    would break the site with JavaScript off."""
+    """No hand-written iframe anywhere, including on the vault page.
+
+    The vault embed IS an iframe, but the page never writes one: the vendored
+    component creates it, loads it with `?embed=1&parent=<origin>`, waits for the
+    frame to announce itself, and only then posts the key with the target origin
+    pinned. A hand-rolled `<iframe src=…#key>` would put the credential in a URL,
+    which is exactly what that handshake exists to avoid — so a literal iframe tag
+    in the markup means somebody has bypassed the protocol."""
     for p in pages():
         if re.search(r"<iframe", p.read_text(), re.I):
-            fail(f"{p.relative_to(OUT)}: contains an iframe — link the vault, do not embed it")
+            fail(f"{p.relative_to(OUT)}: hand-written iframe — the vault embed must go "
+                 f"through the embed protocol, which never puts the key in a URL")
+
+
+def check_network_pages():
+    """The site's claim is that it fetches nothing, with one named exception. This
+    check is what makes that a fact rather than a sentence: no page may open a
+    connection except /vault/, and no file may contain the code to do it except the
+    vendored embed component."""
+    for p in pages():
+        rel = str(p.relative_to(OUT)).replace(os.sep, "/")
+        text = p.read_text()
+        opens = re.search(r"\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|new WebSocket", text)
+        if opens and rel not in NETWORK_PAGES:
+            fail(f"{rel}: opens a network connection ({opens.group(0)}) — only "
+                 f"{sorted(NETWORK_PAGES)} may, and only to the vault origin")
+    for js in OUT.rglob("*.js"):
+        rel = str(js.relative_to(OUT)).replace(os.sep, "/")
+        opens = re.search(r"\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|new WebSocket",
+                          js.read_text())
+        if opens and rel not in NETWORK_CAPABLE:
+            fail(f"{rel}: opens a network connection ({opens.group(0)}) — only "
+                 f"{sorted(NETWORK_CAPABLE)} may")
+
+
+def check_read_key_only():
+    """The embed is handed a credential in the page source, on purpose. This check
+    is that it is the READ key and never anything else: a 64-hex read key, matching
+    the one the vault page publishes, and no other credential shape in the attribute."""
+    for p in pages():
+        for m in re.finditer(r'data-readkey="([^"]*)"', p.read_text()):
+            if not re.fullmatch(r"[0-9a-f]{64}", m.group(1)):
+                fail(f"{p.relative_to(OUT)}: data-readkey is not a bare 64-hex read key")
 
 
 def check_js_origins():
@@ -166,9 +216,6 @@ def check_js_origins():
             origin = "/".join(url.split("/")[:3])
             if origin not in ALLOWED_JS_ORIGINS:
                 fail(f"script in {js.relative_to(OUT)} references {origin}")
-    for js in OUT.rglob("*.js"):
-        if re.search(r"\bfetch\s*\(|XMLHttpRequest|navigator\.sendBeacon", js.read_text()):
-            fail(f"{js.relative_to(OUT)}: makes a network call — no page here may")
 
 
 def check_shortcodes():
@@ -436,7 +483,8 @@ def main():
     for fn in [check_version_agreement, check_links, check_relative_urls, check_canonical_host,
                check_write_key_tripwire, check_non_affiliation, check_tone,
                check_not_a_defect_count, check_inferred_edge_is_marked, check_vendor_quotes_dated,
-               check_no_third_party, check_no_iframes, check_js_origins, check_shortcodes,
+               check_no_third_party, check_no_iframes, check_network_pages,
+               check_read_key_only, check_js_origins, check_shortcodes,
                check_no_swallowed_urls, check_composition_links, check_licence_stamp,
                check_attribution, check_no_restricted_corpus, check_nine_sections,
                check_every_claim_cited,

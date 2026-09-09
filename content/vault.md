@@ -4,20 +4,49 @@ description: "The vault this report is a report on: what it holds, how to open i
 lead: "The vault is the workload in [§7](/#7-what-we-use-it-for). It holds the retrieved bytes, their hashes, the compiled artefacts, the seven-step join and the specification that was published **before** any of it was built. You can open it read-only, right now, and it will ask you for nothing."
 order: 5
 toc: true
+wide: true
 provenance:
   vault: dkeclt5r
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
 
-## Open it
+## Open it, here
+
+The vault is running below, live, decrypted in your browser from the published read key on this page. **Nothing on this site holds a copy of it** — a push to the vault changes what you see here with no rebuild and no deploy.
+
+<div class="sgv-uiembed" data-vault="dkeclt5r" data-readkey="d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d" data-app="1"></div>
+
+<script>
+/* Contract-compliant loader: no `<script src>` anywhere on this site, because every
+   page must survive being served from inside a vault, where declarative refs cannot
+   be answered. Fetch + eval, the estate's own pattern. The component is vendored
+   into this site's assets/ rather than pulled from another origin. */
+(function () {
+  var root = document.documentElement.getAttribute('data-root') || '';
+  fetch(root + 'assets/vault-ui-embed.js')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[vault] embed component failed to load:', e); });
+}());
+</script>
+
+**Two surfaces open above**: App Mode, which renders the vault's own `_page.json`, and the vault browser under it, with the FILES / SGIT / SETTINGS rail and an explicit **R1 W0 · Read-only** badge in the chrome. The second one is where you can read the retrieval log, open `data/graph.json`, and check the commit history that proves the pack was published before the work.
+
+**How the key gets there.** The frame is loaded with `?embed=1&parent=<origin>`; the page waits for the frame to announce itself, then posts `{sg:'vault-open', key, mode}` with the target origin pinned. **The key never appears in a URL** and the frame keeps it in memory only. `vault-ready` / `vault-error` come back as structured events.
+
+> **Written, and not yet watched working.** The component is the estate's own, vendored unmodified — byte-identical below its provenance header — and the markup and the published read key are checked against it. {{claim:vault-embed-pattern}} **But nobody has seen this frame render.** The container that built this site cannot open a browser TLS tunnel to the vault host: `curl` gets 200 and no frame-blocking headers, Chromium gets `ERR_CONNECTION_RESET`. {{claim:vault-embed-unrun}} So the embed above ships in the state the family has a chip for — **read it, then open it and find out.** If it is blank, the fallback link below opens the same vault in a new tab.
+
+> **This is the one page on this site that opens a network connection**, and it opens exactly one, to `dev.vault.sgraph.ai`. Every other page here fetches nothing at all — [the ledger](/ledger/) says which. The trade is deliberate: an embed that reads the real vault is worth more than a screenshot of one, and it is the estate's own published pattern.
 
 <div class="card-open">
 <p class="small dim">SG/Send vault &middot; read-only &middot; asks for no permissions</p>
 <h3>government-graph <code>dkeclt5r</code></h3>
-<p>Opens in the SG/Send browser with the read key already in the URL fragment. Nothing to install, nothing to sign in to, nothing to accept.</p>
-<p class="mono breakall"><a href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener">dev.vault.sgraph.ai/en-gb/#sgit_private_read_&hellip;:dkeclt5r</a></p>
+<p>Prefer a new tab, or a vault that is having a bad day? The same key, the same vault.</p>
+<p class="mono breakall"><a href="https://dev.vault.sgraph.ai/en-gb/#sgit_private_read_d5220d6ada858319cf31f4a4e1a3bd04fe97d647285c16c869adef651db5208d:dkeclt5r" rel="noopener" target="_blank">open it read-only in a new tab &rarr;</a></p>
 </div>
+
+> **This vault is on a development host.** `dev.vault.sgraph.ai` is not the production browser, and publishing a `dev.*` URL from a public site is a decision rather than a detail. It ships because the read key is the whole point of §7 and a vault nobody can open is worse than one on the wrong host — but **moving to production is [handback item 4](/briefs/)**, and this page changes when it moves.
 
 Or with the CLI:
 

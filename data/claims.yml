@@ -242,3 +242,17 @@
   group: About this site itself
   claim: "Every example file offered for download was executed to produce the numbers on this site — they are the actual scripts, not illustrations of them. `fetch.sh` produced every row of the retrieval log; `coverage-sample.py` produced the 0-of-49; `inferred-join.py` produced the 96.6%."
   source: "the retrieval log and data/computation-1.json are their output"
+
+# ---------------------------------------------------------------------------
+- id: vault-embed-pattern
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault embed is the estate's own published component, **vendored unmodified**: the body of `assets/vault-ui-embed.js` is byte-identical to `sgit.ai/assets/vault-ui-embed.js` (sha256 `6da5cf0a390dce25…`), the markup matches the estate's `sgv-uiembed` block attribute for attribute, and the only origin in its executable code is `dev.vault.sgraph.ai`. The key it publishes is the bare 64-hex read key, which a build check enforces."
+  source: "byte diff against sgit.ai/assets/vault-ui-embed.js, fetched 9 September 2026"
+
+- id: vault-embed-unrun
+  state: unrun
+  group: About this site itself
+  claim: "**Nobody has watched the embed render.** The authoring container's proxy resets browser-initiated TLS tunnels — `curl` reaches `dev.vault.sgraph.ai` fine and returns 200 with no frame-blocking headers, but Chromium gets `ERR_CONNECTION_RESET` — so the frame could not be booted here. The component, the markup and the credential are verified; **the thing they produce has not been seen**. Open [the vault page](/vault/) in a real browser and it either works or it does not, which is exactly what this state means."
+  source: "Playwright via the agent proxy: ERR_CONNECTION_RESET on the vault origin"

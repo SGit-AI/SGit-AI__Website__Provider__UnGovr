@@ -217,7 +217,7 @@ The named workload is a seven-step join: **entity → instrument → provision �
 
 The one thing worth knowing before you read it: **only one edge crosses from their data into our model**, and UnGovr did not make that claim. It is drawn `inferred` everywhere it appears, because rendered as an assertion it would be a lie about the source.
 
-[Open the vault itself, read-only →](/vault/)
+**[The vault runs live on this site](/vault/)**, decrypted in your browser from a published read key — not a screenshot of one, and not a copy. It is the one page here that opens a network connection.
 
 ## 8 · What it cost
 

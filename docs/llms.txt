@@ -1,5 +1,5 @@
 # ungovr.providers.sgit.ai
-> site v0.1.2
+> site v0.1.3
 
 > An independent report on the UnGovr Open Data API — 327,138 government entities and 398
 > open-records laws, published free under CC BY 4.0. This report measures one thing: how far
@@ -16,7 +16,8 @@ Every factual claim on this site carries one of six states: verified, measured, 
 specified-not-shipped, written-not-run, projected. The full list is at /ledger/.
 Every page is also served as markdown at <page>/index.md.
 Every number was computed at the command line against bytes whose sha256 is published at
-/retrievals/. No page on this site makes a network call.
+/retrievals/. Exactly one page opens a network connection: /vault/ embeds the live vault from
+its published read key, against dev.vault.sgraph.ai. Every other page fetches nothing.
 Licence: This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
 
 ## Pages

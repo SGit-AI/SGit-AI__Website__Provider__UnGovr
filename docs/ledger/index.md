@@ -29,6 +29,7 @@ wide: true
 - **`docs` claims about the payment path.** No `402` was ever returned here, so everything about the wallet, the price and the challenge headers is read rather than run. It is the largest block of unexercised claims on the site.
 - **One gated corpus is still unread.** CGJ *report detail* needs the same key and was not fetched; only the indices were. Blocker B2 is otherwise closed.
 - **One number is a sample, not a census**, and [says so with an interval](/coverage/).
+- **One page opens a network connection.** [The vault page](/vault/) runs the vault live from its published read key, against `dev.vault.sgraph.ai`. It is the only one, the component that does it is vendored into this site, and `check_network_pages` fails the build if any other page or file gains the ability.
 
 ---
 

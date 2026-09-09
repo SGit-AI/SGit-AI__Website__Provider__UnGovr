@@ -971,8 +971,10 @@ def footer_html():
   </div>
 </div>
 <div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
-is served from this domain. <b>No page here makes a network call at all.</b> Every number was computed at the command
-line against bytes whose sha256 is published in <a href="/retrievals/">the retrieval log</a>, and compiled in.</p></div>
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="/retrievals/">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="/vault/">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
 </footer>"""
 
 
@@ -1183,7 +1185,8 @@ def llms_txt(rendered):
         "specified-not-shipped, written-not-run, projected. The full list is at /ledger/.",
         "Every page is also served as markdown at <page>/index.md.",
         "Every number was computed at the command line against bytes whose sha256 is published at",
-        "/retrievals/. No page on this site makes a network call.",
+        "/retrievals/. Exactly one page opens a network connection: /vault/ embeds the live vault from",
+        "its published read key, against dev.vault.sgraph.ai. Every other page fetches nothing.",
         f"Licence: {LICENCE_STAMP}",
         "",
         "## Pages",

@@ -30,13 +30,25 @@ predicted, and **it is not CC BY 4.0**.
 3. **A second key exists** (`ung_live_dba34ae…`, created 8 September) and is unused. Keys share one
    daily allowance, so it costs nothing to keep — but an unused credential is worth revoking.
 
-## 3 · Default branch — settled
+## 3 · Open the vault page in a real browser — the one thing nobody has done
+
+**The live embed on `/vault/` has never been seen working.** Everything around it is verified: the
+component is byte-identical to the estate's, the markup matches, the credential is the right 64-hex
+read key, and the vault host serves 200 with no frame-blocking headers. **The frame itself has not
+been booted**, because this container's proxy resets browser TLS tunnels (`curl` fine, Chromium
+`ERR_CONNECTION_RESET`).
+
+It is badged `unrun` on the page and in the ledger, which is honest but is not a substitute for
+somebody opening it. **Two minutes in a browser closes this.** If it fails, the fallback
+new-tab link beside it opens the same vault with the same key.
+
+## 4 · Default branch — settled
 
 `dev`, confirmed from the sibling repository's `origin/HEAD`. CI deploys from it. The
 workflow's `tag-release` job is conditioned on `refs/heads/dev` only, matching the estate.
 **No action needed** unless that is wrong.
 
-## 4 · May a `dev.send.sgraph.ai` vault be linked from a public site?
+## 5 · May a `dev.send.sgraph.ai` vault be linked from a public site?
 
 **The site currently ships this link**, on `/vault/`, because the read key is the whole point
 of §7 and a link nobody can open is worse than a link on the wrong host. The page says
@@ -45,7 +57,7 @@ plainly that it is a development host.
 **If the answer is no, the vault moves to production first** — that is a vault step, not a
 site change, and then one URL on `content/vault.md` changes.
 
-## 5 · `ungovr.providers.sgit.ai` — pointed, mid-session
+## 6 · `ungovr.providers.sgit.ai` — pointed, mid-session
 
 **Done, and nothing had to change for it.** It answered 404 when v0.1.0 shipped and served at
 v0.1.1; the GitHub Pages project path now `301`s to it. Canonicals already named it and links were
@@ -55,7 +67,7 @@ already relative, which is exactly why the transition cost nothing.
 index from its canonical host — it should now pick this site up, and a row in the hub's
 `data/providers.yml` should be **added by running that script rather than typed**.
 
-## 6 · Does the hub's contract take the open-data-provider correction?
+## 7 · Does the hub's contract take the open-data-provider correction?
 
 UnGovr do not fit the family's definition of *provider* — "a service that serves models over
 an API". The site argues the definition was a proxy for the real question (*where does the
@@ -65,7 +77,7 @@ most informative possible answer rather than an exception.
 **Filed as a correction beside the contract, not as an edit to it.** Whether the contract
 takes it is a change to a shared document, so it is the project lead's call.
 
-## 7 · Do we tell UnGovr before publishing?
+## 8 · Do we tell UnGovr before publishing?
 
 **No conversation of any kind has taken place.** The CC BY 4.0 licence permits all of this
 with attribution, and asking is not required.
@@ -75,7 +87,7 @@ would likely want — a stale `primary_source_url` on the CPRA record, `products
 undocumented, rate-limit headers advertised in CORS but never emitted — and there is no
 public repository to file any of them against.
 
-## 8 · Who is the named owner on the acceptance node?
+## 9 · Who is the named owner on the acceptance node?
 
 The seven-step join ends on `sg:acceptance/unassigned`, which ships **open**: no owner, no
 review interval, no revocation path. An acceptance without an owner is a note, and writing a
