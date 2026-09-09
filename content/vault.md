@@ -6,7 +6,7 @@ order: 5
 toc: false
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-4ae37acb099a
+  vault: dkeclt5r @ obj-cas-imm-e23f0cecfccf
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---
@@ -51,6 +51,8 @@ The vault carries three presentations — **what we learned about UnGovr**, **wh
 That is the same reason the estate's own book is generated from its site's markdown rather than authored twice: **a presentation that is a projection of a document cannot drift from it.**
 
 The third deck is the one worth reading if you only read one. It is not a summary — it names what this vault contributes to the others (a jurisdiction layer, and a deadline set by statute rather than by an attestation's expiry), what it took from them (the two-edge rule, `unevidenced` as a default, the grant/mandate/delta shape), and it closes on a *what this does not prove* slide borrowed from the conformance layer's own field of that name.
+
+> **The app says which release it is.** A version pill sits in its header, exactly as one sits in this site's nav, and clicking it opens the Provenance view at a table of seven releases with what each one changed — including the three that moved *this site* around the vault rather than the vault itself. {{claim:vault-app-version}} It is a button rather than a link because **a vault app must never assign `location.hash`**, and an internal fragment href lands on the host's broken-link overlay.
 
 ## The security-standards dev pack
 

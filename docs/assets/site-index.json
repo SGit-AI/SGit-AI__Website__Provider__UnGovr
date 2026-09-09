@@ -1,5 +1,5 @@
 {
- "version": "v0.1.11",
+ "version": "v0.1.12",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -538,6 +538,12 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The pack's model claimed eight of graphs.sgit.ai's fifteen established edges were reused unchanged. Six came from there, not eight \u2014 and four of the six were not unchanged: observed_on carried the inverse observation_of where the published set says bears_observation, and backed_by/accepted_by/conditional_on had all been renamed too. Renaming another vocabulary's inverses and calling it reuse is a fork \u2014 the exact failure the pack's own rule 6 exists to prevent, committed by the file that states the rule. Caught by fetching the published edge set and comparing row by row. The four are now theirs."
+  },
+  {
+   "id": "vault-app-version",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The vault app carries a version pill in its header that opens its Provenance view at a table of seven releases, naming what each one changed and which of them moved this site around the vault rather than the vault itself. The number is the site release that shipped the app change, so one number reaches a page with the pipeline behind it. It is a <button>, not a link: a vault app must never assign location.hash and an internal fragment href lands on the host's broken-link overlay, so it switches the view and scrolls instead."
   }
  ]
 }

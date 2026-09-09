@@ -60,7 +60,7 @@ SITE = {
     # The government-graph vault this site reports on. When the vault moves ahead,
     # this page is behind — and says so rather than guessing.
     "vault_id": "dkeclt5r",
-    "vault_commit": "obj-cas-imm-4ae37acb099a",
+    "vault_commit": "obj-cas-imm-e23f0cecfccf",
     "version": VERSION,
 }
 

@@ -366,7 +366,7 @@
   date: 9 Sep 2026
   group: About this site itself
   claim: "The vault carries `packs/security-graph/` — **eight files**: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which **five pass and all five were inherited**, one is `asserted` and seven are `unevidenced`. The pack shipped saying *two of twelve*, which was wrong in both numbers — a summary line that had drifted from its own table, caught by parsing the rows rather than reading them, and corrected in the vault with the old line quoted rather than replaced. Five of the fifteen edges are marked **proposed** rather than existing, and the blockers are listed as open rather than described as risks."
-  source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-4ae37acb099a"
+  source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-e23f0cecfccf"
 
 - id: pack-nothing-built
   state: spec
@@ -380,7 +380,7 @@
   date: 9 Sep 2026
   group: About this site itself
   claim: "The pack shipped saying **\"Two of twelve pass\"**. Both numbers were wrong: the table had thirteen rows and five at `programmatic-inline`. A test was added when a blocker closed without the total moving, and three rows were upgraded after the summary line was written. **It was caught by parsing the table with a script rather than reading it** — the same failure the pack warns about in file 03, where a framework's label had to be checked against its members. The old line is quoted in the corrected file rather than replaced, and this site's three copies of the wrong number were corrected with it."
-  source: "a script counting the rows of 06__verification.md; the correction is vault commit obj-cas-imm-4ae37acb099a"
+  source: "a script counting the rows of 06__verification.md; the correction is vault commit obj-cas-imm-e23f0cecfccf"
 
 - id: pack-reader
   state: verified
@@ -395,3 +395,10 @@
   group: About this site itself
   claim: "The pack's model claimed **eight** of graphs.sgit.ai's fifteen established edges were *reused unchanged*. Six came from there, not eight — and **four of the six were not unchanged**: `observed_on` carried the inverse `observation_of` where the published set says `bears_observation`, and `backed_by`/`accepted_by`/`conditional_on` had all been renamed too. **Renaming another vocabulary's inverses and calling it reuse is a fork** — the exact failure the pack's own rule 6 exists to prevent, committed by the file that states the rule. Caught by fetching the published edge set and comparing row by row. The four are now theirs."
   source: "https://graphs.sgit.ai/v1/grammar/edge-set.html, read 9 September 2026, against packs/security-graph/02__the-model.md"
+
+- id: vault-app-version
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The vault app carries a **version pill in its header** that opens its Provenance view at a table of **seven releases**, naming what each one changed and which of them moved this site around the vault rather than the vault itself. The number is the site release that shipped the app change, so one number reaches a page with the pipeline behind it. It is a `<button>`, not a link: **a vault app must never assign `location.hash`** and an internal fragment href lands on the host's broken-link overlay, so it switches the view and scrolls instead."
+  source: "app/index.src.html in vault dkeclt5r @ obj-cas-imm-e23f0cecfccf; driven in Chromium — the pill reads v0.1.12, opens Provenance, and marks the current row"
