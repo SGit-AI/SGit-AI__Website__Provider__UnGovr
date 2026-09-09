@@ -6,7 +6,7 @@ order: 5
 toc: false
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-d945c19564bf
+  vault: dkeclt5r @ obj-cas-imm-4ae37acb099a
   date: 9 September 2026
   note: "The vault's own pack is published raw under /briefs/."
 ---

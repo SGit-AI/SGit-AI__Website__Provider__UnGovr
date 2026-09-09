@@ -47,7 +47,7 @@ checkable rather than from an opinion formed here.
 
 | Decision | Where it comes from |
 |---|---|
-| **Vocabularies are never merged.** Standards keep their own terms and are bridged through anchor nodes | [graphs.sgit.ai](https://graphs.sgit.ai/), thesis sentence 6 |
+| **Vocabularies are never merged.** Standards keep their own terms and are bridged through anchor nodes | [graphs.sgit.ai, thesis sentence 6](https://graphs.sgit.ai/v1/depth/index.html) |
 | **Every edge is a verb with a distinct inverse.** The generic association edge is banned | graphs.sgit.ai, the grammar |
 | **Never render the whole graph — render the result of a query** | graphs.sgit.ai, thesis sentence 8 |
 | **Classification is a query, not a judgment** | graphs.sgit.ai, thesis sentence 3 |

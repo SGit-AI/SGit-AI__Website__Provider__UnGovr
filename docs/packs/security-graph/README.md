@@ -19,7 +19,7 @@ a single vocabulary.**
 | 03 | [The standards map](03__the-standards-map.md) | What exists as a graph, what does not, and the honest state of each |
 | 04 | [The worked example](04__the-worked-example.md) | **The deliverable.** One control, one body, one jurisdiction |
 | 05 | [Integration](05__integration.md) | Licence to Operate, AIUC-1 conformance, Risk Mandate, the EU AI Act text |
-| 06 | [Verification](06__verification.md) | Thirteen tests, five blockers &mdash; one closed &mdash; and what would make this wrong |
+| 06 | [Verification](06__verification.md) | Thirteen tests, five blockers — one closed — and what would make this wrong |
 
 ## The cheapest thing to do first — done, 9 September
 

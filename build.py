@@ -60,7 +60,7 @@ SITE = {
     # The government-graph vault this site reports on. When the vault moves ahead,
     # this page is behind — and says so rather than guessing.
     "vault_id": "dkeclt5r",
-    "vault_commit": "obj-cas-imm-d945c19564bf",
+    "vault_commit": "obj-cas-imm-4ae37acb099a",
     "version": VERSION,
 }
 
@@ -925,6 +925,155 @@ def relativise(doc, prefix):
     return re.sub(r'\b(href|src)="(/[^"]*)"', one, doc)
 
 
+# ---------------------------------------------------------------- packs ----
+# A document viewer for the republished pack files, built to the contract in
+# sgit.ai/briefs/markdown-and-file-viewers: raw is always available for every
+# file, the reader is an ADDITION and never a replacement, and the tree comes
+# from a manifest generated at build time rather than a walk at runtime.
+#
+# That brief's ladder stops at rung 3 — "a viewer on your website" — for content
+# that has to live outside a vault host, which is this. It is rendered HERE, at
+# build time, rather than fetched and parsed in the browser, for one reason: this
+# site's whole claim is that its pages contact nothing, and exactly two are
+# allowed to (/vault/ and /estate/). A client-side reader would have made every
+# pack file a third. A static render costs nothing at read time and keeps that
+# claim true.
+#
+# The rendered view is the SITE'S; the bytes are the vault's. So intra-pack links
+# are rewritten here so they resolve on this host — and the raw file beside every
+# page is untouched, hash-checked against the vault, and one click away.
+
+PACK_ORDER = ["README.md", "00__START-HERE.md", "01__the-anchor-node-thesis.md",
+              "02__the-model.md", "03__the-standards-map.md", "04__the-worked-example.md",
+              "05__integration.md", "06__verification.md"]
+
+
+def pack_manifest():
+    """The file tree, read from the manifest the build wrote — never from a walk.
+    Returns {pack: [(filename, sha256)]} in PACK_ORDER, then anything else."""
+    src = (DATA / "packs-manifest.txt").read_text()
+    packs = {}
+    for line in src.split("\n"):
+        if not line.strip():
+            continue
+        digest, rel = line.split("  ", 1)
+        rel = rel.strip()
+        if "/" not in rel:
+            continue                      # packs/README.md — the index, not a pack file
+        pack, name = rel.split("/", 1)
+        packs.setdefault(pack, []).append((name, digest.strip()))
+    for pack, files in packs.items():
+        files.sort(key=lambda f: (PACK_ORDER.index(f[0]) if f[0] in PACK_ORDER else 99, f[0]))
+    return packs
+
+
+def pack_slug(name):
+    """06__verification.md -> 06__verification ; README.md -> readme"""
+    stem = name[:-3] if name.endswith(".md") else name
+    return "readme" if stem.upper() == "README" else stem
+
+
+def pack_rail(pack, files, current):
+    """The folder viewer. Every file on every page, so a reader is never one
+    back-button away from the rest of the pack."""
+    rows = []
+    for name, digest in files:
+        slug = pack_slug(name)
+        here = " here" if name == current else ""
+        rows.append(
+            f'<a class="prow{here}" href="/packs/{pack}/{slug}/">'
+            f'<span class="pname">{html.escape(name)}</span>'
+            f'<span class="phash">sha256 {digest[:12]}</span></a>'
+        )
+    return ('<nav class="prail" aria-label="Files in this pack">'
+            f'<div class="prailhead">{html.escape(pack)}/ &mdash; {len(files)} files</div>'
+            + "".join(rows) +
+            '<p class="prailfoot">Every file is one click from its own bytes. '
+            'The hash beside each name is the sha256 this site checks on every build.</p>'
+            "</nav>")
+
+
+def pack_body(text, pack, files, ctx_shared):
+    """Render one pack file, rewriting intra-pack links so they resolve here.
+
+    The rewrite is the VIEW's, not the document's: `01__the-anchor-node-thesis.md`
+    becomes the rendered sibling, and the vault-tree breadcrumbs `../../README.md`
+    and `../README.md` become this site's equivalents. The raw file served beside
+    this page keeps every one of them exactly as the vault wrote it."""
+    names = {n for n, _ in files}
+    ctx = dict(ctx_shared)
+    ctx.update({"page": f"packs/{pack}", "page_url": f"/packs/{pack}/", "fm": {}, "toc": []})
+    # The document's own leading `# Title` becomes this page's <h1>, so rendering it
+    # again inside the article would print the title twice. Dropped from the VIEW
+    # only — the raw file, and the twin beside it, still open on their own heading.
+    body = render_markdown(re.sub(r"\A\s*#\s+[^\n]*\n", "", text), ctx)
+
+    def one(m):
+        attr, href = m.group(1), m.group(2)
+        if href in names:
+            return f'{attr}="/packs/{pack}/{pack_slug(href)}/"'
+        if href == "../../README.md":
+            return f'{attr}="/packs/"'
+        if href == "../README.md":
+            return f'{attr}="/packs/{pack}/"'
+        return m.group(0)
+
+    return re.sub(r'\b(href)="([^"]+)"', one, body), ctx
+
+
+def pack_pages(out_dir, ctx_shared):
+    """One page per pack file: the rail, the rendered document, and the raw bytes
+    named and linked at the top and the bottom. Returns {url: title} for the
+    sitemap and the machine indexes."""
+    made = {}
+    for pack, files in pack_manifest().items():
+        order = [n for n, _ in files]
+        for i, (name, digest) in enumerate(files):
+            raw = (PACKS / pack / name).read_text()
+            body, ctx = pack_body(raw, pack, files, ctx_shared)
+            title = raw.lstrip().split("\n", 1)[0].lstrip("# ").strip() or name
+            slug = pack_slug(name)
+            url = f"/packs/{pack}/{slug}/"
+            prev_ = f'<a href="/packs/{pack}/{pack_slug(order[i-1])}/">&larr; {html.escape(order[i-1])}</a>' if i else ""
+            next_ = f'<a href="/packs/{pack}/{pack_slug(order[i+1])}/">{html.escape(order[i+1])} &rarr;</a>' if i + 1 < len(files) else ""
+            rawurl = f"/packs/{pack}/{name}"
+            page = {
+                "fm": {"title": title, "wide": True,
+                       "description": f"{name} from the {pack} dev pack, rendered — with the "
+                                      f"raw bytes beside it, byte for byte from the vault."},
+                "url": url,
+                "crumb": f' / <a href="/packs/">packs</a> / <a href="/packs/{pack}/">{html.escape(pack)}</a> / {html.escape(name)}',
+                "nav_match": "/packs/",
+                "src_md": raw,
+            }
+            doc = (
+                '<div class="rawbar">'
+                f'<a class="btn-open" href="{rawurl}">View the raw file &darr;</a>'
+                f'<span><b>{html.escape(name)}</b> &mdash; rendered here, and served '
+                f'unrendered at <code>{html.escape(rawurl)}</code>. '
+                f'sha256 <code>{digest[:16]}</code>, checked against the vault on every build. '
+                '<b>The reader is an addition; the bytes are the document.</b> '
+                "The rendering drops the document's own title line, because this page already "
+                'carries it as its heading, and rewrites intra-pack links so they resolve here.</span>'
+                "</div>"
+                f'<div class="packwrap">{pack_rail(pack, files, name)}'
+                f'<article class="packdoc">{body}</article></div>'
+                + (f'<p class="packnav">{prev_}{next_}</p>' if (prev_ or next_) else "")
+                + '<p class="packfoot">This is the site\'s rendering of a vault document. '
+                  'Intra-pack links are rewritten so they resolve on this host; '
+                  f'<a href="{rawurl}">the raw file</a> keeps every link exactly as the vault '
+                  'wrote it, including the breadcrumbs that point into the vault\'s own tree.</p>'
+            )
+            target = out_dir / url.strip("/") / "index.html"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(page_html(page, ctx, doc))
+            # The markdown twin IS the pack file. Two paths, the same bytes, both
+            # checked — rather than a second rendering of it.
+            (target.parent / "index.md").write_text(raw)
+            made[url] = title
+    return made
+
+
 def nav_html(current):
     items = []
     for label, href, subs in NAV:
@@ -1159,10 +1308,13 @@ def build(out_dir):
             dst = out_dir / "packs" / src.relative_to(PACKS)
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
+    # the rendered reader over those files, built from the manifest just copied
+    pack_urls = pack_pages(out_dir, ctx_shared)
     (out_dir / "CNAME").write_text(SITE["domain"] + "\n")
     (out_dir / ".nojekyll").write_text("")
     (out_dir / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE['base']}/sitemap.xml\n")
-    urls = "".join(f"<url><loc>{SITE['base']}{u}</loc></url>" for u in sorted(rendered))
+    urls = "".join(f"<url><loc>{SITE['base']}{u}</loc></url>"
+                   for u in sorted(set(rendered) | set(pack_urls)))
     (out_dir / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + "</urlset>\n"
     )

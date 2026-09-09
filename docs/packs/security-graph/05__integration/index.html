@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>05 — Integration &mdash; UnGovr, reported on</title>
+<meta name="description" content="05__integration.md from the security-graph dev pack, rendered — with the raw bytes beside it, byte for byte from the vault.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/packs/security-graph/05__integration/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/packs/security-graph/05__integration/">
+<meta property="og:title" content="05 — Integration">
+<meta property="og:description" content="05__integration.md from the security-graph dev pack, rendered — with the raw bytes beside it, byte for byte from the vault.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<script src="../../../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../../../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../../../versions/index.html" title="Site release history">v0.1.11</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../../../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../../../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../coverage/index.html">The coverage measurement</a><a class="sl" href="../../../join/index.html">The seven-step join</a><a class="sl" href="../../../retrievals/index.html">The retrieval log</a></div></div><div class="ni ni-has"><a class="nl" href="../../../vault/index.html">The vault<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../vault/index.html">The government-graph vault</a><a class="sl" href="../../../estate/index.html">The estate it joins</a></div></div><div class="ni ni-has"><a class="nl" href="../../../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../patterns/index.html">The four patterns</a><a class="sl" href="../../../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../../../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../../../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../ledger/index.html">The claim ledger</a><a class="sl" href="../../../briefs/index.html">The briefs, published raw</a><a class="sl" href="../../../disclosures/index.html">Disclosures</a><a class="sl here" href="../../../packs/index.html">The dev packs, published raw</a><a class="sl" href="../../../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../../../disclosures/index.html">Disclosures</a> &middot; <a href="../../../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../../../index.html">ungovr.providers.sgit.ai</a> / <a href="../../../packs/index.html">packs</a> / <a href="../../../packs/security-graph/index.html">security-graph</a> / 05__integration.md</p>
+<h1>05 — Integration</h1>
+
+
+
+<div class="rawbar"><a class="btn-open" href="../../../packs/security-graph/05__integration.md">View the raw file &darr;</a><span><b>05__integration.md</b> &mdash; rendered here, and served unrendered at <code>/packs/security-graph/05__integration.md</code>. sha256 <code>2cdf08a38c056854</code>, checked against the vault on every build. <b>The reader is an addition; the bytes are the document.</b> The rendering drops the document's own title line, because this page already carries it as its heading, and rewrites intra-pack links so they resolve here.</span></div><div class="packwrap"><nav class="prail" aria-label="Files in this pack"><div class="prailhead">security-graph/ &mdash; 8 files</div><a class="prow" href="../../../packs/security-graph/readme/index.html"><span class="pname">README.md</span><span class="phash">sha256 2fe588b05100</span></a><a class="prow" href="../../../packs/security-graph/00__START-HERE/index.html"><span class="pname">00__START-HERE.md</span><span class="phash">sha256 a85f70de732b</span></a><a class="prow" href="../../../packs/security-graph/01__the-anchor-node-thesis/index.html"><span class="pname">01__the-anchor-node-thesis.md</span><span class="phash">sha256 7136286fadd2</span></a><a class="prow" href="../../../packs/security-graph/02__the-model/index.html"><span class="pname">02__the-model.md</span><span class="phash">sha256 7778412bb213</span></a><a class="prow" href="../../../packs/security-graph/03__the-standards-map/index.html"><span class="pname">03__the-standards-map.md</span><span class="phash">sha256 864398394df6</span></a><a class="prow" href="../../../packs/security-graph/04__the-worked-example/index.html"><span class="pname">04__the-worked-example.md</span><span class="phash">sha256 05e09591dd05</span></a><a class="prow here" href="../../../packs/security-graph/05__integration/index.html"><span class="pname">05__integration.md</span><span class="phash">sha256 2cdf08a38c05</span></a><a class="prow" href="../../../packs/security-graph/06__verification/index.html"><span class="pname">06__verification.md</span><span class="phash">sha256 04e4a83a19f3</span></a><p class="prailfoot">Every file is one click from its own bytes. The hash beside each name is the sha256 this site checks on every build.</p></nav><article class="packdoc"><p><strong>version</strong> v0.1 · 9 September 2026</p>
+<p><a href="../../../packs/security-graph/04__the-worked-example/index.html">← 04 The worked example</a> · Next → <a href="../../../packs/security-graph/06__verification/index.html">06 Verification</a></p>
+<hr>
+<h2 id="what-each-existing-thing-gains-and-what-it-gives">What each existing thing gains, and what it gives</h2>
+<p><strong>Every row is read from that vault's or site's own published page</strong>, linked, and quoted rather than recalled.</p>
+<h2 id="licence-to-operate-posrhzp3">Licence to Operate — <code>posrhzp3</code></h2>
+<p><strong>What it is.</strong> An agent's grant, its mandate, and the delta between them, priced. <strong>12 capabilities can do, 4 may do, 8 in the delta</strong> — <em>"inside the agent's reach, outside its authority. No policy covers these."</em></p>
+<p><strong>What it gains from the anchor.</strong> A <code>policy/v1</code> covering an agent acting <strong>for a body, in a jurisdiction</strong> currently has no way to name either. With the anchors, the mandate stops being <em>"answer a customer's question"</em> and becomes <em>"answer a records request on behalf of <code>ung:us/ca/santa-barbara</code>, under <code>us/ca</code>, within the statutory 10 days"</em> — <strong>a mandate with a deadline that came from a legislature rather than from a product decision.</strong></p>
+<p><strong>What it gives back.</strong> The delta. Our graph has no way to express <em>the agent could reach this obligation's evidence and is not authorised to</em>, and that is the sharpest thing in their model.</p>
+<h2 id="the-aiuc-1-conformance-layer-2wzct4k7">The AIUC-1 conformance layer — <code>2wzct4k7</code></h2>
+<p><strong>What it is.</strong> 53 conformance rows for a named subject where <code>unevidenced</code> is the default, and <strong>insurability computed as a query</strong> — 1 condition met, 52 exclusions at build, <strong>53 exclusions when the date moves to 2027-01-15 with nothing edited by anybody</strong>.</p>
+<p><strong>What it gains.</strong> <em>Subjects</em>, with stable ids. Today a conformance run names its subject as a string, so two runs cannot be compared and none can be aggregated. <strong>With <code>ung:entity</code> the subject is a node</strong>, and <em>"how many bodies in this jurisdiction have an unevidenced control here"</em> becomes a query rather than a spreadsheet.</p>
+<p><strong>What it gives back — and this is the one to steal.</strong> Their <code>valid_until</code> mechanism, where <strong>time alone turns conditions into exclusions.</strong> We contribute a second clock: theirs expires because an <em>attestation</em> lapsed, ours because a <em>statute</em> says 10 calendar days. <strong>An attestation expiry is a parameter somebody chose. A statutory deadline is a fact about the world.</strong> A model carrying both is strictly better than one carrying either.</p>
+<h2 id="risk-mandate-4zf6pf2z">Risk Mandate — <code>4zf6pf2z</code></h2>
+<p><strong>What it is.</strong> A working application delivered as a vault — 124 files, 98 commits, eight entry points, pinned releases — that <strong>calls an LLM without ever holding the API key.</strong></p>
+<p><strong>What it gains.</strong> A register assembled for a <em>named body in a named jurisdiction</em> rather than for a scenario. The eight questions stay; what changes is that the answers hang off an anchor and can be compared with somebody else's.</p>
+<p><strong>What it gives back.</strong> The delivery pattern, and the honest one: an app in a vault, offline once cached, with <code>takeaway.html</code> rebuilding a saved register from the link alone. <strong>This vault already copied that shape</strong> — index.html, data as its own cached immutable object, no permissions.</p>
+<h2 id="eu-ai-act-standards-riskmandate-ai">eu-ai-act.standards.riskmandate.ai</h2>
+<p><strong>What it is.</strong> The composed current text of Regulation (EU) 2024/1689 with the Digital Omnibus applied by a deterministic gated parser, <strong>published so it can be checked</strong>: per-provision ids and sha256 rolling to a root hash, <code>.md</code> and <code>.llm.json</code> on every slug, JSON-LD and Turtle exports, and a manifest hashing every file. It states plainly that it is <strong>derived and not authentic law.</strong></p>
+<p><strong>What it gains.</strong> Almost nothing — and that is the point. <strong>It is the layer this pack needs and does not have to build.</strong> Step 2 of the work order is a join, not a parse.</p>
+<p><strong>What it gives.</strong> The standard every other instrument in this graph should be held to. Set beside the CPRA — where the operative clause is prose in a notes field — it is the clearest possible statement of what <em>addressable</em> means, and it is why <a href="../../../packs/security-graph/04__the-worked-example/index.html">the worked example</a> puts the two side by side.</p>
+<p><strong>And the honesty to copy.</strong> It says on its own front page that only the Official Journal is authentic, and it publishes a root hash so a reader knows exactly which version they read. <strong>Our inferred edges deserve the same treatment, and get it.</strong></p>
+<h2 id="the-graph-family-graphs-sgit-ai">The graph family — <code>graphs.sgit.ai</code></h2>
+<p><strong>What it is.</strong> The grammar this pack obeys: nine sentences, five rules, fifteen edges with named inverses, and the instruction to bridge rather than merge.</p>
+<p><strong>What it gains.</strong> A worked instance of anchor nodes with a <strong>measured</strong> bridge — 96.6% reach, 20.5% needing a human. The site argues that confidence is computable; this is a case where somebody computed it and published the part that does not work.</p>
+<h2 id="the-composite-question-this-makes-answerable">The composite question this makes answerable</h2>
+<p>None of the vaults above can answer this today. Together, with the anchors, they can:</p>
+<blockquote><p><em>For this body, in this jurisdiction: which obligations bind it, which standard controls address each, what is the evidence state of each, what would an insurer exclude — and which of those links did we infer rather than read?</em></p></blockquote>
+<p><strong>Every clause of that question maps to one layer</strong>, and the last clause is the one that keeps it honest.</p>
+<h2 id="what-integration-must-not-do">What integration must not do</h2>
+<div class="tablewrap"><table><thead><tr><th>Not this</th><th>Because</th></tr></thead><tbody><tr><td>Merge the vocabularies into one control set</td><td>Merging erases the disagreement. <strong>Bridge through anchors</strong></td></tr><tr><td>Import UnGovr's AI-law corpus into any of these vaults</td><td><strong>It is not CC BY 4.0.</strong> Its own licence conveys none</td></tr><tr><td>Draw a crosswalk and leave who drew it implicit</td><td>A crosswalk without an author is an assertion nobody owns</td></tr><tr><td>Generate an acceptance owner to make a demo look finished</td><td>An acceptance without an owner is a note, and a generated one is worse</td></tr><tr><td>Treat 96.6% as 100% because it rounds nicely</td><td>The 20.5% that needs a human is the whole reason the edge is inferred</td></tr></tbody></table></div>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article></div><p class="packnav"><a href="../../../packs/security-graph/04__the-worked-example/index.html">&larr; 04__the-worked-example.md</a><a href="../../../packs/security-graph/06__verification/index.html">06__verification.md &rarr;</a></p><p class="packfoot">This is the site's rendering of a vault document. Intra-pack links are rewritten so they resolve on this host; <a href="../../../packs/security-graph/05__integration.md">the raw file</a> keeps every link exactly as the vault wrote it, including the breadcrumbs that point into the vault's own tree.</p>
+<p class="pagenav"><a href="../../../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../../../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../../../versions/index.html">v0.1.11</a> &middot; <a href="../../../ledger/index.html">the ledger</a> &middot; <a href="../../../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../../../index.html">UnGovr, nine sections</a>
+    <a href="../../../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../../../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../../../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../../../coverage/index.html">The coverage measurement</a>
+    <a href="../../../join/index.html">The seven-step join</a>
+    <a href="../../../retrievals/index.html">The retrieval log</a>
+    <a href="../../../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../../../vault/index.html">What the vault holds</a>
+    <a href="../../../join/index.html">Entity to acceptance</a>
+    <a href="../../../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../../../patterns/index.html">The four patterns</a>
+    <a href="../../../comparison/index.html">Comparison matrix</a>
+    <a href="../../../ledger/index.html">Claim ledger</a>
+    <a href="../../../briefs/index.html">The briefs, published raw</a>
+    <a href="../../../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="../../../retrievals/index.html">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="../../../vault/index.html">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
+</footer>
+</body>
+</html>

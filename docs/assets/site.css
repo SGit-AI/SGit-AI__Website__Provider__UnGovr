@@ -430,6 +430,40 @@ td.edge.a-inferred{color:var(--warm)}
   border-radius:10px;background:var(--panel);box-shadow:var(--shadow)}
 .sgv-uiembed > div{min-width:0}
 
+/* ---------- the pack reader: a rail, a document, and the bytes ---------- */
+/* Built to sgit.ai/briefs/markdown-and-file-viewers: raw is always available for
+   every file, the reader is an ADDITION rather than a replacement, and the tree
+   comes from a build-time manifest. So the raw link sits ABOVE the document, not
+   in a footnote under it, and the hash is on every row of the rail. */
+.rawbar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 1.4rem;
+  background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:.85rem 1rem}
+.rawbar span{font-size:.83rem;color:var(--dim);max-width:70ch;line-height:1.55}
+.rawbar span b{color:var(--ink)}
+.packwrap{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:2rem;align-items:start}
+.prail{position:sticky;top:4.4rem;background:var(--panel);border:1px solid var(--line);
+  border-radius:11px;padding:.6rem;box-shadow:var(--shadow)}
+.prailhead{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim2);
+  padding:.35rem .5rem .5rem;font-weight:700}
+a.prow{display:block;padding:.34rem .5rem;border-radius:7px;font-size:.78rem;color:var(--ink)}
+a.prow:hover{background:var(--panel2);text-decoration:none}
+a.prow.here{background:var(--accent-dk);color:#fff}
+a.prow .pname{display:block;font-family:var(--mono);word-break:break-word;line-height:1.35}
+a.prow .phash{display:block;font-family:var(--mono);font-size:.63rem;color:var(--dim2);margin-top:.05rem}
+a.prow.here .phash{color:rgba(255,255,255,.72)}
+.prailfoot{font-size:.7rem;color:var(--dim2);line-height:1.5;margin:.5rem .5rem 0;padding-top:.5rem;
+  border-top:1px solid var(--line)}
+.packdoc{min-width:0}
+.packdoc h1{font-size:1.6rem;margin:.2rem 0 1rem}
+.packnav{display:flex;justify-content:space-between;gap:1rem;margin:1.8rem 0 .6rem;
+  font-size:.85rem;font-weight:600}
+.packfoot{font-size:.8rem;color:var(--dim);border-top:1px solid var(--line);padding-top:.9rem;
+  max-width:80ch}
+
+@media (max-width:820px){
+  .packwrap{grid-template-columns:1fr}
+  .prail{position:static}
+}
+
 /* ---------- the vault picker: seven cards, one stage ---------- */
 /* Seven vaults booting at once is a worse demonstration than one booting well, so
    the cards are a selector rather than seven embeds. Nothing is fetched until one

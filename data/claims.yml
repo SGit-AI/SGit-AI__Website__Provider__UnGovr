@@ -366,7 +366,7 @@
   date: 9 Sep 2026
   group: About this site itself
   claim: "The vault carries `packs/security-graph/` — **eight files**: the anchor-node thesis, a model of five node classes and fifteen edges each with a distinct inverse, the standards map with its working, a worked example, the integration surface, and thirteen tests of which **five pass and all five were inherited**, one is `asserted` and seven are `unevidenced`. The pack shipped saying *two of twelve*, which was wrong in both numbers — a summary line that had drifted from its own table, caught by parsing the rows rather than reading them, and corrected in the vault with the old line quoted rather than replaced. Five of the fifteen edges are marked **proposed** rather than existing, and the blockers are listed as open rather than described as risks."
-  source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-d945c19564bf"
+  source: "packs/security-graph/ in vault dkeclt5r @ obj-cas-imm-4ae37acb099a"
 
 - id: pack-nothing-built
   state: spec
@@ -380,4 +380,18 @@
   date: 9 Sep 2026
   group: About this site itself
   claim: "The pack shipped saying **\"Two of twelve pass\"**. Both numbers were wrong: the table had thirteen rows and five at `programmatic-inline`. A test was added when a blocker closed without the total moving, and three rows were upgraded after the summary line was written. **It was caught by parsing the table with a script rather than reading it** — the same failure the pack warns about in file 03, where a framework's label had to be checked against its members. The old line is quoted in the corrected file rather than replaced, and this site's three copies of the wrong number were corrected with it."
-  source: "a script counting the rows of 06__verification.md; the correction is vault commit obj-cas-imm-739913cb1bb0"
+  source: "a script counting the rows of 06__verification.md; the correction is vault commit obj-cas-imm-4ae37acb099a"
+
+- id: pack-reader
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "Every pack file gets a **rendered reader** with the rest of the pack beside it and **the raw bytes named, hashed and linked above the text**. Built to the contract in sgit.ai's *markdown and file viewers* brief — raw always available, the reader an addition rather than a replacement, the tree from a build-time manifest. **It renders at build time rather than fetching**, because this site's claim is that its pages contact nothing and exactly two are allowed to; a client-side reader would have made every pack file a third. `check_packs_verbatim` fails the build if a rendered page and its raw file are not the same bytes, or if any pack file has no reader. Both negative-tested."
+  source: "build.py pack_pages(); tools/check_site.py check_packs_verbatim"
+
+- id: pack-vocabulary-forked
+  state: verified
+  date: 9 Sep 2026
+  group: About this site itself
+  claim: "The pack's model claimed **eight** of graphs.sgit.ai's fifteen established edges were *reused unchanged*. Six came from there, not eight — and **four of the six were not unchanged**: `observed_on` carried the inverse `observation_of` where the published set says `bears_observation`, and `backed_by`/`accepted_by`/`conditional_on` had all been renamed too. **Renaming another vocabulary's inverses and calling it reuse is a fork** — the exact failure the pack's own rule 6 exists to prevent, committed by the file that states the rule. Caught by fetching the published edge set and comparing row by row. The four are now theirs."
+  source: "https://graphs.sgit.ai/v1/grammar/edge-set.html, read 9 September 2026, against packs/security-graph/02__the-model.md"

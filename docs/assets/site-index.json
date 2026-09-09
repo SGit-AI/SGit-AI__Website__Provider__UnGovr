@@ -1,5 +1,5 @@
 {
- "version": "v0.1.10",
+ "version": "v0.1.11",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -526,6 +526,18 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "The pack shipped saying \"Two of twelve pass\". Both numbers were wrong: the table had thirteen rows and five at programmatic-inline. A test was added when a blocker closed without the total moving, and three rows were upgraded after the summary line was written. It was caught by parsing the table with a script rather than reading it \u2014 the same failure the pack warns about in file 03, where a framework's label had to be checked against its members. The old line is quoted in the corrected file rather than replaced, and this site's three copies of the wrong number were corrected with it."
+  },
+  {
+   "id": "pack-reader",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "Every pack file gets a rendered reader with the rest of the pack beside it and the raw bytes named, hashed and linked above the text. Built to the contract in sgit.ai's markdown and file viewers brief \u2014 raw always available, the reader an addition rather than a replacement, the tree from a build-time manifest. It renders at build time rather than fetching, because this site's claim is that its pages contact nothing and exactly two are allowed to; a client-side reader would have made every pack file a third. check_packs_verbatim fails the build if a rendered page and its raw file are not the same bytes, or if any pack file has no reader. Both negative-tested."
+  },
+  {
+   "id": "pack-vocabulary-forked",
+   "state": "verified",
+   "date": "9 Sep 2026",
+   "claim": "The pack's model claimed eight of graphs.sgit.ai's fifteen established edges were reused unchanged. Six came from there, not eight \u2014 and four of the six were not unchanged: observed_on carried the inverse observation_of where the published set says bears_observation, and backed_by/accepted_by/conditional_on had all been renamed too. Renaming another vocabulary's inverses and calling it reuse is a fork \u2014 the exact failure the pack's own rule 6 exists to prevent, committed by the file that states the rule. Caught by fetching the published edge set and comparing row by row. The four are now theirs."
   }
  ]
 }

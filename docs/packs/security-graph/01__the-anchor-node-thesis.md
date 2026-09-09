@@ -8,7 +8,7 @@
 
 ## The rule this whole pack rests on
 
-From [graphs.sgit.ai](https://graphs.sgit.ai/), thesis sentence 6, quoted rather than paraphrased:
+From [graphs.sgit.ai, thesis sentence 6](https://graphs.sgit.ai/v1/depth/index.html), quoted rather than paraphrased:
 
 > **So don't merge vocabularies — merging erases the disagreement. Keep them intact and bridge
 > them through anchor nodes.**

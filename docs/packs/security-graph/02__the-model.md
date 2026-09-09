@@ -25,9 +25,19 @@ tissue, not in re-typing corpora that already exist.
 ## The edge vocabulary
 
 Every edge is a verb with a **distinct, meaningfully-named inverse** — not the same edge walked
-backwards. The generic association edge is banned. Eight of the fifteen established edges from
-[graphs.sgit.ai's edge set](https://graphs.sgit.ai/) are reused unchanged; five are proposed here
-and **marked as proposed**, exactly as that site marks its own.
+backwards. The generic association edge is banned.
+
+**Six** come from [graphs.sgit.ai's fifteen established edges](https://graphs.sgit.ai/v1/grammar/edge-set.html),
+reused with **their** inverse names. **Four** come from the AIUC-1 conformance layer. **Five** are
+proposed here and marked as proposed, exactly as that site marks its own.
+
+> **This paragraph said *eight … reused unchanged*, and four of the six were not unchanged.**
+> `observed_on` had been given the inverse `observation_of` where the published set says
+> `bears_observation`; `backed_by`→`backs` for `evidences`; `accepted_by`→`accepts` for `accepted`;
+> `conditional_on`→`condition_for` for `conditions`. Renaming another vocabulary's inverses and
+> calling it reuse is a **fork**, and it is the exact failure this pack's own rule 6 exists to
+> prevent — committed by the file that states the rule. Caught by fetching the published edge set
+> and comparing row by row, not by rereading this table. **The four are now theirs.**
 
 | Edge | Inverse | Domain → range | Status |
 |---|---|---|---|
@@ -40,11 +50,11 @@ and **marked as proposed**, exactly as that site marks its own.
 | `has_requirement` | `requirement_of` | std:control → requirement | established (AIUC-1) |
 | `evidenced_by` | `evidences` | anything → evidence | **established.** Do not redefine |
 | `attested_by` | `attests` | control-instance → attestation | **established.** Never traversed with `evidenced_by` unnamed |
-| `observed_on` | `observation_of` | evidence → date | established |
-| `backed_by` | `backs` | claim → source bytes | established |
-| `accepted_by` | `accepts` | evidence → acceptance | established |
+| `observed_on` | `bears_observation` | evidence → date | established |
+| `backed_by` | `evidences` | claim → source bytes | established |
+| `accepted_by` | `accepted` | evidence → acceptance | established |
 | `owned_by` | `owns` | acceptance → named person | established |
-| `conditional_on` | `condition_for` | obligation → condition | established |
+| `conditional_on` | `conditions` | obligation → condition | established |
 | `underwritten_by` | `underwrites` | acceptance → policy | established |
 
 **Rule for extending this set**, quoted from the grammar: *a new edge needs a sentence, its inverse

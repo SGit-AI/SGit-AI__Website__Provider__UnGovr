@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>02 — The Model &mdash; UnGovr, reported on</title>
+<meta name="description" content="02__the-model.md from the security-graph dev pack, rendered — with the raw bytes beside it, byte for byte from the vault.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/packs/security-graph/02__the-model/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/packs/security-graph/02__the-model/">
+<meta property="og:title" content="02 — The Model">
+<meta property="og:description" content="02__the-model.md from the security-graph dev pack, rendered — with the raw bytes beside it, byte for byte from the vault.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../../../assets/site.css">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<script src="../../../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../../../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../../../versions/index.html" title="Site release history">v0.1.11</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../../../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../../../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../coverage/index.html">The coverage measurement</a><a class="sl" href="../../../join/index.html">The seven-step join</a><a class="sl" href="../../../retrievals/index.html">The retrieval log</a></div></div><div class="ni ni-has"><a class="nl" href="../../../vault/index.html">The vault<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../vault/index.html">The government-graph vault</a><a class="sl" href="../../../estate/index.html">The estate it joins</a></div></div><div class="ni ni-has"><a class="nl" href="../../../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../patterns/index.html">The four patterns</a><a class="sl" href="../../../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../../../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../../../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../../ledger/index.html">The claim ledger</a><a class="sl" href="../../../briefs/index.html">The briefs, published raw</a><a class="sl" href="../../../disclosures/index.html">Disclosures</a><a class="sl here" href="../../../packs/index.html">The dev packs, published raw</a><a class="sl" href="../../../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../../../disclosures/index.html">Disclosures</a> &middot; <a href="../../../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../../../index.html">ungovr.providers.sgit.ai</a> / <a href="../../../packs/index.html">packs</a> / <a href="../../../packs/security-graph/index.html">security-graph</a> / 02__the-model.md</p>
+<h1>02 — The Model</h1>
+
+
+
+<div class="rawbar"><a class="btn-open" href="../../../packs/security-graph/02__the-model.md">View the raw file &darr;</a><span><b>02__the-model.md</b> &mdash; rendered here, and served unrendered at <code>/packs/security-graph/02__the-model.md</code>. sha256 <code>7778412bb213d545</code>, checked against the vault on every build. <b>The reader is an addition; the bytes are the document.</b> The rendering drops the document's own title line, because this page already carries it as its heading, and rewrites intra-pack links so they resolve here.</span></div><div class="packwrap"><nav class="prail" aria-label="Files in this pack"><div class="prailhead">security-graph/ &mdash; 8 files</div><a class="prow" href="../../../packs/security-graph/readme/index.html"><span class="pname">README.md</span><span class="phash">sha256 2fe588b05100</span></a><a class="prow" href="../../../packs/security-graph/00__START-HERE/index.html"><span class="pname">00__START-HERE.md</span><span class="phash">sha256 a85f70de732b</span></a><a class="prow" href="../../../packs/security-graph/01__the-anchor-node-thesis/index.html"><span class="pname">01__the-anchor-node-thesis.md</span><span class="phash">sha256 7136286fadd2</span></a><a class="prow here" href="../../../packs/security-graph/02__the-model/index.html"><span class="pname">02__the-model.md</span><span class="phash">sha256 7778412bb213</span></a><a class="prow" href="../../../packs/security-graph/03__the-standards-map/index.html"><span class="pname">03__the-standards-map.md</span><span class="phash">sha256 864398394df6</span></a><a class="prow" href="../../../packs/security-graph/04__the-worked-example/index.html"><span class="pname">04__the-worked-example.md</span><span class="phash">sha256 05e09591dd05</span></a><a class="prow" href="../../../packs/security-graph/05__integration/index.html"><span class="pname">05__integration.md</span><span class="phash">sha256 2cdf08a38c05</span></a><a class="prow" href="../../../packs/security-graph/06__verification/index.html"><span class="pname">06__verification.md</span><span class="phash">sha256 04e4a83a19f3</span></a><p class="prailfoot">Every file is one click from its own bytes. The hash beside each name is the sha256 this site checks on every build.</p></nav><article class="packdoc"><p><strong>version</strong> v0.1 · 9 September 2026</p>
+<p><a href="../../../packs/security-graph/01__the-anchor-node-thesis/index.html">← 01 The anchor-node thesis</a> · Next → <a href="../../../packs/security-graph/03__the-standards-map/index.html">03 The standards map</a></p>
+<hr>
+<h2 id="five-node-classes-and-the-prefix-says-whose-claim-it-is">Five node classes, and the prefix says whose claim it is</h2>
+<p><strong>Origin is carried by the prefix and never by the colour.</strong> This is the two-edge rule this vault already ships, extended by one class.</p>
+<div class="tablewrap"><table><thead><tr><th>Prefix</th><th>Class</th><th>Who asserts it</th><th>Editable by us</th></tr></thead><tbody><tr><td><code>ung:</code></td><td><strong>Anchor</strong> — entity, jurisdiction</td><td>UnGovr</td><td><strong>Never.</strong> Transcribed with provenance and left alone</td></tr><tr><td><code>akn:</code></td><td><strong>Instrument</strong> — act, provision</td><td>The publisher of the law</td><td>Never. Anchored to a published citation</td></tr><tr><td><code>std:</code></td><td><strong>Standard</strong> — framework, control, requirement</td><td>The standards body</td><td>Never. Transcribed from their published corpus</td></tr><tr><td><code>sg:</code></td><td><strong>Our model</strong> — obligation, control-instance, evidence, acceptance</td><td><strong>Us</strong></td><td>Yes. This is the only layer we own</td></tr><tr><td><code>x:</code></td><td><strong>Crosswalk</strong> — a claimed correspondence</td><td>Whoever published it, <strong>or us</strong></td><td>Yes, and always carries who</td></tr></tbody></table></div>
+<p><strong>Four of the five are somebody else's.</strong> That ratio is the point: the value is in the connective tissue, not in re-typing corpora that already exist.</p>
+<h2 id="the-edge-vocabulary">The edge vocabulary</h2>
+<p>Every edge is a verb with a <strong>distinct, meaningfully-named inverse</strong> — not the same edge walked backwards. The generic association edge is banned.</p>
+<p><strong>Six</strong> come from <a href="https://graphs.sgit.ai/v1/grammar/edge-set.html" rel="noopener">graphs.sgit.ai's fifteen established edges</a>, reused with <strong>their</strong> inverse names. <strong>Four</strong> come from the AIUC-1 conformance layer. <strong>Five</strong> are proposed here and marked as proposed, exactly as that site marks its own.</p>
+<blockquote><p>**This paragraph said <em>eight … reused unchanged</em>, and four of the six were not unchanged.<strong> <code>observed_on</code> had been given the inverse <code>observation_of</code> where the published set says <code>bears_observation</code>; <code>backed_by</code>→<code>backs</code> for <code>evidences</code>; <code>accepted_by</code>→<code>accepts</code> for <code>accepted</code>; <code>conditional_on</code>→<code>condition_for</code> for <code>conditions</code>. Renaming another vocabulary's inverses and calling it reuse is a </strong>fork<strong>, and it is the exact failure this pack's own rule 6 exists to prevent — committed by the file that states the rule. Caught by fetching the published edge set and comparing row by row, not by rereading this table. </strong>The four are now theirs.**</p></blockquote>
+<div class="tablewrap"><table><thead><tr><th>Edge</th><th>Inverse</th><th>Domain → range</th><th>Status</th></tr></thead><tbody><tr><td><code>located_in</code></td><td><code>contains</code></td><td>entity → entity</td><td><strong>proposed here</strong></td></tr><tr><td><code>governed_by</code></td><td><code>governs</code></td><td>entity → jurisdiction</td><td><strong>proposed here</strong></td></tr><tr><td><code>has_provision</code></td><td><code>provision_of</code></td><td>instrument → provision</td><td><strong>proposed here</strong></td></tr><tr><td><code>creates_obligation</code></td><td><code>arises_from</code></td><td>provision → obligation</td><td><strong>proposed here</strong></td></tr><tr><td><code>addresses</code></td><td><code>addressed_by</code></td><td>std:control → obligation</td><td><strong>proposed here</strong></td></tr><tr><td><code>maps_to</code></td><td><code>mapped_from</code></td><td>std:control → std:control</td><td>established (AIUC-1 uses it)</td></tr><tr><td><code>has_requirement</code></td><td><code>requirement_of</code></td><td>std:control → requirement</td><td>established (AIUC-1)</td></tr><tr><td><code>evidenced_by</code></td><td><code>evidences</code></td><td>anything → evidence</td><td><strong>established.</strong> Do not redefine</td></tr><tr><td><code>attested_by</code></td><td><code>attests</code></td><td>control-instance → attestation</td><td><strong>established.</strong> Never traversed with <code>evidenced_by</code> unnamed</td></tr><tr><td><code>observed_on</code></td><td><code>bears_observation</code></td><td>evidence → date</td><td>established</td></tr><tr><td><code>backed_by</code></td><td><code>evidences</code></td><td>claim → source bytes</td><td>established</td></tr><tr><td><code>accepted_by</code></td><td><code>accepted</code></td><td>evidence → acceptance</td><td>established</td></tr><tr><td><code>owned_by</code></td><td><code>owns</code></td><td>acceptance → named person</td><td>established</td></tr><tr><td><code>conditional_on</code></td><td><code>conditions</code></td><td>obligation → condition</td><td>established</td></tr><tr><td><code>underwritten_by</code></td><td><code>underwrites</code></td><td>acceptance → policy</td><td>established</td></tr></tbody></table></div>
+<p><strong>Rule for extending this set</strong>, quoted from the grammar: <em>a new edge needs a sentence, its inverse needs a different sentence, both need a stated domain and range.</em> The five proposed above each do.</p>
+<h2 id="the-rule-that-keeps-evidenced-by-and-attested-by-apart">The rule that keeps <code>evidenced_by</code> and <code>attested_by</code> apart</h2>
+<p>Taken whole from the AIUC-1 conformance layer, because it is already load-bearing there:</p>
+<div class="tablewrap"><table><thead><tr><th>Edge</th><th>Answers</th><th>Absent means</th></tr></thead><tbody><tr><td><code>evidenced_by</code></td><td>does the <strong>standard</strong> say this?</td><td>a build defect</td></tr><tr><td><code>attested_by</code></td><td>does <strong>this subject</strong> do this?</td><td>the control is <strong>unevidenced — which is the finding</strong></td></tr></tbody></table></div>
+<p><strong>A query may traverse both, and must name which it used.</strong> The conformance layer enforces this with a test that goes red if a layer edge reaches a source observation. This pack inherits the rule and the test.</p>
+<h2 id="provenance-on-every-node-that-claims-a-source">Provenance, on every node that claims a source</h2>
+<p>Seven fields, unchanged from this vault's existing model:</p>
+<pre class="lang-json">{
+  &quot;source_url&quot;:       &quot;https://data.ungovr.org/v1/entities/detail/us--ca--santa-barbara.json&quot;,
+  &quot;response_sha256&quot;:  &quot;8d5e6db9e4056b2f68fcd66da7c18e6797340bf516dc5c4446f0e8267e0fcd7d&quot;,
+  &quot;retrieved&quot;:        &quot;2026-09-09T01:49Z&quot;,
+  &quot;method&quot;:           &quot;HTTPS GET, raw bytes hashed before parsing&quot;,
+  &quot;licence&quot;:          &quot;CC BY 4.0&quot;,
+  &quot;assertion&quot;:        &quot;asserted | inferred&quot;,
+  &quot;note&quot;:             &quot;for nodes that are ours, instead of a hash they have not earned&quot;
+}</pre>
+<p><strong>A node that is our model carries the note and no hash.</strong> Writing a plausible-looking hash on a node nobody retrieved is the exact failure the whole method exists to prevent.</p>
+<h2 id="the-crosswalk-rule">The crosswalk rule</h2>
+<p><strong>A crosswalk edge always names who drew it</strong>, and there are only two answers:</p>
+<div class="tablewrap"><table><thead><tr><th><code>x:source</code></th><th>Meaning</th><th>Assertion</th></tr></thead><tbody><tr><td>the standards body</td><td>They published this mapping</td><td><code>asserted</code></td></tr><tr><td><strong>us</strong></td><td>We drew it</td><td><strong><code>inferred</code>, always, with no exceptions</strong></td></tr></tbody></table></div>
+<p>AIUC-1's 1,126 crosswalks are the first kind and can be transcribed. <strong>Anything we add between two standards is the second kind</strong>, and rendering it like the first would be a lie about the source — the same lie <code>sg:resolvesTo</code> would be if it were drawn solid.</p>
+<h2 id="rendering">Rendering</h2>
+<p><strong>Never render the whole graph. Render the result of a query.</strong> Mermaid is unreadable past ~50 nodes; a rendered graph past ~300–400. A standards graph is tens of thousands of nodes, so <em>whole-graph</em> is not a view, it is a failure mode.</p>
+<p><strong>Two visual channels, never merged</strong>, as this vault's app already does:</p>
+<ul><li><strong>Origin</strong> (<code>ung:</code> / <code>akn:</code> / <code>std:</code> / <code>sg:</code> / <code>x:</code>) → <strong>shape and border</strong></li><li><strong>Assertion class</strong> (<code>asserted</code> / <code>inferred</code>) → <strong>colour</strong></li></ul>
+<p>Hue is spent on the second, so the first cannot also use it. <strong>A reader checking this work checks that separation first.</strong></p>
+<hr>
+<p>This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).</p></article></div><p class="packnav"><a href="../../../packs/security-graph/01__the-anchor-node-thesis/index.html">&larr; 01__the-anchor-node-thesis.md</a><a href="../../../packs/security-graph/03__the-standards-map/index.html">03__the-standards-map.md &rarr;</a></p><p class="packfoot">This is the site's rendering of a vault document. Intra-pack links are rewritten so they resolve on this host; <a href="../../../packs/security-graph/02__the-model.md">the raw file</a> keeps every link exactly as the vault wrote it, including the breadcrumbs that point into the vault's own tree.</p>
+<p class="pagenav"><a href="../../../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../../../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../../../versions/index.html">v0.1.11</a> &middot; <a href="../../../ledger/index.html">the ledger</a> &middot; <a href="../../../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../../../index.html">UnGovr, nine sections</a>
+    <a href="../../../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../../../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../../../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../../../coverage/index.html">The coverage measurement</a>
+    <a href="../../../join/index.html">The seven-step join</a>
+    <a href="../../../retrievals/index.html">The retrieval log</a>
+    <a href="../../../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../../../vault/index.html">What the vault holds</a>
+    <a href="../../../join/index.html">Entity to acceptance</a>
+    <a href="../../../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../../../patterns/index.html">The four patterns</a>
+    <a href="../../../comparison/index.html">Comparison matrix</a>
+    <a href="../../../ledger/index.html">Claim ledger</a>
+    <a href="../../../briefs/index.html">The briefs, published raw</a>
+    <a href="../../../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="../../../retrievals/index.html">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="../../../vault/index.html">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
+</footer>
+</body>
+</html>

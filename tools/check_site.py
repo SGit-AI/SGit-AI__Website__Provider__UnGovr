@@ -476,11 +476,43 @@ def check_packs_verbatim():
         if line.strip():
             digest, rel = line.split("  ", 1)
             recorded[rel.strip()] = digest.strip()
-    published = {
-        str(p.relative_to(OUT / "packs")).replace(os.sep, "/"): hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in (OUT / "packs").rglob("*.md")
-        if p.name != "index.md"          # the generated markdown twin, not a pack file
-    }
+    # Two paths carry each pack file: the raw copy at packs/<pack>/<name>.md, and the
+    # markdown twin beside its rendered page at packs/<pack>/<slug>/index.md — which
+    # is the pack file itself rather than a second rendering of it. BOTH are checked,
+    # so the reader cannot drift from the bytes it claims to be rendering.
+    def slug_of(name):
+        stem = name[:-3] if name.endswith(".md") else name
+        return "readme" if stem.upper() == "README" else stem
+
+    by_slug = {}
+    for rel in recorded:
+        if "/" in rel:
+            pack, name = rel.split("/", 1)
+            by_slug[(pack, slug_of(name))] = rel
+
+    published, twins = {}, 0
+    for p in (OUT / "packs").rglob("*.md"):
+        rel = str(p.relative_to(OUT / "packs")).replace(os.sep, "/")
+        digest = hashlib.sha256(p.read_bytes()).hexdigest()
+        if p.name == "index.md":
+            parts = rel.split("/")
+            if len(parts) != 3:
+                continue                 # a real site page's own twin, not a pack file
+            key = (parts[0], parts[1])
+            if key not in by_slug:
+                fail(f"packs/{rel}: a rendered page whose twin matches no pack file")
+                continue
+            raw_rel = by_slug[key]
+            twins += 1
+            if digest != recorded[raw_rel]:
+                fail(f"packs/{raw_rel}: the reader's twin at {rel} is not the same bytes "
+                     f"as the raw file — the reader has drifted from what it renders")
+            continue
+        published[rel] = digest
+    if twins != len(by_slug):
+        fail(f"{len(by_slug)} pack files but {twins} rendered pages — every pack file "
+             f"must get a reader, and a reader must render a pack file")
+
     for rel, digest in recorded.items():
         if rel not in published:
             fail(f"packs/{rel} is in the manifest but was not published")
