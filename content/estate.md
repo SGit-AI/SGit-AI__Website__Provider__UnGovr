@@ -6,7 +6,7 @@ order: 6
 toc: true
 wide: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
+  vault: dkeclt5r @ obj-cas-imm-ca05faec37fd
   date: 9 September 2026
   note: "Read keys copied from each vault's own published page on sgit.ai. Counts on this page were computed from the vaults themselves, not from their prose."
 ---

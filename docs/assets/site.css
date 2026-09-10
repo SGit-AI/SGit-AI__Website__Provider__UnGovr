@@ -482,9 +482,12 @@ a.drow.here .dnum{color:rgba(255,255,255,.7)}
 .sbody .tablewrap{overflow:visible}
 .slide.split .sbody{flex:0 0 52%}
 figure.shot{margin:0;flex:1;min-width:0;display:flex;flex-direction:column;gap:.5rem}
-figure.shot img{width:100%;border:1px solid var(--line2);border-radius:8px;
+/* The image takes its natural height and does not grow. Letting it flex to fill the
+   column left a wide, short image — a terminal capture is 1400x268 — sitting in a
+   tall box with most of the box empty below it. */
+figure.shot img{width:100%;height:auto;border:1px solid var(--line2);border-radius:8px;
   box-shadow:0 2px 10px rgba(28,29,33,.09);object-fit:contain;object-position:top center;
-  min-height:0;flex:1}
+  min-height:0;max-height:100%;flex:0 1 auto;align-self:flex-start;background:var(--panel)}
 figure.shot figcaption{font-size:.78rem;color:var(--dim);line-height:1.45}
 .sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
   margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);

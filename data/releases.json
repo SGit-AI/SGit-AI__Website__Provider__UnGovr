@@ -1,7 +1,26 @@
 {
-  "current": "v0.1.17",
+  "current": "v0.1.18",
   "note": "One record per release, newest first. `reconstructed` marks an entry assembled after the fact from the sources in `basis` rather than written at release time; bin/bump.py writes new entries here directly, so they are recorded rather than reconstructed. Every entry names the git commit it was built from.",
   "releases": [
+    {
+      "version": "v0.1.18",
+      "date": "2026-09-10",
+      "commit": "",
+      "site": "ungovr.providers.sgit.ai",
+      "title": "Two decks on the site's own machinery: how it publishes, and what its build refuses \u2014 with the gates firing on screen.",
+      "summary": "Two decks on the site's own machinery: how it publishes, and what its build refuses \u2014 with the gates firing on screen.",
+      "changes": [
+        "assets",
+        "build.py",
+        "content",
+        "data",
+        "decks",
+        "files",
+        "tools"
+      ],
+      "reconstructed": false,
+      "basis": []
+    },
     {
       "version": "v0.1.17",
       "date": "2026-09-09",

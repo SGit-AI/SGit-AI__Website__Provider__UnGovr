@@ -7,7 +7,7 @@ accent: blue
 
 # How this composes
 
-> **Deck 3 of 4.** What this vault contributes to the estate's other vaults, and what it takes
+> **Deck 3 of 6.** What this vault contributes to the estate's other vaults, and what it takes
 > from them. Every claim about another vault here is read from **that vault's own published
 > page**, and linked, rather than recalled.
 >

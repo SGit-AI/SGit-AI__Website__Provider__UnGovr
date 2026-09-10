@@ -7,7 +7,7 @@ accent: warm
 
 # What we learned about UnGovr
 
-> **Deck 1 of 4.** Eight findings from a day against the live API, in the order they matter.
+> **Deck 1 of 6.** Eight findings from a day against the live API, in the order they matter.
 > Every number here is generated from the retrieved bytes in `data/raw/`, whose sha256 is in
 > [the retrieval log](../provenance/retrieval-log.md). None of it is typed in.
 >

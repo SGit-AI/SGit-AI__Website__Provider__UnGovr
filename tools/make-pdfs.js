@@ -8,7 +8,8 @@ const path = require('path');
 const BASE = process.argv[2] || 'http://localhost:8734';
 const OUT = 'files/decks';
 
-const DECKS = ['what-we-learned', 'what-we-built', 'how-it-composes', 'what-we-plan'];
+const DECKS = ['what-we-learned', 'what-we-built', 'how-it-composes', 'what-we-plan',
+               'how-this-publishes', 'what-the-build-refuses'];
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });

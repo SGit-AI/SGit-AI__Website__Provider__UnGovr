@@ -17,6 +17,13 @@ const SHOTS = [
   { id: 'packs',       url: '/packs/security-graph/06__verification/', clip: [0, 0, 1400, 950] },
   { id: 'decks',       url: '/decks/',        clip: [0, 0, 1400, 860] },
   { id: 'vaultpage',   url: '/vault/',        clip: [0, 0, 1400, 900] },
+  // the features added since the first four decks were written
+  { id: 'packsindex',  url: '/packs/security-graph/',    clip: [0, 0, 1400, 950] },
+  { id: 'packreader',  url: '/packs/security-graph/02__the-model/', clip: [0, 0, 1400, 980] },
+  { id: 'deckpage',    url: '/decks/what-we-plan/',      clip: [0, 0, 1400, 1000] },
+  { id: 'versions',    url: '/versions/',                clip: [0, 0, 1400, 950] },
+  { id: 'versionone',  url: '/versions/v0.1.17/',        clip: [0, 0, 1400, 860] },
+  { id: 'estatekeys',  url: '/estate/#the-read-keys-and-why-they-are-printed-here', clip: [0, 0, 1400, 900] },
 ];
 
 (async () => {
@@ -36,6 +43,21 @@ const SHOTS = [
     await p.waitForTimeout(900);
     await p.screenshot({ path: `${OUT}/vaultapp.png`, clip: { x: 0, y: 0, width: 1400, height: 900 } });
     console.log('  vaultapp     (standalone, from the vault working copy)');
+  }
+  // Real gate output, rendered as a terminal. tools/gate-shots.py builds these
+  // pages from text captured by running each gate against a deliberately broken
+  // tree — the words in them are the build's, not ours.
+  const gates = process.env.GATE_DIR;
+  if (gates) {
+    const gp = await b.newPage({ viewport: { width: 1100, height: 460 }, deviceScaleFactor: 2 });
+    for (const g of ['g1', 'g2', 'g3', 'g4']) {
+      await gp.goto('file://' + gates + '/' + g + '.html', { waitUntil: 'load' });
+      await gp.waitForTimeout(150);
+      const box = await gp.locator('.win').boundingBox();
+      await gp.screenshot({ path: `${OUT}/gate-${g}.png`,
+        clip: { x: 0, y: 0, width: Math.ceil(box.width), height: Math.ceil(box.height) } });
+      console.log('  gate-' + g);
+    }
   }
   await b.close();
 })();

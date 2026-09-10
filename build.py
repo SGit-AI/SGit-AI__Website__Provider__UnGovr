@@ -62,7 +62,7 @@ SITE = {
     # The government-graph vault this site reports on. When the vault moves ahead,
     # this page is behind — and says so rather than guessing.
     "vault_id": "dkeclt5r",
-    "vault_commit": "obj-cas-imm-760fee6127a2",
+    "vault_commit": "obj-cas-imm-ca05faec37fd",
     "version": VERSION,
 }
 
@@ -1298,8 +1298,13 @@ def deck_pages(out_dir, ctx_shared):
             f'<p class="dsub">{inline(d["subtitle"], ctx)} &middot; '
             f'<b>{len(d["slides"])} slides</b> &middot; {html.escape(d["date"])}</p>'
             '<div class="dbar">'
-            f'<a class="btn-pdf" href="/files/decks/{slug}.pdf">&#8681; Download the PDF '
-            f'<span>{DECK_PDFS[slug]["bytes"] // 1024} KB &middot; {len(d["slides"])} slides</span></a>'
+            # A new deck has no PDF until one is printed FROM this page, so the
+            # button appears on the rebuild after tools/make-pdfs.js runs. Rendering
+            # it unconditionally made the first build of a new deck crash on a
+            # KeyError, which is a poor way to learn about an ordering constraint.
+            + (f'<a class="btn-pdf" href="/files/decks/{slug}.pdf">&#8681; Download the PDF '
+               f'<span>{DECK_PDFS[slug]["bytes"] // 1024} KB &middot; {len(d["slides"])} slides</span></a>'
+               if slug in DECK_PDFS else "") +
             '<button type="button" class="btn-present" id="present">&#9654; Present</button>'
             '<button type="button" class="btn-notes" id="ntoggle">Hide notes</button>'
             f'<a class="btn-raw" href="{rawurl}">The markdown &darr;</a>'
@@ -1359,8 +1364,9 @@ body{{background:#fff;margin:0}}
 .slide h2{{max-width:22ch;font-size:2.15rem}}
 .slide.split h2{{max-width:15ch}}
 .slide.split .sbody{{flex:0 0 50%}}
-figure.shot{{min-height:0;flex:1}}
-figure.shot img{{min-height:0;max-height:100%;object-fit:contain;object-position:top center}}
+figure.shot{{min-height:0;flex:1;justify-content:flex-start}}
+figure.shot img{{min-height:0;max-height:100%;height:auto;flex:0 1 auto;align-self:flex-start;
+  object-fit:contain;object-position:top center}}
 @page{{size:1200px 675px;margin:0}}
 @media print{{
   html,body{{margin:0;padding:0}}

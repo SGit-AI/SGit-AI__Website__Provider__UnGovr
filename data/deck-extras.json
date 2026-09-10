@@ -8,29 +8,243 @@
     "built site; every `link` must resolve on this site, which check_links enforces."
   ],
   "what-we-learned": {
-    "1":  {"shot": "home",        "caption": "The report itself: nine contract sections, every claim carrying the state it earned.", "link": "/", "linktext": "The report"},
-    "2":  {"shot": "coverage",    "caption": "Computation 1, with its sample design and its Wilson interval — not a defect count.", "link": "/coverage/", "linktext": "The coverage measurement"},
-    "5":  {"shot": "join",        "caption": "The seven-step join, filterable by origin, with the provenance of every node.", "link": "/join/", "linktext": "The seven-step join"},
-    "7":  {"shot": "instruments", "caption": "What UnGovr hands you when you reach a law — and the 254 you cannot reach.", "link": "/instruments/", "linktext": "Reaching a law"},
-    "10": {"shot": "retrievals",  "caption": "Every request, with the sha256 of the bytes it returned. The 404s are rows too.", "link": "/retrievals/", "linktext": "The retrieval log"}
+    "1": {
+      "shot": "home",
+      "caption": "The report itself: nine contract sections, every claim carrying the state it earned.",
+      "link": "/",
+      "linktext": "The report"
+    },
+    "2": {
+      "shot": "coverage",
+      "caption": "Computation 1, with its sample design and its Wilson interval \u2014 not a defect count.",
+      "link": "/coverage/",
+      "linktext": "The coverage measurement"
+    },
+    "5": {
+      "shot": "join",
+      "caption": "The seven-step join, filterable by origin, with the provenance of every node.",
+      "link": "/join/",
+      "linktext": "The seven-step join"
+    },
+    "7": {
+      "shot": "instruments",
+      "caption": "What UnGovr hands you when you reach a law \u2014 and the 254 you cannot reach.",
+      "link": "/instruments/",
+      "linktext": "Reaching a law"
+    },
+    "10": {
+      "shot": "retrievals",
+      "caption": "Every request, with the sha256 of the bytes it returned. The 404s are rows too.",
+      "link": "/retrievals/",
+      "linktext": "The retrieval log"
+    }
   },
   "what-we-built": {
-    "1":  {"shot": "home",        "caption": "ungovr.providers.sgit.ai — the provider report, written to the nine sections.", "link": "/", "linktext": "The report"},
-    "4":  {"shot": "ledger",      "caption": "The claim ledger: every factual claim, its state, its date and where it is said.", "link": "/ledger/", "linktext": "The claim ledger"},
-    "5":  {"shot": "packs",       "caption": "The pack reader — and the raw bytes named, hashed and linked above the text.", "link": "/packs/security-graph/", "linktext": "The dev pack"},
-    "7":  {"shot": "decks",       "caption": "Four decks, republished from the vault and rendered here as slides.", "link": "/decks/", "linktext": "The four decks"},
-    "9":  {"shot": "vaultpage",   "caption": "The vault, running live on the page from a read key printed beside it.", "link": "/vault/", "linktext": "The vault"}
+    "1": {
+      "shot": "home",
+      "caption": "ungovr.providers.sgit.ai \u2014 the provider report, written to the nine sections.",
+      "link": "/",
+      "linktext": "The report"
+    },
+    "4": {
+      "shot": "ledger",
+      "caption": "The claim ledger: every factual claim, its state, its date and where it is said.",
+      "link": "/ledger/",
+      "linktext": "The claim ledger"
+    },
+    "5": {
+      "shot": "packs",
+      "caption": "The pack reader \u2014 and the raw bytes named, hashed and linked above the text.",
+      "link": "/packs/security-graph/",
+      "linktext": "The dev pack"
+    },
+    "7": {
+      "shot": "decks",
+      "caption": "Four decks, republished from the vault and rendered here as slides.",
+      "link": "/decks/",
+      "linktext": "The four decks"
+    },
+    "9": {
+      "shot": "vaultpage",
+      "caption": "The vault, running live on the page from a read key printed beside it.",
+      "link": "/vault/",
+      "linktext": "The vault"
+    }
   },
   "how-it-composes": {
-    "1":  {"shot": "estate",      "caption": "Seven vaults from across the family, each opening in the page from its own read key.", "link": "/estate/", "linktext": "The estate"},
-    "4":  {"shot": "join",        "caption": "The jurisdiction layer this vault contributes, drawn as the graph it is.", "link": "/join/", "linktext": "The seven-step join"},
-    "7":  {"shot": "estate",      "caption": "Where the three meet: the conformance layer, Licence to Operate and this vault, side by side.", "link": "/estate/", "linktext": "The estate"},
-    "9":  {"shot": "vaultapp",    "caption": "The vault's own app — six views, and the version pill that says which release you are looking at.", "link": "/vault/", "linktext": "The vault"}
+    "1": {
+      "shot": "estate",
+      "caption": "Seven vaults from across the family, each opening in the page from its own read key.",
+      "link": "/estate/",
+      "linktext": "The estate"
+    },
+    "4": {
+      "shot": "join",
+      "caption": "The jurisdiction layer this vault contributes, drawn as the graph it is.",
+      "link": "/join/",
+      "linktext": "The seven-step join"
+    },
+    "7": {
+      "shot": "estate",
+      "caption": "Where the three meet: the conformance layer, Licence to Operate and this vault, side by side.",
+      "link": "/estate/",
+      "linktext": "The estate"
+    },
+    "9": {
+      "shot": "vaultapp",
+      "caption": "The vault's own app \u2014 six views, and the version pill that says which release you are looking at.",
+      "link": "/vault/",
+      "linktext": "The vault"
+    }
   },
   "what-we-plan": {
-    "2":  {"shot": "estate",      "caption": "The count came from opening AIUC-1's vault here and reading its graph, not from its prose.", "link": "/estate/", "linktext": "The estate, with the working"},
-    "5":  {"shot": "instruments", "caption": "Where the rabbit hole stops: JSON only, no instrument text, and 254 laws unreachable.", "link": "/instruments/", "linktext": "Reaching a law"},
-    "7":  {"shot": "packs",       "caption": "File 02, republished from the vault — including the paragraph that was wrong about its own edges.", "link": "/packs/security-graph/02__the-model/", "linktext": "The model"},
-    "9":  {"shot": "packs",       "caption": "Thirteen tests, five passing, all inherited. The pack states what it has not earned.", "link": "/packs/security-graph/06__verification/", "linktext": "Verification"}
+    "2": {
+      "shot": "estate",
+      "caption": "The count came from opening AIUC-1's vault here and reading its graph, not from its prose.",
+      "link": "/estate/",
+      "linktext": "The estate, with the working"
+    },
+    "5": {
+      "shot": "instruments",
+      "caption": "Where the rabbit hole stops: JSON only, no instrument text, and 254 laws unreachable.",
+      "link": "/instruments/",
+      "linktext": "Reaching a law"
+    },
+    "7": {
+      "shot": "packs",
+      "caption": "File 02, republished from the vault \u2014 including the paragraph that was wrong about its own edges.",
+      "link": "/packs/security-graph/02__the-model/",
+      "linktext": "The model"
+    },
+    "9": {
+      "shot": "packs",
+      "caption": "Thirteen tests, five passing, all inherited. The pack states what it has not earned.",
+      "link": "/packs/security-graph/06__verification/",
+      "linktext": "Verification"
+    }
+  },
+  "how-this-publishes": {
+    "2": {
+      "shot": "packsindex",
+      "caption": "/packs/security-graph/ \u2014 eight files from the vault, each linking the bytes it was rendered from.",
+      "link": "/packs/security-graph/",
+      "linktext": "The dev pack"
+    },
+    "3": {
+      "shot": "packreader",
+      "caption": "The reader: the pack on the left, the document rendered, the raw file and its sha256 above the text.",
+      "link": "/packs/security-graph/02__the-model/",
+      "linktext": "The model, rendered"
+    },
+    "4": {
+      "shot": "deckpage",
+      "caption": "A deck page: slides stacked and printable, with present mode and the notes toggle on top.",
+      "link": "/decks/what-we-plan/",
+      "linktext": "A deck"
+    },
+    "5": {
+      "shot": "decks",
+      "caption": "Four decks, each with its PDF, its slide count and the size of the download.",
+      "link": "/decks/",
+      "linktext": "All the decks"
+    },
+    "6": {
+      "shot": "instruments",
+      "caption": "Reaching a law: the short answer as a table, with every probe in the retrieval log.",
+      "link": "/instruments/",
+      "linktext": "Reaching a law"
+    },
+    "7": {
+      "shot": "versions",
+      "caption": "The release history, generated from data/releases.json \u2014 every row links to that version's page and names its commit.",
+      "link": "/versions/",
+      "linktext": "Release history"
+    },
+    "8": {
+      "shot": "versionone",
+      "caption": "One release's own page: the commit it was built from, what it touched, and that it was reconstructed.",
+      "link": "/versions/v0.1.17/",
+      "linktext": "v0.1.17"
+    },
+    "9": {
+      "shot": "vaultversions",
+      "caption": "The vault app's Versions view, rendered from versions/*.json \u2014 the pill in the header opens it here.",
+      "link": "/vault/",
+      "linktext": "The vault"
+    },
+    "10": {
+      "shot": "vaultpill",
+      "caption": "The pill sits in the app's chrome, not a footer, and reaches the current release rather than a list.",
+      "link": "/vault/",
+      "linktext": "The vault app"
+    },
+    "11": {
+      "shot": "home",
+      "caption": "The report the four mechanisms serve \u2014 every claim carrying the state it earned.",
+      "link": "/",
+      "linktext": "The report"
+    }
+  },
+  "what-the-build-refuses": {
+    "1": {
+      "shot": "ledger",
+      "caption": "The claim ledger: every factual claim, its state, its date, and the page it is said on.",
+      "link": "/ledger/",
+      "linktext": "The claim ledger"
+    },
+    "2": {
+      "shot": "packreader",
+      "caption": "Republished vault content on this origin. Until v0.1.15, a <script> in one of these files ran.",
+      "link": "/packs/security-graph/",
+      "linktext": "The pack, republished"
+    },
+    "3": {
+      "shot": "gate-g1",
+      "caption": "Real output: the gate firing with the escaping deliberately switched off, then put back.",
+      "link": "/versions/v0.1.15/",
+      "linktext": "v0.1.15"
+    },
+    "4": {
+      "shot": "packreader",
+      "caption": "The escaped rendering the false positive fired on \u2014 inert text, and the renderer working.",
+      "link": "/packs/security-graph/",
+      "linktext": "The reader"
+    },
+    "5": {
+      "shot": "gate-g2",
+      "caption": "Real output: a published pack file edited on the site instead of in the vault.",
+      "link": "/packs/",
+      "linktext": "The packs"
+    },
+    "6": {
+      "shot": "gate-g4",
+      "caption": "Real output: a deck's words moved and its PDF not reprinted.",
+      "link": "/decks/",
+      "linktext": "The decks"
+    },
+    "7": {
+      "shot": "gate-g3",
+      "caption": "Real output: an HTML entity typed into prose, which ships as six literal characters.",
+      "link": "/decks/",
+      "linktext": "Where it shipped"
+    },
+    "8": {
+      "shot": "versionone",
+      "caption": "Every release names the commit it was built from \u2014 the gate refused this one when it did not.",
+      "link": "/versions/v0.1.17/",
+      "linktext": "v0.1.17"
+    },
+    "9": {
+      "shot": "estatekeys",
+      "caption": "Read keys printed in full where a person can copy them. Vault keys never touch this repository.",
+      "link": "/estate/",
+      "linktext": "The estate"
+    },
+    "10": {
+      "shot": "retrievals",
+      "caption": "Every request with the sha256 of the bytes it returned, 404s included \u2014 checks are memory, not judgement.",
+      "link": "/retrievals/",
+      "linktext": "The retrieval log"
+    }
   }
 }

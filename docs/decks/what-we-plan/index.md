@@ -7,7 +7,7 @@ accent: teal
 
 # What we plan to build
 
-> **Deck 4 of 4.** The dev pack, in ten slides: the gap, the design, and the four things that
+> **Deck 4 of 6.** The dev pack, in ten slides: the gap, the design, and the four things that
 > could still make it wrong.
 >
 > The pack itself is eight files in `packs/security-graph/`, republished on the site at

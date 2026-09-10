@@ -1,5 +1,5 @@
 {
- "version": "v0.1.17",
+ "version": "v0.1.18",
  "domain": "ungovr.providers.sgit.ai",
  "vault": "dkeclt5r",
  "licence": "CC BY 4.0",
@@ -74,9 +74,9 @@
   },
   {
    "url": "/decks/",
-   "title": "Four decks, from the vault",
-   "description": "What UnGovr is, what we built on it, how it composes with the rest of the estate, and what we plan to build next \u2014 39 slides, each one a projection of a markdown file in the vault.",
-   "lead": "Four presentations, 39 slides, written as ordinary markdown in the vault and rendered here as real 16:9 slides \u2014 and as PDFs you can send to somebody. They read as documents in the vault browser, as slides in the vault's app, and as slides here; if they ever disagree, the markdown is right.",
+   "title": "Six decks, from the vault",
+   "description": "What UnGovr is, what we built on it, how it composes, what we plan next, how this site publishes and what its build refuses \u2014 60 slides, each one a projection of a markdown file in the vault.",
+   "lead": "Six presentations, 60 slides, written as ordinary markdown in the vault and rendered here as real 16:9 slides \u2014 and as PDFs you can send to somebody. They read as documents in the vault browser, as slides in the vault's app, and as slides here; if they ever disagree, the markdown is right.",
    "headings": [
     "The PDFs are the point",
     "How to read them",
@@ -642,6 +642,12 @@
    "state": "verified",
    "date": "9 Sep 2026",
    "claim": "Every read key on the estate page is printed in full where a person can select and copy it, not only carried in a data-readkey attribute for the embed. sgit.ai's brief for this surface requires it \u2014 \"put it in the markup where a human can copy it, not only in a script\" and \"the read key on the page should be enough for anyone to bypass your site entirely. If it is not, something is being withheld that should not be.\" The page previously showed truncated keys in a table and the full ones only in the markup, which failed that test."
+  },
+  {
+   "id": "decks-six",
+   "state": "verified",
+   "date": "10 Sep 2026",
+   "claim": "Six decks, 60 slides, and 38 of them carry a screenshot of this site. Deck 05 covers the machinery added in a day \u2014 the pack reader, the deck viewer, the PDFs and the version convention. Deck 06 covers the gates, and its screenshots are the build actually refusing a bad change: real terminal output captured by breaking the tree on purpose, running the check, and putting it back. Nothing in those images is typed to look convincing."
   }
  ]
 }

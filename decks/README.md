@@ -6,7 +6,7 @@
 
 ---
 
-Four decks — 39 slides — written as ordinary markdown so they read as documents in the vault browser and as
+Six decks — 60 slides — written as ordinary markdown so they read as documents in the vault browser and as
 slides in the app. If the two ever disagree, **the markdown is right** — `app/build_appdata.py`
 parses these files at build time and the app renders what it finds.
 
@@ -16,6 +16,8 @@ parses these files at build time and the app renders what it finds.
 | [02 — What we built on the site](02__what-we-built.md) | The provider report, the argument for admitting an open-data provider, and the checks that make its promises enforceable |
 | [03 — How this composes](03__how-it-composes.md) | What this vault contributes to Risk Mandate, Licence to Operate and the AIUC-1 conformance layer, and what it took from them |
 | [04 — What we plan to build](04__what-we-plan.md) | The security-standards dev pack: the gap, the 95 crosswalks that point at law, the vocabulary we forked by accident, and the blocker that would kill the whole thesis |
+| [05 — How this site publishes](05__how-this-publishes.md) | The four mechanisms added in a day: the pack reader, the deck viewer, the PDFs and the version convention — and the three defects found while building them |
+| [06 — What the build refuses](06__what-the-build-refuses.md) | Thirty-two checks and the defect behind each: the vault document that could run script here, the stale PDF, the entity, the release with no commit |
 
 ## The format
 

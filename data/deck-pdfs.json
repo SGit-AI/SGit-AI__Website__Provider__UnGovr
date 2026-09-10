@@ -1,26 +1,38 @@
 {
   "what-we-learned": {
     "deck": "01__what-we-learned.md",
-    "deck_sha256": "b72727cd738b94db99d8e4fe7045b367621efc71607629421bf8ed3990ff461c",
-    "pdf_sha256": "71c524d5d00c6f30f8caffbd4b4de8c4db6ab8e25a0d3972c06b0e861deac3bc",
-    "bytes": 1558562
+    "deck_sha256": "136374b72aff3a94646920f277274929698ee4e3af658b8333fd023471ee12af",
+    "pdf_sha256": "77e783a20f1c37a1f56c06dd32745c9e645fe8e2764c9e8b2ecbca9d81735178",
+    "bytes": 1542845
   },
   "what-we-built": {
     "deck": "02__what-we-built.md",
-    "deck_sha256": "11239acac7618f3e16fd20669612c53a36148613cd6cd06a28b29a47739529e4",
-    "pdf_sha256": "58acec46a5bbbab10b26ca71d01add7810b37538f2860e68840fc5729a2ecd65",
-    "bytes": 1575062
+    "deck_sha256": "32658898f3dfdb1d54b07cc95094577ba01b9b5be65dbe07225287d6e6ccfabd",
+    "pdf_sha256": "e02a2d5fc83714d77c4e99bf6e84370ececca7c7903aa44d7b5f1a739a2cfc2c",
+    "bytes": 1574844
   },
   "how-it-composes": {
     "deck": "03__how-it-composes.md",
-    "deck_sha256": "9dceb805af0aa1df99f228b5a8fc472393fd13b8ebf45f75caa4d089312af0f2",
-    "pdf_sha256": "878dc30c7045074b718d3f07d67026f4a67e2ebeda4c94300aabe95b3b3745b4",
-    "bytes": 1165694
+    "deck_sha256": "d1df99bfda2c1f075661192bb6f105627b91d81e1647bd76b46a0068f63f3026",
+    "pdf_sha256": "bb9d40adf75bed001f35b95ddf0c66c50f7b09f969ff3a3c78a372884c925f0b",
+    "bytes": 1161216
   },
   "what-we-plan": {
     "deck": "04__what-we-plan.md",
-    "deck_sha256": "dafc06c4419764251519a9c15a83970843c192c1ab2bd4ec5b35522764c50ccf",
-    "pdf_sha256": "e3cf6949a32b1bf39ba1a2f010acdc00d27c2d5dc436a22a545792e2ba47182d",
-    "bytes": 1105208
+    "deck_sha256": "5584b2aa26555eb43ad16822e7161d8b04fc45ae57ff36edbf550a7b37a491f6",
+    "pdf_sha256": "cc9fea185efa6532450e8ff76ada7266ef7c4ff20c0264cf779b9528e217b08e",
+    "bytes": 1102129
+  },
+  "how-this-publishes": {
+    "deck": "05__how-this-publishes.md",
+    "deck_sha256": "9684735ded4f52af8750aa537d20ebdac67cbd024372ba1b07f68a7c2e14968e",
+    "pdf_sha256": "51579806c8917f3f0f3afa751466eba738891087cde09cf4b4f2f9b79ad9e93e",
+    "bytes": 2612412
+  },
+  "what-the-build-refuses": {
+    "deck": "06__what-the-build-refuses.md",
+    "deck_sha256": "435e2bc91206eba7c7bc724eab6cb7511773698836fa7dda3f13be8e1560b625",
+    "pdf_sha256": "9473d3c3a7a2194930aa8fe3bb7cfd116b7e1b98fcd3393f72b13d82ec618a66",
+    "bytes": 1860630
   }
 }

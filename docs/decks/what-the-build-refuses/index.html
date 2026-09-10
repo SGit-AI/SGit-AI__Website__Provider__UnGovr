@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What the build refuses &mdash; UnGovr, reported on</title>
+<meta name="description" content="Thirty-two checks, and the defect that produced each one">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ungovr.providers.sgit.ai/decks/what-the-build-refuses/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ungovr.providers.sgit.ai">
+<meta property="og:url" content="https://ungovr.providers.sgit.ai/decks/what-the-build-refuses/">
+<meta property="og:title" content="What the build refuses">
+<meta property="og:description" content="Thirty-two checks, and the defect that produced each one">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+<nav class="site"><div class="row"><a class="brand" href="../../index.html">ungovr<span>.providers.sgit.ai</span></a><a class="parent" href="https://providers.sgit.ai/contract/" rel="noopener" title="The providers contract on providers.sgit.ai — the nine sections this report is written to">&#8599; part of <b>sgit.ai</b></a><span class="stage-pill">provider report</span><a class="ver" href="../../versions/v0.1.18/index.html" title="What changed in v0.1.18, and the commit it was built from">v0.1.18</a><button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button><div class="nav-items"><div class="ni"><a class="nl" href="../../index.html">The report</a></div><div class="ni ni-has"><a class="nl" href="../../coverage/index.html">The finding<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../coverage/index.html">The coverage measurement</a><a class="sl" href="../../join/index.html">The seven-step join</a><a class="sl" href="../../instruments/index.html">Reaching a law</a><a class="sl" href="../../retrievals/index.html">The retrieval log</a></div></div><div class="ni ni-has"><a class="nl" href="../../vault/index.html">The vault<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../vault/index.html">The government-graph vault</a><a class="sl" href="../../estate/index.html">The estate it joins</a></div></div><div class="ni ni-has"><a class="nl" href="../../patterns/index.html">Patterns<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../patterns/index.html">The four patterns</a><a class="sl" href="../../comparison/index.html">Comparison matrix</a></div></div><div class="ni"><a class="nl" href="../../examples/index.html">Try it</a></div><div class="ni ni-has"><a class="nl here" href="../../ledger/index.html">Evidence<span class="caret">&#9662;</span></a><div class="sub"><a class="sl" href="../../ledger/index.html">The claim ledger</a><a class="sl" href="../../briefs/index.html">The briefs, published raw</a><a class="sl" href="../../disclosures/index.html">Disclosures</a><a class="sl here" href="../../decks/index.html">The four decks</a><a class="sl" href="../../packs/index.html">The dev packs, published raw</a><a class="sl" href="../../versions/index.html">Release history</a></div></div></div><a class="gh" href="https://github.com/SGit-AI/SGit-AI__Website__Provider__UnGovr" rel="noopener">&#9733; Source</a></div></nav>
+<div class="disclosure-strip"><div class="row"><b>Independent.</b> No commercial relationship with UnGovr
+&mdash; no funding, no agreement, no conversation of any kind &mdash; checked 9 September 2026.
+<a href="../../disclosures/index.html">Disclosures</a> &middot; <a href="../../ledger/index.html">how every claim here is evidenced</a></div></div>
+<main class="doc doc-wide">
+<p class="crumb"><a href="../../index.html">ungovr.providers.sgit.ai</a> / <a href="../../decks/index.html">decks</a> / What the build refuses</p>
+<h1>What the build refuses</h1>
+
+
+
+<p class="dsub">Thirty-two checks, and the defect that produced each one &middot; <b>10 slides</b> &middot; September 2026</p><div class="dbar"><a class="btn-pdf" href="../../files/decks/what-the-build-refuses.pdf">&#8681; Download the PDF <span>1817 KB &middot; 10 slides</span></a><button type="button" class="btn-present" id="present">&#9654; Present</button><button type="button" class="btn-notes" id="ntoggle">Hide notes</button><a class="btn-raw" href="../../decks/06__what-the-build-refuses.md">The markdown &darr;</a><span class="dhash">sha256 <code>435e2bc91206eba7</code> &mdash; checked against the vault on every build</span></div><div class="deckwrap"><nav class="drail" aria-label="Decks"><a class="drow" href="../../decks/what-we-learned/index.html"><span class="dnum">01</span><span class="dname">What we learned about UnGovr</span></a><a class="drow" href="../../decks/what-we-built/index.html"><span class="dnum">02</span><span class="dname">What we built on the site</span></a><a class="drow" href="../../decks/how-it-composes/index.html"><span class="dnum">03</span><span class="dname">How this composes</span></a><a class="drow" href="../../decks/what-we-plan/index.html"><span class="dnum">04</span><span class="dname">What we plan to build</span></a><a class="drow" href="../../decks/how-this-publishes/index.html"><span class="dnum">05</span><span class="dname">How this site publishes</span></a><a class="drow here" href="../../decks/what-the-build-refuses/index.html"><span class="dnum">06</span><span class="dname">What the build refuses</span></a><p class="drailfoot">Every deck is a projection of a markdown file. If the slides and the file ever disagree, <b>the file is right</b>.</p></nav><div class="deckbody" id="deck"><section class="slide split" id="s1" data-n="1"><div class="seyebrow">What the build refuses <span>&middot; slide 1 of 10</span></div><h2>A promise nobody checks is decoration</h2><div class="scols"><div class="sbody"><p>This site makes claims about itself: that it contacts nothing, that vault content is republished byte for byte, that every figure is generated rather than typed.</p>
+<p><strong>Thirty-two checks</strong> turn those from sentences into facts. The build fails; the release does not ship.</p>
+<p>What makes the list worth reading is that <strong>almost every entry has a story</strong>, and the story is usually that we got it wrong first.</p></div><figure class="shot"><img src="../../files/shots/ledger.png" alt="The claim ledger: every factual claim, its state, its date, and the page it is said on."><figcaption>The claim ledger: every factual claim, its state, its date, and the page it is said on.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../ledger/index.html">The claim ledger &rarr;</a></div></section><div class="notes"><b>Notes.</b> Do not present this as rigour for its own sake. Each check is a scar. The honest framing is: here is what we shipped badly, and here is what now makes that impossible.</div><section class="slide split" id="s2" data-n="2"><div class="seyebrow">What the build refuses <span>&middot; slide 2 of 10</span></div><h2>The worst one: a vault document could run script here</h2><div class="scols"><div class="sbody"><p>Reading sgit.ai's guidance turned up the rule this site was breaking:</p>
+<blockquote><p><strong>On a <code>*.sgit.ai</code> page there is no host — you are the host — and the bytes you render were written by whoever holds the vault's write key. A vault must be able to change what is shown, and never what the page does.</strong></p></blockquote>
+<p>A <code>&lt;script&gt;</code> in a pack file <strong>became a real script tag and executed.</strong> So did <code>&lt;img src=x onerror=…&gt;</code>. Confirmed in a browser, not reasoned about.</p></div><figure class="shot"><img src="../../files/shots/packreader.png" alt="Republished vault content on this origin. Until v0.1.15, a &lt;script&gt; in one of these files ran."><figcaption>Republished vault content on this origin. Until v0.1.15, a &lt;script&gt; in one of these files ran.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../packs/security-graph/index.html">The pack, republished &rarr;</a></div></section><div class="notes"><b>Notes.</b> We hold that write key, so nobody was going to attack us with it. That is not the point: the discipline is what makes the pattern safe to reuse on a vault somebody else writes.</div><section class="slide split" id="s3" data-n="3"><div class="seyebrow">What the build refuses <span>&middot; slide 3 of 10</span></div><h2>The fix, and the gate that keeps it fixed</h2><div class="scols"><div class="sbody"><p>Republished vault files render in an <strong>untrusted mode</strong>: raw HTML escaped, no shortcodes — a vault file must not mint a claim chip either — and links restricted to <code>http</code>, <code>https</code>, <code>mailto</code>, a relative path or a fragment.</p>
+<p>A markdown link was the second vector: <code>[x](javascript:…)</code> minted a live <code>javascript:</code> href.</p>
+<p><strong><code>check_no_vault_markup</code> reads the built pages</strong> rather than trusting the flag was set.</p></div><figure class="shot"><img src="../../files/shots/gate-g1.png" alt="Real output: the gate firing with the escaping deliberately switched off, then put back."><figcaption>Real output: the gate firing with the escaping deliberately switched off, then put back.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../versions/v0.1.15/index.html">v0.1.15 &rarr;</a></div></section><div class="notes"><b>Notes.</b> The screenshot is the gate firing with the escaping deliberately switched off. That is the only way to demonstrate a check that passes: break the thing it protects.</div><section class="slide split" id="s4" data-n="4"><div class="seyebrow">What the build refuses <span>&middot; slide 4 of 10</span></div><h2>The false positive that would have taught the wrong lesson</h2><div class="scols"><div class="sbody"><p>The first version of that gate flagged this, in a page that was <strong>working correctly</strong>:</p>
+<pre class="">&amp;lt;img src=x onerror=&quot;…&quot;&amp;gt;</pre>
+<p>That is the escaper doing its job — inert text, not markup. A gate that fires on its own fix teaches the next person to loosen the fix until the gate goes quiet.</p>
+<p><strong>Every pattern now requires a real <code>&lt;</code> or a real attribute.</strong></p></div><figure class="shot"><img src="../../files/shots/packreader.png" alt="The escaped rendering the false positive fired on — inert text, and the renderer working."><figcaption>The escaped rendering the false positive fired on — inert text, and the renderer working.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../packs/security-graph/index.html">The reader &rarr;</a></div></section><div class="notes"><b>Notes.</b> This is the most transferable lesson in the deck. A noisy check is worse than no check, because it trains people to route around it.</div><section class="slide split" id="s5" data-n="5"><div class="seyebrow">What the build refuses <span>&middot; slide 5 of 10</span></div><h2>A pack file edited here instead of in the vault</h2><div class="scols"><div class="sbody"><p>Two paths carry every republished file — the raw copy and the twin beside its rendered page — and <strong>both are hash-checked against the vault.</strong></p>
+<p>Change either and the build stops and names it.</p>
+<p><strong>A correction belongs in the vault.</strong> Making it on the site would leave two documents that disagree and no way to tell which is the source.</p></div><figure class="shot"><img src="../../files/shots/gate-g2.png" alt="Real output: a published pack file edited on the site instead of in the vault."><figcaption>Real output: a published pack file edited on the site instead of in the vault.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../packs/index.html">The packs &rarr;</a></div></section><div class="notes"><b>Notes.</b> This one has never fired in anger. It exists because the failure mode is silent: nothing errors, the page looks right, and the two copies quietly diverge.</div><section class="slide split" id="s6" data-n="6"><div class="seyebrow">What the build refuses <span>&middot; slide 6 of 10</span></div><h2>A deck edited, its PDF not reprinted</h2><div class="scols"><div class="sbody"><p>The PDFs are generated by a browser and <strong>committed</strong>, because CI has no browser and a deck nobody can download is not the point.</p>
+<p>That makes staleness the risk — so <code>data/deck-pdfs.json</code> records <strong>the sha256 of the deck each PDF was printed from</strong>, not of the PDF alone.</p>
+<p>Move the words, and the build demands the PDF be reprinted.</p></div><figure class="shot"><img src="../../files/shots/gate-g4.png" alt="Real output: a deck&#x27;s words moved and its PDF not reprinted."><figcaption>Real output: a deck&#x27;s words moved and its PDF not reprinted.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../decks/index.html">The decks &rarr;</a></div></section><div class="notes"><b>Notes.</b> Recording the hash of the source rather than the output is the whole trick. A record of the output only tells you the file has not been tampered with; a record of the source tells you it is still the right file.</div><section class="slide split" id="s7" data-n="7"><div class="seyebrow">What the build refuses <span>&middot; slide 7 of 10</span></div><h2>An HTML entity typed into prose</h2><div class="scols"><div class="sbody"><p><code>&amp;mdash;</code> in a page's lead shipped as <strong>six literal characters</strong>. Markdown escapes the ampersand first, so the reader sees <code>&amp;mdash;</code> rather than a dash.</p>
+<p>It went out in v0.1.14 and was caught <strong>in a screenshot</strong>, not by a check. The build was perfectly happy.</p>
+<p>The check that now catches it caught four more of mine within the hour.</p></div><figure class="shot"><img src="../../files/shots/gate-g3.png" alt="Real output: an HTML entity typed into prose, which ships as six literal characters."><figcaption>Real output: an HTML entity typed into prose, which ships as six literal characters.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../decks/index.html">Where it shipped &rarr;</a></div></section><div class="notes"><b>Notes.</b> Worth telling because it is small and undramatic. Most defects are. The check took five minutes to write and has already paid for itself.</div><section class="slide split" id="s8" data-n="8"><div class="seyebrow">What the build refuses <span>&middot; slide 8 of 10</span></div><h2>A release that cannot be traced to a commit</h2><div class="scols"><div class="sbody"><blockquote><p><strong>Record the commit. A version that does not name the commit it was built from cannot be verified later.</strong></p></blockquote>
+<p><em>sgit.ai/docs/guidance</em></p>
+<p>Eighteen releases, eighteen commits. The gate refused this very release when it had none — which is how the workflow's own flaw was found.</p></div><figure class="shot"><img src="../../files/shots/versionone.png" alt="Every release names the commit it was built from — the gate refused this one when it did not."><figcaption>Every release names the commit it was built from — the gate refused this one when it did not.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../versions/v0.1.17/index.html">v0.1.17 &rarr;</a></div></section><div class="notes"><b>Notes.</b> The gate caught its author, on the release that introduced the gate. That is the best possible evidence that it is pointed at something real.</div><section class="slide split" id="s9" data-n="9"><div class="seyebrow">What the build refuses <span>&middot; slide 9 of 10</span></div><h2>The scan that had to look past its own prefixes</h2><div class="scols"><div class="sbody"><blockquote><p><strong>A credential scan built for sgit shapes will not catch other secrets. We nearly published an OpenRouter key sitting in a vault file, in a field called <code>openrouter_key</code>, that matched none of the sgit patterns.</strong></p></blockquote>
+<p>Seventeen patterns now, including one that matches a credential <strong>named by its field</strong> rather than by a known prefix.</p>
+<p><strong>The first version of that pattern did not catch <code>openrouter_key</code> either</strong> — the anecdote repeating itself inside the fix for the anecdote. Caught by testing it against the case.</p></div><figure class="shot"><img src="../../files/shots/estatekeys.png" alt="Read keys printed in full where a person can copy them. Vault keys never touch this repository."><figcaption>Read keys printed in full where a person can copy them. Vault keys never touch this repository.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../estate/index.html">The estate &rarr;</a></div></section><div class="notes"><b>Notes.</b> Say the last line slowly. Writing the fix is not the same as verifying the fix, and the only difference is whether you ran it against the thing it was for.</div><section class="slide split" id="s10" data-n="10"><div class="seyebrow">What the build refuses <span>&middot; slide 10 of 10</span></div><h2>What this does not prove</h2><div class="scols"><div class="sbody"><p><strong>No check proves a site is correct.</strong> Thirty-two of them prove that thirty-two specific things that once went wrong cannot go wrong silently again.</p>
+<p>The defects that shipped were found by <strong>reading the guidance, driving a browser, parsing a table with a script, and looking at a screenshot</strong> — not by the checks.</p>
+<p><strong>Checks are memory, not judgement.</strong> They stop you making the same mistake twice; they have never once found a new one.</p></div><figure class="shot"><img src="../../files/shots/retrievals.png" alt="Every request with the sha256 of the bytes it returned, 404s included — checks are memory, not judgement."><figcaption>Every request with the sha256 of the bytes it returned, 404s included — checks are memory, not judgement.</figcaption></figure></div><div class="sfoot"><a href="https://ungovr.providers.sgit.ai/decks/">ungovr.providers.sgit.ai</a><a class="sread" href="../../retrievals/index.html">The retrieval log &rarr;</a></div></section><div class="notes"><b>Notes.</b> End here. The pitch for this way of working is not that it prevents mistakes — it obviously did not. It is that each mistake gets made exactly once, and the record of it stays readable by whoever comes next.</div></div></div><p class="packfoot">These slides are rendered from <a href="../../decks/06__what-the-build-refuses.md"><code>06__what-the-build-refuses.md</code></a>, republished byte for byte from the vault. The <b>live</b> decks — the same file, parsed by the vault's own app — are in the Decks view of <a href="../../vault/index.html">the vault</a>, which moves the moment the vault does. This page moves when the site rebuilds.</p>
+<script>
+/* Present mode and the notes toggle. Everything above renders without this: the
+   slides are stacked, numbered and printable with JavaScript off, which is why
+   the enhancement can be this small. No network call — see check_network_pages,
+   which allows exactly two pages to make one and this is not either of them. */
+(function () {
+  var deck = document.getElementById('deck');
+  if (!deck) return;
+  var slides = [].slice.call(deck.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  var at = 0, on = false;
+
+  function paint() {
+    for (var i = 0; i < slides.length; i++) slides[i].classList.toggle('off', on && i !== at);
+    document.body.classList.toggle('presenting', on);
+  }
+  function go(n) {
+    at = Math.max(0, Math.min(slides.length - 1, n));
+    paint();
+    if (on) slides[at].scrollIntoView({ block: 'start' });
+  }
+
+  var pbtn = document.getElementById('present');
+  pbtn.addEventListener('click', function () {
+    on = !on;
+    pbtn.innerHTML = on ? '■ Leave present mode' : '▶ Present';
+    // Enter on whichever slide the reader has scrolled to, not back at the top.
+    if (on) {
+      var best = 0, top = 1e9;
+      for (var i = 0; i < slides.length; i++) {
+        var d = Math.abs(slides[i].getBoundingClientRect().top - 80);
+        if (d < top) { top = d; best = i; }
+      }
+      at = best;
+    }
+    go(at);
+  });
+
+  var nbtn = document.getElementById('ntoggle');
+  nbtn.addEventListener('click', function () {
+    var hidden = document.body.classList.toggle('nonotes');
+    nbtn.textContent = hidden ? 'Show notes' : 'Hide notes';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { if (on) { go(at + 1); e.preventDefault(); } }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { if (on) { go(at - 1); e.preventDefault(); } }
+    else if (e.key === 'Escape' && on) { pbtn.click(); }
+  });
+
+  // A deep link to #s7 opens that slide. Reading the fragment is fine here; it is
+  // the VAULT app that must never assign one.
+  var m = /^#s(\d+)$/.exec(location.hash || '');
+  if (m) {
+    var n = parseInt(m[1], 10) - 1;
+    if (n >= 0 && n < slides.length) { at = n; slides[n].scrollIntoView({ block: 'start' }); }
+  }
+}());
+</script>
+
+<p class="pagenav"><a href="../../ledger/index.html">Every claim on this site, with its state &rarr;</a>
+<a href="../../disclosures/index.html">Disclosures &rarr;</a></p>
+</main>
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">ungovr<span>.providers.sgit.ai</span></div>
+    <p class="nonaff"><b>Independent work by SGit-AI. Not affiliated with, endorsed by, or sponsored by UnGovr. &ldquo;UnGovr&rdquo; identifies the open-data API this page reports on; all trademarks belong to their owners. UnGovr&rsquo;s data is used under CC BY 4.0.</b></p>
+    <p>An independent report on the UnGovr Open Data API: what it grants, what bounds it, what it cost,
+       and the one edge that stops short of what everybody downstream needs. The first open-data provider
+       in the <code>*.providers.sgit.ai</code> family. Source material: the government-graph vault
+       <code>dkeclt5r</code>.</p>
+    <p class="licence">This document is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The code that builds it is Apache-2.0.
+       UnGovr&rsquo;s Atlas is used under CC BY 4.0.</p>
+    <p class="verline">site <a href="../../versions/index.html">v0.1.18</a> &middot; <a href="../../ledger/index.html">the ledger</a> &middot; <a href="../../disclosures/index.html">disclosures</a> &middot; <a href="index.md" title="The same page as plain markdown">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>The report</h4>
+    <a href="../../index.html">UnGovr, nine sections</a>
+    <a href="../../index.html#5-the-bounding-primitive">&sect;5 The bounding primitive</a>
+    <a href="../../index.html#8-what-it-cost">&sect;8 What it cost</a>
+    <a href="../../index.html#9-what-went-wrong">&sect;9 What went wrong</a>
+  </div>
+  <div>
+    <h4>The finding</h4>
+    <a href="../../coverage/index.html">The coverage measurement</a>
+    <a href="../../join/index.html">The seven-step join</a>
+    <a href="../../retrievals/index.html">The retrieval log</a>
+    <a href="../../examples/index.html">Example files</a>
+  </div>
+  <div>
+    <h4>The vault</h4>
+    <a href="../../vault/index.html">What the vault holds</a>
+    <a href="../../join/index.html">Entity to acceptance</a>
+    <a href="../../coverage/index.html">Computation 1</a>
+  </div>
+  <div>
+    <h4>The argument</h4>
+    <a href="../../patterns/index.html">The four patterns</a>
+    <a href="../../comparison/index.html">Comparison matrix</a>
+    <a href="../../ledger/index.html">Claim ledger</a>
+    <a href="../../briefs/index.html">The briefs, published raw</a>
+    <a href="../../disclosures/index.html">Disclosures</a>
+  </div>
+</div>
+<div class="footnote"><p>No analytics. No cookies. No third-party fonts, scripts or CDN &mdash; every byte of this site
+is served from this domain. Every number was computed at the command line against bytes whose sha256 is published in
+<a href="../../retrievals/index.html">the retrieval log</a>, and compiled in. <b>Exactly one page opens a network connection</b> &mdash;
+<a href="../../vault/index.html">the vault page</a>, to <code>dev.vault.sgraph.ai</code>, to run the vault live from its published read
+key. Every other page fetches nothing, and a build check holds that line.</p></div>
+</footer>
+</body>
+</html>

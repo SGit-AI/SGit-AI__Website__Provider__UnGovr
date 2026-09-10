@@ -594,9 +594,19 @@ def check_no_double_escaped_entities():
     in a screenshot, not by a check — the build was perfectly happy.
 
     The fix in the content is to type the character. This is what stops the next one:
-    a literal entity anywhere in a built page fails the build and names it."""
+    a literal entity in a built page's PROSE fails the build and names it.
+
+    Code spans and code blocks are exempt, and that is not a loophole. Inside
+    backticks the author is naming the characters on purpose — a slide explaining
+    this very bug has to be able to write `&mdash;` — and there `&amp;mdash;` is
+    what correctly renders as `&mdash;` on screen. Scanning them too made the gate
+    fire on the page documenting it, which is the same shape as the vault-markup
+    check flagging its own escaping: a check that fires on its own fix teaches the
+    next person to undo the fix."""
+    CODE = re.compile(r"<code\b[^>]*>.*?</code>|<pre\b[^>]*>.*?</pre>", re.S | re.I)
     for p in pages():
-        for m in re.finditer(r"&amp;[a-zA-Z][a-zA-Z0-9]{1,8};", p.read_text()):
+        prose = CODE.sub("", p.read_text())
+        for m in re.finditer(r"&amp;[a-zA-Z][a-zA-Z0-9]{1,8};", prose):
             fail(f"{p.relative_to(OUT)}: {m.group(0)!r} ships as literal text — "
                  f"markdown escapes the ampersand, so type the character itself")
 

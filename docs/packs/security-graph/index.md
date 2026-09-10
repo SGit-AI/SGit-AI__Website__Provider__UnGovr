@@ -5,7 +5,7 @@ lead: "**Every security and AI standard tells you what good looks like. None of 
 order: 14
 toc: false
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
+  vault: dkeclt5r @ obj-cas-imm-ca05faec37fd
   date: 9 September 2026
   note: "The eight files below are served byte for byte from the vault. Their sha256 is recorded in data/packs-manifest.txt and check_site.py fails the build if a published byte differs."
 ---

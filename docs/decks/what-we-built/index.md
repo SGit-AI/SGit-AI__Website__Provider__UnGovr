@@ -7,7 +7,7 @@ accent: teal
 
 # What we built on the site
 
-> **Deck 2 of 4.** `ungovr.providers.sgit.ai` — what it is, why the contract had to stretch to
+> **Deck 2 of 6.** `ungovr.providers.sgit.ai` — what it is, why the contract had to stretch to
 > admit it, and which checks make its promises enforceable rather than stated.
 >
 > This is the markdown source; the **Decks** view is a projection of it.

@@ -5,7 +5,7 @@ lead: "The rabbit hole works right up to the law. **Entity → jurisdiction → 
 order: 7
 toc: true
 provenance:
-  vault: dkeclt5r @ obj-cas-imm-760fee6127a2
+  vault: dkeclt5r @ obj-cas-imm-ca05faec37fd
   date: 9 September 2026
   note: "Every row below was fetched in this session and hashed; the requests are in the retrieval log. Nothing here is read from their documentation."
 ---
